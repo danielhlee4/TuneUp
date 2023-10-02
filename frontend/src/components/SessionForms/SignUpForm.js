@@ -22,10 +22,10 @@ function SignupForm() {
         let setState;
 
         switch (field) {
-            case 'firstname':
+            case 'firstName':
                 setState = setfirstName;
                 break;
-            case 'lastname':
+            case 'lastName':
                 setState = setlastName;
                 break;
             case 'email':

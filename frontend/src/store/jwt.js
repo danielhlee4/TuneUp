@@ -25,6 +25,12 @@ async function jwtFetch(url, options = {}) {
     // If the response status code is under 400, then return the response to the
     // next promise chain.
     return res;
+
+    if (options.method.toUpperCase() !== "GET") {
+        options.headers["Content-Type"] =
+            options.headers["Content-Type"] || "application/json";
+        options.headers["CSRF-Token"] = getCookie("CSRF-TOKEN");
+    }
 }
 
 function getCookie(cookieName) {
@@ -34,12 +40,6 @@ function getCookie(cookieName) {
         if (name.trim() === cookieName) return value;
     }
     return null;
-}
-
-if (options.method.toUpperCase() !== "GET") {
-    options.headers["Content-Type"] =
-        options.headers["Content-Type"] || "application/json";
-    options.headers["CSRF-Token"] = getCookie("CSRF-TOKEN");
 }
 
 export default jwtFetch;
