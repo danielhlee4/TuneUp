@@ -1,20 +1,18 @@
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+const express = require("express");
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 
-var app = express();
+const usersRouter = require('./routes/api/users'); // update the import file path
 
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+const app = express();
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use(logger('dev')); // log request components (URL/method) to terminal
+app.use(express.json()); // parse JSON request body
+app.use(express.urlencoded({ extended: false })); // parse urlencoded request body
+app.use(cookieParser()); // parse cookies as an object on req.cookies
+
+// Attach Express routers
+app.use('/api/users', usersRouter); // update the path
 
 module.exports = app;
