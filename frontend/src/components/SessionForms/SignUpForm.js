@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import './SessionForm.css';
+// import './SessionForm.css';
 import { signup, clearSessionErrors } from '../../store/session';
 
 function SignupForm() {
@@ -22,10 +22,10 @@ function SignupForm() {
         let setState;
 
         switch (field) {
-            case 'firstname':
+            case 'firstName':
                 setState = setfirstName;
                 break;
-            case 'lastname':
+            case 'lastName':
                 setState = setlastName;
                 break;
             case 'email':
