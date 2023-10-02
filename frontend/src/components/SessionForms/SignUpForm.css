@@ -1,0 +1,167 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6,
+p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn,
+em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b,
+u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table,
+caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details,
+embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby,
+section, summary, time, mark, audio, video 
+{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI',
+            Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans',
+            Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji',
+            'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial,
+            sans-serif;
+    vertical-align: baseline;
+}
+
+.background-img{
+    position: fixed;
+    top: 0;
+    z-index: -1;
+    opacity: 0.7;
+}
+
+.sign-up-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: fit-content
+}
+
+.sign-up-form {
+    width: fit-content;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.sign-up-header {
+    margin-top: 7rem;
+    margin-bottom: 4rem;
+    font-size: 48px;
+    color: white;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+.firstname-label {
+    position: absolute;
+    font-weight: 600;
+}
+
+.firstname-input {
+    margin-top: 1.5rem;
+    width: 21.3rem;
+    height: 2rem;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    padding-left: 10px;
+}
+
+.lastname-label {
+    position: absolute;
+    margin-top: 1rem;
+    font-weight: 600;
+}
+
+.lastname-input {
+    margin-top: 2.5rem;
+    width: 21.3rem;
+    height: 2rem;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    padding-left: 10px;
+}
+
+.email-label {
+    position: absolute;
+    margin-top: 1rem;
+    font-weight: 600;
+}
+
+.email-input {
+    margin-top: 2.5rem;
+    width: 21.3rem;
+    height: 2rem;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    padding-left: 10px;
+}
+
+.password-label{
+    position: absolute;
+    margin-top: 1rem;
+    font-weight: 600;
+}
+
+.password-input {
+    margin-top: 2.5rem;
+    width: 21.3rem;
+    height: 2rem;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    padding-left: 10px;
+}
+
+.confirm-password-label {
+    position: absolute;
+    margin-top: 1rem;
+    font-weight: 600;
+}
+
+.confirm-password-input {
+    margin-top: 2.5rem;
+    width: 21.3rem;
+    height: 2rem;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    padding-left: 10px;
+}
+
+.sign-up-button {
+    margin-left: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+    width: 20rem;
+    height: 2.5rem;
+    background-color: rgb(255, 213, 251);
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.sign-up-button:disabled {
+    background-color: rgba(0, 0, 0, 0.1);
+    border: none;
+    border-radius: 20px;
+    cursor: not-allowed;
+}
+
+.sign-up-button:disabled:hover {
+    box-shadow: none;
+}
+
+.sign-up-button:hover {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.errors{
+    color: red;
+}
