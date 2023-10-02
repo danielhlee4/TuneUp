@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-// import './SessionForm.css';
-
+import './LoginForm.css';
+import loginbackground from './login-background.png';
 import { login, clearSessionErrors } from '../../store/session';
 
 function LoginForm() {
@@ -27,32 +27,40 @@ function LoginForm() {
     }
 
     return (
-        <form className="session-form" onSubmit={handleSubmit}>
-            <h2>Log In Form</h2>
+      <div className="login-page">
+        <header className="login-header">
+          <h1>Lets Jam</h1>
+        </header>
+        <div className="login-form-container">
+          <form className="login-form" onSubmit={handleSubmit}>
+            <h2>Log In</h2>
             <div className="errors">{errors?.email}</div>
             <label>
-                <span>Email</span>
-                <input type="text"
-                    value={email}
-                    onChange={update('email')}
-                    placeholder="Email"
-                />
+              <input
+                type="text"
+                value={email}
+                onChange={update("email")}
+                placeholder="Email"
+              />
             </label>
             <div className="errors">{errors?.password}</div>
             <label>
-                <span>Password</span>
-                <input type="password"
-                    value={password}
-                    onChange={update('password')}
-                    placeholder="Password"
-                />
+              <input
+                type="password"
+                value={password}
+                onChange={update("password")}
+                placeholder="Password"
+              />
             </label>
             <input
-                type="submit"
-                value="Log In"
-                disabled={!email || !password}
+              type="submit"
+              value="Log In"
+              disabled={!email || !password}
             />
-        </form>
+          </form>
+        </div>
+        <img className='login-background' src={loginbackground}></img>
+      </div>
     );
 }
 
