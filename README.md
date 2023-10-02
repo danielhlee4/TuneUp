@@ -27,20 +27,20 @@ Dan Lee - Team lead
 Dennis Lee - Frontend co-lead
 Mudassar Memon - Backend co-lead
 
-## User Auth - 1 Day
+### User Auth - 1 Day
 * User model - Mudassar, Klodian (backend)
 * Signup, Login component, NavBar - Sean, Dennis (frontend)
 * Google API research, frontend support - Dan
-## User Profiles - .5 Day
+### User Profiles - .5 Day
 * Send User data - backend
 * User Show - frontend
 * Google API implementation - Dan
-## Events(TuneUps) - 1.5 Days
+### Events(TuneUps) - 1.5 Days
 * TuneUp model, validations, backend routes - backend
 * Splash, Index, Show(?) - frontend
-## Connections - 1 Day
+### Connections - 1 Day
 * TuneUp/User joins object - backend
 * TuneUp request form, accept button - frontend
-## Search - .5 Days
+### Search - .5 Days
 * Implement backend users search queries, filters
 * Search bar, index TuneUp filters (date, group size, etc) - frontend
