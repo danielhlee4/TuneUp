@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6,
+p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn,
+em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b,
+u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table,
+caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details,
+embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby,
+section, summary, time, mark, audio, video 
+{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font-family: "Bebas Neue", sans-serif;
+    vertical-align: baseline;
+}
+
+.login-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.login-background {
+    position: fixed;
+    opacity: 0.7;
+    z-index: -1;
+    top: 0;
+}
+
+.login-form-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    width: 500px;
+    text-align: center;
+    margin-bottom: 0.3rem;
+    margin-left: 1rem;
+}
+
+.login-form {
+    width: 100%;
+}
+
+.login-form label {
+    display: block;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    height: 3rem;
+    font-size: 16px;
+}
+
+.login-form input[type="submit"] {
+    background-color: rgb(255, 213, 251);
+    color: black;
+    font-weight: 600;
+    padding: 5px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 24px;
+    width: 20rem;
+    font-family: "Bebas Neue", sans-serif;
+    transition: 0.2s ease-in-out;
+}
+
+.login-form input:disabled {
+    background-color: rgba(0, 0, 0, 0.1);
+    border: none;
+    border-radius: 20px;
+    cursor: not-allowed;
+}
+
+.login-form input:disabled:hover {
+    box-shadow: none;
+}
+
+.login-form input:hover {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.login-header {
+    padding: 20px;
+    font-size: 72px;
+    color: white;
+    box-sizing: border-box;
+    margin-top: 6rem;
+    margin-bottom: 2rem;
+    margin-left: 1rem;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+.login-form-header {
+    font-size: 36px;
+    margin-bottom: 1rem;
+}
+
+.errors {
+    color: red;
+}
+
+.want-to-join {
+    font-size: 18px;
+    margin-top: 1rem;
+}
+
+
+
+
+

@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import './SessionForm.css';
+import './SignUpForm.css'
 import { signup, clearSessionErrors } from '../../store/session';
+import background from './background.png'
+import { Link } from 'react-router-dom';
 
 function SignupForm() {
     const [email, setEmail] = useState('');
@@ -22,10 +24,10 @@ function SignupForm() {
         let setState;
 
         switch (field) {
-            case 'firstname':
+            case 'firstName':
                 setState = setfirstName;
                 break;
-            case 'lastname':
+            case 'lastName':
                 setState = setlastName;
                 break;
             case 'email':
@@ -57,61 +59,70 @@ function SignupForm() {
     }
 
     return (
-        <form className="session-form" onSubmit={handleSubmit}>
-            <h2>Sign Up Form</h2>
-            <div className="errors">{errors?.firstName}</div>
-            <label>
-                <span>Firstname</span>
-                <input type="text"
-                    value={firstName}
-                    onChange={update('firstName')}
-                    placeholder="Firstname"
-                />
-            </label>
-            <div className="errors">{errors?.lastName}</div>
-            <label>
-                <span>Lastname</span>
-                <input type="text"
-                    value={lastName}
-                    onChange={update('lastName')}
-                    placeholder="Lastname"
-                />
-            </label>
-            <div className="errors">{errors?.email}</div>
-            <label>
-                <span>Email</span>
-                <input type="text"
-                    value={email}
-                    onChange={update('email')}
-                    placeholder="Email"
-                />
-            </label>
-            <div className="errors">{errors?.password}</div>
-            <label>
-                <span>Password</span>
-                <input type="password"
-                    value={password}
-                    onChange={update('password')}
-                    placeholder="Password"
-                />
-            </label>
-            <div className="errors">
-                {password !== password2 && 'Confirm Password field must match'}
-            </div>
-            <label>
-                <span>Confirm Password</span>
-                <input type="password"
+        <div className='sign-up-form-container'>
+            <h2 className='sign-up-header'>Make the most out of your musical talent!</h2>
+            <form className="sign-up-form" onSubmit={handleSubmit}>
+                <div className="errors">{errors?.firstName}</div>
+                    <span className='firstname-label'>Firstname</span>
+                    <input
+                        className='firstname-input' 
+                        type="text"
+                        value={firstName}
+                        onChange={update('firstName')}
+                    />
+                <div className="errors">{errors?.lastName}</div>
+         
+                    <span className='lastname-label'>Lastname</span>
+                    <input
+                        className='lastname-input' 
+                        type="text"
+                        value={lastName}
+                        onChange={update('lastName')}
+                    />
+                <div className="errors">{errors?.email}</div>
+     
+                    <span className='email-label'>Email</span>
+                    <input 
+                        className='email-input'
+                        type="text"
+                        value={email}
+                        onChange={update('email')}
+                    />
+
+                <div className="errors">{errors?.password}</div>
+  
+                    <span className='password-label'>Password</span>
+                    <input 
+                        className='password-input'
+                        type="password"
+                        value={password}
+                        onChange={update('password')}
+                    />
+          
+                <div className="errors">
+                    {password !== password2 && 'Confirm Password field must match'}
+                </div>
+                <span className='confirm-password-label'>Confirm Password</span>
+                <input
+                    className='confirm-password-input' 
+                    type="password"
                     value={password2}
                     onChange={update('password2')}
-                    placeholder="Confirm Password"
                 />
-            </label>
-            <input
-                type="submit"
-                value="Sign Up"
-                disabled={!firstName || !lastName || !email || !password || password !== password2}
-            />
-        </form>
+                <div className='sign-up-button-container'>
+                <input
+                    className='sign-up-button'
+                    type="submit"
+                    value="Sign Up"
+                    disabled={!firstName || !lastName || !email || !password || password !== password2}
+                />
+                </div>
+                <div className='already-on-tuneup'>
+                    Already on TuneUp? <Link to={'/login'}>Log In!</Link>
+                </div>
+            </form>
+            <img className='background-img' src={background}></img>
+        </div>
     );
 }
 
