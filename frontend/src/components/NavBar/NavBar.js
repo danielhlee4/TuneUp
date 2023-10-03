@@ -24,10 +24,8 @@ function NavBar() {
                     <Link to={'/home'}>
                         <img className='tuneup-logo' src={tuneuplogo}></img>
                     </Link>
-                    <div className="session-nav-right-info">
-                            <p className="nav-user-name">Welcome, {sessionUser.firstName}</p>
-                            <button className="signout-button" onClick={logoutUser}>Logout</button>
-                    </div>
+                        <p className="nav-user-name">Welcome, {sessionUser.firstName}</p>
+                        <button className="signout-button" onClick={logoutUser}>Logout</button>
                 </div>
             );
         } else {
