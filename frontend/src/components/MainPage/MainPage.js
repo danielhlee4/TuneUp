@@ -2,6 +2,7 @@ import React from 'react';
 import '../../components/MainPage/MainPage.css';
 import mainpagebackground from './main-page-background.png';
 import { Link } from 'react-router-dom';
+import DistanceCalculator from '../Map/DistanceCalculator';
 
 function MainPage() {
   return (
