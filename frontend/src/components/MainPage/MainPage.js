@@ -11,7 +11,7 @@ function MainPage() {
             <button className="get-started-button">GET STARTED</button>
         </Link>
       <footer>
-              <div className='scrolling-text'>Copyright &copy; 2023 TuneUp | Developed by: Dan L. Klodian B. Mudassar M. Dennis L. Sean J.</div>
+            <div className='scrolling-text'>Copyright &copy; 2023 TuneUp | Developed by: Dan L. Klodian B. Mudassar M. Dennis L. Sean J.</div>
       </footer>
       <img className="main-page-background" src={mainpagebackground}></img>
     </div>
