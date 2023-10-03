@@ -1,4 +1,5 @@
 import jwtFetch from "./jwt";
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 const RECEIVE_CURRENT_USER = "session/RECEIVE_CURRENT_USER";
 const RECEIVE_SESSION_ERRORS = "session/RECEIVE_SESSION_ERRORS";
