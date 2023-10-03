@@ -6,7 +6,7 @@ import tuneuplogo from '../../components/NavBar/tuneuplogo.png'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 function NavBar() {
-    const loggedIn = useSelector(state => state.session.user);
+    const loggedIn = useSelector(state => !!state.session.user);
     const dispatch = useDispatch();
     const history = useHistory();
 
