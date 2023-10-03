@@ -69,7 +69,8 @@ const User = require("../models/User");
 const TuneUp = require("../models/TuneUp");
 const bcrypt = require("bcryptjs");
 const { faker } = require("@faker-js/faker");
-const DEFAULT_PROFILE_IMAGE_URL = "https://tuneup-mern-seeds.s3.amazonaws.com/public/blank-profile-picture-973460_1280.png";
+const DEFAULT_PROFILE_IMAGE_URL =
+  "https://tuneup-mern-seeds.s3.amazonaws.com/public/blank-profile-picture-973460_1280.png";
 const NUM_SEED_USERS = 10;
 
 // Create users
@@ -82,7 +83,7 @@ for (let i = 0; i < NUM_SEED_USERS; i++) {
       firstName: firstName,
       lastName: lastName,
       email: faker.internet.email(firstName, lastName),
-      hashedPassword: bcrypt.hashSync(faker.internet.password(), 10),
+      hashedPassword: bcrypt.hashSync("password", 10),
       profileImageUrl: DEFAULT_PROFILE_IMAGE_URL,
       hostedTuneUps: [],
       joinedTuneUps: [],
@@ -133,7 +134,7 @@ const insertSeeds = async () => {
       await user.save();
 
       // User joins a TuneUp hosted by another user
-      const otherUserIndex = (i + 1) % createdUsers.length;  // Ensure the user joins another user's TuneUp
+      const otherUserIndex = (i + 1) % createdUsers.length; // Ensure the user joins another user's TuneUp
       const otherUser = createdUsers[otherUserIndex];
       const joinedTuneUp = new TuneUp({
         host: otherUser._id,
