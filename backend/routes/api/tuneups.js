@@ -11,7 +11,9 @@ const {
 
 router.get("/", async (req, res, next) => {
   try {
-    const tuneUps = await TuneUp.find({});
+    const tuneUps = await TuneUp.find({})
+      .populate("connections")
+      .populate("pendingConnections");
     res.status(200).json(tuneUps);
   } catch (error) {
     next(error);
@@ -59,22 +61,22 @@ router.patch(
   async (req, res, next) => {
     try {
       const updateData = {
-        description: req.body.description,
-        date: req.body.date,
-        genre: req.body.genre,
-        address: req.body.address,
-        zipcode: req.body.zipcode,
-        connections: req.body.connections,
-        pendingConnections: req.body.pendingConnections,
+        ...(req.body.description && { description: req.body.description }),
+        ...(req.body.date && { date: req.body.date }),
+        ...(req.body.genre && { genre: req.body.genre }),
+        ...(req.body.address && { address: req.body.address }),
+        ...(req.body.zipcode && { zipcode: req.body.zipcode }),
+        ...(req.body.connections && { connections: req.body.connections }),
+        ...(req.body.pendingConnections && {
+          pendingConnections: req.body.pendingConnections,
+        }),
       };
 
       const tuneUp = await TuneUp.findById(req.params.id);
 
       const removedAttendees = tuneUp.connections
         .map(String)
-        .filter(
-          (attendee) => !req.body.connections.map(String).includes(attendee)
-        );
+        .filter((attendee) => !req.body.connections.includes(attendee));
 
       const removedPromises = removedAttendees.map((attendeeId) =>
         User.findByIdAndUpdate(attendeeId, {
@@ -83,10 +85,12 @@ router.patch(
       );
 
       const acceptedAttendees = req.body.connections
-        .map(String)
-        .filter(
-          (attendee) => !tuneUp.connections.map(String).includes(attendee)
-        );
+        ? req.body.connections
+            .map(String)
+            .filter(
+              (attendee) => !tuneUp.connections.map(String).includes(attendee)
+            )
+        : [];
 
       const acceptedPromises = acceptedAttendees.map((attendeeId) =>
         User.findByIdAndUpdate(attendeeId, {
