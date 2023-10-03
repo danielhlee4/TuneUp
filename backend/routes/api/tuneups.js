@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 const TuneUp = mongoose.model("TuneUp");
+const User = mongoose.model("User")
 const { restoreUser } = require("../../config/passport");
 
 const {
