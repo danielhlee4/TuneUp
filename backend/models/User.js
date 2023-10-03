@@ -1,39 +1,57 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const userSchema = new Schema({
+const userSchema = new Schema(
+  {
     firstName: {
       type: String,
-      required: true
+      required: true,
     },
     lastName: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     email: {
       type: String,
       required: true,
       unique: true,
-      index: true
+      index: true,
     },
     instruments: {
-        type: [String],
+      type: [String],
     },
     genres: {
-        type: [String],
+      type: [String],
     },
     zipcode: {
-        type: String,
+      type: String,
+    },
+    address: {
+      type: String,
     },
     hashedPassword: {
       type: String,
-      required: true
+      required: true,
     },
     profileImageUrl: {
-        type: String,
-    }
-  }, {
-    timestamps: true
-});
+      type: String,
+    },
+    hostedTuneUps: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "TuneUp",
+      },
+    ],
+    joinedTuneUps: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "TuneUp",
+      },
+    ],
+  },
+  {
+    timestamps: true,
+  }
+);
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model("User", userSchema);

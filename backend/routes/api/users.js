@@ -35,6 +35,9 @@ router.get("/current", restoreUser, (req, res) => {
     instruments: req.body.instruments,
     genres: req.body.genres,
     zipcode: req.body.zipcode,
+    address: req.body.address,
+    hostedTuneUps: req.body.hostedTuneUps,
+    joinedTuneUps: req.body.joinedTuneUps,
   });
 });
 
@@ -94,6 +97,8 @@ router.post("/register", validateRegisterInput, async (req, res, next) => {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     profileImageUrl: profileImageUrl,
+    hostedTuneUps: [],
+    joinedTuneUps: [],
   });
 
   bcrypt.genSalt(10, (err, salt) => {
@@ -137,6 +142,7 @@ router.patch(
         ...(req.body.instruments && { instruments: req.body.instruments }),
         ...(req.body.genres && { genres: req.body.genres }),
         ...(req.body.zipcode && { zipcode: req.body.zipcode }),
+        ...(req.body.address && { address: req.body.address }),
         ...(req.file && {
           profileImageUrl: await singleFileUpload({
             file: req.file,
