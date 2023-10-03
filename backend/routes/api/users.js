@@ -132,7 +132,7 @@ router.patch(
   // ensureAuthenticated,
   // ensureAuthorized,
   // validateUserData,
-  singleMulterUpload("image"),
+  // singleMulterUpload("image"),
   async (req, res, next) => {
     try {
       const { id } = req.params;

@@ -43,7 +43,7 @@ function ensureAuthorized(req, res, next) {
   // Assuming `req.user` contains the authenticated user
   // and `req.params.id` is the ID of the user to be modified
   
-  if (req.user._id.toString() === req.params.id || req.user.isAdmin) {
+  if (req.user._id.toString() === req.params.id) {
     return next();
   }
   res.status(403).json({ error: "User is not authorized" });
