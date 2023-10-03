@@ -41,6 +41,11 @@ router.post("/create", ensureAuthenticated, async (req, res, next) => {
       pendingConnections: [],
     });
     await newTuneUp.save();
+
+    await User.findByIdAndUpdate(req.user._id, {
+      $push: { hostedTuneUps: newTuneUp._id },
+    });
+
     res.status(201).json(newTuneUp);
   } catch (error) {
     next(error);
@@ -100,6 +105,7 @@ router.post("/:id/join", ensureAuthenticated, async (req, res, next) => {
       event.pendingConnections.push(req.user._id);
       await event.save();
     }
+
     res.json(event);
   } catch (error) {
     next(error);

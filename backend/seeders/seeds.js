@@ -4,7 +4,8 @@ const { mongoURI: db } = require("../config/keys.js");
 const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const { faker } = require("@faker-js/faker");
-const DEFAULT_PROFILE_IMAGE_URL ="https://tuneup-mern-seeds.s3.amazonaws.com/public/blank-profile-picture-973460_1280.png";
+const DEFAULT_PROFILE_IMAGE_URL =
+  "https://tuneup-mern-seeds.s3.amazonaws.com/public/blank-profile-picture-973460_1280.png";
 const NUM_SEED_USERS = 10;
 // Create users
 const users = [];
@@ -15,6 +16,8 @@ users.push(
     email: "demo-user@appacademy.io",
     hashedPassword: bcrypt.hashSync("starwars", 10),
     profileImageUrl: DEFAULT_PROFILE_IMAGE_URL,
+    hostedTuneUps: [],
+    joinedTuneUps: [],
   })
 );
 for (let i = 1; i < NUM_SEED_USERS; i++) {
@@ -27,6 +30,8 @@ for (let i = 1; i < NUM_SEED_USERS; i++) {
       email: faker.internet.email(firstName, lastName),
       hashedPassword: bcrypt.hashSync(faker.internet.password(), 10),
       profileImageUrl: DEFAULT_PROFILE_IMAGE_URL,
+      hostedTuneUps: [],
+      joinedTuneUps: [],
     })
   );
 }
