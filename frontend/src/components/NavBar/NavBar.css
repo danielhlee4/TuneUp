@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6,
+p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn,
+em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b,
+u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table,
+caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details,
+embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby,
+section, summary, time, mark, audio, video 
+{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font-family: 'Bebas Neue', sans-serif;
+    vertical-align: baseline;
+}
+
+.links-auth{
+    position: fixed;
+    height: 4rem;
+    width: 100vw;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+}
+
+.tuneup-logo {
+    position: absolute;
+    width: 7rem;
+    margin-left: 47vw;
+}
+
+.nav-login-button-container {
+    position: absolute;
+    border-radius: 10px;
+    padding-top: 8px;
+    padding-bottom: 5px;
+    width: 8rem;
+    height: 2rem;
+    margin-top: 0.5rem;
+    text-align: center;
+    margin-left: 91vw;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    transition: 0.2s ease-in-out;
+}
+
+.nav-login-button-container:hover {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    background-color: rgb(255, 213, 251);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.nav-login-button {
+    text-decoration: none;
+    color: black;
+    font-size: 26px;
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+.nav-signout-button-container {
+    position: absolute;
+    border-radius: 10px;
+    width: 8rem;
+    height: 2rem;
+    padding-top: 8px;
+    padding-bottom: 5px;
+    margin-top: 0.5rem;
+    text-align: center;
+    margin-left: 82.5vw;
+    margin-right: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    transition: 0.2s ease-in-out;
+}
+
+.nav-signout-button-container:hover {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    background-color: rgb(255, 213, 251);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.nav-signout-button{
+    text-decoration: none;
+    color: black;
+    font-size: 26px;
+    font-family: 'Bebas Neue', sans-serif;
+}

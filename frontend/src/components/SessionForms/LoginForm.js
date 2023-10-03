@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import './LoginForm.css';
 import loginbackground from './login-background.png';
 import { login, clearSessionErrors } from '../../store/session';
+import { Link } from 'react-router-dom';
 
 function LoginForm() {
     const [email, setEmail] = useState('');
@@ -29,11 +30,11 @@ function LoginForm() {
     return (
       <div className="login-page">
         <header className="login-header">
-          <h1>Lets Jam</h1>
+          <h1>Lets Jam !</h1>
         </header>
         <div className="login-form-container">
           <form className="login-form" onSubmit={handleSubmit}>
-            <h2>Log In</h2>
+            <p className='login-form-header'>Log In</p>
             <div className="errors">{errors?.email}</div>
             <label>
               <input
@@ -58,6 +59,9 @@ function LoginForm() {
               disabled={!email || !password}
             />
           </form>
+        <div className='want-to-join'>
+            Want to join TuneUp? <Link to={'/signup'}>Sign Up!</Link>
+        </div>
         </div>
         <img className='login-background' src={loginbackground}></img>
       </div>
