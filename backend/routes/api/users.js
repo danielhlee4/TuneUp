@@ -54,7 +54,9 @@ router.get("/", async (req, res, next) => {
 // fetch a single user from db by their ID and return as JSON
 router.get("/:id", async (req, res, next) => {
   try {
-    const user = await User.findById(req.params.id);
+    const user = await User.findById(req.params.id)
+      .populate("hostedTuneUps")
+      .populate("joinedTuneUps");
     if (!user) return res.status(404).json({ error: "User not found" });
     res.json(user);
   } catch (err) {
