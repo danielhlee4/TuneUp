@@ -9,6 +9,7 @@
   "dependencies": {
     "@faker-js/faker": "^8.1.0",
     "aws-sdk": "^2.1468.0",
+    "axios": "^1.5.1",
     "bcryptjs": "^2.4.3",
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
