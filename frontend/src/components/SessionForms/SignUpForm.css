@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6,
 p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn,
 em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b,
@@ -10,11 +11,7 @@ section, summary, time, mark, audio, video
     padding: 0;
     border: 0;
     font-size: 100%;
-    font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI',
-            Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans',
-            Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji',
-            'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial,
-            sans-serif;
+    font-family: "Bebas Neue", sans-serif;
     vertical-align: baseline;
 }
 
@@ -43,7 +40,7 @@ section, summary, time, mark, audio, video
 .sign-up-header {
     margin-top: 7rem;
     margin-bottom: 4rem;
-    font-size: 48px;
+    font-size: 72px;
     color: white;
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
@@ -51,12 +48,13 @@ section, summary, time, mark, audio, video
 .firstname-label {
     position: absolute;
     font-weight: 600;
+    font-size: 20px;
 }
 
 .firstname-input {
-    margin-top: 1.5rem;
+    margin-top: 2rem;
     width: 21.3rem;
-    height: 2rem;
+    height: 2.5rem;
     font-size: 16px;
     border-radius: 5px;
     border: none;
@@ -68,12 +66,13 @@ section, summary, time, mark, audio, video
     position: absolute;
     margin-top: 1rem;
     font-weight: 600;
+    font-size: 20px;
 }
 
 .lastname-input {
-    margin-top: 2.5rem;
+    margin-top: 3rem;
     width: 21.3rem;
-    height: 2rem;
+    height: 2.5rem;
     font-size: 16px;
     border-radius: 5px;
     border: none;
@@ -85,12 +84,13 @@ section, summary, time, mark, audio, video
     position: absolute;
     margin-top: 1rem;
     font-weight: 600;
+    font-size: 20px;
 }
 
 .email-input {
-    margin-top: 2.5rem;
+    margin-top: 3rem;
     width: 21.3rem;
-    height: 2rem;
+    height: 2.5rem;
     font-size: 16px;
     border-radius: 5px;
     border: none;
@@ -102,12 +102,13 @@ section, summary, time, mark, audio, video
     position: absolute;
     margin-top: 1rem;
     font-weight: 600;
+    font-size: 20px;
 }
 
 .password-input {
-    margin-top: 2.5rem;
+    margin-top: 3rem;
     width: 21.3rem;
-    height: 2rem;
+    height: 2.5rem;
     font-size: 16px;
     border-radius: 5px;
     border: none;
@@ -119,12 +120,13 @@ section, summary, time, mark, audio, video
     position: absolute;
     margin-top: 1rem;
     font-weight: 600;
+    font-size: 20px;
 }
 
 .confirm-password-input {
-    margin-top: 2.5rem;
+    margin-top: 3rem;
     width: 21.3rem;
-    height: 2rem;
+    height: 2.5rem;
     font-size: 16px;
     border-radius: 5px;
     border: none;
@@ -164,4 +166,10 @@ section, summary, time, mark, audio, video
 
 .errors{
     color: red;
+}
+
+.already-on-tuneup {
+    margin-top: 0.5rem;
+    font-size: 18px;
+    text-align: center;
 }

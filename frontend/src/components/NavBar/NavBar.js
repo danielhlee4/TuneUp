@@ -19,14 +19,17 @@ function NavBar() {
         if (loggedIn) {
             return (
                 <div className="links-nav">
-                    <img className='tuneup-logo' src={tuneuplogo}></img>
+                    <img className='tuneup-logo' src={tuneuplogo}>
+                    </img>
                     <button onClick={logoutUser}>Logout</button>
                 </div>
             );
         } else {
             return (
                 <div className="links-auth">
-                    <img className='tuneup-logo' src={tuneuplogo}></img>
+                    <Link to={'/'}>
+                        <img className='tuneup-logo' src={tuneuplogo}></img>
+                    </Link>
                     <div className='nav-signout-button-container'>
                         <Link className='nav-signout-button' to={'/signup'}>Signup</Link>
                     </div>

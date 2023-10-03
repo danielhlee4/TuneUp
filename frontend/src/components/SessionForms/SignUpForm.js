@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import './SignUpForm.css'
 import { signup, clearSessionErrors } from '../../store/session';
 import background from './background.png'
+import { Link } from 'react-router-dom';
 
 function SignupForm() {
     const [email, setEmail] = useState('');
@@ -68,7 +69,6 @@ function SignupForm() {
                         type="text"
                         value={firstName}
                         onChange={update('firstName')}
-                        placeholder="Firstname"
                     />
                 <div className="errors">{errors?.lastName}</div>
          
@@ -78,7 +78,6 @@ function SignupForm() {
                         type="text"
                         value={lastName}
                         onChange={update('lastName')}
-                        placeholder="Lastname"
                     />
                 <div className="errors">{errors?.email}</div>
      
@@ -88,7 +87,6 @@ function SignupForm() {
                         type="text"
                         value={email}
                         onChange={update('email')}
-                        placeholder="Email"
                     />
 
                 <div className="errors">{errors?.password}</div>
@@ -99,7 +97,6 @@ function SignupForm() {
                         type="password"
                         value={password}
                         onChange={update('password')}
-                        placeholder="Password"
                     />
           
                 <div className="errors">
@@ -111,7 +108,6 @@ function SignupForm() {
                     type="password"
                     value={password2}
                     onChange={update('password2')}
-                    placeholder="Confirm Password"
                 />
                 <div className='sign-up-button-container'>
                 <input
@@ -120,6 +116,9 @@ function SignupForm() {
                     value="Sign Up"
                     disabled={!firstName || !lastName || !email || !password || password !== password2}
                 />
+                </div>
+                <div className='already-on-tuneup'>
+                    Already on TuneUp? <Link to={'/login'}>Log In!</Link>
                 </div>
             </form>
             <img className='background-img' src={background}></img>
