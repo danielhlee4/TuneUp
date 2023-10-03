@@ -27,7 +27,7 @@ function LoginForm() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         await dispatch(login({ email, password }))
-        dispatch(login({ email, password }))
+        history.push('/home')
     }
 
     return (
