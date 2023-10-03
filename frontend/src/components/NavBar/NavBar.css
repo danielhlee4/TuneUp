@@ -31,15 +31,12 @@ section, summary, time, mark, audio, video
 }
 
 .nav-login-button-container {
-    position: absolute;
     border-radius: 10px;
     padding-top: 8px;
     padding-bottom: 5px;
     width: 8rem;
     height: 2rem;
-    margin-top: 0.5rem;
     text-align: center;
-    margin-left: 91vw;
     border: 1px solid rgba(0, 0, 0, 0.3);
     transition: 0.2s ease-in-out;
 }
@@ -59,15 +56,12 @@ section, summary, time, mark, audio, video
 }
 
 .nav-signout-button-container {
-    position: absolute;
     border-radius: 10px;
     width: 8rem;
     height: 2rem;
     padding-top: 8px;
     padding-bottom: 5px;
-    margin-top: 0.5rem;
     text-align: center;
-    margin-left: 82.5vw;
     margin-right: 1rem;
     border: 1px solid rgba(0, 0, 0, 0.3);
     transition: 0.2s ease-in-out;
@@ -85,4 +79,13 @@ section, summary, time, mark, audio, video
     color: black;
     font-size: 26px;
     font-family: 'Bebas Neue', sans-serif;
+}
+
+.nav-bar-buttons-container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    width: fit-content;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    margin-left: 83.5vw;
 }
