@@ -6,6 +6,11 @@ const User = mongoose.model('User');
 const passport = require('passport');
 const { loginUser, restoreUser } = require('../../config/passport');
 const { isProduction } = require('../../config/keys');
+const validateRegisterInput = require('../../validations/register');
+const validateLoginInput = require('../../validations/login');
+const DEFAULT_PROFILE_IMAGE_URL = require('../../seeders/images');
+const { singleFileUpload, singleMulterUpload } = require("../../awsS3");
+// const { findById } = require('../../models/User');
 
 router.get('/current', restoreUser, (req, res) => {
   if (!isProduction) {
@@ -18,8 +23,13 @@ router.get('/current', restoreUser, (req, res) => {
   if (!req.user) return res.json(null);
   res.json({
     _id: req.user._id,
-    username: req.user.username,
-    email: req.user.email
+    firstName: req.user.firstName,
+    lastName: req.user.lastName,
+    email: req.user.email,
+    profileImageUrl: req.user.profileImageUrl,
+    instruments: req.body.instruments,
+    genres: req.body.genres,
+    zipcode: req.body.zipcode
   });
 });
 
@@ -29,7 +39,41 @@ router.get('/', function(req, res, next) {
   });
 });
 
-router.post('/register', async (req, res, next) => {
+// fetch all users from db and return as JSON
+router.get('/', async (req, res, next) => {
+  try {
+    const users = await User.find({});
+    res.json(users);
+  } catch (err) {
+    next(err);
+  }
+});
+
+// fetch a single user from db by their ID and return as JSON 
+router.get('/:id', async (req, res, next) => {
+  try {
+    const user = await User.findById(req.params.id);
+    if (!user) return res.status(404).json({ error: "User not found" });
+    res.json(user);
+  } catch (err) {
+    next(err);
+  }
+});
+
+// delete a user
+router.delete('/:id', async (req, res, next) => {
+  try {
+    const user = await User.findByIdAndDelete(req.params.id);
+    if (!user) return res.status(404).json({ error: "User not found" });
+    res.json({ message: "User deleted successfully" });
+  } catch (err) {
+    next(err);
+  }
+});
+
+
+
+router.post('/register', validateRegisterInput, async (req, res, next) => {
   // Check to make sure no one has already registered with the proposed email or
   // username.
   const user = await User.findOne({ email: req.body.email });
@@ -45,15 +89,14 @@ router.post('/register', async (req, res, next) => {
     err.errors = errors;
     return next(err);
   }
+  const profileImageUrl = DEFAULT_PROFILE_IMAGE_URL;
 
   // Otherwise create a new user
   const newUser = new User({
     email: req.body.email,
     firstName: req.body.firstName,
     lastName: req.body.lastName,
-    instruments: req.body.instruments,
-    genres: req.body.genres,
-    zipcode: req.body.zipcode
+    profileImageUrl: profileImageUrl
   });
 
   bcrypt.genSalt(10, (err, salt) => {
@@ -72,12 +115,11 @@ router.post('/register', async (req, res, next) => {
   });
 });
 
-router.post('/login', async (req, res, next) => {
+router.post('/login', validateLoginInput, async (req, res, next) => {
   passport.authenticate('local', async function(err, user) {
     if (err) return next(err);
     if (!user) {
-      const err = new Error('Invalid credentials');
-      err.statusCode = 400;
+      const err = new Error('Invalid credentials');      err.statusCode = 400;
       err.errors = { email: "Invalid credentials" };
       return next(err);
     }
@@ -85,4 +127,30 @@ router.post('/login', async (req, res, next) => {
   })(req, res, next);
 });
 
+router.patch(
+  '/:id',
+  // ensureAuthenticated,
+  // ensureAuthorized,
+  // validateUserData,
+  singleMulterUpload("image"),
+  async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      const updateData = {
+        ...(req.body.instruments && { instruments: req.body.instruments }),
+        ...(req.body.genres && { genres: req.body.genres }),
+        ...(req.body.zipcode && { zipcode: req.body.zipcode }),
+        ...(req.file && { profileImageUrl: await singleFileUpload({ file: req.file, public: true }) })
+      };
+      
+      const user = await User.findByIdAndUpdate(id, updateData, { new: true });
+      
+      if (!user) return res.status(404).json({ error: "User not found" });
+      
+      return res.json(user);
+    } catch (error) {
+      next(error);
+    }
+  }
+);
 module.exports = router;
