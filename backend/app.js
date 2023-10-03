@@ -15,6 +15,7 @@ const passport = require("passport");
 const usersRouter = require("./routes/api/users");
 const csrfRouter = require("./routes/api/csrf");
 const tuneUpRouter = require("./routes/api/tuneups");
+const distanceRoutes = require('./routes/api/distance');
 
 const app = express();
 
@@ -48,6 +49,7 @@ app.use(
 app.use("/api/users", usersRouter);
 app.use("/api/csrf", csrfRouter);
 app.use("/api/tuneups", restoreUser, tuneUpRouter);
+app.use('/api/distance', distanceRoutes);
 
 app.use((req, res, next) => {
   const err = new Error("Not Found");

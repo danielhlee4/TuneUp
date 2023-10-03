@@ -4,8 +4,8 @@ function DistanceCalculator({ address1, address2 }) {
   const [distance, setDistance] = useState(null);
 
   const calculateDistance = async () => {
-    const apiKey = process.env.REACT_APP_MAPS_API_KEY; 
-    const endpoint = `https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=${encodeURIComponent(address1)}&destinations=${encodeURIComponent(address2)}&key=${apiKey}`;
+    const endpoint = `http://localhost:5001/api/distance/getDistance?address1=${encodeURIComponent(address1)}&address2=${encodeURIComponent(address2)}`;
+
     
     try {
       const response = await fetch(endpoint);
@@ -35,3 +35,5 @@ function DistanceCalculator({ address1, address2 }) {
 }
 
 export default DistanceCalculator;
+
+// <DistanceCalculator address1="90 5th Ave, New York, NY" address2="Columbus Cir, New York, NY" />

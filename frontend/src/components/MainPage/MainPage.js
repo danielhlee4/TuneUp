@@ -8,10 +8,6 @@ function MainPage() {
   return (
     <div className="main-container">
       <div className="intro-text">Tune up with your local <br /> musicians!</div>
-      <DistanceCalculator 
-        address1="1600 Amphitheatre Parkway, Mountain View, CA" 
-        address2="1 Infinite Loop, Cupertino, CA" 
-      />
         <Link to={'/login'}>
             <button className="get-started-button">GET STARTED</button>
         </Link>
