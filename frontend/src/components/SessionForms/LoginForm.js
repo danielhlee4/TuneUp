@@ -24,10 +24,10 @@ function LoginForm() {
         return e => setState(e.currentTarget.value);
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        dispatch(login({ email, password }));
-        history.push("/home");
+        await dispatch(login({ email, password }))
+        dispatch(login({ email, password }))
     }
 
     return (

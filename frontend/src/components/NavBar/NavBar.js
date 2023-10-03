@@ -6,7 +6,8 @@ import tuneuplogo from '../../components/NavBar/tuneuplogo.png'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 function NavBar() {
-    const loggedIn = useSelector(state => state.session.user);
+    const loggedIn = useSelector(state => !!state.session.user);
+    const sessionUser = useSelector(state => state.session.user)
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -15,6 +16,7 @@ function NavBar() {
         dispatch(logout());
     }
 
+    console.log(sessionUser)
     const getLinks = () => {
         if (loggedIn) {
             return (
@@ -22,7 +24,8 @@ function NavBar() {
                     <Link to={'/home'}>
                         <img className='tuneup-logo' src={tuneuplogo}></img>
                     </Link>
-                    <button onClick={logoutUser}>Logout</button>
+                        <p className="nav-user-name">Welcome, {sessionUser.firstName}</p>
+                        <button className="signout-button" onClick={logoutUser}>Logout</button>
                 </div>
             );
         } else {
@@ -32,8 +35,8 @@ function NavBar() {
                         <img className='tuneup-logo' src={tuneuplogo}></img>
                     </Link>
                     <div className='nav-bar-buttons-container'>
-                        <div className='nav-signout-button-container'>
-                            <Link className='nav-signout-button' to={'/signup'}>Signup</Link>
+                        <div className='nav-signup-button-container'>
+                            <Link className='nav-signup-button' to={'/signup'}>Signup</Link>
                         </div>
                         <div className='nav-login-button-container'>
                             <Link className='nav-login-button' to={'/login'}>Login</Link>
