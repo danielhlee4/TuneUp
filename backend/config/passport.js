@@ -53,8 +53,13 @@ passport.use(new LocalStrategy({
 exports.loginUser = async function(user) {
     const userInfo = {
       _id: user._id,
-      username: user.username,
-      email: user.email
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
+      profileImageUrl: user.profileImageUrl,
+      instruments: user.instruments,
+      genres: user.genres,
+      zipcode: user.zipcode
     };
     const token = await jwt.sign(
       userInfo, // payload
