@@ -11,6 +11,7 @@ const validateLoginInput = require('../../validations/login');
 const DEFAULT_PROFILE_IMAGE_URL = require('../../seeders/images');
 const { singleFileUpload, singleMulterUpload } = require("../../awsS3");
 // const { findById } = require('../../models/User');
+const {validateUserData, ensureAuthenticated, ensureAuthorized} = require('../../validations/user.js')
 
 router.get('/current', restoreUser, (req, res) => {
   if (!isProduction) {
@@ -30,12 +31,6 @@ router.get('/current', restoreUser, (req, res) => {
     instruments: req.body.instruments,
     genres: req.body.genres,
     zipcode: req.body.zipcode
-  });
-});
-
-router.get('/', function(req, res, next) {
-  res.json({
-    message: "GET /api/users"
   });
 });
 
@@ -131,7 +126,7 @@ router.patch(
   '/:id',
   // ensureAuthenticated,
   // ensureAuthorized,
-  // validateUserData,
+  validateUserData,
   // singleMulterUpload("image"),
   async (req, res, next) => {
     try {
@@ -153,4 +148,5 @@ router.patch(
     }
   }
 );
+
 module.exports = router;
