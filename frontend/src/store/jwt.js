@@ -13,7 +13,14 @@ async function jwtFetch(url, options = {}) {
     if (options.method.toUpperCase() !== "GET") {
         options.headers["Content-Type"] =
             options.headers["Content-Type"] || "application/json";
+        options.headers["CSRF-Token"] = getCookie("CSRF-TOKEN");
     }
+
+    // if (options.method.toUpperCase() !== "GET") {
+    //     options.headers["Content-Type"] =
+    //         options.headers["Content-Type"] || "application/json";
+    //     options.headers["CSRF-Token"] = getCookie("CSRF-TOKEN");
+    // }
 
     // Call fetch with the url and the updated options hash.
     const res = await fetch(url, options);
@@ -25,12 +32,6 @@ async function jwtFetch(url, options = {}) {
     // If the response status code is under 400, then return the response to the
     // next promise chain.
     return res;
-
-    if (options.method.toUpperCase() !== "GET") {
-        options.headers["Content-Type"] =
-            options.headers["Content-Type"] || "application/json";
-        options.headers["CSRF-Token"] = getCookie("CSRF-TOKEN");
-    }
 }
 
 function getCookie(cookieName) {

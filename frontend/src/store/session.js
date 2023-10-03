@@ -31,7 +31,7 @@ export const clearSessionErrors = () => ({
 export const signup = (user) => startSession(user, "api/users/register");
 export const login = (user) => startSession(user, "api/users/login");
 
-const startSession = (userInfo, route) => async (dispatch) => {
+const startSession = (userInfo, route, token) => async (dispatch) => {
   try {
     const res = await jwtFetch(route, {
       method: "POST",
@@ -45,6 +45,7 @@ const startSession = (userInfo, route) => async (dispatch) => {
     if (res.statusCode === 400) {
       return dispatch(receiveErrors(res.errors));
     }
+    return res
   }
 };
 
