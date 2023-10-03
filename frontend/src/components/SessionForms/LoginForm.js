@@ -4,12 +4,14 @@ import './LoginForm.css';
 import loginbackground from './login-background.png';
 import { login, clearSessionErrors } from '../../store/session';
 import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 function LoginForm() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const errors = useSelector(state => state.errors.session);
     const dispatch = useDispatch();
+    const history = useHistory();
 
     useEffect(() => {
         return () => {
@@ -25,6 +27,7 @@ function LoginForm() {
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(login({ email, password }));
+        history.push("/home");
     }
 
     return (
