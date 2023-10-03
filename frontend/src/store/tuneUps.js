@@ -59,10 +59,10 @@ export const createTuneUp = (tuneUp) => async dispatch => {
     dispatch(receiveTuneUp(data));
 };
 
-export const updateTuneUp = (formData, tuneUpId) => async dispatch => {
-    const res = await jwtFetch(`/api/tuneUps/${tuneUpId}`, {
+export const updateTuneUp = (updatedTuneUp) => async dispatch => {
+    const res = await jwtFetch(`/api/tuneUps/${updatedTuneUp._id}`, {
         method: "PATCH",
-        body: formData,
+        body: updatedTuneUp
     });
 
     if (res.ok) {
@@ -86,10 +86,13 @@ const tuneUpReducer = (state = {}, action) => {
     let newState = {...state};
     switch (action.type) {
         case RECEIVE_TUNEUP:
-            newState[action.data.tuneUp.id] = action.data.tuneUp;
+            newState[action.data._id] = action.data;
             return newState;
         case RECEIVE_TUNEUPS:
-            return {...newState, ...action.data.tuneUps}
+            action.data.forEach(tuneUp => {
+            newState[tuneUp._id] = tuneUp;
+            });
+            return newState;
         case REMOVE_TUNEUP:
             delete newState[action.tuneUpId]
             return newState
