@@ -27,11 +27,7 @@ function LoginForm() {
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(login({ email, password }))
-        .then((response) => {
-            if (response.ok) {
-                history.push('/home')
-            }
-        })
+        history.push('/home')
     }
 
     return (
