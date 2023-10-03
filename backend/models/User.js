@@ -23,9 +23,6 @@ const userSchema = new Schema(
     genres: {
       type: [String],
     },
-    zipcode: {
-      type: String,
-    },
     address: {
       type: String,
     },
