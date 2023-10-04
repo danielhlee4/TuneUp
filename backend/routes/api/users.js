@@ -13,8 +13,8 @@ const { singleFileUpload, singleMulterUpload } = require("../../awsS3");
 // const { findById } = require('../../models/User');
 const {
   validateUserData,
-  ensureAuthenticated,
-  ensureAuthorized,
+  // ensureAuthenticated,
+  // ensureAuthorized,
 } = require("../../validations/user.js");
 
 router.get("/current", restoreUser, (req, res) => {
@@ -34,7 +34,6 @@ router.get("/current", restoreUser, (req, res) => {
     profileImageUrl: req.user.profileImageUrl,
     instruments: req.body.instruments,
     genres: req.body.genres,
-    zipcode: req.body.zipcode,
     address: req.body.address,
     hostedTuneUps: req.body.hostedTuneUps,
     joinedTuneUps: req.body.joinedTuneUps,
@@ -143,7 +142,6 @@ router.patch(
       const updateData = {
         ...(req.body.instruments && { instruments: req.body.instruments }),
         ...(req.body.genres && { genres: req.body.genres }),
-        ...(req.body.zipcode && { zipcode: req.body.zipcode }),
         ...(req.body.address && { address: req.body.address }),
         ...(req.file && {
           profileImageUrl: await singleFileUpload({
