@@ -1,11 +1,56 @@
 import jwtFetch from "./jwt";
 
-const RECEIVE_USER = "users/RECEIVE_USER"
+export const RECEIVE_USER = "users/RECEIVE_USER"
+export const RECEIVE_USERS = "users/RECEIVE_USERS"
 
 const receiveUser = (user) => ({
     type: RECEIVE_USER,
     user
 })
+
+const receiveUsers = (data) => {
+    return {
+        type: RECEIVE_USERS,
+        data
+    };
+};
+
+export const getUser = (userId) => {
+    return (state) => {
+        if (state.users) {
+            return state.users[userId]
+        } else {
+            return null
+        };
+    };
+};
+
+export const getUsers = (state) => {
+    if (state.users) {
+        return Object.values(state.users)
+    } else {
+        return null
+    };
+};
+
+export const fetchUser = (userId) => async dispatch => {
+    const res = await jwtFetch(`/api/users/${userId}`)
+    
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(receiveUser(data));
+    } else {
+        const error = await res.json();
+        throw error;
+    };
+};
+
+export const fetchUsers = () => async dispatch => {
+    const res = await csrfFetch('/api/users');
+
+    const data = await res.json();
+    dispatch(receiveUsers(data))
+}
 
 export const updateUser = (userId, updatedUser) => async dispatch => {
     const res = await jwtFetch(`api/users/${userId}`, {
@@ -26,5 +71,9 @@ export const usersReducer = (state = {}, action) => {
         case RECEIVE_USER:
             nextState[action.user._id] = action.user;
             return nextState;
-    }
-}
+        case RECEIVE_USERS:
+            return {...action.data}
+        default:
+            return state;
+    };
+};

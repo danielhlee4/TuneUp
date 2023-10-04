@@ -1,4 +1,5 @@
 import jwtFetch from "./jwt";
+import { RECEIVE_USER } from "./users";
 
 const RECEIVE_TUNEUP = "tuneup/RECEIVE_TUNEUP";
 const RECEIVE_TUNEUPS = "tuneup/RECEIVE_TUNEUPS";
@@ -93,6 +94,14 @@ const tuneUpReducer = (state = {}, action) => {
             newState[tuneUp._id] = tuneUp;
             });
             return newState;
+        case RECEIVE_USER: 
+            action.user.hostedTuneUps.forEach(hostedTuneUp => {
+                newState[hostedTuneUp._id] = hostedTuneUp
+            });
+            action.user.joinedTuneUps.forEach(joinedTuneUp => {
+                newState[joinedTuneUp._id] = joinedTuneUp
+            })
+            return newState;
         case REMOVE_TUNEUP:
             delete newState[action.tuneUpId]
             return newState
@@ -101,4 +110,4 @@ const tuneUpReducer = (state = {}, action) => {
     }; 
 };
 
-export default tuneUpReducer
+export default tuneUpReducer;
