@@ -24,7 +24,9 @@ function NavBar() {
                     <Link to={'/home'}>
                         <img className='tuneup-logo' src={tuneuplogo}></img>
                     </Link>
+                    <Link to={`/users/${sessionUser._id}`}>
                         <p className="nav-user-name">Welcome, {sessionUser.firstName}</p>
+                    </Link>
                         <button className="signout-button" onClick={logoutUser}>Logout</button>
                 </div>
             );
