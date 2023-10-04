@@ -3,10 +3,12 @@ import backgroundimg from './background.png'
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { updateUser } from "../../store/users";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function UserUpdateForm() {
     const currentUser = useSelector((state) => state.session.user);
     const dispatch = useDispatch();
+    const history = useHistory()
     const [firstName, setfirstName] = useState(currentUser.firstName);
     const [lastName, setlastName] = useState(currentUser.lastName);
     const [email, setEmail] = useState(currentUser.email);
@@ -135,6 +137,7 @@ function UserUpdateForm() {
             address
         }
         dispatch(updateUser(currentUser._id, updatedUser))
+        history.push('/home')
     }
 
     return (
