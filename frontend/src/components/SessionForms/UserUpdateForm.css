@@ -1,0 +1,234 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6,
+p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn,
+em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b,
+u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table,
+caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details,
+embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby,
+section, summary, time, mark, audio, video 
+{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font-family: "Bebas Neue", sans-serif;
+    vertical-align: baseline;
+    overflow: hidden;
+}
+
+.update-form-background {
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    opacity: 0.7;
+}
+
+.update-form-container {
+    position: absolute;
+    width: 60rem;
+    padding: 20px;
+    text-align: center;
+    margin-left: 21vw;
+    margin-top: 7rem;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.update-form-header {
+    font-size: 72px;
+    margin-bottom: 1rem;
+}
+
+.update-form {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    padding: 5px;
+    text-align: start;
+    grid-gap: 1rem;
+}
+
+.update-form-left{
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    padding: 10px;
+}
+
+.update-form-right {
+    width: 93%;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    padding: 10px;
+}
+
+.basic-info-header {
+    position: absolute;
+    font-size: 24px;
+    margin-left: 19%;
+}
+
+.update-first-name-label{
+    position: absolute;
+    margin-top: 2rem;
+    font-size: 18px;
+}
+
+.update-first-name-input {
+    width: 98%;
+    margin-top: 3.5rem;
+    height: 2rem;
+    font-size: 18px;
+}
+
+.update-last-name-label{
+    position: absolute;
+    font-size: 18px;
+    margin-top: 0.5rem;
+}
+.update-last-name-input {
+    width: 98%;
+    margin-top: 2rem;
+    height: 2rem;
+    font-size: 18px;
+}
+
+.update-email-label{
+    position: absolute;
+    font-size: 18px;
+    margin-top: 0.5rem;
+}
+
+.update-email-input {
+    width: 98%;
+    margin-top: 2rem;
+    height: 2rem;
+    font-size: 18px;
+}
+
+.address-header {
+    position: absolute;
+    font-size: 24px;
+    margin-left: 20%;
+    margin-top: 1%;
+}
+
+.update-street-name-label {
+    position: absolute;
+    font-size: 18px;
+    margin-top: 2rem;
+}
+
+.update-address-input {
+    width: 98%;
+    margin-top: 3.5rem;
+    height: 2rem;
+    font-size: 18px;
+}
+
+.update-city-label {
+    position: absolute;
+    font-size: 18px;
+    margin-top: 0.5rem;
+}
+
+.update-city-input {
+    width: 98%;
+    margin-top: 2rem;
+    height: 2rem;
+    font-size: 18px;
+}
+
+.update-state-label {
+    position: absolute;
+    font-size: 18px;
+    margin-top: 0.5rem;
+}
+
+.update-state-input {
+    width: 98%;
+    margin-top: 2rem;
+    height: 2rem;
+    font-size: 18px;
+}
+
+.update-zip-code-label {
+    position: absolute;
+    font-size: 18px;
+    margin-top: 0.5rem;
+}
+
+.update-zip-code-input {
+    width: 98%;
+    margin-top: 2rem;
+    height: 2rem;
+    font-size: 18px;
+}
+
+.musical-info-header{
+    font-size: 24px;
+    margin-left: 38%;
+}
+
+.update-submit-button {
+    margin-top: 1rem;
+    margin-bottom: 5px;
+    border-radius: 10px;
+    width: 8rem;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    font-size: 26px;
+    font-family: 'Bebas Neue', sans-serif;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    transition: 0.2s ease-in-out;
+    background-color: white;
+    height: fit-content;
+}
+.update-submit-button:hover {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    background-color: rgb(255, 213, 251);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.disclaimer {
+    margin-top: 0.5rem;
+    font-size: 18px;
+    color: darkred;
+}
+
+.piano-container, .guitar-container, .violin-container,
+.trumpet-container, .flute-container, .drums-container,
+.saxophone-container, .clarinet-container, .cello-container,
+.trombone-container {
+    margin-top: 1rem;
+    width: fit-content;
+
+}
+.update-piano-label, .update-guitar-label,
+.update-violin-label, .update-trumpet-label,
+.update-flute-label, .update-drums-label,
+.update-saxophone-label, .update-clarinet-label,
+.update-cello-label, .update-trombone-label{
+    font-size: 26px;
+    margin-left: 1rem;
+}
+
+.genre-dropdown-container{
+    display: flex;
+    position: absolute;
+    margin-left: 18rem;
+    margin-top: -29rem;
+    width: fit-content;
+    font-size: 24px;
+}
+
+.genre-label {
+    margin-right: 1rem;
+}
+
+.genre-dropdown{
+    width: 5rem;
+    font-weight: 600;
+}
