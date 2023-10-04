@@ -25,25 +25,45 @@ function UserProfilePage() {
         }
     })
 
-    console.log(hostedTuneups)
-
     useEffect(() => {
         dispatch(fetchUsers())
         dispatch(fetchUser(id))
     },[dispatch])
-    return (
-        <div className="user-profile-page-container">
-            <div className="user-info-container">
-                <div className="user-pfp-container">
-                    <img className="user-pfp-img" src={user?.profileImageUrl}></img>
+
+    if (currentUser._id === user._id) {
+        return (
+            <div className="user-profile-page-container">
+                <div className="user-info-container">
+                    <div className="user-pfp-container">
+                        <img className="user-pfp-img" src={user?.profileImageUrl}></img>
+                    </div>
+                    <div className="user-details-container">
+                        <div className="user-first-name-container">
+                            <div className="user-first-name">{user?.firstName} {user?.lastName}</div>
+                        </div>
+                        <div className="user-email-container">
+                            <div className="user-email">{user?.email}</div>
+                        </div>
+                        <div className="user-address-container">
+                            <div className="user-address">{user?.address}</div>
+                        </div>
+                    </div>
                 </div>
-                <div className="user-details-container">
-                        <div className="user-first-name">{user?.firstName}</div>
+                <div className="tuneup-label">
+                    Your TuneUps
                 </div>
+                <div className="tuneups-container">
+                    <div className="joined-tuneups-list-container">
+                        Joined TuneUps Placeholder
+                    </div>
+                    <div className="hosted-tuneups-list-container">
+                        Hosted TuneUps Placeholder
+                    </div>
+                </div>
+                <img className="user-profile-page-background" src={backgroundimg}></img>
             </div>
-            <img className="user-profile-page-background" src={backgroundimg}></img>
-        </div>
-    )
+        )
+    }
 }
 
 export default UserProfilePage
