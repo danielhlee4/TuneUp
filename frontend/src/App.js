@@ -9,6 +9,7 @@ import SignupForm from './components/SessionForms/SignUpForm.js';
 import HomePage from './components/HomePage/HomePage.js';
 import UserUpdateForm from './components/SessionForms/UserUpdateForm';
 import { getCurrentUser } from './store/session';
+import Discover from './components/Discover/Discover';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -22,6 +23,7 @@ function App() {
       <NavBar />
       <Switch>
         <AuthRoute exact path="/" component={MainPage} />
+        <AuthRoute exact path="/discover" component={Discover} />
         <AuthRoute exact path="/login" component={LoginForm} />
         <AuthRoute exact path="/signup" component={SignupForm} />
         
