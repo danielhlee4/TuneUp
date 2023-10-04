@@ -30,7 +30,7 @@ function UserProfilePage() {
         dispatch(fetchUser(id))
     },[dispatch])
 
-    if (currentUser._id === user._id) {
+    if (currentUser?._id === user?._id) {
         return (
             <div className="user-profile-page-container">
                 <div className="user-info-container">
