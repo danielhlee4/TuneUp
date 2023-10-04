@@ -27,7 +27,7 @@ export const getUser = (userId) => {
 
 export const getUsers = (state) => {
     if (state.users) {
-        return Object.values(state.users)
+        return state.users
     } else {
         return null
     };

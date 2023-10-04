@@ -27,8 +27,8 @@ const removeTuneUp = (tuneUpId) => {
 };
 
 export const getTuneUps = (state) => {
-    if (state.tuneUps) {
-        return Object.values(state.tuneUps)
+    if (state.tuneups) {
+        return Object.values(state.tuneups)
     } else {
         return []
     };
