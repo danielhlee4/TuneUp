@@ -7,7 +7,7 @@ const receiveUser = (user) => ({
     user
 })
 
-export const update = (user) => updateUser(user, `api/users/:id`)
+export const update = (user) => updateUser(user, `api/users/${user._id}`)
 
 export const updateUser = (newUserInfo, route) => async dispatch => {
     const res = await jwtFetch(route, {
