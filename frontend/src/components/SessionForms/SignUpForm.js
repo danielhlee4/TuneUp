@@ -4,6 +4,7 @@ import './SignUpForm.css'
 import { signup, clearSessionErrors } from '../../store/session';
 import background from './background.png'
 import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom';
 
 function SignupForm() {
     const [email, setEmail] = useState('');
@@ -13,6 +14,7 @@ function SignupForm() {
     const [password2, setPassword2] = useState('');
     const errors = useSelector(state => state.errors.session);
     const dispatch = useDispatch();
+    const history = useHistory()
 
     useEffect(() => {
         return () => {
@@ -46,7 +48,7 @@ function SignupForm() {
         return e => setState(e.currentTarget.value);
     }
 
-    const handleSubmit = e => {
+    const handleSubmit = async e => {
         e.preventDefault();
         const user = {
             firstName,
@@ -55,7 +57,8 @@ function SignupForm() {
             password
         };
 
-        dispatch(signup(user));
+        await dispatch(signup(user));
+        history.push('/update')
     }
 
     return (

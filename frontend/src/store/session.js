@@ -32,7 +32,7 @@ export const clearSessionErrors = () => ({
 export const signup = (user) => startSession(user, "api/users/register");
 export const login = (user) => startSession(user, "api/users/login");
 
-const startSession = (userInfo, route, token) => async (dispatch) => {
+const startSession = (userInfo, route) => async (dispatch) => {
   try {
     const res = await jwtFetch(route, {
       method: "POST",
