@@ -35,6 +35,9 @@ router.get("/current", restoreUser, (req, res) => {
     instruments: req.body.instruments,
     genres: req.body.genres,
     zipcode: req.body.zipcode,
+    address: req.body.address,
+    hostedTuneUps: req.body.hostedTuneUps,
+    joinedTuneUps: req.body.joinedTuneUps,
   });
 });
 
@@ -51,7 +54,9 @@ router.get("/", async (req, res, next) => {
 // fetch a single user from db by their ID and return as JSON
 router.get("/:id", async (req, res, next) => {
   try {
-    const user = await User.findById(req.params.id);
+    const user = await User.findById(req.params.id)
+      .populate("hostedTuneUps")
+      .populate("joinedTuneUps");
     if (!user) return res.status(404).json({ error: "User not found" });
     res.json(user);
   } catch (err) {
@@ -94,6 +99,8 @@ router.post("/register", validateRegisterInput, async (req, res, next) => {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     profileImageUrl: profileImageUrl,
+    hostedTuneUps: [],
+    joinedTuneUps: [],
   });
 
   bcrypt.genSalt(10, (err, salt) => {
@@ -126,10 +133,10 @@ router.post("/login", validateLoginInput, async (req, res, next) => {
 
 router.patch(
   "/:id",
-  // ensureAuthenticated,
-  // ensureAuthorized,
+  ensureAuthenticated,
+  ensureAuthorized,
   validateUserData,
-  // singleMulterUpload("image"),
+  singleMulterUpload("image"),
   async (req, res, next) => {
     try {
       const { id } = req.params;
@@ -137,6 +144,7 @@ router.patch(
         ...(req.body.instruments && { instruments: req.body.instruments }),
         ...(req.body.genres && { genres: req.body.genres }),
         ...(req.body.zipcode && { zipcode: req.body.zipcode }),
+        ...(req.body.address && { address: req.body.address }),
         ...(req.file && {
           profileImageUrl: await singleFileUpload({
             file: req.file,

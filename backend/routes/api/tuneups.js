@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 const TuneUp = mongoose.model("TuneUp");
-const { restoreUser } = require("../../config/passport");
+const User = mongoose.model("User");
 
 const {
   ensureAuthenticated,
@@ -11,7 +11,9 @@ const {
 
 router.get("/", async (req, res, next) => {
   try {
-    const tuneUps = await TuneUp.find({});
+    const tuneUps = await TuneUp.find({})
+      .populate("connections")
+      .populate("pendingConnections");
     res.status(200).json(tuneUps);
   } catch (error) {
     next(error);
@@ -20,7 +22,7 @@ router.get("/", async (req, res, next) => {
 
 router.get("/:id", async (req, res, next) => {
   try {
-    const tuneUps = await TuneUp.find({ host: req.params.id });
+    const tuneUps = await TuneUp.find({ id: req.params.id });
     res.status(200).json(tuneUps);
   } catch (error) {
     next(error);
@@ -41,6 +43,11 @@ router.post("/create", ensureAuthenticated, async (req, res, next) => {
       pendingConnections: [],
     });
     await newTuneUp.save();
+
+    await User.findByIdAndUpdate(req.user._id, {
+      $push: { hostedTuneUps: newTuneUp._id },
+    });
+
     res.status(201).json(newTuneUp);
   } catch (error) {
     next(error);
@@ -54,17 +61,49 @@ router.patch(
   async (req, res, next) => {
     try {
       const updateData = {
-        description: req.body.description,
-        date: req.body.date,
-        genre: req.body.genre,
-        address: req.body.address,
-        zipcode: req.body.zipcode,
-        connections: req.body.connections,
-        pendingConnections: req.body.pendingConnections,
+        ...(req.body.description && { description: req.body.description }),
+        ...(req.body.date && { date: req.body.date }),
+        ...(req.body.genre && { genre: req.body.genre }),
+        ...(req.body.address && { address: req.body.address }),
+        ...(req.body.zipcode && { zipcode: req.body.zipcode }),
+        ...(req.body.connections && { connections: req.body.connections }),
+        ...(req.body.pendingConnections && {
+          pendingConnections: req.body.pendingConnections,
+        }),
       };
+
+      const tuneUp = await TuneUp.findById(req.params.id);
+
+      const removedAttendees = tuneUp.connections
+        .map(String)
+        .filter((attendee) => !req.body.connections.includes(attendee));
+
+      const removedPromises = removedAttendees.map((attendeeId) =>
+        User.findByIdAndUpdate(attendeeId, {
+          $pull: { joinedTuneUps: tuneUp._id },
+        })
+      );
+
+      const acceptedAttendees = req.body.connections
+        ? req.body.connections
+            .map(String)
+            .filter(
+              (attendee) => !tuneUp.connections.map(String).includes(attendee)
+            )
+        : [];
+
+      const acceptedPromises = acceptedAttendees.map((attendeeId) =>
+        User.findByIdAndUpdate(attendeeId, {
+          $push: { joinedTuneUps: tuneUp._id },
+        })
+      );
+
+      await Promise.all([...removedPromises, ...acceptedPromises]);
+
       const event = await TuneUp.findByIdAndUpdate(req.params.id, updateData, {
         new: true,
       });
+
       res.json(event);
     } catch (error) {
       next(error);
@@ -80,6 +119,22 @@ router.delete(
     try {
       const tuneUp = await TuneUp.findByIdAndDelete(req.params.id);
       if (!tuneUp) return res.status(404).json({ error: "TuneUp not found" });
+
+      await User.updateOne(
+        { _id: tuneUp.host },
+        {
+          $pull: { hostedTuneUps: tuneUp._id },
+        }
+      );
+
+      const removedAttendees = tuneUp.connections.map((attendeeId) =>
+        User.findByIdAndUpdate(attendeeId, {
+          $pull: { joinedTuneUps: tuneUp._id },
+        })
+      );
+
+      await Promise.all([...removedAttendees]);
+
       res.json({ message: "TuneUp deleted successfully" });
     } catch (error) {
       next(error);
@@ -100,6 +155,36 @@ router.post("/:id/join", ensureAuthenticated, async (req, res, next) => {
       event.pendingConnections.push(req.user._id);
       await event.save();
     }
+
+    res.json(event);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.post("/:id/unjoin", ensureAuthenticated, async (req, res, next) => {
+  try {
+    const event = await TuneUp.findById(req.params.id);
+
+    if (!event) {
+      return res.status(404).json({ error: "Event not found" });
+    }
+
+    if (event.pendingConnections.includes(req.user._id)) {
+      event.pendingConnections.pull(req.user._id);
+    }
+    if (event.connections.includes(req.user._id)) {
+      event.connections.pull(req.user._id);
+    }
+
+    await event.save();
+    await User.updateOne(
+      { _id: req.user._id },
+      {
+        $pull: { joinedTuneUps: event.id },
+      }
+    );
+
     res.json(event);
   } catch (error) {
     next(error);
