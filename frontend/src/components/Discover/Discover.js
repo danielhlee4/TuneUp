@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { fetchAllTuneUps, getTuneUps } from "../../store/tuneUps";
 import { useEffect } from "react";
-import homepagebackground from "./home-page-background.png"
+import homepagebackground from "../HomePage/home-page-background.png"
 import "./Discover.css"
 import TuneUp from "../TuneUp/TuneUp"
 import { fetchUsers, getUsers} from "../../store/users";
@@ -22,8 +22,10 @@ function Discover() {
         {tuneUps && users ? 
         (<div className="tuneups-container">
             <ul>
-                {tuneUps.map((tuneUp)=> {
+                {tuneUps?.map((tuneUp)=> {
+                    return (
                     <li key={tuneUp._id}> <TuneUp tuneUpData={tuneUp} /> </li>
+                    )
                 })}
             </ul>
         </div>) : ""}
@@ -34,7 +36,7 @@ function Discover() {
         </div>
       </footer>
       <img
-        className="home-page-background"
+        className="discover-page-background"
         src={homepagebackground}
         alt="Background"
       />

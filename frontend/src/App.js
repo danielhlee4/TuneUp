@@ -24,13 +24,13 @@ function App() {
       <NavBar />
       <Switch>
         <AuthRoute exact path="/" component={MainPage} />
-        <AuthRoute exact path="/discover" component={Discover} />
         <AuthRoute exact path="/login" component={LoginForm} />
         <AuthRoute exact path="/signup" component={SignupForm} />
         
         <ProtectedRoute exact path= "/home" component={HomePage} />
         <ProtectedRoute exact path="/update" component={UserUpdateForm} />
         <ProtectedRoute exact path="/users/:id" component={UserProfilePage}/>
+        <ProtectedRoute exact path="/discover" component={Discover} />
       </Switch>
     </>
   );

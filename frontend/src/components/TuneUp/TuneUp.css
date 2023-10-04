@@ -1,0 +1,86 @@
+/* General styling */
+.tuneUp-container {
+    border: 1px solid #ccc;
+    margin: 10px;
+    padding: 10px;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.tuneUp-container:hover {
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Minimized View */
+.minimized {
+    height: 120px;
+    background-color: #f8f8f8; 
+}
+
+.minimized .left-minimized h1 {
+    font-size: 18px;
+    margin: 0;
+    color: #333;
+}
+
+.minimized .right-minimized {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.right-minimized .right-top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.right-minimized .right-top-date,
+.right-minimized .right-top-location,
+.right-minimized .right-top-group-size {
+    font-size: 14px;
+    color: #555;
+}
+
+.right-minimized .right-bottom {
+    font-size: 16px;
+    color: #333;
+}
+
+/* Maximized View */
+.maximized {
+    height: auto;
+    background-color: #fff; 
+}
+
+.maximized .tuneUp-name h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.maximized .tuneUp-details,
+.maximized .tuneUp-connections {
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.maximized .tuneUp-connections ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.maximized .tuneUp-connections li {
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+.maximized .tuneUp-footer {
+    font-size: 16px;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+    color: #777;
+}

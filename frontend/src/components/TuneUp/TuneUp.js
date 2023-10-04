@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { fetchUsers } from "../../store/users";
 import { getTuneUps } from "../../store/tuneUps";
 import { formatDate, formatTime, formatDateTime } from "../../util/dateUtils";
+import { getUsers } from "../../store/users";
+import './TuneUp.css'
 
 
 const TuneUp = ({tuneUpData}) => {
@@ -12,13 +14,14 @@ const TuneUp = ({tuneUpData}) => {
     const tuneUps = useSelector(getTuneUps);
     const sessionUser = useSelector(state => state.session.user);
     const [clicked, setClicked] = useState(false);
+    console.log(users)
 
     return (
-        <div className="tuneUp-container" onClick={(e) => setClicked(true)}>
+        <div className={`tuneUp-container ${clicked ? 'maximized' : 'minimized'}`} onClick={() => setClicked(!clicked)}>
             {!clicked && 
             <div className="minimized">
                 <div className="left-minimized">
-                    <h1>{tuneUp?.firstName}'s TuneUp</h1>
+                    <h1>{users[tuneUp.host]?.firstName}'s TuneUp</h1>
                 </div>
                 <div className="right-minimized">
                     <div className="right-top">
@@ -33,7 +36,7 @@ const TuneUp = ({tuneUpData}) => {
                         </div>
                     </div>
                     <div className="right-bottom">
-                        {tuneUp.genres.join(", ")}
+                        {tuneUp?.genres}
                     </div>
                 </div>
             </div>
@@ -41,7 +44,7 @@ const TuneUp = ({tuneUpData}) => {
             {clicked && 
             <div className="maximized">
                 <div className="tuneUp-name">
-                    <h1>{tuneUp?.firstName}'s TuneUp</h1>
+                    <h1>{users[tuneUp.host]?.firstName}'s TuneUp</h1>
                 </div>
                 <div className="tuneUp-details">
                     <div className="tuneUp-date">
@@ -52,10 +55,10 @@ const TuneUp = ({tuneUpData}) => {
                     </div>
                 </div>
                 <div className="tuneUp-connections">
-                    <ul>
-                        {tuneUp.connections.map((userId) => {
-                            return (<li>
-                                {users[userId].firstName}
+                    <ul> Musicians attending: 
+                        {tuneUp.connections?.map((user) => {
+                            return (<li key={user._id}>
+                                {user?.firstName}
                             </li>)
                         })}
                     </ul>
