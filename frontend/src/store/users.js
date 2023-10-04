@@ -46,7 +46,7 @@ export const fetchUser = (userId) => async dispatch => {
 };
 
 export const fetchUsers = () => async dispatch => {
-    const res = await csrfFetch('/api/users');
+    const res = await jwtFetch('/api/users');
 
     const data = await res.json();
     dispatch(receiveUsers(data))
@@ -64,7 +64,7 @@ export const updateUser = (userId, updatedUser) => async dispatch => {
     }
 }
 
-export const usersReducer = (state = {}, action) => {
+const usersReducer = (state = {}, action) => {
     Object.freeze(state)
     const nextState = { ...state }
     switch(action.type) {
@@ -72,8 +72,13 @@ export const usersReducer = (state = {}, action) => {
             nextState[action.user._id] = action.user;
             return nextState;
         case RECEIVE_USERS:
-            return {...action.data}
+            action.data.forEach(user => {
+                nextState[user._id] = user;
+            });
+            return nextState;
         default:
             return state;
     };
 };
+
+export default usersReducer

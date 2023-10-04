@@ -69,7 +69,7 @@ section, summary, time, mark, audio, video
     background-color: rgb(255, 213, 251);
     color: black;
     font-weight: 600;
-    padding: 5px 20px;
+    padding: 5px;
     border: none;
     border-radius: 20px;
     cursor: pointer;
@@ -77,6 +77,7 @@ section, summary, time, mark, audio, video
     width: 20rem;
     font-family: "Bebas Neue", sans-serif;
     transition: 0.2s ease-in-out;
+    margin-bottom: 5px;
 }
 
 .login-form input:disabled {
