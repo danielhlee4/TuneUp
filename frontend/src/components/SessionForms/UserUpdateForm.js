@@ -40,14 +40,12 @@ function UserUpdateForm() {
                 break;
             case 'streetName':
                 setState = setStreetName;
-                console.log(streetName)
                 break;
             case 'city':
                 setState = setCity;
                 break;
             case 'states':
                 setState = setStates;
-                console.log(state)
                 break;
             case 'zip':
                 setState = setZip;
@@ -129,14 +127,14 @@ function UserUpdateForm() {
             instruments.push('Trombone')
         }
         const updatedUser = {
+            _id: currentUser._id,
             firstName,
             lastName,
             email,
             instruments,
-            genreArr,
+            genre: genreArr,
             address
         }
-
         await dispatch(update(updatedUser))
     }
 
