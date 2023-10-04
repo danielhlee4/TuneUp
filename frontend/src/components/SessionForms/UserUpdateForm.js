@@ -96,6 +96,7 @@ function UserUpdateForm() {
 
     let instruments = [];
     let address = ''
+    let genreArr = [genre]
     const handleUpdate = async e => {
         e.preventDefault()
         address = `${streetName}, ${city}, ${state}, ${zip}`
@@ -134,9 +135,8 @@ function UserUpdateForm() {
             lastName,
             email,
             instruments,
-            genre,
-            address,
-            zip,
+            genreArr,
+            address
         }
 
         await dispatch(update(updatedUser))
