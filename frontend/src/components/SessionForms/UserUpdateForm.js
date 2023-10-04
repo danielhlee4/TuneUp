@@ -26,9 +26,8 @@ function UserUpdateForm() {
     const [tromboneChecked, setTromboneChecked] = useState(false);
     const [genre, setGenre] = useState('Pop');
 
-    const update = field => {
+    const updates = field => {
         let setState;
-
         switch (field) {
             case 'firstName':
                 setState = setfirstName;
@@ -41,57 +40,56 @@ function UserUpdateForm() {
                 break;
             case 'streetName':
                 setState = setStreetName;
+                console.log(streetName)
                 break;
             case 'city':
                 setState = setCity;
                 break;
-            case 'state':
+            case 'states':
                 setState = setStates;
+                console.log(state)
                 break;
             case 'zip':
                 setState = setZip;
                 break;
-            case 'email':
-                setState = setEmail;
-                break;
             default:
-                throw Error('Unknown field in Signup Form');
+                setState = () => {}
         }
-        return e => setState(e.currentTarget.value);
+        return e => setState(e.target.value);
     }
 
-    const handlePianoChange = (event) => {
-        setPianoChecked(event.target.checked);
+    const handlePianoChange = (e) => {
+        setPianoChecked(e.target.checked);
     };
-    const handleGuitarChange = (event) => {
-        setGuitarChecked(event.target.checked);
+    const handleGuitarChange = (e) => {
+        setGuitarChecked(e.target.checked);
     };
-    const handleViolinChange = (event) => {
-        setViolinChecked(event.target.checked);
+    const handleViolinChange = (e) => {
+        setViolinChecked(e.target.checked);
     };
-    const handleTrumpetChange = (event) => {
-        setTrumpetChecked(event.target.checked);
+    const handleTrumpetChange = (e) => {
+        setTrumpetChecked(e.target.checked);
     };
-    const handleFluteChange = (event) => {
-        setFluteChecked(event.target.checked);
+    const handleFluteChange = (e) => {
+        setFluteChecked(e.target.checked);
     };
-    const handleDrumsChange = (event) => {
-        setDrumsChecked(event.target.checked);
+    const handleDrumsChange = (e) => {
+        setDrumsChecked(e.target.checked);
     };
-    const handleSaxChange = (event) => {
-        setSaxChecked(event.target.checked);
+    const handleSaxChange = (e) => {
+        setSaxChecked(e.target.checked);
     };
-    const handleClarinetChange = (event) => {
-        setClarinetChecked(event.target.checked);
+    const handleClarinetChange = (e) => {
+        setClarinetChecked(e.target.checked);
     };
-    const handleCelloChange = (event) => {
-        setCelloChecked(event.target.checked);
+    const handleCelloChange = (e) => {
+        setCelloChecked(e.target.checked);
     };
-    const handleTromboneChange = (event) => {
-        setTromboneChecked(event.target.checked);
+    const handleTromboneChange = (e) => {
+        setTromboneChecked(e.target.checked);
     };
-    const handleGenreChange = (event) => {
-        setGenre(event.target.value);
+    const handleGenreChange = (e) => {
+        setGenre(e.target.value);
     };
 
     let instruments = [];
@@ -150,32 +148,32 @@ function UserUpdateForm() {
                     <div className="first-name-container">
                         <span className="basic-info-header">Basic Info</span>
                         <span className="update-first-name-label">Firstname</span>
-                        <input className="update-first-name-input" type="text" onChange={update('firstName')} value={firstName}></input>
+                        <input className="update-first-name-input" type="text" onChange={updates('firstName')} value={firstName}></input>
                     </div>
                     <div className="last-name-container">
                         <span className="update-last-name-label">Lastname</span>
-                        <input className="update-last-name-input" type="text" onChange={update('lastName')} value={lastName}></input>
+                        <input className="update-last-name-input" type="text" onChange={updates('lastName')} value={lastName}></input>
                     </div>
                     <div className="email-container">
                         <span className="update-email-label">Email</span>
-                        <input className="update-email-input" type="text" onChange={update('email')} value={email}></input>
+                        <input className="update-email-input" type="text" onChange={updates('email')} value={email}></input>
                     </div>
                     <div className="address-container">
                         <span className="address-header">Address</span>
                         <span className="update-street-name-label">Street name</span>
-                        <input className="update-address-input" type="text" onChange={update('streetName')} placeholder="123 Main St"></input>
+                        <input className="update-address-input" type="text" value={streetName} onChange={updates('streetName')} placeholder="123 Main St"></input>
                     </div>
                     <div className="city-container">
                         <span className="update-city-label">City</span>
-                        <input className="update-city-input" type="text" onChange={update('city')} placeholder="New York"></input>
+                        <input className="update-city-input" type="text" value={city} onChange={updates('city')} placeholder="New York"></input>
                     </div>
                     <div className="state-container">
                         <span className="update-state-label">State</span>
-                        <input className="update-state-input" type="text" onChange={update('state')} placeholder="NY"></input>
+                        <input className="update-state-input" type="text" value={state} onChange={updates('states')} placeholder="NY"></input>
                     </div>
                     <div className="zip-code-container">
                         <span className="update-zip-code-label">Zip code</span>
-                        <input className="update-zip-code-input" type="text" onChange={update('zip')} placeholder="10019"></input>
+                        <input className="update-zip-code-input" type="text" value={zip} onChange={updates('zip')} placeholder="10019"></input>
                     </div>
                 </div>
                 <div className="update-form-right">
@@ -236,10 +234,10 @@ function UserUpdateForm() {
                         </select>
                     </div>
                 </div>
+                <div className="update-submit-button-container">
+                    <button className="update-submit-button" type="submit">Save</button>
+                </div>
             </form>
-            <div className="update-submit-button-container">
-                <button className="update-submit-button" type="submit">Save</button>
-            </div>
             <img className="update-form-background" src={backgroundimg}></img>
             <p className="disclaimer">We require an address to determine closest jam sessions near you.
                 Your address will not be shared with anyone else! It is visible

@@ -17,6 +17,7 @@ export const updateUser = (newUserInfo, route) => async dispatch => {
     if (res.ok) {
         const newInfo = await res.json()
         dispatch(receiveUser(newInfo))
+        return res
     }
 }
 

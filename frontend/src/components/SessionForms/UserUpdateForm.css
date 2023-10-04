@@ -171,9 +171,15 @@ section, summary, time, mark, audio, video
     margin-left: 38%;
 }
 
+.update-submit-button-container {
+    width: fit-content;
+}
+
 .update-submit-button {
+    position: absolute;
     margin-top: 1rem;
     margin-bottom: 5px;
+    margin-left: 26rem;
     border-radius: 10px;
     width: 8rem;
     padding-top: 10px;
@@ -193,7 +199,7 @@ section, summary, time, mark, audio, video
 }
 
 .disclaimer {
-    margin-top: 0.5rem;
+    margin-top: 5rem;
     font-size: 18px;
     color: darkred;
 }
