@@ -31,7 +31,7 @@ Mudassar Memon - Backend co-lead
 * User model - Mudassar, Klodian (backend)
 * Signup, Login component, NavBar - Sean, Dennis (frontend)
 * Google API research, frontend support - Dan
-### User Profiles - .5 Day
+### User Profiles - .5 Days
 * Send User data - backend
 * User Show - frontend
 * Google API implementation - Dan
