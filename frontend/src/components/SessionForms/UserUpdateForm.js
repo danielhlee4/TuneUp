@@ -2,7 +2,7 @@ import "./UserUpdateForm.css"
 import backgroundimg from './background.png'
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { update } from "../../store/users";
+import { updateUser } from "../../store/users";
 
 function UserUpdateForm() {
     const currentUser = useSelector((state) => state.session.user);
@@ -127,15 +127,14 @@ function UserUpdateForm() {
             instruments.push('Trombone')
         }
         const updatedUser = {
-            _id: currentUser._id,
             firstName,
             lastName,
             email,
             instruments,
-            genre: genreArr,
+            genres: genreArr,
             address
         }
-        await dispatch(update(updatedUser))
+        dispatch(updateUser(currentUser._id, updatedUser))
     }
 
     return (

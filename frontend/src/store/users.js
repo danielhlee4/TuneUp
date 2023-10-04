@@ -7,16 +7,14 @@ const receiveUser = (user) => ({
     user
 })
 
-export const update = (user) => updateUser(user, `api/users/${user._id}`)
-
-export const updateUser = (newUserInfo, route) => async dispatch => {
-    const res = await jwtFetch(route, {
+export const updateUser = (userId, updatedUser) => async dispatch => {
+    const res = await jwtFetch(`api/users/${userId}`, {
         method: "PATCH",
-        body: JSON.stringify(newUserInfo),
+        body: JSON.stringify(updatedUser),
     });
     if (res.ok) {
-        const newInfo = await res.json()
-        dispatch(receiveUser(newInfo))
+        const data = await res.json()
+        dispatch(receiveUser(data))
         return res
     }
 }
@@ -26,6 +24,7 @@ export const usersReducer = (state = {}, action) => {
     const nextState = { ...state }
     switch(action.type) {
         case RECEIVE_USER:
-            return { ...nextState, [action.user.id]: action.user }
+            nextState[action.user._id] = action.user;
+            return nextState;
     }
 }
