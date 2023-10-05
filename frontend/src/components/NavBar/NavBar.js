@@ -31,6 +31,9 @@ function NavBar() {
                     <Link to={'/discover'}>
                         <button className='discover-button'>Looking for TuneUps?</button>
                     </Link>
+                    <Link to={'/create'}>
+                        <button className='create-button'>+</button>
+                    </Link>
                 </div>
             );
         } else {

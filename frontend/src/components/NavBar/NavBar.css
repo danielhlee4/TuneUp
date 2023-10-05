@@ -134,3 +134,28 @@
     margin-left: 160px;
 
 }
+
+.create-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    border-radius: 10px;
+    width: 3rem;
+    height: 3rem;
+    margin-left: 72vw;
+    margin-top: -2.5rem;
+    padding-top: 5px;
+    font-size: 48px;
+    font-family: 'Bebas Neue', sans-serif;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    transition: 0.2s ease-in-out;
+    background-color: white;
+}
+
+.create-button:hover {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    background-color: rgb(255, 213, 251);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}

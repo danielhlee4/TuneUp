@@ -12,6 +12,7 @@ import UserProfilePage from './components/UserProfilePage/UserProfilePage';
 import { getCurrentUser } from './store/session';
 import Discover from './components/Discover/Discover';
 import SearchBar from './components/SearchBar/SearchBar';
+import CreateTuneUps from './components/CreateTuneUps/CreateTuneUps';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -33,6 +34,7 @@ function App() {
         <ProtectedRoute exact path="/users/:id" component={UserProfilePage}/>
         <ProtectedRoute exact path="/discover" component={Discover} />
         <ProtectedRoute exact path="/search" component={SearchBar} />
+        <ProtectedRoute exact path="/create" component={CreateTuneUps} />
       </Switch>
     </>
   );
