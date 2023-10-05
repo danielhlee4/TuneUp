@@ -162,7 +162,7 @@
     position: absolute;
     margin-top: 1rem;
     margin-bottom: 5px;
-    margin-left: 26rem;
+    margin-left: 30.5rem;
     border-radius: 10px;
     width: 8rem;
     padding-top: 10px;
@@ -175,6 +175,30 @@
     height: fit-content;
 }
 .update-submit-button:hover {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    background-color: rgb(255, 213, 251);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.cancel-submit-button {
+    position: absolute;
+    margin-top: 1rem;
+    margin-bottom: 5px;
+    margin-left: 22rem;
+    border-radius: 10px;
+    width: 8rem;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    font-size: 26px;
+    font-family: 'Bebas Neue', sans-serif;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    transition: 0.2s ease-in-out;
+    background-color: white;
+    height: fit-content;
+}
+
+.cancel-submit-button:hover {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
     background-color: rgb(255, 213, 251);
     border: 1px solid rgba(0, 0, 0, 0.1);
