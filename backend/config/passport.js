@@ -67,6 +67,7 @@ exports.loginUser = async function (user) {
     address: user.address,
     hostedTuneUps: user.hostedTuneUps,
     joinedTuneUps: user.joinedTuneUps,
+    requestedTuneUps: user.requestedTuneUps,
   };
   const token = await jwt.sign(
     userInfo, // payload
