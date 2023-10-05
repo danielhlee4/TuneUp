@@ -126,12 +126,6 @@
     cursor: pointer;
 }
 
-.nav-user-name-container {
-    border: 1px solid red;
-    text-align: center;
-    width: fit-content;
-}
-
 .nav-user-name {
     font-size: 26px;
     margin-top: 1rem;
