@@ -10,13 +10,13 @@ router.get("/", async (req, res, next) => {
   const query = req.query.q;
   console.log(query);
   try {
-    const userResults = await User.find({
-      $or: [
-        { firstName: new RegExp(query, "i") },
-        { lastName: new RegExp(query, "i") },
-        { instruments: new RegExp(query, "i") },
-      ],
-    });
+    // const userResults = await User.find({
+    //   $or: [
+    //     { firstName: new RegExp(query, "i") },
+    //     { lastName: new RegExp(query, "i") },
+    //     { instruments: new RegExp(query, "i") },
+    //   ],
+    // });
 
     const tuneUpResults = await TuneUp.find({
       $or: [
@@ -25,12 +25,12 @@ router.get("/", async (req, res, next) => {
       ],
     });
 
-    const combinedResults = {
-      users: userResults,
-      tuneUp: tuneUpResults,
-    };
+    // const combinedResults = {
+    //   users: userResults,
+    //   tuneUp: tuneUpResults,
+    // };
 
-    res.json(combinedResults);
+    res.json(tuneUpResults);
   } catch (error) {
     res.status(500).send({ message: "Error during search", error });
   }

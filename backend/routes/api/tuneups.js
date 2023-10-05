@@ -63,6 +63,8 @@ router.patch(
         ...(req.body.description && { description: req.body.description }),
         ...(req.body.date && { date: req.body.date }),
         ...(req.body.genre && { genre: req.body.genre }),
+        ...(req.body.instruments && { instruments: req.body.instruments }),
+        ...(req.body.status && { status: req.body.status }),
         ...(req.body.address && { address: req.body.address }),
         ...(req.body.connections && { connections: req.body.connections }),
         ...(req.body.pendingConnections && {
