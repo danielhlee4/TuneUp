@@ -100,6 +100,7 @@ router.post("/register", validateRegisterInput, async (req, res, next) => {
     profileImageUrl: profileImageUrl,
     hostedTuneUps: [],
     joinedTuneUps: [],
+    requestedTuneUps: [],
   });
 
   bcrypt.genSalt(10, (err, salt) => {
