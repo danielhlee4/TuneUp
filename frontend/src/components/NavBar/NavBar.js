@@ -21,7 +21,7 @@ function NavBar() {
             return (
                 <div className="links-nav">
                     <Link to={'/home'}>
-                        <img className='tuneup-logo' src={tuneuplogo}></img>
+                        <img className='tuneup-logo1' src={tuneuplogo}></img>
                     </Link>
                     <Link to={`/users/${sessionUser._id}`}>
                         <div className="nav-user-name">Welcome, {sessionUser.firstName}</div>
@@ -41,7 +41,7 @@ function NavBar() {
             return (
                 <div className="links-auth">
                     <Link to={'/'}>
-                        <img className='tuneup-logo' src={tuneuplogo}></img>
+                        <img className='tuneup-logo2' src={tuneuplogo}></img>
                     </Link>
                     <div className='nav-bar-buttons-container'>
                         <div className='nav-signup-button-container'>

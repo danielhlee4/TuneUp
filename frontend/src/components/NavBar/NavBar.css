@@ -8,11 +8,16 @@
     top: 0;
 }
 
-.tuneup-logo {
+.tuneup-logo1 {
     position: absolute;
     width: 7rem;
     margin-left: 47vw;
     margin-top: -1rem;
+}
+.tuneup-logo2 {
+    position: absolute;
+    width: 7rem;
+    margin-left: 47vw;
 }
 
 .nav-login-button-container {
