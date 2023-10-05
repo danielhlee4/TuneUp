@@ -70,4 +70,4 @@ function ZipcodeMapWrapper(props) {
 
 export default ZipcodeMapWrapper;
 
-// return this in your component <ZipcodeMapWrapper zipcode="10012, NY" />
+// return this in your component <ZipcodeMapWrapper zipcode="NY 10012" />
