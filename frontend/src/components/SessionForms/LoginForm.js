@@ -13,12 +13,6 @@ function LoginForm() {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    useEffect(() => {
-        return () => {
-            dispatch(clearSessionErrors());
-        };
-    }, [dispatch]);
-
     const update = (field) => {
         const setState = field === 'email' ? setEmail : setPassword;
         return e => setState(e.currentTarget.value);

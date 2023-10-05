@@ -54,7 +54,7 @@ export const fetchAllTuneUps = () => async dispatch => {
 export const createTuneUp = (tuneUp) => async dispatch => {
     const res = await jwtFetch(`/api/tuneUps`, {
         method: "POST",
-        body: tuneUp
+        body: JSON.stringify(tuneUp)
     });
     const data = await res.json();
     dispatch(receiveTuneUp(data));

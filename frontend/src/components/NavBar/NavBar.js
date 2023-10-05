@@ -24,11 +24,14 @@ function NavBar() {
                         <img className='tuneup-logo' src={tuneuplogo}></img>
                     </Link>
                     <Link to={`/users/${sessionUser._id}`}>
-                        <p className="nav-user-name">Welcome, {sessionUser.firstName}</p>
+                        <div className="nav-user-name">Welcome, {sessionUser.firstName}</div>
                     </Link>
                         <button className="signout-button" onClick={logoutUser}>Logout</button>
                     <Link to={'/discover'}>
                         <button className='discover-button'>Looking for TuneUps?</button>
+                    </Link>
+                    <Link to={'/create'}>
+                        <button className='create-button'>+</button>
                     </Link>
                 </div>
             );
