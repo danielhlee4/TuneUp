@@ -8,6 +8,10 @@ import configureStore from './store/store';
 
 const store = configureStore();
 
+if (process.env.NODE_ENV !== 'production') {
+  window.store = store;
+}
+
 function Root() {
   return (
     <Provider store={store}>

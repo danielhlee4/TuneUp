@@ -10,14 +10,14 @@ function HomePage() {
       <div className="greeting-container">
         {currentUser && (
             <h1>
-                Hey {currentUser.firstName} {currentUser.lastName}!
+                Hey, {currentUser.firstName}!
             </h1>
         )}
       </div>
       <div className="slogan-container">
-        <div class="slogan">Find your band's missing beat</div>
-        <div class="slogan">Discover the Rhythm of Friendship</div>
-        <div class="slogan">Less Lonely, More Melody!</div>
+        <div className="slogan">Find your band's missing beat</div>
+        <div className="slogan">Discover the Rhythm of Friendship</div>
+        <div className="slogan">Less Lonely, More Melody!</div>
       </div>
       <footer>
         <div className="scrolling-text-homepage">
