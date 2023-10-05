@@ -64,6 +64,9 @@ exports.loginUser = async function (user) {
     profileImageUrl: user.profileImageUrl,
     instruments: user.instruments,
     genres: user.genres,
+    address: user.address,
+    hostedTuneUps: user.hostedTuneUps,
+    joinedTuneUps: user.joinedTuneUps,
   };
   const token = await jwt.sign(
     userInfo, // payload
