@@ -58,7 +58,6 @@ function CreateTuneUps() {
 
     let instruments = [];
     let address = ''
-    let genreArr = [genre]
     const handleUpdate = async e => {
         e.preventDefault()
         address = `${streetName}, ${city}, ${state}, ${zip}`
@@ -92,6 +91,14 @@ function CreateTuneUps() {
         if (tromboneChecked) {
             instruments.push('Trombone')
         }
+    }
+    const newTuneUp = {
+        host: currentUser._id,
+        description: details,
+        status: true,
+        instruments,
+        genre,
+        address
     }
 
     return (
