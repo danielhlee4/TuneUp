@@ -28,6 +28,9 @@ function NavBar() {
                         <p className="nav-user-name">Welcome, {sessionUser.firstName}</p>
                     </Link>
                         <button className="signout-button" onClick={logoutUser}>Logout</button>
+                    <Link to={'/discover'}>
+                        <button className='discover-button'>Looking for TuneUps?</button>
+                    </Link>
                 </div>
             );
         } else {

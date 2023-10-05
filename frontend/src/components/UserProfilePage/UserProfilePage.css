@@ -1,5 +1,5 @@
 .user-profile-page-background {
-    position: absolute;
+    position: fixed;
     top: 0;
     z-index: -1;
     opacity: 0.7;
@@ -8,7 +8,7 @@
 .user-info-container {
     display: grid;
     grid-template-columns: 30% 70%;
-    grid-gap: 1rem;
+    grid-gap: 4rem;
     text-align: center;
     position: relative;
     background-color: white;
@@ -18,20 +18,22 @@
     padding-bottom: 10px;
     margin-top: 7rem;
     margin-bottom: 5px;
-    width: 99%;
-    margin-left: 8px;
-    margin-right: 8px;
+    width: 50%;
+    margin-left: 25vw;
 }
 
 .user-pfp-container {
     height: 10rem;
-    margin-left: auto;
+    margin: auto;
+    width: fit-content;
 }
 
 .user-details-container {
     margin-top: 1rem;
     width: fit-content;
-    height: fit-content;
+    height: auto;
+    margin-right: auto;
+    margin-left: 1rem;
 }
 
 .user-pfp-img {
@@ -62,29 +64,76 @@
     font-size: 20px;
 }
 
-.tuneup-label {
+.tuneup-hosted-label {
     position: absolute;
     font-size: 48px;
     margin-top: 2rem;
-    margin-left: 10px;
+    margin-left: 15vw;
 }
 
-.tuneups-container {
+.tuneup-joined-label {
+    position: absolute;
+    font-size: 48px;
+    margin-top: 2rem;
+    margin-left: 50.5vw;
+}
+
+.other-tuneup-hosted-label {
+    position: absolute;
+    font-size: 48px;
+    margin-top: 2rem;
+    margin-left: 15vw;
+}
+
+.other-tuneup-joined-label {
+    position: absolute;
+    font-size: 48px;
+    margin-top: 2rem;
+    margin-left: 50.5vw;
+}
+
+.user-tuneups-container {
     display: grid;
     grid-template-columns: 50% 50%;
-    grid-column-gap: 1rem;
-    border: 2px solid white;
-    width: 99%;
-    margin-left: 5px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    margin-left: 13.5vw;
     margin-top: 6rem;
+    width: 70%;
+    height: 30rem;
+    padding: 10px;
 }
 
 .joined-tuneups-list-container {
-    border: 1px solid red;
-    width: auto;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    grid-area: 1/1/1/1;
+    padding-right: 10px;
+    overflow-y: auto;
 }
 
 .hosted-tuneups-list-container {
-    border: 1px solid blue;
-    width: auto;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    grid-area: 1/2/1/2;
+    padding-left: 10px;
+    overflow-y: auto;
+}
+
+.user-edit-option{
+    position: absolute;
+    margin-left: 28vw;
+}
+
+.edit-button{
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    transition: 0.2s ease-in-out;
+    background-color: white;
+}
+
+.edit-button:hover {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    background-color: rgb(255, 213, 251);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
 }

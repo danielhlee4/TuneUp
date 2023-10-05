@@ -1,12 +1,13 @@
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
-import { getUser } from "../../store/users";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { fetchUsers, fetchUser } from "../../store/users";
 import { getTuneUps } from "../../store/tuneUps";
 import backgroundimg from '../../components/SessionForms/background.png'
 import './UserProfilePage.css'
+import TuneUp from "../TuneUp/TuneUp";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 function UserProfilePage() {
     const currentUser = useSelector((state) => state.session.user);
@@ -14,11 +15,11 @@ function UserProfilePage() {
     const { id } = useParams()
     const user = useSelector(state => state.users[id])
     const userTuneups = useSelector(getTuneUps)
-    const joinedTuneups = []
-    const hostedTuneups = []
+    let joinedTuneups = []
+    let hostedTuneups = []
 
     userTuneups.map(tuneup => {
-        if (user._id === tuneup.host){
+        if (user._id !== tuneup.host){
             hostedTuneups.push(tuneup)
         } else {
             joinedTuneups.push(tuneup)
@@ -28,7 +29,9 @@ function UserProfilePage() {
     useEffect(() => {
         dispatch(fetchUsers())
         dispatch(fetchUser(id))
-    },[dispatch])
+        joinedTuneups = []
+        hostedTuneups = []
+    },[id])
 
     if (currentUser?._id === user?._id) {
         return (
@@ -47,17 +50,71 @@ function UserProfilePage() {
                         <div className="user-address-container">
                             <div className="user-address">{user?.address}</div>
                         </div>
+                        <div className="user-edit-option">
+                            <Link to={'/update'}>
+                                <button className="edit-button">Edit</button>
+                            </Link>
+                        </div>
                     </div>
                 </div>
-                <div className="tuneup-label">
-                    Your TuneUps
+                <div className="tuneup-hosted-label">
+                    Your Hosted TuneUps
                 </div>
-                <div className="tuneups-container">
+                <div className="tuneup-joined-label">
+                    Your Joined TuneUps
+                </div>
+                <div className="user-tuneups-container" id="user-tuneups-container">
                     <div className="joined-tuneups-list-container">
-                        Joined TuneUps Placeholder
+                        <ul className="joined-tuneup-list">
+                        {joinedTuneups.map(tuneup => {
+                            return (<TuneUp tuneUpData={tuneup}/>)
+                        })}
+                        </ul>
                     </div>
                     <div className="hosted-tuneups-list-container">
-                        Hosted TuneUps Placeholder
+                        <ul className="hosted-tuneup-list">
+                        {hostedTuneups.map(tuneup => {
+                            return(<TuneUp tuneUpData={tuneup}/>)
+                        })}
+                        </ul>
+                    </div>
+                </div>
+                <img className="user-profile-page-background" src={backgroundimg}></img>
+            </div>
+        )
+    } else {
+        return (
+            <div className="user-profile-page-container">
+                <div className="user-info-container">
+                    <div className="user-pfp-container">
+                        <img className="user-pfp-img" src={user?.profileImageUrl}></img>
+                    </div>
+                    <div className="user-details-container">
+                        <div className="user-first-name-container">
+                            <div className="user-first-name">{user?.firstName} {user?.lastName}</div>
+                        </div>
+                    </div>
+                </div>
+                <div className="other-tuneup-hosted-label">
+                    {user?.firstName}'s Hosted TuneUps
+                </div>
+                <div className="other-tuneup-joined-label">
+                    {user?.firstName}'s Joined TuneUps
+                </div>
+                <div className="user-tuneups-container" id="user-tuneups-container">
+                    <div className="joined-tuneups-list-container">
+                        <ul className="joined-tuneup-list">
+                            {joinedTuneups.map(tuneup => {
+                                return (<TuneUp tuneUpData={tuneup} />)
+                            })}
+                        </ul>
+                    </div>
+                    <div className="hosted-tuneups-list-container">
+                        <ul className="hosted-tuneup-list">
+                            {hostedTuneups.map(tuneup => {
+                                return (<TuneUp tuneUpData={tuneup} />)
+                            })}
+                        </ul>
                     </div>
                 </div>
                 <img className="user-profile-page-background" src={backgroundimg}></img>

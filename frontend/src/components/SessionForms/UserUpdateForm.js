@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { updateUser } from "../../store/users";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 function UserUpdateForm() {
     const currentUser = useSelector((state) => state.session.user);
@@ -236,6 +237,9 @@ function UserUpdateForm() {
                 </div>
                 <div className="update-submit-button-container">
                     <button className="update-submit-button" type="submit">Save</button>
+                    <Link to={'/home'}>
+                        <button className="cancel-submit-button" >Cancel</button>
+                    </Link>
                 </div>
             </form>
             <img className="update-form-background" src={backgroundimg}></img>
