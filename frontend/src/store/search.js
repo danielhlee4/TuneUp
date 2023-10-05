@@ -70,22 +70,22 @@ const searchReducer = (state = initialSearchState, action) => {
   }
 };
 
-
-
-const nullSearchErrors = null;
-
-export const searchErrorsReducer = (state = nullSearchErrors, action) => {
-  switch (action.type) {
-    case RECEIVE_SEARCH_ERRORS:
-      return action.errors;
-    case RECEIVE_SEARCH_RESULTS:
-    case CLEAR_SEARCH_ERRORS:
-      return nullSearchErrors;
-    default:
-      return state;
-  }
-};
-
-
 export default searchReducer;
+
+// const nullSearchErrors = null;
+
+// export const searchErrorsReducer = (state = nullSearchErrors, action) => {
+//   switch (action.type) {
+//     case RECEIVE_SEARCH_ERRORS:
+//       return action.errors;
+//     case RECEIVE_SEARCH_RESULTS:
+//     case CLEAR_SEARCH_ERRORS:
+//       return nullSearchErrors;
+//     default:
+//       return state;
+//   }
+// };
+
+
+
 
