@@ -16,12 +16,12 @@
 
 /* Minimized View */
 .minimized {
-    height: 120px;
+    height: 60px;
     background-color: #f8f8f8; 
 }
 
 .minimized .left-minimized h1 {
-    font-size: 18px;
+    font-size: 22px;
     margin: 0;
     color: #333;
 }
@@ -40,8 +40,13 @@
 .right-minimized .right-top-date,
 .right-minimized .right-top-location,
 .right-minimized .right-top-group-size {
-    font-size: 14px;
+    font-size: 18px;
     color: #555;
+}
+
+.right-top-group-size {
+    /* border: 1px solid black; */
+    margin-top: -5px;
 }
 
 .right-minimized .right-bottom {
