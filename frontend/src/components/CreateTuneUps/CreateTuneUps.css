@@ -1,0 +1,18 @@
+.background-img{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.tuneup-create-form-container{
+    border: 2px solid red;
+    margin-top: 4rem;
+    height: 56.2rem;
+
+}
+
+.tuneup-create-form {
+    border: 1px solid blue;
+}
