@@ -5,6 +5,7 @@
     width: 100vw;
     background-color: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    top: 0;
 }
 
 .tuneup-logo {
@@ -95,6 +96,30 @@
 }
 
 .signout-button:hover{
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    background-color: rgb(255, 213, 251);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.discover-button {
+    position: absolute;
+    border-radius: 10px;
+    width: fit-content;
+    margin-left: 60vw;
+    margin-top: -2.5rem;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    padding-right:5px;
+    font-size: 26px;
+    font-family: 'Bebas Neue', sans-serif;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    transition: 0.2s ease-in-out;
+    background-color: white;
+    height: fit-content;
+}
+.discover-button:hover {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
     background-color: rgb(255, 213, 251);
     border: 1px solid rgba(0, 0, 0, 0.1);
