@@ -1,17 +1,25 @@
 
 .discover-container {
     position: fixed;
+    overflow-y: scroll;
 }
 .tuneups-container {
     width: 50rem;
+    margin-top: 5rem;
 }
-.discover-page-background{
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    opacity: 0.7;
+.discover-container {
+    position: relative; /* Adjusted */
+    overflow-y: auto; /* Adjusted */
+    background-image: url('../HomePage/home-page-background.png'); /* Assuming you are using a background image */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
+
+.discover-container img {
+    opacity: .7;
+}
+
 
 .links-nav{
     z-index: 1;

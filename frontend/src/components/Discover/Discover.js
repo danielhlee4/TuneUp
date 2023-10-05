@@ -35,11 +35,6 @@ function Discover() {
           Mudassar M. Dennis L. Sean J.
         </div>
       </footer>
-      <img
-        className="discover-page-background"
-        src={homepagebackground}
-        alt="Background"
-      />
     </div>
   );
 }
