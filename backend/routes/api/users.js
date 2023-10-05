@@ -37,6 +37,7 @@ router.get("/current", restoreUser, (req, res) => {
     address: req.body.address,
     hostedTuneUps: req.body.hostedTuneUps,
     joinedTuneUps: req.body.joinedTuneUps,
+    requestedTuneUps: req.body.joinedTuneUps,
   });
 });
 
@@ -100,6 +101,7 @@ router.post("/register", validateRegisterInput, async (req, res, next) => {
     profileImageUrl: profileImageUrl,
     hostedTuneUps: [],
     joinedTuneUps: [],
+    requestedTuneUps: [],
   });
 
   bcrypt.genSalt(10, (err, salt) => {
