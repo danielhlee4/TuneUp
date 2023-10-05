@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import homepagebackground from "./home-page-background.png"
 import "./HomePage.css"
+import SearchBar from "../SearchBar/SearchBar";
 
 function HomePage() {
   const currentUser = useSelector((state) => state.session.user);
