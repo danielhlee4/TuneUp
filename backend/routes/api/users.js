@@ -130,25 +130,6 @@ router.post("/login", validateLoginInput, async (req, res, next) => {
   })(req, res, next);
 });
 
-// SEARCH 
-
-router.get("/search", async (req,res,next) => {
-  try {
-    const {firstName} = req.query;
-    let query = {};
-    if (firstName) {
-      query.firstName = new RegExp(firstName, 'i');
-    } else {
-      return res.status(400).json({error: 'Not Found'});
-    }
-
-    const users = await User.find(query);
-    res.json(users);
-  } catch (err) {
-    next(err);
-  }
-})
-
 router.patch(
   "/:id",
   // ensureAuthenticated,

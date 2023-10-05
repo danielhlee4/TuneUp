@@ -6,10 +6,12 @@ const userSchema = new Schema(
     firstName: {
       type: String,
       required: true,
+      index: "text",
     },
     lastName: {
       type: String,
       required: true,
+      index: "text",
     },
     email: {
       type: String,
@@ -19,6 +21,7 @@ const userSchema = new Schema(
     },
     instruments: {
       type: [String],
+      index: true,
     },
     genres: {
       type: [String],
