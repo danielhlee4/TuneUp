@@ -127,9 +127,14 @@
     overflow-y: auto;
 }
 
+.edit-button{
+    width: 5rem;
+}
+
 .user-edit-option{
-    position: absolute;
-    margin-left: 28vw;
+    display: flex;
+    justify-content: end;
+    width: auto;
 }
 
 .edit-button{
