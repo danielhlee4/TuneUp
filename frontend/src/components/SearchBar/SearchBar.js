@@ -40,7 +40,7 @@ export default function SearchBar() {
       <input
         type="text"
         id="search-input"
-        placeholder="Search by First Name"
+        placeholder=""
         value={query}
         onChange={handleInputChange}
         onKeyPress={handleKeyPress}
