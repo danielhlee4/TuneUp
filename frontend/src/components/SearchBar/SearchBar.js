@@ -2,24 +2,20 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { search, clearSearchResults } from "../../store/search";
 import { useDispatch, useSelector } from "react-redux";
+import TuneUp from "../TuneUp/TuneUp";
+import "./SearchBar.css"
 
 export default function SearchBar() {
   const [query, setQuery] = useState("");
   const history = useHistory();
   const dispatch = useDispatch();
-  const users = useSelector((state) => state.search.results);
+  const searchResults = useSelector((state) => state.search.results);
 
   const handleSearch = (event) => {
     event.preventDefault();
     if (query.trim() !== "") {
       dispatch(clearSearchResults());
-      dispatch(search({ firstName: query })).then((data) => {
-        if (data && data.length > 0) {
-          history.push(`/users/${data[0].id}`); 
-        } else {
-          alert("No user found");
-        }
-      });
+      dispatch(search({ q: query }))
     }
   };
 
@@ -48,6 +44,17 @@ export default function SearchBar() {
       <button id="search-button" onClick={handleSearch}>
 
       </button>
+    <div>
+      <ul>
+        {searchResults?.map(result => {
+          return (
+            <li>
+              <TuneUp tuneUpData={result} />
+            </li>
+          )
+        })}
+      </ul>
+    </div>
     </div>
   );
 }
