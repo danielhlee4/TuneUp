@@ -5,30 +5,43 @@ import homepagebackground from "../HomePage/home-page-background.png"
 import "./Discover.css"
 import TuneUp from "../TuneUp/TuneUp"
 import { fetchUsers, getUsers} from "../../store/users";
+import MultipleZipcodeMapWrapper from "../Map/MultipleZipcodeMap";
+
+function extractStateAndZipcode(address) {
+  const parts = address.split(', ');
+  if (parts[2]) {
+    return parts[2];  // This should be the state and zipcode part e.g. 'NY 10314'
+  }
+  return null;
+}
 
 function Discover() {
   const currentUser = useSelector((state) => state.session.user);
-  const tuneUps = useSelector(getTuneUps)
-  const users = useSelector(getUsers)
-  const dispatch = useDispatch()
+  const tuneUps = useSelector(getTuneUps);
+  const users = useSelector(getUsers);
+  const dispatch = useDispatch();
 
-  useEffect(()=> {
-    dispatch(fetchAllTuneUps())
-    dispatch(fetchUsers())
-  }, [dispatch])
+  useEffect(() => {
+    dispatch(fetchAllTuneUps());
+    dispatch(fetchUsers());
+  }, [dispatch]);
+
+  const zipcodesArray = tuneUps.map(tuneUp => extractStateAndZipcode(tuneUp.address)).filter(Boolean);
 
   return (
     <div className="discover-container">
-        {tuneUps && users ? 
+      {tuneUps && users ? 
         (<div className="tuneups-container">
-            <ul>
-                {tuneUps?.map((tuneUp)=> {
-                    return (
-                    <li key={tuneUp._id}> <TuneUp tuneUpData={tuneUp} /> </li>
-                    )
-                })}
-            </ul>
+          <ul>
+            {tuneUps?.map((tuneUp) => {
+              return (
+                <li key={tuneUp._id}> <TuneUp tuneUpData={tuneUp} /> </li>
+              );
+            })}
+          </ul>
         </div>) : ""}
+      {/* <MultipleZipcodeMapWrapper zipcodes={zipcodesArray} />   */}
+      <MultipleZipcodeMapWrapper zipcodes={['NY 10012']} />  
       <footer>
         <div className="scrolling-text-homepage">
           Copyright &copy; 2023 TuneUp | Developed by: Dan L. Klodian B.
@@ -38,6 +51,5 @@ function Discover() {
     </div>
   );
 }
-
 
 export default Discover;
