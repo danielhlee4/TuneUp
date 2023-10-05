@@ -1,4 +1,11 @@
-
+.update-form-root-container {
+    margin-top: 7rem;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .update-form-background {
     position: fixed;
     z-index: -1;
@@ -8,12 +15,9 @@
 }
 
 .update-form-container {
-    position: absolute;
     width: 60rem;
     padding: 20px;
     text-align: center;
-    margin-left: 21vw;
-    margin-top: 7rem;
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
@@ -49,7 +53,7 @@
 .basic-info-header {
     position: absolute;
     font-size: 24px;
-    margin-left: 19%;
+    margin-left: 190px;
 }
 
 .update-first-name-label{
@@ -93,7 +97,7 @@
 .address-header {
     position: absolute;
     font-size: 24px;
-    margin-left: 20%;
+    margin-left: 200px;
     margin-top: 1%;
 }
 
