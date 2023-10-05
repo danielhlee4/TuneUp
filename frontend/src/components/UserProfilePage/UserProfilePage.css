@@ -69,6 +69,8 @@
     font-size: 48px;
     margin-top: 2rem;
     margin-left: 15vw;
+    text-shadow: 10px 10px 10px rgb(253, 0, 211);
+    color: white;
 }
 
 .tuneup-joined-label {
@@ -76,6 +78,8 @@
     font-size: 48px;
     margin-top: 2rem;
     margin-left: 50.5vw;
+    text-shadow: 10px 10px 10px rgb(253, 0, 211);
+    color: white;
 }
 
 .other-tuneup-hosted-label {
@@ -83,6 +87,8 @@
     font-size: 48px;
     margin-top: 2rem;
     margin-left: 15vw;
+    text-shadow: 10px 10px 10px rgb(253, 0, 211);
+    color: white;
 }
 
 .other-tuneup-joined-label {
@@ -90,6 +96,8 @@
     font-size: 48px;
     margin-top: 2rem;
     margin-left: 50.5vw;
+    text-shadow: 10px 10px 10px rgb(253, 0, 211);
+    color: white;
 }
 
 .user-tuneups-container {
