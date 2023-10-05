@@ -27,12 +27,14 @@ function NavBar() {
                         <div className="nav-user-name">Welcome, {sessionUser.firstName}</div>
                     </Link>
                         <button className="signout-button" onClick={logoutUser}>Logout</button>
-                    <Link to={'/discover'}>
-                        <button className='discover-button'>Looking for TuneUps?</button>
-                    </Link>
-                    <Link to={'/create'}>
-                        <button className='create-button'>+</button>
-                    </Link>
+                    <div className='right-nav-button-container'>
+                        <Link to={'/discover'}>
+                            <button className='discover-button'>Looking for TuneUps?</button>
+                        </Link>
+                        <Link to={'/create'}>
+                            <button className='create-button'>+</button>
+                        </Link>
+                    </div>
                 </div>
             );
         } else {
