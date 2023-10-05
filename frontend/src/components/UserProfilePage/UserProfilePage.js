@@ -29,8 +29,6 @@ function UserProfilePage() {
     useEffect(() => {
         dispatch(fetchUsers())
         dispatch(fetchUser(id))
-        joinedTuneups = []
-        hostedTuneups = []
     },[id])
 
     if (currentUser?._id === user?._id) {
