@@ -52,7 +52,7 @@ function MultipleZipcodeMap({ zipcodes }) {
     }, [mapRef, map, zipcodes]);
   
     return (
-      <div ref={mapRef} className="map" style={{ width: "700px", height: "600px" }}>
+      <div ref={mapRef} className="map" style={{ width: "700px", height: "675px" }}>
         Map
       </div>
     );

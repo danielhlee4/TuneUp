@@ -145,3 +145,7 @@
     border: 1px solid rgba(0, 0, 0, 0.1);
     cursor: pointer;
 }
+
+.list-item {
+    list-style: none;
+}

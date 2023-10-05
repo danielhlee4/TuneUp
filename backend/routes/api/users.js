@@ -32,12 +32,11 @@ router.get("/current", restoreUser, (req, res) => {
     lastName: req.user.lastName,
     email: req.user.email,
     profileImageUrl: req.user.profileImageUrl,
-    instruments: req.body.instruments,
-    genres: req.body.genres,
-    address: req.body.address,
-    hostedTuneUps: req.body.hostedTuneUps,
-    joinedTuneUps: req.body.joinedTuneUps,
-    requestedTuneUps: req.body.joinedTuneUps,
+    instruments: req.user.instruments,
+    genres: req.user.genres,
+    address: req.user.address,
+    hostedTuneUps: req.user.hostedTuneUps,
+    joinedTuneUps: req.user.joinedTuneUps,
   });
 });
 
