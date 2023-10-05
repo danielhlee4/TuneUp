@@ -12,6 +12,15 @@ const tuneUpSchema = new Schema(
       type: String,
       required: true,
     },
+    status: {
+      type: Boolean,
+      required: true,
+    },
+    instruments: {
+      type: [String],
+      required: true,
+      index: true,
+    },
     date: {
       type: Date,
       required: true,
@@ -19,12 +28,9 @@ const tuneUpSchema = new Schema(
     genre: {
       type: String,
       required: true,
+      index: "true",
     },
     address: {
-      type: String,
-      required: true,
-    },
-    zipcode: {
       type: String,
       required: true,
     },
