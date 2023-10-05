@@ -31,4 +31,4 @@ function UserDistanceToAddress({ targetAddress }) {
 
 export default UserDistanceToAddress;
 
-// return this in your component <UserDistanceToAddress targetAddress="1600 Amphitheatre Parkway, Mountain View, CA" />
+// return this in your component <UserDistanceToAddress targetAddress="848 Columbus Cir, New York, NY 10019" />
