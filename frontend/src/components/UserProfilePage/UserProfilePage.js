@@ -29,7 +29,7 @@ function UserProfilePage() {
     useEffect(() => {
         dispatch(fetchUsers())
         dispatch(fetchUser(id))
-    },[id])
+    },[dispatch, id])
 
     if (currentUser?._id === user?._id) {
         return (
@@ -65,14 +65,14 @@ function UserProfilePage() {
                     <div className="joined-tuneups-list-container">
                         <ul className="joined-tuneup-list">
                         {joinedTuneups.map(tuneup => {
-                            return (<TuneUp tuneUpData={tuneup}/>)
+                            return (<li key={tuneup._id} className="list-item"><TuneUp tuneUpData={tuneup}/></li>)
                         })}
                         </ul>
                     </div>
                     <div className="hosted-tuneups-list-container">
                         <ul className="hosted-tuneup-list">
                         {hostedTuneups.map(tuneup => {
-                            return(<TuneUp tuneUpData={tuneup}/>)
+                            return(<li key={tuneup._id} className="list-item"><TuneUp tuneUpData={tuneup}/></li>)
                         })}
                         </ul>
                     </div>
@@ -103,14 +103,14 @@ function UserProfilePage() {
                     <div className="joined-tuneups-list-container">
                         <ul className="joined-tuneup-list">
                             {joinedTuneups.map(tuneup => {
-                                return (<TuneUp tuneUpData={tuneup} />)
+                                return (<li key={tuneup._id} className="list-item"><TuneUp tuneUpData={tuneup} /></li>)
                             })}
                         </ul>
                     </div>
                     <div className="hosted-tuneups-list-container">
                         <ul className="hosted-tuneup-list">
                             {hostedTuneups.map(tuneup => {
-                                return (<TuneUp tuneUpData={tuneup} />)
+                                return (<li key={tuneup._id} className="list-item"><TuneUp tuneUpData={tuneup} /></li>)
                             })}
                         </ul>
                     </div>

@@ -1,24 +1,33 @@
 
-.discover-container {
-    position: fixed;
-    overflow-y: scroll;
-}
+
 .tuneups-container {
     width: 50rem;
     margin-top: 5rem;
+    margin-bottom: 3.25rem;
 }
+
+.discover-map-container {
+    margin-top: 5.65rem;
+    top: 5rem;
+    position: sticky;
+    margin-right: 12px;
+    height: 600px;
+    /* border: 3px solid red; */
+}
+
+.map {
+    border-radius: 5px;
+}
+
 .discover-container {
+    display: flex;
     position: relative; /* Adjusted */
-    overflow-y: auto; /* Adjusted */
     background-image: url('../HomePage/home-page-background.png'); /* Assuming you are using a background image */
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 }
 
-.discover-container img {
-    opacity: .7;
-}
 
 
 .links-nav{

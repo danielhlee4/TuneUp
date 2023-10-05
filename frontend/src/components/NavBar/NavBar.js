@@ -16,7 +16,6 @@ function NavBar() {
         dispatch(logout());
     }
 
-    console.log(sessionUser)
     const getLinks = () => {
         if (loggedIn) {
             return (
