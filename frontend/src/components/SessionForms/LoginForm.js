@@ -13,12 +13,6 @@ function LoginForm() {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    useEffect(() => {
-        return () => {
-            dispatch(clearSessionErrors());
-        };
-    }, [dispatch]);
-
     const update = (field) => {
         const setState = field === 'email' ? setEmail : setPassword;
         return e => setState(e.currentTarget.value);
@@ -26,8 +20,10 @@ function LoginForm() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await dispatch(login({ email, password }))
-        history.push('/home')
+        if (!errors){
+          await dispatch(login({ email, password }))
+          history.push('/home')
+        }
     }
 
     return (
