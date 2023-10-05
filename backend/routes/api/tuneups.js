@@ -22,8 +22,8 @@ router.get("/", async (req, res, next) => {
 
 router.get("/:id", async (req, res, next) => {
   try {
-    const tuneUps = await TuneUp.find({ id: req.params.id });
-    res.status(200).json(tuneUps);
+    const tuneUp = await TuneUp.findById(req.params.id);
+    res.status(200).json(tuneUp);
   } catch (error) {
     next(error);
   }
