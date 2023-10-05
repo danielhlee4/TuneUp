@@ -20,10 +20,8 @@ function LoginForm() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!errors){
-          await dispatch(login({ email, password }))
-          history.push('/home')
-        }
+        await dispatch(login({ email, password }))
+        history.push('/home')
     }
 
     return (
