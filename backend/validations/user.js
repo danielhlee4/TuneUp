@@ -14,10 +14,6 @@ const validateUserData = [
     .isArray()
     .custom((arr) => arr.length >= 1)
     .withMessage("Genres cannot be blank"),
-  check("zipcode")
-    .optional()
-    .isPostalCode("US")
-    .withMessage("Zipcode must be a valid postal code"),
   handleValidationErrors,
 ];
 

@@ -31,14 +31,13 @@ router.get("/:id", async (req, res, next) => {
 
 router.post("/create", ensureAuthenticated, async (req, res, next) => {
   try {
-    const { description, date, genre, address, zipcode } = req.body;
+    const { description, date, genre, address } = req.body;
     const newTuneUp = new TuneUp({
       host: req.user._id,
       description,
       date,
       genre,
       address,
-      zipcode,
       connections: [],
       pendingConnections: [],
     });
@@ -64,8 +63,9 @@ router.patch(
         ...(req.body.description && { description: req.body.description }),
         ...(req.body.date && { date: req.body.date }),
         ...(req.body.genre && { genre: req.body.genre }),
+        ...(req.body.instruments && { instruments: req.body.instruments }),
+        ...(req.body.status && { status: req.body.status }),
         ...(req.body.address && { address: req.body.address }),
-        ...(req.body.zipcode && { zipcode: req.body.zipcode }),
         ...(req.body.connections && { connections: req.body.connections }),
         ...(req.body.pendingConnections && {
           pendingConnections: req.body.pendingConnections,
