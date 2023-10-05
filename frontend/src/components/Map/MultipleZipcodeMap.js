@@ -68,4 +68,4 @@ function MultipleZipcodeMapWrapper(props) {
   
 export default MultipleZipcodeMapWrapper;
 
-// return this in your component <MultipleZipcodeMapWrapper zipcodes={['10013', '10003', '10012', '11201', '10023']} />
+// return this in your component <MultipleZipcodeMapWrapper zipcodes={['NY 10013', 'NY 10003', 'NY 10012', 'NY 11201', 'NY 10023']} />

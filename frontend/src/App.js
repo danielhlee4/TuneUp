@@ -11,6 +11,7 @@ import UserUpdateForm from './components/SessionForms/UserUpdateForm';
 import UserProfilePage from './components/UserProfilePage/UserProfilePage';
 import { getCurrentUser } from './store/session';
 import Discover from './components/Discover/Discover';
+import SearchBar from './components/SearchBar/SearchBar';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -31,6 +32,7 @@ function App() {
         <ProtectedRoute exact path="/update" component={UserUpdateForm} />
         <ProtectedRoute exact path="/users/:id" component={UserProfilePage}/>
         <ProtectedRoute exact path="/discover" component={Discover} />
+        <ProtectedRoute exact path="/search" component={SearchBar} />
       </Switch>
     </>
   );

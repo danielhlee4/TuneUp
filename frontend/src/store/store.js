@@ -4,12 +4,14 @@ import session from "./session";
 import errors from './errors';
 import users from './users'
 import tuneups from './tuneUps'
+import search from './search';
 
 const rootReducer = combineReducers({
     session,
     errors,
     users,
-    tuneups
+    tuneups,
+    search
 });
 
 let enhancer;
