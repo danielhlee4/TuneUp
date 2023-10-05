@@ -62,7 +62,7 @@ const TuneUp = ({tuneUpData}) => {
                     <ul> Musicians attending: 
                         {tuneUp.connections?.map((user) => {
                             return (<li key={user._id}>
-                                {user?.firstName}
+                                {user?.firstName ? user?.firstName : users[user].firstName}
                             </li>)
                         })}
                     </ul>
