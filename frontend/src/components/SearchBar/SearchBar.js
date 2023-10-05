@@ -45,9 +45,9 @@ export default function SearchBar() {
         onChange={handleInputChange}
         onKeyPress={handleKeyPress}
       />
-      {/* <button id="search-button" onClick={handleSearch}>
+      <button id="search-button" onClick={handleSearch}>
 
-      </button> */}
+      </button>
     </div>
   );
 }
