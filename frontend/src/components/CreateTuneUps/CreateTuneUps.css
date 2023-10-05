@@ -7,12 +7,26 @@
 }
 
 .tuneup-create-form-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: 2px solid red;
     margin-top: 4rem;
     height: 56.2rem;
-
 }
 
 .tuneup-create-form {
-    border: 1px solid blue;
+    width: 60rem;
+    height: 40rem;
+    padding: 20px;
+    text-align: center;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.tuneup-create-header{
+    position: absolute;
+    margin-top: -48rem;
+    font-size: 64px;
 }
