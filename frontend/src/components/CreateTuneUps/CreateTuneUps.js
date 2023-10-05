@@ -127,7 +127,7 @@ function CreateTuneUps() {
 
   const renderMonthOptions = () => {
     return months.map((month, index) => (
-      <option key={index} value={index}>
+      <option key={index} value={index + 1}>
         {month}
       </option>
     ));
