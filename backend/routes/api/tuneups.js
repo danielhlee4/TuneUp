@@ -31,13 +31,15 @@ router.get("/:id", async (req, res, next) => {
 
 router.post("/create", ensureAuthenticated, async (req, res, next) => {
   try {
-    const { description, date, genre, address } = req.body;
+    const { description, date, genre, address, instruments, status } = req.body;
     const newTuneUp = new TuneUp({
       host: req.user._id,
       description,
       date,
       genre,
       address,
+      instruments,
+      status,
       connections: [],
       pendingConnections: [],
     });
