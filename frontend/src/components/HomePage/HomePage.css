@@ -38,7 +38,7 @@ footer {
 
 .scrolling-text-homepage {
     white-space: nowrap;
-    animation: slideText 12s linear infinite;
+    animation: slideText 16s linear infinite;
     font-size: 18px;
     font-family: 'Bebas Neue', sans-serif;
     padding: 5px;
