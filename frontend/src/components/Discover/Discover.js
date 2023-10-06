@@ -40,8 +40,8 @@ function Discover() {
             })}
           </ul>
         </div>) : ""}
-      {/* <MultipleZipcodeMapWrapper zipcodes={zipcodesArray} />   */}
-      <MultipleZipcodeMapWrapper zipcodes={['NY 10012']} />  
+      <MultipleZipcodeMapWrapper zipcodes={zipcodesArray} />  
+      {/* <MultipleZipcodeMapWrapper zipcodes={['NY 10012']} />   */}
       <footer>
         <div className="scrolling-text-homepage">
           Copyright &copy; 2023 TuneUp | Developed by: Dan L. Klodian B.
