@@ -118,6 +118,7 @@
     grid-area: 1/1/1/1;
     padding-right: 10px;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .hosted-tuneups-list-container {
@@ -125,6 +126,7 @@
     grid-area: 1/2/1/2;
     padding-left: 10px;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .edit-button{
@@ -153,4 +155,5 @@
 
 .list-item {
     list-style: none;
+    max-width: 35rem;
 }
