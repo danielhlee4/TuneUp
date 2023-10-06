@@ -21,25 +21,27 @@ function NavBar() {
             return (
                 <div className="links-nav">
                     <Link to={'/home'}>
-                        <img className='tuneup-logo' src={tuneuplogo}></img>
+                        <img className='tuneup-logo1' src={tuneuplogo}></img>
                     </Link>
                     <Link to={`/users/${sessionUser._id}`}>
                         <div className="nav-user-name">Welcome, {sessionUser.firstName}</div>
                     </Link>
                         <button className="signout-button" onClick={logoutUser}>Logout</button>
-                    <Link to={'/discover'}>
-                        <button className='discover-button'>Looking for TuneUps?</button>
-                    </Link>
-                    <Link to={'/create'}>
-                        <button className='create-button'>+</button>
-                    </Link>
+                    <div className='right-nav-button-container'>
+                        <Link to={'/discover'}>
+                            <button className='discover-button'>Looking for TuneUps?</button>
+                        </Link>
+                        <Link to={'/create'}>
+                            <button className='create-button'>+</button>
+                        </Link>
+                    </div>
                 </div>
             );
         } else {
             return (
                 <div className="links-auth">
                     <Link to={'/'}>
-                        <img className='tuneup-logo' src={tuneuplogo}></img>
+                        <img className='tuneup-logo2' src={tuneuplogo}></img>
                     </Link>
                     <div className='nav-bar-buttons-container'>
                         <div className='nav-signup-button-container'>
