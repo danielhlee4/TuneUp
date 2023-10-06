@@ -8,7 +8,13 @@
     top: 0;
 }
 
-.tuneup-logo {
+.tuneup-logo1 {
+    position: absolute;
+    width: 7rem;
+    margin-left: 47vw;
+    margin-top: -1rem;
+}
+.tuneup-logo2 {
     position: absolute;
     width: 7rem;
     margin-left: 47vw;
@@ -103,11 +109,8 @@
 }
 
 .discover-button {
-    position: absolute;
     border-radius: 10px;
     width: fit-content;
-    margin-left: 60vw;
-    margin-top: -2.5rem;
     padding-top: 10px;
     padding-bottom: 5px;
     padding-left: 5px;
@@ -126,17 +129,44 @@
     cursor: pointer;
 }
 
-.nav-user-name-container {
-    border: 1px solid red;
-    text-align: center;
-    width: fit-content;
-}
-
 .nav-user-name {
     font-size: 26px;
     margin-top: 1rem;
     height: fit-content;
     width: fit-content;
     margin-left: 160px;
+
+}
+
+.create-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    width: 3rem;
+    height: 3rem;
+    padding-top: 5px;
+    font-size: 48px;
+    font-family: 'Bebas Neue', sans-serif;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    transition: 0.2s ease-in-out;
+    background-color: white;
+    text-decoration: none;
+}
+
+.create-button:hover {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    background-color: rgb(255, 213, 251);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.right-nav-button-container{
+    display: grid;
+    grid-template-columns: 80% 20%;
+    width: 18rem;
+    height: fit-content;
+    margin-left: 65vw;
+    margin-top: -2.5rem;
 
 }

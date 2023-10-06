@@ -14,14 +14,18 @@ const TuneUp = ({tuneUpData}) => {
     const tuneUps = useSelector(getTuneUps);
     const sessionUser = useSelector(state => state.session.user);
     const [clicked, setClicked] = useState(false);
-    console.log(users)
+
+    const userIsPartOfTuneUp = sessionUser && (
+        sessionUser.hostedTuneUps?.includes(tuneUp._id) || 
+        sessionUser.joinedTuneUps?.includes(tuneUp._id)
+    );
 
     return (
         <div className={`tuneUp-container ${clicked ? 'maximized' : 'minimized'}`} onClick={() => setClicked(!clicked)}>
             {!clicked && 
             <div className="minimized">
                 <div className="left-minimized">
-                    <h1>{users[tuneUp.host]?.firstName}'s TuneUp</h1>
+                    <h1>{users[tuneUp.host]?.firstName}'s {tuneUp?.genre} TuneUp</h1>
                 </div>
                 <div className="right-minimized">
                     <div className="right-top">
@@ -58,21 +62,23 @@ const TuneUp = ({tuneUpData}) => {
                     <ul> Musicians attending: 
                         {tuneUp.connections?.map((user) => {
                             return (<li key={user._id}>
-                                {user?.firstName}
+                                {user?.firstName ? user?.firstName : users[user].firstName}
                             </li>)
                         })}
                     </ul>
                 </div>
                 <div className="tuneUp-footer">
+                    { !userIsPartOfTuneUp && 
+                        <button className="request-join-button">
+                            Request to Join
+                        </button>
+                    }
                         Footer
                 </div>
             </div>
             }
         </div>
     )
-
-
-
 
 };
 

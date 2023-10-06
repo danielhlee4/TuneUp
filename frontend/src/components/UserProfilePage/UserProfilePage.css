@@ -127,9 +127,14 @@
     overflow-y: auto;
 }
 
+.edit-button{
+    width: 5rem;
+}
+
 .user-edit-option{
-    position: absolute;
-    margin-left: 28vw;
+    display: flex;
+    justify-content: end;
+    width: auto;
 }
 
 .edit-button{
@@ -144,4 +149,8 @@
     background-color: rgb(255, 213, 251);
     border: 1px solid rgba(0, 0, 0, 0.1);
     cursor: pointer;
+}
+
+.list-item {
+    list-style: none;
 }

@@ -48,6 +48,12 @@ const userSchema = new Schema(
         ref: "TuneUp",
       },
     ],
+    requestedTuneUps: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "TuneUp",
+      },
+    ],
   },
   {
     timestamps: true,

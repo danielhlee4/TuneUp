@@ -5,6 +5,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { updateUser } from "../../store/users";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { getCurrentUser } from "../../store/session";
+
 
 function UserUpdateForm() {
     const currentUser = useSelector((state) => state.session.user);
@@ -152,6 +154,7 @@ function UserUpdateForm() {
             address
         }
         dispatch(updateUser(currentUser._id, updatedUser))
+        dispatch(getCurrentUser(updatedUser))
         history.push('/home')
     }
 

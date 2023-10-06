@@ -35,7 +35,7 @@ export const search = (criteria) => async (dispatch) => {
     if (data.error) {
       dispatch(receiveSearchErrors(data.error));
     } else {
-      dispatch(receiveSearchResults(data.users)); 
+      dispatch(receiveSearchResults(data)); 
     }
   } catch (error) {
     dispatch(receiveSearchErrors("Failed to fetch search results."));
@@ -72,19 +72,6 @@ const searchReducer = (state = initialSearchState, action) => {
 
 export default searchReducer;
 
-// const nullSearchErrors = null;
-
-// export const searchErrorsReducer = (state = nullSearchErrors, action) => {
-//   switch (action.type) {
-//     case RECEIVE_SEARCH_ERRORS:
-//       return action.errors;
-//     case RECEIVE_SEARCH_RESULTS:
-//     case CLEAR_SEARCH_ERRORS:
-//       return nullSearchErrors;
-//     default:
-//       return state;
-//   }
-// };
 
 
 

@@ -8,7 +8,6 @@ const User = mongoose.model("User");
 
 router.get("/", async (req, res, next) => {
   const query = req.query.q;
-  console.log(query);
   try {
     // const userResults = await User.find({
     //   $or: [

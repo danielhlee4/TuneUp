@@ -16,12 +16,12 @@
 
 /* Minimized View */
 .minimized {
-    height: 120px;
+    height: 60px;
     background-color: #f8f8f8; 
 }
 
 .minimized .left-minimized h1 {
-    font-size: 18px;
+    font-size: 22px;
     margin: 0;
     color: #333;
 }
@@ -40,8 +40,13 @@
 .right-minimized .right-top-date,
 .right-minimized .right-top-location,
 .right-minimized .right-top-group-size {
-    font-size: 14px;
+    font-size: 18px;
     color: #555;
+}
+
+.right-top-group-size {
+    /* border: 1px solid black; */
+    margin-top: -5px;
 }
 
 .right-minimized .right-bottom {
@@ -83,4 +88,25 @@
     border-top: 1px solid #ccc;
     padding-top: 10px;
     color: #777;
+}
+
+.request-join-button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.request-join-button:hover {
+    background-color: white;
+    color: black;
+    border: 1px solid #4CAF50;
 }
