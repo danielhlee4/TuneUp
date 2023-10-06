@@ -27,8 +27,8 @@ function UserUpdateForm() {
     const [drumsChecked, setDrumsChecked] = useState(false);
     const [saxChecked, setSaxChecked] = useState(false);
     const [clarinetChecked, setClarinetChecked] = useState(false);
-    const [celloChecked, setCelloChecked] = useState(false);
-    const [tromboneChecked, setTromboneChecked] = useState(false);
+    const [banjoChecked, setBanjoChecked] = useState(false);
+    const [vocalsChecked, setVocalsChecked] = useState(false);
     const [genre, setGenre] = useState('Pop');
 
     const updates = field => {
@@ -62,37 +62,51 @@ function UserUpdateForm() {
     }
 
     const handlePianoChange = (e) => {
-        setPianoChecked(e.target.checked);
+        setPianoChecked(prev => !prev);
+        e.currentTarget.classList.toggle('active');
     };
     const handleGuitarChange = (e) => {
-        setGuitarChecked(e.target.checked);
+        setGuitarChecked(prev => !prev);
+        e.currentTarget.classList.toggle('active');
     };
     const handleViolinChange = (e) => {
-        setViolinChecked(e.target.checked);
+        setViolinChecked(prev => !prev);
+        e.currentTarget.classList.toggle('active');
     };
     const handleTrumpetChange = (e) => {
-        setTrumpetChecked(e.target.checked);
+        setTrumpetChecked(prev => !prev);
+        e.currentTarget.classList.toggle('active');
     };
     const handleFluteChange = (e) => {
-        setFluteChecked(e.target.checked);
+        setFluteChecked(prev => !prev);
+        e.currentTarget.classList.toggle('active');
     };
     const handleDrumsChange = (e) => {
-        setDrumsChecked(e.target.checked);
+        setDrumsChecked(prev => !prev);
+        e.currentTarget.classList.toggle('active');
     };
     const handleSaxChange = (e) => {
-        setSaxChecked(e.target.checked);
+        setSaxChecked(prev => !prev);
+        e.currentTarget.classList.toggle('active');
     };
     const handleClarinetChange = (e) => {
-        setClarinetChecked(e.target.checked);
+        setClarinetChecked(prev => !prev);
+        e.currentTarget.classList.toggle('active');
     };
-    const handleCelloChange = (e) => {
-        setCelloChecked(e.target.checked);
+    const handleBanjoChange = (e) => {
+        setBanjoChecked(prev => !prev);
+        e.currentTarget.classList.toggle('active');
     };
-    const handleTromboneChange = (e) => {
-        setTromboneChecked(e.target.checked);
+    const handleVocalsChange = (e) => {
+        setVocalsChecked(prev => !prev);
+        e.currentTarget.classList.toggle('active');
     };
     const handleGenreChange = (e) => {
         setGenre(e.target.value);
+    };
+
+    const selectedStyle = {
+        backgroundColor: 'rgb(252,172,232)',
     };
 
     let instruments = [];
@@ -125,11 +139,11 @@ function UserUpdateForm() {
         if (clarinetChecked) {
             instruments.push('Clarinet')
         }
-        if (celloChecked) {
-            instruments.push('Cello')
+        if (banjoChecked) {
+            instruments.push('Banjo')
         }
-        if (tromboneChecked) {
-            instruments.push('Trombone')
+        if (vocalsChecked) {
+            instruments.push('Vocals')
         }
         const updatedUser = {
             firstName,
@@ -144,10 +158,16 @@ function UserUpdateForm() {
         history.push('/home')
     }
 
+    const handleInstrumentClick = (e) => {
+        // Toggle the 'active' class
+        e.currentTarget.classList.toggle('active');
+    }
+    
+
     return (
         <div className="update-form-root-container">
             <div className="update-form-container">
-                <h1 className="update-form-header">Tell us more about you!</h1>
+                <h1 className="update-form-header">Tune your profile</h1>
                 <form onSubmit={handleUpdate} className="update-form">
                     <div className="update-form-left">
                         <div className="first-name-container">
@@ -182,47 +202,50 @@ function UserUpdateForm() {
                         </div>
                     </div>
                     <div className="update-form-right">
-                        <span className="musical-info-header">Musical Info</span>
-                        <div className="piano-container">
-                            <input className="update-piano-input" type="checkbox" value="piano" checked={pianoChecked} onChange={handlePianoChange}></input>
-                            <span className="update-piano-label">Piano</span>
+                        <span className="musical-info-header">Instruments</span>
+                        <div className="instruments-container">
+                            <div className="instrument-box" onClick={handlePianoChange} style={pianoChecked ? selectedStyle : {}}>
+                                <span><i className="fa-sharp fa-light fa-piano"></i></span>
+                                <span id="update-instrument-label">piano</span>
+                            </div>
+                            <div className="instrument-box" onClick={handleGuitarChange} style={guitarChecked ? selectedStyle : {}}>
+                                <span><i className="fa-sharp fa-light fa-guitar-electric"></i></span>
+                                <span id="update-instrument-label">guitar</span>
+                            </div>
+                            <div className="instrument-box" onClick={handleViolinChange} style={violinChecked ? selectedStyle : {}}>
+                                <span><i className="fa-sharp fa-light fa-violin"></i></span>
+                                <span id="update-instrument-label">violin</span>
+                            </div>
+                            <div className="instrument-box" onClick={handleTrumpetChange} style={trumpetChecked ? selectedStyle : {}}>
+                                <span><i className="fa-sharp fa-light fa-trumpet"></i></span>
+                                <span id="update-instrument-label">trumpet</span>
+                            </div>
+                            <div className="instrument-box" onClick={handleFluteChange} style={fluteChecked ? selectedStyle : {}}>
+                                <span><i className="fa-sharp fa-light fa-flute"></i></span>
+                                <span id="update-instrument-label">flute</span>
+                            </div>
+                            <div className="instrument-box" onClick={handleDrumsChange} style={drumsChecked ? selectedStyle : {}}>
+                                <span><i className="fa-sharp fa-light fa-drum"></i></span>
+                                <span id="update-instrument-label">drums</span>
+                            </div>
+                            <div className="instrument-box" onClick={handleSaxChange} style={saxChecked ? selectedStyle : {}}>
+                                <span><i className="fa-sharp fa-light fa-saxophone"></i></span>
+                                <span id="update-instrument-label">saxophone</span>
+                            </div>
+                            <div className="instrument-box" onClick={handleClarinetChange} style={clarinetChecked ? selectedStyle : {}}>
+                                <span><i className="fa-sharp fa-light fa-clarinet"></i></span>
+                                <span id="update-instrument-label">clarinet</span>
+                            </div>
+                            <div className="instrument-box" onClick={handleBanjoChange} style={banjoChecked ? selectedStyle : {}}>
+                                <span><i className="fa-sharp fa-light fa-banjo"></i></span>
+                                <span id="update-instrument-label">banjo</span>
+                            </div>
+                            <div className="instrument-box" onClick={handleVocalsChange} style={vocalsChecked ? selectedStyle : {}}>
+                                <span><i className="fa-sharp fa-light fa-microphone-stand"></i></span>
+                                <span id="update-instrument-label">vocals</span>
+                            </div>
                         </div>
-                        <div className="guitar-container">
-                            <input className="update-guitar-input" type="checkbox" value="guitar" checked={guitarChecked} onChange={handleGuitarChange}></input>
-                            <span className="update-guitar-label">Guitar</span>
-                        </div>
-                        <div className="violin-container">
-                            <input className="update-violin-input" type="checkbox" value="violin" checked={violinChecked} onChange={handleViolinChange}></input>
-                            <span className="update-violin-label">Violin</span>
-                        </div>
-                        <div className="trumpet-container">
-                            <input className="update-trumpet-input" type="checkbox" value="trumpet" checked={trumpetChecked} onChange={handleTrumpetChange}></input>
-                            <span className="update-trumpet-label">Trumpet</span>
-                        </div>
-                        <div className="flute-container">
-                            <input className="update-flute-input" type="checkbox" value="flute" checked={fluteChecked} onChange={handleFluteChange}></input>
-                            <span className="update-flute-label">Flute</span>
-                        </div>
-                        <div className="drums-container">
-                            <input className="update-drums-input" type="checkbox" value="drums" checked={drumsChecked} onChange={handleDrumsChange}></input>
-                            <span className="update-drums-label">Drums</span>
-                        </div>
-                        <div className="saxophone-container">
-                            <input className="update-saxophone-input" type="checkbox" value="saxophone" checked={saxChecked} onChange={handleSaxChange}></input>
-                            <span className="update-saxophone-label">Saxophone</span>
-                        </div>
-                        <div className="clarinet-container">
-                            <input className="update-clarinet-input" type="checkbox" value="clarinet" checked={clarinetChecked} onChange={handleClarinetChange}></input>
-                            <span className="update-clarinet-label">Clarinet</span>
-                        </div>
-                        <div className="cello-container">
-                            <input className="update-cello-input" type="checkbox" value="cello" checked={celloChecked} onChange={handleCelloChange}></input>
-                            <span className="update-cello-label">Cello</span>
-                        </div>
-                        <div className="trombone-container">
-                            <input className="update-trombone-input" type="checkbox" value="trombone" checked={tromboneChecked} onChange={handleTromboneChange}></input>
-                            <span className="update-trombone-label">Trombone</span>
-                        </div>
+
                         <div className="genre-dropdown-container">
                             <span className="genre-label">Genre:</span>
                             <select className="genre-dropdown" value={genre} onChange={handleGenreChange}>
@@ -247,9 +270,9 @@ function UserUpdateForm() {
                     </div>
                 </form>
                 <img className="update-form-background" src={backgroundimg}></img>
-                <p className="disclaimer">We require an address to determine closest jam sessions near you.
+                <p className="disclaimer">We require an address to determine closest tuneups near you.
                     Your address will not be shared with anyone else! It is visible
-                    for you and for you only.</p>
+                    only to you.</p>
             </div>
         </div >
     )
