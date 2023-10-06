@@ -274,3 +274,11 @@
     align-items: center;
     gap: 20px;
 }
+
+.instrument-box:active {
+    outline: 2px solid rgb(155,244,236);
+}
+
+.instrument-box.active {
+    outline: 2px solid rgb(155,244,236);
+}

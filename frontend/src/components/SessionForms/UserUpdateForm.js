@@ -59,35 +59,45 @@ function UserUpdateForm() {
         return e => setState(e.target.value);
     }
 
-    const handlePianoChange = () => {
+    const handlePianoChange = (e) => {
         setPianoChecked(prev => !prev);
+        e.currentTarget.classList.toggle('active');
     };
-    const handleGuitarChange = () => {
+    const handleGuitarChange = (e) => {
         setGuitarChecked(prev => !prev);
+        e.currentTarget.classList.toggle('active');
     };
-    const handleViolinChange = () => {
+    const handleViolinChange = (e) => {
         setViolinChecked(prev => !prev);
+        e.currentTarget.classList.toggle('active');
     };
-    const handleTrumpetChange = () => {
+    const handleTrumpetChange = (e) => {
         setTrumpetChecked(prev => !prev);
+        e.currentTarget.classList.toggle('active');
     };
-    const handleFluteChange = () => {
+    const handleFluteChange = (e) => {
         setFluteChecked(prev => !prev);
+        e.currentTarget.classList.toggle('active');
     };
-    const handleDrumsChange = () => {
+    const handleDrumsChange = (e) => {
         setDrumsChecked(prev => !prev);
+        e.currentTarget.classList.toggle('active');
     };
-    const handleSaxChange = () => {
+    const handleSaxChange = (e) => {
         setSaxChecked(prev => !prev);
+        e.currentTarget.classList.toggle('active');
     };
-    const handleClarinetChange = () => {
+    const handleClarinetChange = (e) => {
         setClarinetChecked(prev => !prev);
+        e.currentTarget.classList.toggle('active');
     };
-    const handleBanjoChange = () => {
+    const handleBanjoChange = (e) => {
         setBanjoChecked(prev => !prev);
+        e.currentTarget.classList.toggle('active');
     };
-    const handleVocalsChange = () => {
+    const handleVocalsChange = (e) => {
         setVocalsChecked(prev => !prev);
+        e.currentTarget.classList.toggle('active');
     };
     const handleGenreChange = (e) => {
         setGenre(e.target.value);
@@ -145,10 +155,16 @@ function UserUpdateForm() {
         history.push('/home')
     }
 
+    const handleInstrumentClick = (e) => {
+        // Toggle the 'active' class
+        e.currentTarget.classList.toggle('active');
+    }
+    
+
     return (
         <div className="update-form-root-container">
             <div className="update-form-container">
-                <h1 className="update-form-header">Tell us more about you!</h1>
+                <h1 className="update-form-header">Tune your profile</h1>
                 <form onSubmit={handleUpdate} className="update-form">
                     <div className="update-form-left">
                         <div className="first-name-container">
@@ -251,9 +267,9 @@ function UserUpdateForm() {
                     </div>
                 </form>
                 <img className="update-form-background" src={backgroundimg}></img>
-                <p className="disclaimer">We require an address to determine closest jam sessions near you.
+                <p className="disclaimer">We require an address to determine closest tuneups near you.
                     Your address will not be shared with anyone else! It is visible
-                    to you and for you only.</p>
+                    only to you.</p>
             </div>
         </div >
     )
