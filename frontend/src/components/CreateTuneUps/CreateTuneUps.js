@@ -211,18 +211,18 @@ function CreateTuneUps() {
 
   return (
     <div className="tuneup-create-form-container">
-      <h2 className="tuneup-create-header">Create your own TuneUp!</h2>
+      <h2 className="tuneup-create-header">Tune your jam</h2>
       <form className="tuneup-create-form" onSubmit={handleSubmit}>
         <div className="tuneup-details-container">
           <h3 className="details-header">Tells us more about your TuneUp!</h3>
           <textarea
             className="details-input"
-            type="text"
             onChange={updates("details")}
+            placeholder="Looking for a casual group to jam out with for a few hours. I play keys, so I'm looking for a drummer and a guitarist or two. Can't wait to rock out with y'all!"
           ></textarea>
         </div>
         <div className="date-dropdowns">
-          <h3 className="details-header">When will your TuneUp take place?</h3>
+          <h3 className="details-header">When?</h3>
           <select
             name="month"
             id="Month"
@@ -256,7 +256,7 @@ function CreateTuneUps() {
         </div>
         <div className="tuneup-address-container">
           <h3 className="tuneup-address-header">
-            Where will your TuneUp take place?
+            Where?
           </h3>
           <div className="tuneup-address-input-container">
             <div className="tuneup-street-container">
@@ -303,7 +303,7 @@ function CreateTuneUps() {
         </div>
         <div className="tuneup-instruments-container">
           <h3 className="tuneup-instrument-header">
-            Please select instruments for your TuneUp
+            instruments
           </h3>
           <div className="tuneup-instrument-list-container">
             <div className="create-tuneup-instrument-box" onClick={handlePianoChange} style={pianoChecked ? selectedStyle : {}}>

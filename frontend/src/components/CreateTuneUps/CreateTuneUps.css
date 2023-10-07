@@ -113,7 +113,7 @@
     padding: 10px;
     grid-area: 4/1/4/1;
     margin-top: -5rem;
-    height: 6rem;
+    height: 8rem;
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
@@ -123,7 +123,7 @@
     display: flex;
     position: absolute;
     justify-content: space-around;
-    margin-top: 4rem;
+    margin-top: 2.5rem;
     font-size: 24px;
     width: 59rem;
 }
@@ -133,13 +133,13 @@
 }
 
 .create-tuneup-button-container {
-    margin-top: -7.5rem;
+    margin-top: -6.3rem;
     height: fit-content;
 }
 
 .create-tuneup-button{
     width: 15rem;
-    height: 2.5rem;
+    height: 2rem;
     font-size: 24px;
     font-family: inherit;
     border-radius: 12px;
@@ -168,8 +168,8 @@
 }
 
 .create-tuneup-instrument-box {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 70px;
     margin: 8px;
     display: flex;
     flex-direction: column;
@@ -183,7 +183,7 @@
 }
 
 .create-tuneup-instrument-box > span {
-    font-size: 55px;
+    font-size: 40px;
 }
 
 .create-tuneup-instrument-box:hover {
