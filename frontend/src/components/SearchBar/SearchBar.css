@@ -1,5 +1,4 @@
 .searchbar-container {
-    /* border: 1px solid red; */
     margin-top: 7rem;
     text-align: center;
     display: flex;
@@ -36,13 +35,13 @@
     width: 500px;
 }
 
+
 #search-button {
-    padding: 10px 15px;
-    border-radius: 25px;
-    background-color: #007BFF;
-    color: white;
-    cursor: pointer;
+    padding: 0;
+    background-color: transparent;
     border: none;
+    color: blue;
+    cursor: pointer;
     margin-left: 10px;
     position: absolute;
     top: 50%;
@@ -50,9 +49,6 @@
     transform: translateY(-50%);
 }
 
-#search-button:hover {
-    background-color: #0056b3;
-}
 
 ul {
     width: 800px;
