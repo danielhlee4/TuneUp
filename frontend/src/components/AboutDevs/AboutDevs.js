@@ -2,6 +2,8 @@ import './AboutDevs.css'
 import background from '../../components/HomePage/home-page-background.png'
 import danHeadshot from './DanHeadshot.png'
 import seanHeadshot from './SeanHeadshot.jpeg'
+import linkedinIcon from './linkedinIcon.png'
+import githubIcon from './githubIcon.png'
 function AboutDevs() {
 
     return (
@@ -32,10 +34,14 @@ function AboutDevs() {
                     </div>
                     <div className='dan-links-container'>
                         <div className='dan-linkedin-container'>
-                            LinkedIn
+                            <a href='https://www.linkedin.com/in/danlee-/' target='_blank' rel='noreferrer'>
+                                <img className='dan-linkedin-icon' src={linkedinIcon}></img>
+                            </a>
                         </div>
                         <div className='dan-github-container'>
-                            Github
+                            <a href='https://github.com/danielhlee4' target='_blank' rel='noreferrer'>
+                                <img className='dan-github-icon' src={githubIcon}></img>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -60,6 +66,18 @@ function AboutDevs() {
                             showcasing the app's unique features.
                         </div>
                     </div>
+                    <div className='klodian-links-container'>
+                        <div className='klodian-linkedin-container'>
+                            <a href='https://www.linkedin.com/in/danlee-/' target='_blank' rel='noreferrer'>
+                                <img className='klodian-linkedin-icon' src={linkedinIcon}></img>
+                            </a>
+                        </div>
+                        <div className='klodian-github-container'>
+                            <a href='https://github.com/danielhlee4' target='_blank' rel='noreferrer'>
+                                <img className='klodian-github-icon' src={githubIcon}></img>
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 <div className='sean-container'>
                     <div className='sean-headshot-container'>
@@ -80,6 +98,18 @@ function AboutDevs() {
                             Sean dedicated efforts to create an engaging and user-friendly 
                             frontend. His responsibilities extended to guaranteeing effective 
                             communication between the frontend and the Express backend.
+                        </div>
+                    </div>
+                    <div className='sean-links-container'>
+                        <div className='sean-linkedin-container'>
+                            <a href='https://www.linkedin.com/in/seanjeun/' target='_blank' rel='noreferrer'>
+                                <img className='sean-linkedin-icon' src={linkedinIcon}></img>
+                            </a>
+                        </div>
+                        <div className='sean-github-container'>
+                            <a href='https://github.com/seanieboi6687' target='_blank' rel='noreferrer'>
+                                <img className='sean-github-icon' src={githubIcon}></img>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -104,6 +134,18 @@ function AboutDevs() {
                             role in creating a secure platform for TuneUp's musician community.
                         </div>
                     </div>
+                    <div className='muddy-links-container'>
+                        <div className='muddy-linkedin-container'>
+                            <a href='https://www.linkedin.com/in/danlee-/' target='_blank' rel='noreferrer'>
+                                <img className='muddy-linkedin-icon' src={linkedinIcon}></img>
+                            </a>
+                        </div>
+                        <div className='muddy-github-container'>
+                            <a href='https://github.com/danielhlee4' target='_blank' rel='noreferrer'>
+                                <img className='muddy-github-icon' src={githubIcon}></img>
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 <div className='dennis-container'>
                     <div className='dennis-headshot-container'>
@@ -124,6 +166,18 @@ function AboutDevs() {
                             in creating advanced map components using Google Maps API was crucial for
                             facilitating local musical meetups, enhancing the user experience, and
                             showcasing the app's unique features.
+                        </div>
+                    </div>
+                    <div className='dennis-links-container'>
+                        <div className='dennis-linkedin-container'>
+                            <a href='https://www.linkedin.com/in/danlee-/' target='_blank' rel='noreferrer'>
+                                <img className='dennis-linkedin-icon' src={linkedinIcon}></img>
+                            </a>
+                        </div>
+                        <div className='dennis-github-container'>
+                            <a href='https://github.com/danielhlee4' target='_blank' rel='noreferrer'>
+                                <img className='dennis-github-icon' src={githubIcon}></img>
+                            </a>
                         </div>
                     </div>
                 </div>

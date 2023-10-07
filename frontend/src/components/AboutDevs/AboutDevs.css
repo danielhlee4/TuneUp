@@ -98,18 +98,32 @@
 .dan-links-container{
     display: grid;
     grid-template-columns: 50% 50%;
-    border: 1px solid red;
 }
 .dan-linkedin-container{
     display: flex;
     justify-content: center;
     align-items: center;
 }
+.dan-linkedin-icon{
+    width: 2.5rem;
+    transition: transform 0.2s ease-in-out;
+}
+.dan-linkedin-icon:hover {
+    transform: scale(1.2);
+}
 .dan-github-container {
     display: flex;
     justify-content: center;
     align-items: center;
 }
+.dan-github-icon{
+    width: 2.25rem;
+    transition: transform 0.2s ease-in-out;
+}
+.dan-github-icon:hover {
+    transform: scale(1.2);
+}
+
 
 /************************ Klodian ***************************/
 
@@ -134,50 +148,71 @@
     align-items: center;
     justify-content: center;
 }
-
 .klodian-headshot {
     width: 10rem;
     height: 10rem;
     border-radius: 100px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
-
 .klodian-name-container {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
 .klodian-name {
     font-size: 32px;
 }
-
 .klodian-title-container {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
 .klodian-title {
     font-size: 20px;
 }
-
 .klodian-divider {
     margin-top: 2rem;
     border-top: 1px solid rgba(0, 0, 0, 0.3);
 }
-
 .klodian-description-container {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
 .klodian-description {
     text-align: center;
     font-size: 24px;
     width: 18rem;
     height: fit-content;
+}
+.klodian-links-container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.klodian-linkedin-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.klodian-linkedin-icon {
+    width: 2.5rem;
+    transition: transform 0.2s ease-in-out;
+}
+.klodian-linkedin-icon:hover {
+    transform: scale(1.2);
+}
+.klodian-github-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.klodian-github-icon {
+    width: 2.25rem;
+    transition: transform 0.2s ease-in-out;
+}
+.klodian-github-icon:hover {
+    transform: scale(1.2);
 }
 
 /************************ Sean ***************************/
@@ -203,30 +238,25 @@
     align-items: center;
     justify-content: center;
 }
-
 .sean-headshot {
     width: 10rem;
     height: 10rem;
     border-radius: 90px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
-
 .sean-name-container {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
 .sean-name {
     font-size: 32px;
 }
-
 .sean-title-container {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
 .sean-title {
     font-size: 20px;
 }
@@ -235,19 +265,45 @@
     margin-top: 2rem;
     border-top: 1px solid rgba(0, 0, 0, 0.3);
 }
-
 .sean-description-container {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
 .sean-description {
     text-align: center;
     font-size: 24px;
     width: 18rem;
     height: fit-content;
     margin-top: -2rem;
+}
+.sean-links-container{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+.sean-linkedin-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sean-linkedin-icon{
+    width: 2.5rem;
+    transition: transform 0.2s ease-in-out;
+}
+.sean-linkedin-icon:hover {
+    transform: scale(1.2);
+}
+.sean-github-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sean-github-icon{
+    width: 2.25rem;
+    transition: transform 0.2s ease-in-out;
+}
+.sean-github-icon:hover {
+    transform: scale(1.2);
 }
 
 /************************ Muddy ***************************/
@@ -273,51 +329,71 @@
     align-items: center;
     justify-content: center;
 }
-
 .muddy-headshot {
     width: 10rem;
     height: 10rem;
     border-radius: 100px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
-
 .muddy-name-container {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
 .muddy-name {
     font-size: 32px;
 }
-
 .muddy-title-container {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
 .muddy-title {
     font-size: 20px;
 }
-
 .muddy-divider {
     margin-top: 2rem;
     border-top: 1px solid rgba(0, 0, 0, 0.3);
 }
-
 .muddy-description-container {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
 .muddy-description {
     text-align: center;
     font-size: 24px;
     width: 18rem;
     height: fit-content;
     margin-top: 1rem;
+}
+.muddy-links-container{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+.muddy-linkedin-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.muddy-linkedin-icon{
+    width: 2.5rem;
+    transition: transform 0.2s ease-in-out;
+}
+.muddy-linkedin-icon:hover {
+    transform: scale(1.2);
+}
+.muddy-github-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.muddy-github-icon{
+    width: 2.25rem;
+    transition: transform 0.2s ease-in-out;
+}
+.muddy-github-icon:hover {
+    transform: scale(1.2);
 }
 
 /************************ Dennis ***************************/
@@ -343,52 +419,71 @@
     align-items: center;
     justify-content: center;
 }
-
 .dennis-headshot {
     width: 10rem;
     height: 10rem;
     border-radius: 100px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
-
 .dennis-name-container {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
 .dennis-name {
     font-size: 32px;
 }
-
 .dennis-title-container {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
 .dennis-title {
     font-size: 20px;
 }
-
 .dennis-divider {
     margin-top: 2rem;
     border-top: 1px solid rgba(0, 0, 0, 0.3);
 }
-
 .dennis-description-container {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
 .dennis-description {
     text-align: center;
     font-size: 24px;
     width: 18rem;
     height: fit-content;
 }
-
+.dennis-links-container{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+.dennis-linkedin-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.dennis-linkedin-icon{
+    width: 2.5rem;
+    transition: transform 0.2s ease-in-out;
+}
+.dennis-linkedin-icon:hover {
+    transform: scale(1.2);
+}
+.dennis-github-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.dennis-github-icon{
+    width: 2.25rem;
+    transition: transform 0.2s ease-in-out;
+}
+.dennis-github-icon:hover {
+    transform: scale(1.2);
+}
 
 .about-page-background{
     position: fixed;
