@@ -26,6 +26,11 @@ function NavBar() {
                     </Link>
                         <div className="nav-user-name">Welcome, {sessionUser.firstName}</div>
                     <ProfileButton/>
+                    <div className='about-dev-button-container'>
+                        <Link to={'/about'}>
+                            <button className='about-dev-button'>About Devs</button>
+                        </Link>
+                    </div>
                     <div className='right-nav-button-container'>
                         <Link to={'/discover'}>
                             <button className='discover-button'>Looking for TuneUps?</button>

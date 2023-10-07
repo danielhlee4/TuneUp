@@ -14,6 +14,7 @@ import { getCurrentUser } from './store/session';
 import Discover from './components/Discover/Discover';
 import SearchBar from './components/SearchBar/SearchBar';
 import CreateTuneUps from './components/CreateTuneUps/CreateTuneUps';
+import AboutDevs from './components/AboutDevs/AboutDevs';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -37,7 +38,7 @@ function App() {
         <ProtectedRoute exact path="/search" component={SearchBar} />
         <ProtectedRoute exact path="/create" component={CreateTuneUps} />
 
-        <Route exact path="/about"/>
+        <Route exact path="/about" component={AboutDevs}/>
       </Switch>
     </>
   );
