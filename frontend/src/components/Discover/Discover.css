@@ -21,6 +21,7 @@
 }
 
 .discover-container {
+    min-height: 100vh;
     display: flex;
     position: relative; /* Adjusted */
     background-image: url('../HomePage/home-page-background.png'); /* Assuming you are using a background image */
