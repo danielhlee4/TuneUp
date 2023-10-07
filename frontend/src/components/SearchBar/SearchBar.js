@@ -1,23 +1,20 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
 import { search, clearSearchResults } from "../../store/search";
-import { useDispatch, useSelector } from "react-redux";
-import TuneUp from "../TuneUp/TuneUp";
+import { useDispatch } from "react-redux";
 import "./SearchBar.css"
 import searchbackground from "./search-background.png";
 
 
-export default function SearchBar() {
+export default function SearchBar({onSearch}) {
   const [query, setQuery] = useState("");
-  const history = useHistory();
   const dispatch = useDispatch();
-  const searchResults = useSelector((state) => state.search.results);
 
   const handleSearch = (event) => {
     event.preventDefault();
     if (query.trim() !== "") {
       dispatch(clearSearchResults());
       dispatch(search({ q: query }))
+      onSearch(query);
     }
   };
 
@@ -44,19 +41,11 @@ export default function SearchBar() {
           onChange={handleInputChange}
           onKeyPress={handleKeyPress}
         />
-        <button id="search-button" onClick={handleSearch}></button>
+        <button id="search-button" onClick={handleSearch}>
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
       </div>
-      <div>
-        <ul>
-          {searchResults?.map((result) => {
-            return (
-              <li>
-                <TuneUp tuneUpData={result} />
-              </li>
-            );
-          })}
-        </ul>
-      </div>
+      <div></div>
       <img className="search-background" src={searchbackground}></img>
     </div>
   );

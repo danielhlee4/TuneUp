@@ -20,7 +20,7 @@ router.get("/", async (req, res, next) => {
     const tuneUpResults = await TuneUp.find({
       $or: [
         { genre: new RegExp(query, "i") },
-        { instruments: new RegExp(query, "i") },
+        { instruments: { $elemMatch: { $regex: query, $options: "i" } } },
       ],
     });
 
