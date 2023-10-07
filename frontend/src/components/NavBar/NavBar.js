@@ -26,9 +26,9 @@ function NavBar() {
                     </Link>
                         <div className="nav-user-name">Welcome, {sessionUser.firstName}</div>
                     <ProfileButton/>
-                    <div className='about-dev-button-container'>
+                    <div className='about-dev-button-container1'>
                         <Link to={'/about'}>
-                            <button className='about-dev-button'>About Devs</button>
+                            <button className='about-dev-button1'>About Devs</button>
                         </Link>
                     </div>
                     <div className='right-nav-button-container'>
@@ -53,6 +53,11 @@ function NavBar() {
                         </div>
                         <div className='nav-login-button-container'>
                             <Link className='nav-login-button' to={'/login'}>Login</Link>
+                        </div>
+                        <div className='about-dev-button-container2'>
+                            <Link to={'/about'}>
+                                <button className='about-dev-button2'>About Devs</button>
+                            </Link>
                         </div>
                     </div>
                 </div>
