@@ -166,3 +166,34 @@
 .tuneup-genre-label{
     font-size: 20px;
 }
+
+.create-tuneup-instrument-box {
+    width: 100px;
+    height: 100px;
+    margin: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.create-tuneup-instrument-box > span {
+    font-size: 55px;
+}
+
+.create-tuneup-instrument-box:hover {
+    background-color: rgb(252,172,232);
+}
+
+.create-tuneup-instrument-box:active {
+    outline: 2px solid rgb(155,244,236);
+}
+
+.create-tuneup-instrument-box.active {
+    outline: 2px solid rgb(155,244,236);
+}
