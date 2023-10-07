@@ -4,6 +4,7 @@ import './NavBar.css';
 import { logout } from '../../store/session';
 import tuneuplogo from '../../components/NavBar/tuneuplogo.png'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import ProfileButton from '../ProfileDropDown/ProfileDropDown';
 
 function NavBar() {
     const loggedIn = useSelector(state => !!state.session.user);
@@ -23,10 +24,8 @@ function NavBar() {
                     <Link to={'/home'}>
                         <img className='tuneup-logo1' src={tuneuplogo}></img>
                     </Link>
-                    <Link to={`/users/${sessionUser._id}`}>
                         <div className="nav-user-name">Welcome, {sessionUser.firstName}</div>
-                    </Link>
-                        <button className="signout-button" onClick={logoutUser}>Logout</button>
+                    <ProfileButton/>
                     <div className='right-nav-button-container'>
                         <Link to={'/discover'}>
                             <button className='discover-button'>Looking for TuneUps?</button>

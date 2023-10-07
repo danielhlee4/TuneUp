@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Switch } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from './components/Routes/Routes';
+import { Route } from 'react-router-dom/cjs/react-router-dom.min';
 import NavBar from './components/NavBar/NavBar';
 import MainPage from './components/MainPage/MainPage';
 import LoginForm from './components/SessionForms/LoginForm';
@@ -35,6 +36,8 @@ function App() {
         <ProtectedRoute exact path="/discover" component={Discover} />
         <ProtectedRoute exact path="/search" component={SearchBar} />
         <ProtectedRoute exact path="/create" component={CreateTuneUps} />
+
+        <Route exact path="/about"/>
       </Switch>
     </>
   );

@@ -1,0 +1,94 @@
+.profile-button-container{
+    position: fixed;
+    width: fit-content;
+    height: fit-content;
+    margin-left: 3.5rem;
+    margin-top: -1.9rem;
+}
+
+.profilebutton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 2rem;
+    font-size: 20px;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    transition: 0.2s ease-in-out;
+    background-color: white;
+}
+.profilebutton:hover{
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    background-color: rgb(255, 213, 251);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.profile-dropdown{
+    align-items: center;
+    justify-content: center;
+    display: grid;
+    grid-template-rows: 50% 50%;
+    padding-left: 15px;
+    padding-right: 15px;
+    position: absolute;
+    height: fit-content;
+    width: 10.6rem;
+    margin-left: 3.5rem;
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    transition: 0.2s ease-in-out;
+    background-color: white;
+}
+
+.view-button-container {
+    display: flex;
+    padding: 5px;
+    justify-content: center;
+    align-items: center;
+    grid-area: 1/1/1/1;
+}
+
+.view-profile-button{
+    width: 11rem;
+    height: 2rem;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    transition: 0.2s ease-in-out;
+    background-color: white;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+}
+.view-profile-button:hover {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    background-color: rgb(255, 213, 251);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.sign-out-button-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-area: 2/1/2/1;
+    padding: 5px;
+}
+.sign-out-button{
+    width: 11rem;
+    height: 2rem;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    transition: 0.2s ease-in-out;
+    background-color: white;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+}
+.sign-out-button:hover {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    background-color: rgb(255, 213, 251);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
