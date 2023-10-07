@@ -36,7 +36,7 @@ function Discover() {
         );
         setFilteredTuneUps(results);
       } else {
-        setFilteredTuneUps([]);
+        setFilteredTuneUps(tuneUps);
       }
     },
     [tuneUps]

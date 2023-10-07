@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { search, clearSearchResults } from "../../store/search";
 import { useDispatch } from "react-redux";
 import "./SearchBar.css"
-import searchbackground from "./search-background.png";
 
 
 export default function SearchBar({onSearch}) {
@@ -14,8 +13,8 @@ export default function SearchBar({onSearch}) {
     if (query.trim() !== "") {
       dispatch(clearSearchResults());
       dispatch(search({ q: query }))
-      onSearch(query);
     }
+    onSearch(query);
   };
 
   const handleInputChange = (e) => {
@@ -24,7 +23,7 @@ export default function SearchBar({onSearch}) {
   };
 
   const handleKeyPress = (e) => {
-    if (e.key === "Enter" && query) {
+    if (e.key === "Enter") {
       handleSearch(e);
       setQuery("");
     }
@@ -45,8 +44,6 @@ export default function SearchBar({onSearch}) {
           <i class="fa-solid fa-magnifying-glass"></i>
         </button>
       </div>
-      <div></div>
-      <img className="search-background" src={searchbackground}></img>
     </div>
   );
 }
