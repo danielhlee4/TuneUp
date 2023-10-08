@@ -75,12 +75,11 @@ router.delete("/:id", async (req, res, next) => {
 });
 
 router.post("/register", validateRegisterInput, async (req, res, next) => {
-  // Check to make sure no one has already registered with the proposed email or
-  // username.
+  // Check to make sure no one has already registered with the proposed email
   const user = await User.findOne({ email: req.body.email });
 
   if (user) {
-    // Throw a 400 error if the email address and/or email already exists
+    // Throw a 400 error if the email address already exists
     const err = new Error("Validation Error");
     err.statusCode = 400;
     const errors = {};
@@ -92,7 +91,6 @@ router.post("/register", validateRegisterInput, async (req, res, next) => {
   }
   const profileImageUrl = DEFAULT_PROFILE_IMAGE_URL;
 
-  // Otherwise create a new user
   const newUser = new User({
     email: req.body.email,
     firstName: req.body.firstName,
@@ -135,12 +133,15 @@ router.patch(
   "/:id",
   // ensureAuthenticated,
   // ensureAuthorized,
-  validateUserData,
+  // validateUserData,
   singleMulterUpload("image"),
   async (req, res, next) => {
     try {
       const { id } = req.params;
       const updateData = {
+        ...(req.body.email && { email: req.body.email }),
+        ...(req.body.firstName && { firstName: req.body.firstName }),
+        ...(req.body.lastName && { lastName: req.body.lastName }),
         ...(req.body.instruments && { instruments: req.body.instruments }),
         ...(req.body.genres && { genres: req.body.genres }),
         ...(req.body.address && { address: req.body.address }),
