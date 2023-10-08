@@ -16,7 +16,7 @@ function UserUpdateForm() {
   const [email, setEmail] = useState(currentUser.email);
   const [streetName, setStreetName] = useState("");
   const [city, setCity] = useState("");
-  const [state, setStates] = useState("");
+  const [states, setStates] = useState("");
   const [zip, setZip] = useState("");
   const [pianoChecked, setPianoChecked] = useState(false);
   const [guitarChecked, setGuitarChecked] = useState(false);
@@ -225,8 +225,8 @@ function UserUpdateForm() {
                 <input
                   className="update-state-input"
                   type="text"
-                  value={state}
-                  onChange={updates("state")}
+                  value={states}
+                  onChange={updates("states")}
                   placeholder="NY"
                 ></input>
               </div>
