@@ -2,6 +2,8 @@ import './AboutDevs.css'
 import background from '../../components/HomePage/home-page-background.png'
 import danHeadshot from './DanHeadshot.png'
 import seanHeadshot from './SeanHeadshot.jpeg'
+import dennisHeadshot from './DennisHeadshot.png'
+import klodianHeadshot from './KlodianHeadshot.png'
 import linkedinIcon from './linkedinIcon.png'
 import githubIcon from './githubIcon.png'
 function AboutDevs() {
@@ -47,7 +49,7 @@ function AboutDevs() {
                 </div>
                 <div className='klodian-container'>
                     <div className='klodian-headshot-container'>
-                        <img className="klodian-headshot" src={danHeadshot}></img>
+                        <img className="klodian-headshot" src={klodianHeadshot}></img>
                     </div>
                     <div className='klodian-name-container'>
                         <div className='klodian-name'>Klodian Behrami</div>
@@ -145,7 +147,7 @@ function AboutDevs() {
                 </div>
                 <div className='dennis-container'>
                     <div className='dennis-headshot-container'>
-                        <img className="dennis-headshot" src={danHeadshot}></img>
+                        <img className="dennis-headshot" src={dennisHeadshot}></img>
                     </div>
                     <div className='dennis-name-container'>
                         <div className='dennis-name'>Dennis Lee</div>
