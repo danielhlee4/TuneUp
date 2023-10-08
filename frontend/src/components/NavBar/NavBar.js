@@ -4,6 +4,7 @@ import './NavBar.css';
 import { logout } from '../../store/session';
 import tuneuplogo from '../../components/NavBar/tuneuplogo.png'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import ProfileButton from '../ProfileDropDown/ProfileDropDown';
 
 function NavBar() {
     const loggedIn = useSelector(state => !!state.session.user);
@@ -23,10 +24,13 @@ function NavBar() {
                     <Link to={'/home'}>
                         <img className='tuneup-logo1' src={tuneuplogo}></img>
                     </Link>
-                    <Link to={`/users/${sessionUser._id}`}>
                         <div className="nav-user-name">Welcome, {sessionUser.firstName}</div>
-                    </Link>
-                        <button className="signout-button" onClick={logoutUser}>Logout</button>
+                    <ProfileButton/>
+                    <div className='about-dev-button-container1'>
+                        <Link to={'/about'}>
+                            <button className='about-dev-button1'>About Devs</button>
+                        </Link>
+                    </div>
                     <div className='right-nav-button-container'>
                         <Link to={'/discover'}>
                             <button className='discover-button'>Looking for TuneUps?</button>
@@ -49,6 +53,11 @@ function NavBar() {
                         </div>
                         <div className='nav-login-button-container'>
                             <Link className='nav-login-button' to={'/login'}>Login</Link>
+                        </div>
+                        <div className='about-dev-button-container2'>
+                            <Link to={'/about'}>
+                                <button className='about-dev-button2'>About Devs</button>
+                            </Link>
                         </div>
                     </div>
                 </div>

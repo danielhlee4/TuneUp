@@ -9,13 +9,13 @@
 }
 
 .tuneup-logo1 {
-    position: absolute;
+    position: fixed;
     width: 7rem;
     margin-left: 47vw;
-    margin-top: -1rem;
+    margin-top: 0rem;
 }
 .tuneup-logo2 {
-    position: absolute;
+    position: fixed;
     width: 7rem;
     margin-left: 47vw;
 }
@@ -134,7 +134,7 @@
     margin-top: 1rem;
     height: fit-content;
     width: fit-content;
-    margin-left: 160px;
+    margin-left: 100px;
 
 }
 
@@ -169,4 +169,64 @@
     margin-left: 65vw;
     margin-top: -2.5rem;
 
+}
+
+.about-dev-button-container1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    margin-left: 20rem;
+    margin-top: -3rem;
+    width: 13rem;
+    height: 4rem;
+}
+
+.about-dev-button1{
+    width: 8rem;
+    font-size: 26px;
+    font-family: 'Bebas Neue', sans-serif;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    transition: 0.2s ease-in-out;
+    background-color: white;
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+
+.about-dev-button1:hover{
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    background-color: rgb(255, 213, 251);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.about-dev-button-container2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    margin-left: 20rem;
+    margin-top: -0.5rem;
+    width: 13rem;
+    height: 4rem;
+}
+
+.about-dev-button2 {
+    width: 8rem;
+    font-size: 26px;
+    font-family: 'Bebas Neue', sans-serif;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    transition: 0.2s ease-in-out;
+    background-color: white;
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+
+.about-dev-button2:hover {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    background-color: rgb(255, 213, 251);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
 }
