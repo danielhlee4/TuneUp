@@ -4,6 +4,7 @@ import danHeadshot from './DanHeadshot.png'
 import seanHeadshot from './SeanHeadshot.jpeg'
 import dennisHeadshot from './DennisHeadshot.png'
 import klodianHeadshot from './KlodianHeadshot.png'
+import muddyHeadshot from './MuddyHeadshot.jpg'
 import linkedinIcon from './linkedinIcon.png'
 import githubIcon from './githubIcon.png'
 function AboutDevs() {
@@ -114,7 +115,7 @@ function AboutDevs() {
                 </div>
                 <div className='muddy-container'>
                     <div className='muddy-headshot-container'>
-                        <img className="muddy-headshot" src={danHeadshot}></img>
+                        <img className="muddy-headshot" src={muddyHeadshot}></img>
                     </div>
                     <div className='muddy-name-container'>
                         <div className='muddy-name'>Mudassar Memon</div>
@@ -134,12 +135,12 @@ function AboutDevs() {
                     </div>
                     <div className='muddy-links-container'>
                         <div className='muddy-linkedin-container'>
-                            <a href='https://www.linkedin.com/in/danlee-/' target='_blank' rel='noreferrer'>
+                            <a href='https://www.linkedin.com/in/mudassar-memon-0a48b1125/' target='_blank' rel='noreferrer'>
                                 <img className='muddy-linkedin-icon' src={linkedinIcon}></img>
                             </a>
                         </div>
                         <div className='muddy-github-container'>
-                            <a href='https://github.com/danielhlee4' target='_blank' rel='noreferrer'>
+                            <a href='https://github.com/MudassarMemon' target='_blank' rel='noreferrer'>
                                 <img className='muddy-github-icon' src={githubIcon}></img>
                             </a>
                         </div>
