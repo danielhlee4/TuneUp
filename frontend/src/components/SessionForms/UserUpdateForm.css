@@ -41,6 +41,9 @@
     border-radius: 10px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
     padding: 10px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-around;
 }
 
 .update-form-right {
@@ -68,10 +71,13 @@
 }
 
 .update-first-name-input {
+    border: 1px solid gray;
+    border-radius: 8px;
     width: 98%;
     margin-top: 3.5rem;
     height: 2rem;
-    font-size: 18px;
+    font-size: 16px;
+    padding-left: 10px;
 }
 
 .update-last-name-label{
@@ -80,10 +86,13 @@
     margin-top: 0.5rem;
 }
 .update-last-name-input {
+    border: 1px solid gray;
+    border-radius: 8px;
     width: 98%;
     margin-top: 2rem;
     height: 2rem;
-    font-size: 18px;
+    font-size: 16px;
+    padding-left: 10px;
 }
 
 .update-email-label{
@@ -93,10 +102,13 @@
 }
 
 .update-email-input {
+    border: 1px solid rgb(128, 128, 128);
+    border-radius: 8px;
     width: 98%;
     margin-top: 2rem;
     height: 2rem;
-    font-size: 18px;
+    font-size: 16px;
+    padding-left: 10px;
 }
 
 .address-header {
@@ -113,10 +125,13 @@
 }
 
 .update-address-input {
+    border: 1px solid gray;
+    border-radius: 8px;
     width: 98%;
     margin-top: 3.5rem;
     height: 2rem;
-    font-size: 18px;
+    font-size: 16px;
+    padding-left: 10px;
 }
 
 .update-city-label {
@@ -126,10 +141,13 @@
 }
 
 .update-city-input {
+    border: 1px solid gray;
+    border-radius: 8px;
     width: 98%;
     margin-top: 2rem;
     height: 2rem;
-    font-size: 18px;
+    font-size: 16px;
+    padding-left: 10px;
 }
 
 .update-state-label {
@@ -139,10 +157,13 @@
 }
 
 .update-state-input {
+    border: 1px solid gray;
+    border-radius: 8px;
     width: 98%;
     margin-top: 2rem;
     height: 2rem;
-    font-size: 18px;
+    font-size: 16px;
+    padding-left: 10px;
 }
 
 .update-zip-code-label {
@@ -152,10 +173,13 @@
 }
 
 .update-zip-code-input {
+    border: 1px solid gray;
+    border-radius: 8px;
     width: 98%;
     margin-top: 2rem;
     height: 2rem;
-    font-size: 18px;
+    font-size: 16px;
+    padding-left: 10px;
 }
 
 .musical-info-header{
@@ -236,8 +260,15 @@
 }
 
 .genre-dropdown{
-    width: 5rem;
+    width: 10rem;
     font-weight: 600;
+    text-align: center;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    cursor: pointer;
 }
 
 .instrument-box {
@@ -265,6 +296,8 @@
 
 .instrument-box:hover {
     background-color: rgb(252,172,232);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    transform: scale(1.1);
 }
 
 .instruments-container {
@@ -273,10 +306,6 @@
     justify-content: center; 
     align-items: center;
     gap: 20px;
-}
-
-.instrument-box:active {
-    outline: 2px solid rgb(155,244,236);
 }
 
 .instrument-box.active {
