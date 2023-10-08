@@ -25,7 +25,7 @@ function AboutDevs() {
                     <div className='dan-title-container'>
                         <div className='dan-title'>Team Lead</div>
                     </div>
-                    <div className='dan-divider'></div>
+                    <div className='dan-divider1'></div>
                     <div className='dan-description-container'>
                         <div className='dan-description'>
                             Dan led the development of TuneUp by playing a critical role as the lead
@@ -35,6 +35,7 @@ function AboutDevs() {
                             enhancing the user experience, and showcasing the app's unique features.
                         </div>
                     </div>
+                    <div className='dan-divider2'></div>
                     <div className='dan-links-container'>
                         <div className='dan-linkedin-container'>
                             <a href='https://www.linkedin.com/in/danlee-/' target='_blank' rel='noreferrer'>
@@ -58,7 +59,7 @@ function AboutDevs() {
                     <div className='klodian-title-container'>
                         <div className='klodian-title'>Backend Lead</div>
                     </div>
-                    <div className='klodian-divider'></div>
+                    <div className='klodian-divider1'></div>
                     <div className='klodian-description-container'>
                         <div className='klodian-description'>
                             Dan led the development of TuneUp, an innovative music collaboration
@@ -67,6 +68,7 @@ function AboutDevs() {
                             in creating advanced map components using Google Maps API was crucial for
                         </div>
                     </div>
+                    <div className='klodian-divider2'></div>
                     <div className='klodian-links-container'>
                         <div className='klodian-linkedin-container'>
                             <a href='https://www.linkedin.com/in/danlee-/' target='_blank' rel='noreferrer'>
@@ -90,7 +92,7 @@ function AboutDevs() {
                     <div className='sean-title-container'>
                         <div className='sean-title'>Frontend Lead</div>
                     </div>
-                    <div className='sean-divider'></div>
+                    <div className='sean-divider1'></div>
                     <div className='sean-description-container'>
                         <div className='sean-description'>
                             Sean lead the frontend development of TuneUp as the Lead Frontend 
@@ -100,6 +102,7 @@ function AboutDevs() {
                             Express backend, resulting in an efficient and user-friendly platform.
                         </div>
                     </div>
+                    <div className='sean-divider2'></div>
                     <div className='sean-links-container'>
                         <div className='sean-linkedin-container'>
                             <a href='https://www.linkedin.com/in/seanjeun/' target='_blank' rel='noreferrer'>
@@ -123,7 +126,7 @@ function AboutDevs() {
                     <div className='muddy-title-container'>
                         <div className='muddy-title'>Backend Co-Lead</div>
                     </div>
-                    <div className='muddy-divider'></div>
+                    <div className='muddy-divider1'></div>
                     <div className='muddy-description-container'>
                         <div className='muddy-description'>
                             Mudassar served as the co-lead backend engineer for the TuneUp project. 
@@ -133,6 +136,7 @@ function AboutDevs() {
                             platform for TuneUp's musician community.
                         </div>
                     </div>
+                    <div className='muddy-divider2'></div>
                     <div className='muddy-links-container'>
                         <div className='muddy-linkedin-container'>
                             <a href='https://www.linkedin.com/in/mudassar-memon-0a48b1125/' target='_blank' rel='noreferrer'>
@@ -156,7 +160,7 @@ function AboutDevs() {
                     <div className='dennis-title-container'>
                         <div className='dennis-title'>Frontend Co-Lead</div>
                     </div>
-                    <div className='dennis-divider'></div>
+                    <div className='dennis-divider1'></div>
                     <div className='dennis-description-container'>
                         <div className='dennis-description'>
                             Dennis served as the co-lead frontend engineer for TuneUp project. 
@@ -166,6 +170,7 @@ function AboutDevs() {
                             and reliable interface between frontend and backend services.
                         </div>
                     </div>
+                    <div className='dennis-divider2'></div>
                     <div className='dennis-links-container'>
                         <div className='dennis-linkedin-container'>
                             <a href='https://linkedin.com/in/dennislee-' target='_blank' rel='noreferrer'>

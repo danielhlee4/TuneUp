@@ -36,7 +36,7 @@
 
 .dan-container {
     display: grid;
-    grid-template-rows: 20% 10% 4% 1% 60% 5%; 
+    grid-template-rows: 20% 10% 4% 1% 59% 1% 5%; 
     border: 1px solid rgba(0, 0, 0, 0.3);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
     padding-left: 10px;
@@ -77,8 +77,12 @@
 .dan-title {
     font-size: 20px;
 }
-.dan-divider {
+.dan-divider1 {
     margin-top: 2rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.3);
+}
+.dan-divider2 {
+    margin-top: -2rem;
     border-top: 1px solid rgba(0, 0, 0, 0.3);
 }
 .dan-description-container {
@@ -128,7 +132,7 @@
 
 .klodian-container {
     display: grid;
-    grid-template-rows: 20% 10% 4% 1% 60% 5%; 
+    grid-template-rows: 20% 10% 4% 1% 59% 1% 5%; 
     border: 1px solid rgba(0, 0, 0, 0.3);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
     padding-left: 10px;
@@ -169,8 +173,12 @@
 .klodian-title {
     font-size: 20px;
 }
-.klodian-divider {
+.klodian-divider1 {
     margin-top: 2rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.3);
+}
+.klodian-divider2 {
+    margin-top: -2rem;
     border-top: 1px solid rgba(0, 0, 0, 0.3);
 }
 .klodian-description-container {
@@ -218,7 +226,7 @@
 
 .sean-container {
     display: grid;
-    grid-template-rows: 20% 10% 4% 1% 60% 5%; 
+    grid-template-rows: 20% 10% 4% 1% 59% 1% 5%; 
     border: 1px solid rgba(0, 0, 0, 0.3);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
     padding-left: 10px;
@@ -259,9 +267,12 @@
 .sean-title {
     font-size: 20px;
 }
-
-.sean-divider {
+.sean-divider1 {
     margin-top: 2rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.3);
+}
+.sean-divider2 {
+    margin-top: -2rem;
     border-top: 1px solid rgba(0, 0, 0, 0.3);
 }
 .sean-description-container {
@@ -309,7 +320,7 @@
 
 .muddy-container {
     display: grid;
-    grid-template-rows: 20% 10% 4% 1% 60% 5%; 
+    grid-template-rows: 20% 10% 4% 1% 59% 1% 5%; 
     border: 1px solid rgba(0, 0, 0, 0.3);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
     padding-left: 10px;
@@ -350,8 +361,12 @@
 .muddy-title {
     font-size: 20px;
 }
-.muddy-divider {
+.muddy-divider1 {
     margin-top: 2rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.3);
+}
+.muddy-divider2 {
+    margin-top: -2rem;
     border-top: 1px solid rgba(0, 0, 0, 0.3);
 }
 .muddy-description-container {
@@ -399,7 +414,7 @@
 
 .dennis-container {
     display: grid;
-    grid-template-rows: 20% 10% 4% 1% 60% 5%; 
+    grid-template-rows: 20% 10% 4% 1% 59% 1% 5%; 
     border: 1px solid rgba(0, 0, 0, 0.3);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
     padding-left: 10px;
@@ -440,8 +455,12 @@
 .dennis-title {
     font-size: 20px;
 }
-.dennis-divider {
+.dennis-divider1 {
     margin-top: 2rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.3);
+}
+.dennis-divider2 {
+    margin-top: -2rem;
     border-top: 1px solid rgba(0, 0, 0, 0.3);
 }
 .dennis-description-container {

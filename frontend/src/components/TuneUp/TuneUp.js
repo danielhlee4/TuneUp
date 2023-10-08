@@ -5,6 +5,7 @@ import { fetchUsers } from "../../store/users";
 import { getTuneUps } from "../../store/tuneUps";
 import { formatDate, formatTime, formatDateTime } from "../../util/dateUtils";
 import { getUsers } from "../../store/users";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import './TuneUp.css'
 
 
@@ -62,7 +63,9 @@ const TuneUp = ({tuneUpData}) => {
                     <ul> Musicians attending: 
                         {tuneUp.connections?.map((user) => {
                             return (<li key={user._id}>
-                                {user?.firstName ? user?.firstName : users[user].firstName}
+                                <Link to={`/users/${user._id}`}>
+                                    {user?.firstName ? user?.firstName : users[user].firstName}
+                                </Link>
                             </li>)
                         })}
                     </ul>
