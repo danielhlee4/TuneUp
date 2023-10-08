@@ -9,7 +9,7 @@ function AboutDevs() {
     return (
         <div className='about-dev-page-container'>
             <div className='about-us-container'>
-                <div className='about-us'>About Us</div>
+                <div className='about-us'>The fantastic 5</div>
             </div>
             <div className="about-dev-page-grid-container">
                 <div className='dan-container'>
@@ -62,8 +62,6 @@ function AboutDevs() {
                             platform, by seamlessly integrating the MERN stack. His leadership ensured
                             smooth coordination between frontend and backend teams. Dan's expertise
                             in creating advanced map components using Google Maps API was crucial for
-                            facilitating local musical meetups, enhancing the user experience, and
-                            showcasing the app's unique features.
                         </div>
                     </div>
                     <div className='klodian-links-container'>
@@ -92,12 +90,11 @@ function AboutDevs() {
                     <div className='sean-divider'></div>
                     <div className='sean-description-container'>
                         <div className='sean-description'>
-                            Sean served as the Frontend Lead for the TuneUp platform, taking 
-                            on a pivotal role in the development of the user interface to 
-                            ensure a seamless user experience. With a primary focus on React, 
-                            Sean dedicated efforts to create an engaging and user-friendly 
-                            frontend. His responsibilities extended to guaranteeing effective 
-                            communication between the frontend and the Express backend.
+                            Sean lead the frontend development of TuneUp as the Lead Frontend 
+                            Engineer. Sean developed the React frontend, including countless 
+                            components, JSX elements, reducers, actions, selectors, and 
+                            middlewares. His role ensured seamless communication with the 
+                            Express backend, resulting in an efficient and user-friendly platform.
                         </div>
                     </div>
                     <div className='sean-links-container'>
@@ -126,12 +123,11 @@ function AboutDevs() {
                     <div className='muddy-divider'></div>
                     <div className='muddy-description-container'>
                         <div className='muddy-description'>
-                            Mudassar co-led the backend development of TuneUp. 
-                            Proficient in the MERN stack, he excelled in building a secure backend 
-                            with Express/Validator/Router. Mudassar's strong communication with the 
-                            frontend team ensured seamless integration. Leveraging Passport.js for 
-                            authentication and Mongoose for MongoDB operations, he played a key 
-                            role in creating a secure platform for TuneUp's musician community.
+                            Mudassar served as the co-lead backend engineer for the TuneUp project. 
+                            He excelled in building a secure backend with Express/Validator/Router. 
+                            Leveraging Passport.js for authentication and Mongoose for 
+                            MongoDB operations, he played a key role in creating a secure 
+                            platform for TuneUp's musician community.
                         </div>
                     </div>
                     <div className='muddy-links-container'>
@@ -160,22 +156,21 @@ function AboutDevs() {
                     <div className='dennis-divider'></div>
                     <div className='dennis-description-container'>
                         <div className='dennis-description'>
-                            Dan led the development of TuneUp, an innovative music collaboration
-                            platform, by seamlessly integrating the MERN stack. His leadership ensured
-                            smooth coordination between frontend and backend teams. Dan's expertise
-                            in creating advanced map components using Google Maps API was crucial for
-                            facilitating local musical meetups, enhancing the user experience, and
-                            showcasing the app's unique features.
+                            Dennis served as the co-lead frontend engineer for TuneUp project. 
+                            He engineered the vital search feature using the MERN stack. 
+                            His expertise in React resulted in seamless and responsive components. He 
+                            collaborated effectively with the backend team, ensuring a robust 
+                            and reliable interface between frontend and backend services.
                         </div>
                     </div>
                     <div className='dennis-links-container'>
                         <div className='dennis-linkedin-container'>
-                            <a href='https://www.linkedin.com/in/danlee-/' target='_blank' rel='noreferrer'>
+                            <a href='https://linkedin.com/in/dennislee-' target='_blank' rel='noreferrer'>
                                 <img className='dennis-linkedin-icon' src={linkedinIcon}></img>
                             </a>
                         </div>
                         <div className='dennis-github-container'>
-                            <a href='https://github.com/danielhlee4' target='_blank' rel='noreferrer'>
+                            <a href='https://github.com/dennislee1499' target='_blank' rel='noreferrer'>
                                 <img className='dennis-github-icon' src={githubIcon}></img>
                             </a>
                         </div>

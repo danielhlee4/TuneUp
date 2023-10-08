@@ -22,10 +22,8 @@
     grid-area: 2/1/2/1;
     grid-template-columns: repeat(5, 1fr);
     grid-gap: 20px;
-    border: 2px solid red;
     position: fixed;
-    margin-top: 8rem;
-    margin-left: -2px;
+    margin-top: 7rem;
     width: 98.7%;
     height: 75%;
     padding-right: 10px;
@@ -94,6 +92,7 @@
     font-size: 24px;
     width: 18rem;
     height: fit-content;
+    margin-top: 2rem;
 }
 .dan-links-container{
     display: grid;
@@ -365,7 +364,7 @@
     font-size: 24px;
     width: 18rem;
     height: fit-content;
-    margin-top: 1rem;
+    margin-top: -2rem;
 }
 .muddy-links-container{
     display: grid;
@@ -455,6 +454,7 @@
     font-size: 24px;
     width: 18rem;
     height: fit-content;
+    margin-top: -2rem;
 }
 .dennis-links-container{
     display: grid;
