@@ -63,7 +63,7 @@ export const createTuneUp = (tuneUp) => async (dispatch) => {
 export const updateTuneUp = (updatedTuneUp) => async (dispatch) => {
   const res = await jwtFetch(`/api/tuneUps/${updatedTuneUp._id}`, {
     method: "PATCH",
-    body: updatedTuneUp,
+    body: JSON.stringify(updatedTuneUp),
   });
 
   if (res.ok) {
