@@ -87,6 +87,7 @@ const TuneUp = ({tuneUpData}) => {
                         </div>
                         <div className="right-top-location">
                             <DistanceCalculator address1={tuneUp.address} address2={sessionUser.address}/>
+                            {/* <DistanceCalculator address1="90 5th Ave, New York, NY" address2="Columbus Cir, New York, NY" /> */}
                         </div>
                         <div className="right-top-group-size">
                             party size: {tuneUp.connections.length + 1}

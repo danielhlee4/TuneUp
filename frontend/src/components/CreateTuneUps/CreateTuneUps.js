@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 import { createTuneUp } from "../../store/tuneUps";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function CreateTuneUps() {
   const months = [
@@ -43,6 +44,7 @@ function CreateTuneUps() {
   const [year, setYear] = useState(new Date().getFullYear());
   const currentYear = new Date().getFullYear();
   const monthIndex = months.indexOf(month);
+  const history = useHistory();
 
   const updates = (field) => {
     let setState;
@@ -203,6 +205,7 @@ function CreateTuneUps() {
       pendingConnections: [],
     };
     dispatch(createTuneUp(newTuneUp));
+    history.push("/discover")
   };
 
   const selectedStyle = {

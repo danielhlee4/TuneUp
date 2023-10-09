@@ -3,6 +3,9 @@ import React, { useEffect, useState } from 'react';
 function DistanceCalculator({ address1, address2 }) {
   const [distance, setDistance] = useState(null);
 
+  console.log("address1:", address1);
+  console.log("address2:", address2);
+
   const calculateDistance = async () => {
     const endpoint = `http://localhost:5001/api/distance/getDistance?address1=${encodeURIComponent(address1)}&address2=${encodeURIComponent(address2)}`;
 
