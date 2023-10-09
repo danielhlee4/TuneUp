@@ -8,7 +8,7 @@ function MainPage() {
     <div className="main-container">
       <div className="intro-text">Tune up with your local <br /> musicians!</div>
         <Link to={'/login'}>
-          <a href="/ogin" class="bn5">Get Started</a>
+          <a href="/ogin" className="bn5">Get Started</a>
         </Link>
       <footer>
             <div className='scrolling-text'>Copyright &copy; 2023 TuneUp | Developed by: Dan L. Klodian B. Mudassar M. Dennis L. Sean J.</div>

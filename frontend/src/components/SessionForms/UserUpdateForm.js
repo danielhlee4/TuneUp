@@ -113,7 +113,7 @@ function UserUpdateForm() {
   let genreArr = [genre];
   const handleUpdate = async (e) => {
     e.preventDefault();
-    address = `${streetName}, ${city}, ${state}, ${zip}`;
+    address = `${streetName}, ${city}, ${states}, ${zip}`;
     if (pianoChecked) {
       instruments.push("Piano");
     }
