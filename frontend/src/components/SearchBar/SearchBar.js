@@ -25,7 +25,6 @@ export default function SearchBar({onSearch}) {
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
       handleSearch(e);
-      setQuery("");
     }
   };
 
@@ -35,13 +34,14 @@ export default function SearchBar({onSearch}) {
         <input
           type="text"
           id="search-input"
-          placeholder=""
+          placeholder="Search by genre or instrument"
           value={query}
           onChange={handleInputChange}
           onKeyPress={handleKeyPress}
+          onFocus={() => setQuery("")}
         />
         <button id="search-button" onClick={handleSearch}>
-          <i class="fa-solid fa-magnifying-glass"></i>
+          <i className="fa-solid fa-magnifying-glass"></i>
         </button>
       </div>
     </div>

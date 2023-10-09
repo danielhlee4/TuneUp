@@ -47,7 +47,7 @@ function MultipleZipcodeMap({ zipcodes }) {
           // Check if there's only one zipcode
           if (zipcodes.length === 1) {
             createdMap.setCenter(coordinatesArray[0]);
-            createdMap.setZoom(14); // Set your desired zoom level for a single zipcode
+            createdMap.setZoom(12);
           } else {
               createdMap.fitBounds(bounds);
           }
