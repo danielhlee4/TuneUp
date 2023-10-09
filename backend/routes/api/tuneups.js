@@ -14,7 +14,7 @@ router.get("/", async (req, res, next) => {
   try {
     const tuneUps = await TuneUp.find({})
       .populate("connections")
-      .populate("pendingConnections");
+      // .populate("pendingConnections");
     res.status(200).json(tuneUps);
   } catch (error) {
     next(error);

@@ -8,6 +8,7 @@ import { getUsers } from "../../store/users";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import './TuneUp.css'
 import jwtFetch from "../../store/jwt";
+import DistanceCalculator from "../Map/DistanceCalculator";
 
 
 const TuneUp = ({tuneUpData}) => {
@@ -21,6 +22,8 @@ const TuneUp = ({tuneUpData}) => {
         sessionUser.hostedTuneUps?.includes(tuneUp._id) || 
         sessionUser.joinedTuneUps?.includes(tuneUp._id)
     );
+
+
     const handleAcceptRequest = async (requestingUserId) => {
         const response = await jwtFetch(`/api/tuneups/${tuneUp._id}`, {
             method: 'PATCH',
@@ -83,7 +86,7 @@ const TuneUp = ({tuneUpData}) => {
                             {formatDateTime(tuneUp.date)}
                         </div>
                         <div className="right-top-location">
-                            {/* add dans distance from component */}
+                            <DistanceCalculator address1={tuneUp.address} address2={sessionUser.address}/>
                         </div>
                         <div className="right-top-group-size">
                             party size: {tuneUp.connections.length + 1}
@@ -112,17 +115,26 @@ const TuneUp = ({tuneUpData}) => {
                     <ul> Musicians attending: 
                         {tuneUp.connections?.map((user) => {
                             return (<li key={user?._id}>
+                                {user?._id ?
                                 <Link to={`/users/${user?._id}`}>
-                                    {user?.firstName ? user?.firstName : users[user].firstName}
-                                </Link>
+                                 {user?.firstName} 
+                                </Link> 
+                                : <Link to={`/users/${user}`}>
+                                    {users[user].firstName}
+                                </Link> }
                             </li>)
                         })}
                     </ul>
                 </div>
                 <div className="tuneUp-footer">
-                    { !userIsPartOfTuneUp && 
-                        <button className="request-join-button" onClick={handleRequestToJoin}>
+                    { !userIsPartOfTuneUp && !tuneUp.pendingConnections?.includes(sessionUser._id) &&
+                        <button className="request-join-button" onClick={(e) => {e.stopPropagation(); handleRequestToJoin()}}>
                             Request to Join
+                        </button>
+                    }
+                    { tuneUp.pendingConnections?.includes(sessionUser._id) && 
+                        <button className="requested-button" disabled>
+                            Requested
                         </button>
                     }
                     { (sessionUser._id === tuneUp.host) && 

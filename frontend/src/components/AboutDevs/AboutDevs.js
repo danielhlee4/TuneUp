@@ -12,7 +12,7 @@ function AboutDevs() {
     return (
         <div className='about-dev-page-container'>
             <div className='about-us-container'>
-                <div className='about-us'>The fantastic 5</div>
+                <div className='about-us'>The Tune Squad</div>
             </div>
             <div className="about-dev-page-grid-container">
                 <div className='dan-container'>
@@ -57,15 +57,16 @@ function AboutDevs() {
                         <div className='klodian-name'>Klodian Behrami</div>
                     </div>
                     <div className='klodian-title-container'>
-                        <div className='klodian-title'>Backend Lead</div>
+                        <div className='klodian-title'>Flex-Engineer</div>
                     </div>
                     <div className='klodian-divider1'></div>
                     <div className='klodian-description-container'>
                         <div className='klodian-description'>
-                            Dan led the development of TuneUp, an innovative music collaboration
-                            platform, by seamlessly integrating the MERN stack. His leadership ensured
-                            smooth coordination between frontend and backend teams. Dan's expertise
-                            in creating advanced map components using Google Maps API was crucial for
+                            As a Flex Engineer, Klodian became an integral part of both the frontend 
+                            and backend development teams in the TuneUp project, demonstrating exceptional
+                            adaptability and comprehensive full-stack capabilities. He actively engaged in 
+                            implementing the pivotal 'Connections' feature, which enabled users and tune-ups 
+                            to establish meaningful connections within the platform.
                         </div>
                     </div>
                     <div className='klodian-divider2'></div>
@@ -124,12 +125,12 @@ function AboutDevs() {
                         <div className='muddy-name'>Mudassar Memon</div>
                     </div>
                     <div className='muddy-title-container'>
-                        <div className='muddy-title'>Backend Co-Lead</div>
+                        <div className='muddy-title'>Backend Lead</div>
                     </div>
                     <div className='muddy-divider1'></div>
                     <div className='muddy-description-container'>
                         <div className='muddy-description'>
-                            Mudassar served as the co-lead backend engineer for the TuneUp project. 
+                            Mudassar served as the lead backend engineer for the TuneUp project. 
                             He excelled in building a secure backend with Express/Validator/Router. 
                             Leveraging Passport.js for authentication and Mongoose for 
                             MongoDB operations, he played a key role in creating a secure 
