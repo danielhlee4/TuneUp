@@ -3,6 +3,7 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const TuneUp = mongoose.model("TuneUp");
 const User = mongoose.model("User");
+const { restoreUser } = require("../../config/passport.js");
 
 const {
   ensureAuthenticated,
@@ -148,6 +149,8 @@ router.delete(
 );
 
 router.post("/:id/join", ensureAuthenticated, async (req, res, next) => {
+  const user = req.user;
+
   try {
     const tuneUp = await TuneUp.findById(req.params.id);
     if (!tuneUp) {
@@ -162,6 +165,7 @@ router.post("/:id/join", ensureAuthenticated, async (req, res, next) => {
       await user.save();
       await tuneUp.save();
     }
+    console.log(user);
 
     res.json(tuneUp);
   } catch (error) {
