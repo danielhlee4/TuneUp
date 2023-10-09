@@ -49,8 +49,10 @@ function Discover() {
    }, [dispatch]);
 
 
-  const zipcodesArray = tuneUps.map(tuneUp => extractStateAndZipcode(tuneUp.address)).filter(Boolean);
-  const displayedTuneUps = filteredTuneUps.length ? filteredTuneUps : tuneUps;
+   const displayedTuneUps = filteredTuneUps.length ? filteredTuneUps : tuneUps;
+   const zipcodesArray = useMemo(() => {
+    return displayedTuneUps.map(tuneUp => extractStateAndZipcode(tuneUp.address)).filter(Boolean);
+}, [displayedTuneUps]);
 
 
   return (
@@ -72,8 +74,8 @@ function Discover() {
         ""
       )}
       <div className="discover-map-container">
-        {/* <MultipleZipcodeMapWrapper zipcodes={zipcodesArray} />   */}
-        <MultipleZipcodeMapWrapper zipcodes={["NY 10012"]} />
+        <MultipleZipcodeMapWrapper key={zipcodesArray.join(',')} zipcodes={zipcodesArray} />
+        {/* <MultipleZipcodeMapWrapper zipcodes={["NY 10012"]} /> */}
       </div>
       <footer>
         <div className="scrolling-text-homepage">

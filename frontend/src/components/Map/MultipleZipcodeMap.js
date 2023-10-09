@@ -44,7 +44,13 @@ function MultipleZipcodeMap({ zipcodes }) {
             });
           });
   
-          createdMap.fitBounds(bounds);
+          // Check if there's only one zipcode
+          if (zipcodes.length === 1) {
+            createdMap.setCenter(coordinatesArray[0]);
+            createdMap.setZoom(12);
+          } else {
+              createdMap.fitBounds(bounds);
+          }
   
           setMap(createdMap);
         });
