@@ -29,7 +29,7 @@
 }
 
 .tuneup-create-header{
-    position: fixed;
+    position: absolute;
     margin-top: -48rem;
     font-size: 64px;
 }
