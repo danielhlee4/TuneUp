@@ -21,6 +21,7 @@ function Discover() {
   const users = useSelector(getUsers);
   const dispatch = useDispatch();
   const [filteredTuneUps, setFilteredTuneUps] = useState([]);
+  
 
 
   const handleTuneUpSearch = useCallback(
