@@ -47,6 +47,7 @@ const TuneUp = ({tuneUpData}) => {
             },
             body: JSON.stringify({
                 pendingConnections: tuneUp.pendingConnections.filter(id => id !== requestingUserId),
+                connections: [...tuneUp.connections]
             }),
         });
         const updatedTuneUp = await response.json();
