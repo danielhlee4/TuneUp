@@ -15,14 +15,15 @@ function UserProfilePage() {
     const { id } = useParams()
     const user = useSelector(state => state.users[id])
     const userTuneups = useSelector(getTuneUps)
-    let joinedTuneups = []
-    let hostedTuneups = []
+    let joinedTuneup = []
+    let hostedTuneup = []
 
+    console.log(user)
     userTuneups.map(tuneup => {
-        if (user._id !== tuneup.host){
-            hostedTuneups.push(tuneup)
-        } else {
-            joinedTuneups.push(tuneup)
+        if (user._id === tuneup.host){
+            hostedTuneup.push(tuneup)
+        } else if (tuneup.connections.includes(user._id)) {
+            joinedTuneup.push(tuneup)
         }
     })
 
@@ -56,22 +57,22 @@ function UserProfilePage() {
                     </div>
                 </div>
                 <div className="tuneup-hosted-label">
-                    Your Hosted TuneUps
+                    Your Joined TuneUps
                 </div>
                 <div className="tuneup-joined-label">
-                    Your Joined TuneUps
+                    Your Hosted TuneUps
                 </div>
                 <div className="user-tuneups-container" id="user-tuneups-container">
                     <div className="joined-tuneups-list-container">
                         <ul className="joined-tuneup-list">
-                        {joinedTuneups.map(tuneup => {
+                        {joinedTuneup.map(tuneup => {
                             return (<li key={tuneup._id} className="list-item"><TuneUp tuneUpData={tuneup}/></li>)
                         })}
                         </ul>
                     </div>
                     <div className="hosted-tuneups-list-container">
                         <ul className="hosted-tuneup-list">
-                        {hostedTuneups.map(tuneup => {
+                        {hostedTuneup.map(tuneup => {
                             return(<li key={tuneup._id} className="list-item"><TuneUp tuneUpData={tuneup}/></li>)
                         })}
                         </ul>
@@ -102,14 +103,14 @@ function UserProfilePage() {
                 <div className="user-tuneups-container" id="user-tuneups-container">
                     <div className="joined-tuneups-list-container">
                         <ul className="joined-tuneup-list">
-                            {joinedTuneups.map(tuneup => {
+                            {joinedTuneup.map(tuneup => {
                                 return (<li key={tuneup._id} className="list-item"><TuneUp tuneUpData={tuneup} /></li>)
                             })}
                         </ul>
                     </div>
                     <div className="hosted-tuneups-list-container">
                         <ul className="hosted-tuneup-list">
-                            {hostedTuneups.map(tuneup => {
+                            {hostedTuneup.map(tuneup => {
                                 return (<li key={tuneup._id} className="list-item"><TuneUp tuneUpData={tuneup} /></li>)
                             })}
                         </ul>
