@@ -161,7 +161,7 @@ function CreateTuneUps() {
   let address = "";
   const handleSubmit = async (e) => {
     e.preventDefault();
-    address = `${streetName}, ${city}, ${state}, ${zip}`;
+    address = `${streetName}, ${city}, ${state} ${zip}`;
     if (pianoChecked) {
       instruments.push("Piano");
     }
