@@ -95,10 +95,10 @@ function UserProfilePage() {
                     </div>
                 </div>
                 <div className="other-tuneup-hosted-label">
-                    {user?.firstName}'s Hosted TuneUps
+                    {user?.firstName}'s Joined TuneUps
                 </div>
                 <div className="other-tuneup-joined-label">
-                    {user?.firstName}'s Joined TuneUps
+                    {user?.firstName}'s Hosted TuneUps
                 </div>
                 <div className="user-tuneups-container" id="user-tuneups-container">
                     <div className="joined-tuneups-list-container">
