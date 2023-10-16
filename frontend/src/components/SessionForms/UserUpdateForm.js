@@ -22,9 +22,7 @@ function UserUpdateForm() {
     if (!addressString) {
       return { streetName: "", city: "", state: "", zip: "" };
     }
-
     const parts = addressString.split(", ");
-
     const stateZip = parts[2]?.split(" "); 
 
     return {
@@ -35,13 +33,6 @@ function UserUpdateForm() {
     };
   }
   const { streetName, city, state, zip } = parseAddress(currentUser.address);
-
-
-  // const [streetName, setStreetName] = useState(userAddress?.streetName || "");
-  // const [city, setCity] = useState(userAddress?.city || "");
-  // const [state, setState] = useState(userAddress?.state || "");
-  // const [zip, setZip] = useState(userAddress?.zip || "");
-
   const [streetNameField, setStreetName] = useState(streetName);
   const [cityField, setCity] = useState(city);
   const [stateField, setState] = useState(state);
@@ -149,10 +140,8 @@ function UserUpdateForm() {
   };
 
   let instruments = [];
-  // let address = "";
   const handleUpdate = async (e) => {
     e.preventDefault();
-    // address = `${streetName}, ${city}, ${states} ${zip}`;
     const fullAddress = `${streetNameField}, ${cityField}, ${stateField} ${zipField}`;
 
     if (pianoChecked) {
