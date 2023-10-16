@@ -11,54 +11,77 @@ function UserUpdateForm() {
   const currentUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   const history = useHistory();
-  const [firstName, setfirstName] = useState(currentUser.firstName);
-  const [lastName, setlastName] = useState(currentUser.lastName);
-  const [email, setEmail] = useState(currentUser.email);
-  const [streetName, setStreetName] = useState("");
-  const [city, setCity] = useState("");
-  const [states, setStates] = useState("");
-  const [zip, setZip] = useState("");
-  const [pianoChecked, setPianoChecked] = useState(false);
-  const [guitarChecked, setGuitarChecked] = useState(false);
-  const [violinChecked, setViolinChecked] = useState(false);
-  const [trumpetChecked, setTrumpetChecked] = useState(false);
-  const [fluteChecked, setFluteChecked] = useState(false);
-  const [drumsChecked, setDrumsChecked] = useState(false);
-  const [saxChecked, setSaxChecked] = useState(false);
-  const [clarinetChecked, setClarinetChecked] = useState(false);
-  const [banjoChecked, setBanjoChecked] = useState(false);
-  const [vocalsChecked, setVocalsChecked] = useState(false);
-  const [selectedGenres, setSelectedGenres] = useState([]);
 
-  const updates = (field) => {
-    let setState;
+  const { firstName, lastName, email, instruments: userInstruments, genres: userGenres, address: userAddress } = currentUser;
+
+  const [firstNameField, setFirstName] = useState(firstName); 
+  const [lastNameField, setLastName] = useState(lastName);
+  const [emailField, setEmail] = useState(email);
+
+  function parseAddress(addressString) {
+    if (!addressString) {
+      return { streetName: "", city: "", state: "", zip: "" };
+    }
+    const parts = addressString.split(", ");
+    const stateZip = parts[2]?.split(" "); 
+
+    return {
+      streetName: parts[0] || "",
+      city: parts[1] || "",
+      state: stateZip ? stateZip[0] : "", 
+      zip: stateZip ? stateZip[1] : "",
+    };
+  }
+  const { streetName, city, state, zip } = parseAddress(currentUser.address);
+  const [streetNameField, setStreetName] = useState(streetName);
+  const [cityField, setCity] = useState(city);
+  const [stateField, setState] = useState(state);
+  const [zipField, setZip] = useState(zip);
+
+
+
+  const [pianoChecked, setPianoChecked] = useState(userInstruments?.includes("Piano") || false);
+  const [guitarChecked, setGuitarChecked] = useState(userInstruments?.includes("Guitar") || false);
+  const [violinChecked, setViolinChecked] = useState(userInstruments?.includes("Violin") || false);
+  const [trumpetChecked, setTrumpetChecked] = useState(userInstruments?.includes("Trumpet") || false);
+  const [fluteChecked, setFluteChecked] = useState(userInstruments?.includes("Flute") || false);
+  const [drumsChecked, setDrumsChecked] = useState(userInstruments?.includes("Drums") || false);
+  const [saxChecked, setSaxChecked] = useState(userInstruments?.includes("Saxophone") || false);
+  const [clarinetChecked, setClarinetChecked] = useState(userInstruments?.includes("Clarinet") || false);
+  const [banjoChecked, setBanjoChecked] = useState(userInstruments?.includes("Banjo") || false);
+  const [vocalsChecked, setVocalsChecked] = useState(userInstruments?.includes("Vocals") || false);
+  const [selectedGenres, setSelectedGenres] = useState(userGenres || []);
+
+
+
+
+  const updates = (field) => (e) => {
     switch (field) {
       case "firstName":
-        setState = setfirstName;
+        setFirstName(e.target.value);
         break;
       case "lastName":
-        setState = setlastName;
+        setLastName(e.target.value);
         break;
       case "email":
-        setState = setEmail;
+        setEmail(e.target.value);
         break;
       case "streetName":
-        setState = setStreetName;
+        setStreetName(e.target.value);
         break;
       case "city":
-        setState = setCity;
+        setCity(e.target.value);
         break;
-      case "states":
-        setState = setStates;
+      case "state":
+        setState(e.target.value);
         break;
-      case "zip":
-        setState = setZip;
+      case "zipCode":
+        setZip(e.target.value);
         break;
       default:
-        setState = () => {};
     }
-    return (e) => setState(e.target.value);
   };
+
 
   const handlePianoChange = (e) => {
     setPianoChecked((prev) => !prev);
@@ -117,10 +140,10 @@ function UserUpdateForm() {
   };
 
   let instruments = [];
-  let address = "";
   const handleUpdate = async (e) => {
     e.preventDefault();
-    address = `${streetName}, ${city}, ${states} ${zip}`;
+    const fullAddress = `${streetNameField}, ${cityField}, ${stateField} ${zipField}`;
+
     if (pianoChecked) {
       instruments.push("Piano");
     }
@@ -151,13 +174,14 @@ function UserUpdateForm() {
     if (vocalsChecked) {
       instruments.push("Vocals");
     }
+ 
     const updatedUser = {
-      firstName,
-      lastName,
-      email,
+      firstName: firstNameField, 
+      lastName: lastNameField, 
+      email: emailField, 
       instruments,
       genres: selectedGenres,
-      address,
+      address: fullAddress,
     };
     dispatch(updateUser(currentUser._id, updatedUser));
     dispatch(getCurrentUser(updatedUser));
@@ -183,7 +207,7 @@ function UserUpdateForm() {
                   className="update-first-name-input"
                   type="text"
                   onChange={updates("firstName")}
-                  value={firstName}
+                  value={firstNameField}
                 ></input>
               </div>
               <div className="last-name-container">
@@ -192,7 +216,7 @@ function UserUpdateForm() {
                   className="update-last-name-input"
                   type="text"
                   onChange={updates("lastName")}
-                  value={lastName}
+                  value={lastNameField}
                 ></input>
               </div>
               <div className="email-container">
@@ -201,7 +225,7 @@ function UserUpdateForm() {
                   className="update-email-input"
                   type="text"
                   onChange={updates("email")}
-                  value={email}
+                  value={emailField}
                 ></input>
               </div>
             </div>
@@ -212,7 +236,7 @@ function UserUpdateForm() {
                 <input
                   className="update-address-input"
                   type="text"
-                  value={streetName}
+                  value={streetNameField}
                   onChange={updates("streetName")}
                   placeholder="123 Main St"
                 ></input>
@@ -222,7 +246,7 @@ function UserUpdateForm() {
                 <input
                   className="update-city-input"
                   type="text"
-                  value={city}
+                  value={cityField}
                   onChange={updates("city")}
                   placeholder="New York"
                 ></input>
@@ -232,8 +256,8 @@ function UserUpdateForm() {
                 <input
                   className="update-state-input"
                   type="text"
-                  value={states}
-                  onChange={updates("states")}
+                  value={stateField}
+                  onChange={updates("state")}
                   placeholder="NY"
                 ></input>
               </div>
@@ -242,8 +266,8 @@ function UserUpdateForm() {
                 <input
                   className="update-zip-code-input"
                   type="text"
-                  value={zip}
-                  onChange={updates("zip")}
+                  value={zipField}
+                  onChange={updates("zipCode")}
                   placeholder="10019"
                 ></input>
               </div>
