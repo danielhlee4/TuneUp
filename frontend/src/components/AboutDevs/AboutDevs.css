@@ -30,6 +30,8 @@
     padding-left: 10px;
     padding-top: 10px;
     padding-bottom: 30px;
+    overflow-y: hidden;
+    overflow-x: auto;
 }
 
 /************************ Dan ***************************/
@@ -45,7 +47,7 @@
     padding-top: 20px;
     border-radius: 15px;
     background-color: white;
-    height: 45rem;
+    height: 40rem;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -54,7 +56,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 2rem;
 }
+
 .dan-headshot {
     width: 10rem;
     height: 10rem;
@@ -65,6 +69,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 3rem;
 }
 .dan-name {
     font-size: 32px;
@@ -73,6 +78,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 2rem;
 }
 .dan-title {
     font-size: 20px;
@@ -82,25 +88,25 @@
     border-top: 1px solid rgba(0, 0, 0, 0.3);
 }
 .dan-divider2 {
-    margin-top: -2rem;
+    margin-top: -5rem;
     border-top: 1px solid rgba(0, 0, 0, 0.3);
 }
 .dan-description-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: -2rem;
+    margin-top: -1rem;
 }
 .dan-description {
     text-align: center;
-    font-size: 24px;
+    font-size: 22px;
     width: 18rem;
     height: fit-content;
-    margin-top: 2rem;
 }
 .dan-links-container{
     display: grid;
     grid-template-columns: 50% 50%;
+    margin-top: -2rem;
 }
 .dan-linkedin-container{
     display: flex;
@@ -141,7 +147,7 @@
     padding-top: 20px;
     border-radius: 15px;
     background-color: white;
-    height: 45rem;
+    height: 40rem;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -150,51 +156,66 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 2rem;
 }
+
 .klodian-headshot {
     width: 10rem;
     height: 10rem;
     border-radius: 100px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
+
 .klodian-name-container {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 3rem;
 }
+
 .klodian-name {
     font-size: 32px;
 }
+
 .klodian-title-container {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 2rem;
 }
+
 .klodian-title {
     font-size: 20px;
 }
+
 .klodian-divider1 {
     margin-top: 2rem;
     border-top: 1px solid rgba(0, 0, 0, 0.3);
 }
+
 .klodian-divider2 {
-    margin-top: -2rem;
+    margin-top: -5rem;
     border-top: 1px solid rgba(0, 0, 0, 0.3);
 }
+
 .klodian-description-container {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: -1rem;
 }
+
 .klodian-description {
     text-align: center;
-    font-size: 24px;
+    font-size: 22px;
     width: 18rem;
     height: fit-content;
 }
+
 .klodian-links-container {
     display: grid;
     grid-template-columns: 50% 50%;
+    margin-top: -2rem;
 }
 
 .klodian-linkedin-container {
@@ -235,7 +256,7 @@
     padding-top: 20px;
     border-radius: 15px;
     background-color: white;
-    height: 45rem;
+    height: 40rem;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -244,52 +265,66 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 2rem;
 }
+
 .sean-headshot {
     width: 10rem;
     height: 10rem;
-    border-radius: 90px;
+    border-radius: 100px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
+
 .sean-name-container {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 3rem;
 }
+
 .sean-name {
     font-size: 32px;
 }
+
 .sean-title-container {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 2rem;
 }
+
 .sean-title {
     font-size: 20px;
 }
+
 .sean-divider1 {
     margin-top: 2rem;
     border-top: 1px solid rgba(0, 0, 0, 0.3);
 }
+
 .sean-divider2 {
-    margin-top: -2rem;
+    margin-top: -5rem;
     border-top: 1px solid rgba(0, 0, 0, 0.3);
 }
+
 .sean-description-container {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: -2.75rem;
 }
+
 .sean-description {
     text-align: center;
-    font-size: 24px;
+    font-size: 22px;
     width: 18rem;
     height: fit-content;
-    margin-top: -2rem;
 }
-.sean-links-container{
+
+.sean-links-container {
     display: grid;
     grid-template-columns: 50% 50%;
+    margin-top: -2rem;
 }
 .sean-linkedin-container{
     display: flex;
@@ -329,7 +364,7 @@
     padding-top: 20px;
     border-radius: 15px;
     background-color: white;
-    height: 45rem;
+    height: 40rem;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -338,52 +373,66 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 2rem;
 }
+
 .muddy-headshot {
     width: 10rem;
     height: 10rem;
     border-radius: 100px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
+
 .muddy-name-container {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 3rem;
 }
+
 .muddy-name {
     font-size: 32px;
 }
+
 .muddy-title-container {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 2rem;
 }
+
 .muddy-title {
     font-size: 20px;
 }
+
 .muddy-divider1 {
     margin-top: 2rem;
     border-top: 1px solid rgba(0, 0, 0, 0.3);
 }
+
 .muddy-divider2 {
-    margin-top: -2rem;
+    margin-top: -5rem;
     border-top: 1px solid rgba(0, 0, 0, 0.3);
 }
+
 .muddy-description-container {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: -4.5rem;
 }
+
 .muddy-description {
     text-align: center;
-    font-size: 24px;
+    font-size: 22px;
     width: 18rem;
     height: fit-content;
-    margin-top: -2rem;
 }
-.muddy-links-container{
+
+.muddy-links-container {
     display: grid;
     grid-template-columns: 50% 50%;
+    margin-top: -2rem;
 }
 .muddy-linkedin-container{
     display: flex;
@@ -423,61 +472,76 @@
     padding-top: 20px;
     border-radius: 15px;
     background-color: white;
-    height: 45rem;
+    height: 40rem;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-top: -1px;
 }
 .dennis-headshot-container {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 2rem;
 }
+
 .dennis-headshot {
     width: 10rem;
     height: 10rem;
     border-radius: 100px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
+
 .dennis-name-container {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 3rem;
 }
+
 .dennis-name {
     font-size: 32px;
 }
+
 .dennis-title-container {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 2rem;
 }
+
 .dennis-title {
     font-size: 20px;
 }
+
 .dennis-divider1 {
     margin-top: 2rem;
     border-top: 1px solid rgba(0, 0, 0, 0.3);
 }
+
 .dennis-divider2 {
-    margin-top: -2rem;
+    margin-top: -5rem;
     border-top: 1px solid rgba(0, 0, 0, 0.3);
 }
+
 .dennis-description-container {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: -2.5rem;
 }
+
 .dennis-description {
     text-align: center;
-    font-size: 24px;
+    font-size: 22px;
     width: 18rem;
     height: fit-content;
-    margin-top: -2rem;
 }
-.dennis-links-container{
+
+.dennis-links-container {
     display: grid;
     grid-template-columns: 50% 50%;
+    margin-top: -2rem;
 }
 .dennis-linkedin-container{
     display: flex;

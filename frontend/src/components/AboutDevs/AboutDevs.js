@@ -7,10 +7,18 @@ import klodianHeadshot from './KlodianHeadshot.png'
 import muddyHeadshot from './MuddyHeadshot.jpg'
 import linkedinIcon from './linkedinIcon.png'
 import githubIcon from './githubIcon.png'
+import { useEffect } from 'react'
+
 function AboutDevs() {
+    useEffect(() => {
+        const container = document.querySelector('.about-dev-page-grid-container');
+        const scrollCenter = (container.scrollWidth - container.clientWidth) / 2;
+        container.scrollLeft = scrollCenter;
+    }, []);
 
     return (
         <div className='about-dev-page-container'>
+            
             <div className='about-us-container'>
                 <div className='about-us'>The Tune Squad</div>
             </div>
@@ -72,12 +80,12 @@ function AboutDevs() {
                     <div className='klodian-divider2'></div>
                     <div className='klodian-links-container'>
                         <div className='klodian-linkedin-container'>
-                            <a href='https://www.linkedin.com/in/danlee-/' target='_blank' rel='noreferrer'>
+                            <a href='https://www.linkedin.com/in/klodian-behrami/' target='_blank' rel='noreferrer'>
                                 <img className='klodian-linkedin-icon' src={linkedinIcon}></img>
                             </a>
                         </div>
                         <div className='klodian-github-container'>
-                            <a href='https://github.com/danielhlee4' target='_blank' rel='noreferrer'>
+                            <a href='https://github.com/KlodianB' target='_blank' rel='noreferrer'>
                                 <img className='klodian-github-icon' src={githubIcon}></img>
                             </a>
                         </div>

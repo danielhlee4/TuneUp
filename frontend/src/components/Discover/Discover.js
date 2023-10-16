@@ -57,26 +57,28 @@ function Discover() {
 
 
   return (
-    <div className="discover-container">
-      {tuneUps && users ? (
-        <div className="tuneups-container">
-          <SearchBar onSearch={handleTuneUpSearch} />
-          <ul>
-            {displayedTuneUps?.map((tuneUp) => {
-              return (
-                <li key={tuneUp._id}>
-                  <TuneUp tuneUpData={tuneUp} />
-                </li>
-              );
-            })}
-          </ul>
+    <div>
+      <div className="discover-container">
+        {tuneUps && users ? (
+          <div className="tuneups-container">
+            <SearchBar onSearch={handleTuneUpSearch} />
+            <ul>
+              {displayedTuneUps?.map((tuneUp) => {
+                return (
+                  <li key={tuneUp._id} className="list-items">
+                    <TuneUp tuneUpData={tuneUp} />
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        ) : (
+          ""
+        )}
+        <div className="discover-map-container">
+          {/* <MultipleZipcodeMapWrapper key={zipcodesArray.join(',')} zipcodes={zipcodesArray} /> */}
+          <MultipleZipcodeMapWrapper zipcodes={["NY 10012"]} />
         </div>
-      ) : (
-        ""
-      )}
-      <div className="discover-map-container">
-        <MultipleZipcodeMapWrapper key={zipcodesArray.join(',')} zipcodes={zipcodesArray} />
-        {/* <MultipleZipcodeMapWrapper zipcodes={["NY 10012"]} /> */}
       </div>
       <footer>
         <div className="scrolling-text-homepage">
