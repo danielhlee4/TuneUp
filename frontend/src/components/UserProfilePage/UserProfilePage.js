@@ -18,7 +18,7 @@ function UserProfilePage() {
     let joinedTuneup = []
     let hostedTuneup = []
 
-    console.log(user)
+
     userTuneups.map(tuneup => {
         if (user._id === tuneup.host){
             hostedTuneup.push(tuneup)
@@ -45,6 +45,14 @@ function UserProfilePage() {
                         </div>
                         <div className="user-email-container">
                             <div className="user-email">{user?.email}</div>
+                        </div>
+                        <div className= "user-instruments-container"> 
+                              <h3 className="instruments-title">Instruments:</h3>
+                              <div className="user-instruments">{user?.instruments?.join(', ')}</div>
+                        </div>
+                        <div className="user-genres-container">
+                              <h3 className="genres-title">Favorite Genres:</h3>
+                              <div className="user-genres">{user?.genres?.join(', ')}</div>
                         </div>
                         <div className="user-address-container">
                             <div className="user-address">{user?.address}</div>
