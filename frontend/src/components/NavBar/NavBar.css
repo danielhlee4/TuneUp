@@ -21,6 +21,8 @@
 }
 
 .nav-login-button-container {
+    position: fixed;
+    right: 11rem;
     border-radius: 10px;
     padding-top: 8px;
     padding-bottom: 5px;
@@ -46,13 +48,14 @@
 }
 
 .nav-signup-button-container {
+    position: fixed;
+    right: 2%;
     border-radius: 10px;
     width: 8rem;
     height: 2rem;
     padding-top: 8px;
     padding-bottom: 5px;
     text-align: center;
-    margin-right: 1rem;
     border: 1px solid rgba(0, 0, 0, 0.3);
     transition: 0.2s ease-in-out;
 }
@@ -206,7 +209,7 @@
     align-items: center;
     justify-content: center;
     position: absolute;
-    margin-left: 20rem;
+    margin-left: 0rem;
     margin-top: -0.5rem;
     width: 13rem;
     height: 4rem;
