@@ -28,7 +28,7 @@ function UserUpdateForm() {
   const [clarinetChecked, setClarinetChecked] = useState(false);
   const [banjoChecked, setBanjoChecked] = useState(false);
   const [vocalsChecked, setVocalsChecked] = useState(false);
-  const [genre, setGenre] = useState("Pop");
+  const [selectedGenres, setSelectedGenres] = useState([]);
 
   const updates = (field) => {
     let setState;
@@ -100,9 +100,17 @@ function UserUpdateForm() {
     setVocalsChecked((prev) => !prev);
     e.currentTarget.classList.toggle("active");
   };
+
+
   const handleGenreChange = (e) => {
-    setGenre(e.target.value);
+    const { checked, value } = e.target;
+    if (checked) {
+      setSelectedGenres([...selectedGenres, value]);
+    } else {
+      setSelectedGenres(selectedGenres.filter((genre) => genre !== value));
+    }
   };
+
 
   const selectedStyle = {
     backgroundColor: "rgb(252,172,232)",
@@ -110,7 +118,6 @@ function UserUpdateForm() {
 
   let instruments = [];
   let address = "";
-  let genreArr = [genre];
   const handleUpdate = async (e) => {
     e.preventDefault();
     address = `${streetName}, ${city}, ${states} ${zip}`;
@@ -149,7 +156,7 @@ function UserUpdateForm() {
       lastName,
       email,
       instruments,
-      genres: genreArr,
+      genres: selectedGenres,
       address,
     };
     dispatch(updateUser(currentUser._id, updatedUser));
@@ -346,25 +353,32 @@ function UserUpdateForm() {
                 <span id="update-instrument-label">vocals</span>
               </div>
             </div>
-
-            <div className="genre-dropdown-container">
-              <span className="genre-label">Favorite Genre:</span>
-              <select
-                className="genre-dropdown"
-                value={genre}
-                onChange={handleGenreChange}
-              >
-                <option value="Pop">Pop</option>
-                <option value="Rock">Rock</option>
-                <option value="Hip-Hop">Hip-Hop</option>
-                <option value="R&B">R&B</option>
-                <option value="Country">Country</option>
-                <option value="Electronic">Electronic</option>
-                <option value="Jazz">Jazz</option>
-                <option value="Classical">Classical</option>
-                <option value="Reggae">Reggae</option>
-                <option value="Blues">Blues</option>
-              </select>
+            <div className="genre-checkbox-container">
+              <span className="genre-label">Favorite Genres:</span>
+              <div>
+                {[
+                  "Pop",
+                  "Rock",
+                  "Hip-Hop",
+                  "R&B",
+                  "Country",
+                  "Electronic",
+                  "Jazz",
+                  "Classical",
+                  "Reggae",
+                  "Blues",
+                ].map((genre) => (
+                  <div key={genre}>
+                    <input
+                      type="checkbox"
+                      value={genre}
+                      checked={selectedGenres.includes(genre)}
+                      onChange={handleGenreChange}
+                    />
+                    <label>{genre}</label>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
           <div className="update-submit-button-container">

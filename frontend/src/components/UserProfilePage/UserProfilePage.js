@@ -18,7 +18,7 @@ function UserProfilePage() {
     let joinedTuneup = []
     let hostedTuneup = []
 
-    console.log(user)
+
     userTuneups.map(tuneup => {
         if (user._id === tuneup.host){
             hostedTuneup.push(tuneup)
