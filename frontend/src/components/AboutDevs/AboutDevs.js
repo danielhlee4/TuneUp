@@ -72,12 +72,12 @@ function AboutDevs() {
                     <div className='klodian-divider2'></div>
                     <div className='klodian-links-container'>
                         <div className='klodian-linkedin-container'>
-                            <a href='https://www.linkedin.com/in/danlee-/' target='_blank' rel='noreferrer'>
+                            <a href='https://www.linkedin.com/in/klodian-behrami/' target='_blank' rel='noreferrer'>
                                 <img className='klodian-linkedin-icon' src={linkedinIcon}></img>
                             </a>
                         </div>
                         <div className='klodian-github-container'>
-                            <a href='https://github.com/danielhlee4' target='_blank' rel='noreferrer'>
+                            <a href='https://github.com/KlodianB' target='_blank' rel='noreferrer'>
                                 <img className='klodian-github-icon' src={githubIcon}></img>
                             </a>
                         </div>

@@ -30,6 +30,8 @@
     padding-left: 10px;
     padding-top: 10px;
     padding-bottom: 30px;
+    overflow-y: hidden;
+    overflow-x: auto;
 }
 
 /************************ Dan ***************************/
