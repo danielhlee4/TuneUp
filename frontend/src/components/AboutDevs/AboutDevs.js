@@ -7,10 +7,18 @@ import klodianHeadshot from './KlodianHeadshot.png'
 import muddyHeadshot from './MuddyHeadshot.jpg'
 import linkedinIcon from './linkedinIcon.png'
 import githubIcon from './githubIcon.png'
+import { useEffect } from 'react'
+
 function AboutDevs() {
+    useEffect(() => {
+        const container = document.querySelector('.about-dev-page-grid-container');
+        const scrollCenter = (container.scrollWidth - container.clientWidth) / 2;
+        container.scrollLeft = scrollCenter;
+    }, []);
 
     return (
         <div className='about-dev-page-container'>
+            
             <div className='about-us-container'>
                 <div className='about-us'>The Tune Squad</div>
             </div>
