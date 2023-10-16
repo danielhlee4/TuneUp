@@ -75,8 +75,8 @@ function Discover() {
         ""
       )}
       <div className="discover-map-container">
-        <MultipleZipcodeMapWrapper key={zipcodesArray.join(',')} zipcodes={zipcodesArray} />
-        {/* <MultipleZipcodeMapWrapper zipcodes={["NY 10012"]} /> */}
+        {/* <MultipleZipcodeMapWrapper key={zipcodesArray.join(',')} zipcodes={zipcodesArray} /> */}
+        <MultipleZipcodeMapWrapper zipcodes={["NY 10012"]} />
       </div>
       <footer>
         <div className="scrolling-text-homepage">
