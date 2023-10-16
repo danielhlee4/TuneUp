@@ -54,6 +54,41 @@
 }
 .user-email {
     font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.user-instruments-container {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.instruments-title {
+    margin-right: 10px;
+    font-size: 20px;
+    white-space: nowrap;
+}
+
+.user-instruments {
+    font-size: 20px;
+}
+
+.user-genres-container {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.genres-title {
+    margin-right: 10px;
+    font-size: 20px;
+    white-space: nowrap;
+}
+
+.user-genres {
+    font-size: 20px;
 }
 
 .user-address-container {
