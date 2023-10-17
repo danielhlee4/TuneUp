@@ -11,8 +11,7 @@ function MainPage() {
           <a href="/ogin" className="bn5">Get Started</a>
         </Link>
       <div className='tutorial-text'>
-          Look for a band nearby or create your own and <br />
-          start your own jam session!
+          Find a jam session near you, or create your own
       </div>
       <footer>
             <div className='scrolling-text'>Copyright &copy; 2023 TuneUp | Developed by: Dan L. Klodian B. Mudassar M. Dennis L. Sean J.</div>
