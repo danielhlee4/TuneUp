@@ -12,6 +12,8 @@ function LoginForm() {
     const errors = useSelector(state => state.errors.session);
     const dispatch = useDispatch();
     const history = useHistory();
+    const demoEmail = 'demo1@demo.com';
+    const demoPassword = 'password';
 
     const update = (field) => {
         const setState = field === 'email' ? setEmail : setPassword;
@@ -22,6 +24,11 @@ function LoginForm() {
         e.preventDefault();
         await dispatch(login({ email, password }))
         history.push('/home')
+    }
+
+    const handleDemoLogin = async () => {
+      await dispatch(login({ email: demoEmail, password: demoPassword }));
+      history.push('/home');
     }
 
     return (
@@ -54,7 +61,15 @@ function LoginForm() {
               type="submit"
               value="Log In"
               disabled={!email || !password}
+              className='form-button'
             />
+            <button
+              type="button"
+              onClick={handleDemoLogin}
+              className='form-button'
+            >
+              Demo Login
+            </button>
           </form>
         <div className='want-to-join'>
             Want to join TuneUp? <Link to={'/signup'}>Sign Up!</Link>
