@@ -305,3 +305,11 @@
 .instrument-box.active {
     outline: 2px solid rgb(155,244,236);
 }
+
+p.user-errors{
+    font-size: 30px;
+    color: red;
+    position:absolute;
+    top: 205px;
+    justify-self: center;
+}
