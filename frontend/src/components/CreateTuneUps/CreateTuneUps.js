@@ -43,7 +43,6 @@ function CreateTuneUps() {
   const [day, setDay] = useState(new Date().getDate());
   const [year, setYear] = useState(new Date().getFullYear());
   const currentYear = new Date().getFullYear();
-  const monthIndex = months.indexOf(month);
   const history = useHistory();
   const [errors, setErrors] = useState([]);
 
