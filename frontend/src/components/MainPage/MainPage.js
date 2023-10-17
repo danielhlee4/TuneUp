@@ -10,6 +10,10 @@ function MainPage() {
         <Link to={'/login'}>
           <a href="/ogin" className="bn5">Get Started</a>
         </Link>
+      <div className='tutorial-text'>
+          Look for a band nearby or create your own and <br />
+          start your own jam session!
+      </div>
       <footer>
             <div className='scrolling-text'>Copyright &copy; 2023 TuneUp | Developed by: Dan L. Klodian B. Mudassar M. Dennis L. Sean J.</div>
       </footer>
