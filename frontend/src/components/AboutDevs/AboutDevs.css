@@ -47,7 +47,7 @@
     padding-top: 20px;
     border-radius: 15px;
     background-color: white;
-    height: 39rem;
+    height: 36rem;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -95,7 +95,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: -1rem;
+    margin-top: -1.5rem;
 }
 .dan-description {
     text-align: center;
@@ -147,7 +147,7 @@
     padding-top: 20px;
     border-radius: 15px;
     background-color: white;
-    height: 39rem;
+    height: 36rem;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -210,6 +210,7 @@
     font-size: 22px;
     width: 18rem;
     height: fit-content;
+    margin-top: -0.5rem;
 }
 
 .klodian-links-container {
@@ -256,7 +257,7 @@
     padding-top: 20px;
     border-radius: 15px;
     background-color: white;
-    height: 39rem;
+    height: 36rem;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -319,6 +320,7 @@
     font-size: 22px;
     width: 18rem;
     height: fit-content;
+    margin-top: 1rem;
 }
 
 .sean-links-container {
@@ -364,7 +366,7 @@
     padding-top: 20px;
     border-radius: 15px;
     background-color: white;
-    height: 39rem;
+    height: 36rem;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -419,7 +421,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: -4.5rem;
+    margin-top: -3.5rem;
 }
 
 .muddy-description {
@@ -472,7 +474,7 @@
     padding-top: 20px;
     border-radius: 15px;
     background-color: white;
-    height: 39rem;
+    height: 36rem;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -528,7 +530,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: -2.8rem;
+    margin-top: -2rem;
 }
 
 .dennis-description {
