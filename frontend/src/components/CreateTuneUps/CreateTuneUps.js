@@ -39,12 +39,45 @@ function CreateTuneUps() {
   const [vocalsChecked, setVocalsChecked] = useState(false);
   const [banjoChecked, setBanjoChecked] = useState(false);
   const [genre, setGenre] = useState("Pop");
-  const [month, setMonth] = useState(months[new Date().getMonth()]);
+  const [month, setMonth] = useState(new Date().getMonth() + 1);
   const [day, setDay] = useState(new Date().getDate());
   const [year, setYear] = useState(new Date().getFullYear());
   const currentYear = new Date().getFullYear();
   const monthIndex = months.indexOf(month);
   const history = useHistory();
+  const [errors, setErrors] = useState([]);
+
+  const validateInputs = () => {
+    const newErrors = [];
+    if (
+      !details ||
+      !month ||
+      !day ||
+      !year ||
+      !streetName ||
+      !city ||
+      !state ||
+      !zip ||
+      instruments.length < 1 ||
+      !genre
+    ) {
+      newErrors.push("Input fields must be completely filled!");
+    } else if (new Date(`${year}-${month}-${day}T00:00:00`) - new Date() < 0) {
+      newErrors.push("TuneUp must be set to occur in the future!");
+    }
+
+    setErrors(newErrors);
+
+    return newErrors.length === 0;
+  };
+
+  const displayErrors = () => {
+    if (errors.length > 0) {
+      return errors;
+    } else {
+      return null;
+    }
+  };
 
   const updates = (field) => {
     let setState;
@@ -192,6 +225,9 @@ function CreateTuneUps() {
     if (banjoChecked) {
       instruments.push("Banjo");
     }
+
+    if (!validateInputs()) return;
+
     const newTuneUp = {
       host: currentUser._id,
       description: details,
@@ -230,7 +266,9 @@ function CreateTuneUps() {
             name="month"
             id="Month"
             value={month}
-            onChange={(e) => setMonth(e.target.value)}
+            onChange={(e) => {
+              setMonth(e.target.value);
+            }}
             required
             className="month-select"
           >
@@ -421,6 +459,9 @@ function CreateTuneUps() {
             Create TuneUp!
           </button>
         </div>
+        {displayErrors()?.map((error) => {
+          return <p className="tuneup-errors">{error}</p>;
+        })}
       </form>
       <img className="background-img" src={background}></img>
     </div>
