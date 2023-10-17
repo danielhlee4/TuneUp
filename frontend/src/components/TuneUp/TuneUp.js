@@ -9,6 +9,7 @@ import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import "./TuneUp.css";
 import jwtFetch from "../../store/jwt";
 import DistanceCalculator from "../Map/DistanceCalculator";
+import AddressMapWrapper from "../Map/AddressMap";
 
 const TuneUp = ({ tuneUpData }) => {
   const tuneUp = tuneUpData;
@@ -137,31 +138,51 @@ const TuneUp = ({ tuneUpData }) => {
           <div className="tuneUp-name">
             <h1>{users[tuneUp.host]?.firstName}'s TuneUp</h1>
           </div>
-          <div className="tuneUp-details">
-            <div className="tuneUp-date">{formatDateTime(tuneUp.date)}</div>
-            <div className="tuneUp-location">
-              {/* add dans distance from component */}
+          <div className="tuneUp-columns">
+            <div className="tuneUp-left-column">
+              <div className="tuneUp-details">
+                <div className="tuneUp-date">{formatDateTime(tuneUp.date)}</div>
+              </div>
+              <div className="tuneUp-connections">
+                <ul>
+                  {" "}
+                  Musicians attending:
+                  {tuneUp.connections?.map((user) => {
+                    return (
+                      <li key={user?._id}>
+                        {user?._id ? (
+                          <Link to={`/users/${user?._id}`}>{user?.firstName}</Link>
+                        ) : (
+                          <Link to={`/users/${user}`}>{users[user].firstName}</Link>
+                        )}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+              <div className="tuneup-instrument-icons">
+                {tuneUp.instruments.map((instrument) => renderInstrumentIcon(instrument))}
+              </div>
             </div>
-          </div>
-          <div className="tuneUp-connections">
-            <ul>
-              {" "}
-              Musicians attending:
-              {tuneUp.connections?.map((user) => {
-                return (
-                  <li key={user?._id}>
-                    {user?._id ? (
-                      <Link to={`/users/${user?._id}`}>{user?.firstName}</Link>
+
+            <div className="tuneUp-middle-column">
+              <p id="tuneUp-description">{tuneUp.description}</p>
+            </div>
+
+            <div className="tuneUp-right-column">
+                <div className="tuneUp-location">
+                  {
+                    (sessionUser._id === tuneUp.host || tuneUp.connections.includes(sessionUser._id)) ? (
+                        <div className="tuneUp-location">
+                            <AddressMapWrapper address={tuneUp.address} />
+                            <p id="tuneUp-address">{tuneUp.address}</p>
+                        </div>
                     ) : (
-                      <Link to={`/users/${user}`}>{users[user].firstName}</Link>
-                    )}
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-          <div className="tuneup-instrument-icons">
-            {tuneUp.instruments.map((instrument) => renderInstrumentIcon(instrument))}
+                        <p id="tuneUp-non-member">Only members of this tuneup can view its location information</p>
+                    )
+                  }
+                </div>
+            </div>
           </div>
           <div className="tuneUp-footer">
             {!userIsPartOfTuneUp &&

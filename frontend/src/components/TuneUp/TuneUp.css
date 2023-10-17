@@ -122,3 +122,31 @@
     font-size: 18px;
     margin-right: 5px;
 }
+
+.tuneUp-columns {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+  
+.tuneUp-left-column {
+    flex: 0.8; /* takes up 80% of the space it used to */
+    padding: 0 10px;
+}
+
+.tuneUp-middle-column,
+.tuneUp-right-column {
+    flex: 1.2; /* takes up 110% of the space each used to */
+    padding: 0 10px;
+}
+
+#tuneUp-description,
+#tuneUp-non-member {
+    font-size: 14px;
+    color: #555;
+}
+
+#tuneUp-address {
+    margin-top: 5px;
+    color: #555;
+}
