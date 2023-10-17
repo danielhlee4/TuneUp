@@ -54,6 +54,11 @@
     color: #333;
 }
 
+.right-bottom > span {
+    font-size: 18px;
+    margin-right: 5px;
+}
+
 /* Maximized View */
 .maximized {
     height: auto;
@@ -79,14 +84,16 @@
 }
 
 .maximized .tuneUp-connections li {
-    margin-bottom: 5px;
+    margin: 2px 0px;
     font-size: 16px;
+    padding: 2px 5px;
 }
 
 .maximized .tuneUp-footer {
     font-size: 16px;
     border-top: 1px solid #ccc;
     padding-top: 10px;
+    margin-top: 4px;
     color: #777;
 }
 
@@ -109,4 +116,9 @@
     background-color: white;
     color: black;
     border: 1px solid #4CAF50;
+}
+
+.tuneup-instrument-icons > span {
+    font-size: 18px;
+    margin-right: 5px;
 }

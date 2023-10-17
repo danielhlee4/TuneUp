@@ -76,7 +76,6 @@ const TuneUp = ({ tuneUpData }) => {
   };
 
   const renderInstrumentIcon = (instrument) => {
-    console.log(tuneUp.instruments);
     const instrumentIconMap = {
       piano: "fa-piano",
       guitar: "fa-guitar-electric",
@@ -90,9 +89,11 @@ const TuneUp = ({ tuneUpData }) => {
       vocals: "fa-microphone-stand"
     };
 
+    const normalizedInstrument = instrument.toLowerCase();
+
     return tuneUp.instruments.includes(instrument) ? (
       <span>
-        <i className={`fa-sharp fa-light ${instrumentIconMap[instrument]}`}></i>
+        <i className={`fa-sharp fa-light ${instrumentIconMap[normalizedInstrument]}`}></i>
       </span>
     ) : null;
   };
@@ -115,10 +116,10 @@ const TuneUp = ({ tuneUpData }) => {
                 {formatDateTime(tuneUp.date)}
               </div>
               <div className="right-top-location">
-                <DistanceCalculator
+                {/* <DistanceCalculator
                   address1={tuneUp.address}
                   address2={sessionUser.address}
-                />
+                /> */}
                 {/* <DistanceCalculator address1="90 5th Ave, New York, NY" address2="Columbus Cir, New York, NY" /> */}
               </div>
               <div className="right-top-group-size">
@@ -126,16 +127,7 @@ const TuneUp = ({ tuneUpData }) => {
               </div>
             </div>
             <div className="right-bottom">
-              {renderInstrumentIcon('piano')}
-              {renderInstrumentIcon('guitar')}
-              {renderInstrumentIcon('violin')}
-              {renderInstrumentIcon('trumpet')}
-              {renderInstrumentIcon('flute')}
-              {renderInstrumentIcon('drums')}
-              {renderInstrumentIcon('saxophone')}
-              {renderInstrumentIcon('clarinet')}
-              {renderInstrumentIcon('banjo')}
-              {renderInstrumentIcon('vocals')}
+              {tuneUp.instruments.map((instrument) => renderInstrumentIcon(instrument))}
             </div>
           </div>
         </div>
@@ -167,6 +159,9 @@ const TuneUp = ({ tuneUpData }) => {
                 );
               })}
             </ul>
+          </div>
+          <div className="tuneup-instrument-icons">
+            {tuneUp.instruments.map((instrument) => renderInstrumentIcon(instrument))}
           </div>
           <div className="tuneUp-footer">
             {!userIsPartOfTuneUp &&
