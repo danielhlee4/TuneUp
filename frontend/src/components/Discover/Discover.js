@@ -44,16 +44,16 @@ function Discover() {
   );
 
 
-   useEffect(() => {
-     dispatch(fetchAllTuneUps());
-     dispatch(fetchUsers());
-   }, [dispatch]);
+  useEffect(() => {
+    dispatch(fetchAllTuneUps());
+    dispatch(fetchUsers());
+  }, [dispatch]);
 
 
-   const displayedTuneUps = filteredTuneUps.length ? filteredTuneUps : tuneUps;
-   const zipcodesArray = useMemo(() => {
+  const displayedTuneUps = filteredTuneUps.length ? filteredTuneUps : tuneUps;
+  const zipcodesArray = useMemo(() => {
     return displayedTuneUps.map(tuneUp => extractStateAndZipcode(tuneUp.address)).filter(Boolean);
-}, [displayedTuneUps]);
+  }, [displayedTuneUps]);
 
 
   return (
