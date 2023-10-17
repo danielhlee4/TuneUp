@@ -48,7 +48,7 @@
     font-size: 16px;
 }
 
-.login-form input[type="submit"] {
+.form-button {
     background-color: rgb(255, 213, 251);
     color: black;
     font-weight: 600;
@@ -63,18 +63,18 @@
     margin-bottom: 5px;
 }
 
-.login-form input:disabled {
+.form-button:disabled {
     background-color: rgba(0, 0, 0, 0.1);
     border: none;
     border-radius: 20px;
     cursor: not-allowed;
 }
 
-.login-form input:disabled:hover {
+.form-button:disabled:hover {
     box-shadow: none;
 }
 
-.login-form input:hover {
+.form-button:hover {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
