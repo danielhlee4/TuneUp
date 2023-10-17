@@ -36,8 +36,8 @@ function AboutDevs() {
                     <div className='dan-divider1'></div>
                     <div className='dan-description-container'>
                         <div className='dan-description'>
-                            Dan led the development of TuneUp by playing a critical role as the lead
-                            of 5-engineers team. His leadership ensured smooth coordination between 
+                            Dan led the development of TuneUp by serving as the lead
+                            of the team. His leadership ensured smooth coordination between 
                             frontend and backend teams. Dan's expertise in creating advanced map components 
                             using Google Maps API was crucial for facilitating local musical meetups, 
                             enhancing the user experience, and showcasing the app's unique features.
@@ -71,7 +71,7 @@ function AboutDevs() {
                     <div className='klodian-description-container'>
                         <div className='klodian-description'>
                             As a Flex Engineer, Klodian became an integral part of both the frontend 
-                            and backend development teams in the TuneUp project, demonstrating exceptional
+                            and backend teams, demonstrating exceptional
                             adaptability and comprehensive full-stack capabilities. He actively engaged in 
                             implementing the pivotal 'Connections' feature, which enabled users and tune-ups 
                             to establish meaningful connections within the platform.
