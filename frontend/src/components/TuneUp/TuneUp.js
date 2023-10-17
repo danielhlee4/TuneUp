@@ -75,6 +75,28 @@ const TuneUp = ({ tuneUpData }) => {
     updateTuneUp(updatedTuneUp);
   };
 
+  const renderInstrumentIcon = (instrument) => {
+    console.log(tuneUp.instruments);
+    const instrumentIconMap = {
+      piano: "fa-piano",
+      guitar: "fa-guitar-electric",
+      violin: "fa-violin",
+      trumpet: "fa-trumpet",
+      flute: "fa-flute",
+      drums: "fa-drum",
+      saxophone: "fa-saxophone",
+      clarinet: "fa-clarinet",
+      banjo: "fa-banjo",
+      vocals: "fa-microphone-stand"
+    };
+
+    return tuneUp.instruments.includes(instrument) ? (
+      <span>
+        <i className={`fa-sharp fa-light ${instrumentIconMap[instrument]}`}></i>
+      </span>
+    ) : null;
+  };
+
   return (
     <div
       className={`tuneUp-container ${clicked ? "maximized" : "minimized"}`}
@@ -103,7 +125,18 @@ const TuneUp = ({ tuneUpData }) => {
                 party size: {tuneUp.connections.length + 1}
               </div>
             </div>
-            <div className="right-bottom">{tuneUp?.genres}</div>
+            <div className="right-bottom">
+              {renderInstrumentIcon('piano')}
+              {renderInstrumentIcon('guitar')}
+              {renderInstrumentIcon('violin')}
+              {renderInstrumentIcon('trumpet')}
+              {renderInstrumentIcon('flute')}
+              {renderInstrumentIcon('drums')}
+              {renderInstrumentIcon('saxophone')}
+              {renderInstrumentIcon('clarinet')}
+              {renderInstrumentIcon('banjo')}
+              {renderInstrumentIcon('vocals')}
+            </div>
           </div>
         </div>
       )}
