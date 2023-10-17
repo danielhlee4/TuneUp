@@ -12,9 +12,16 @@ function UserUpdateForm() {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const { firstName, lastName, email, instruments: userInstruments, genres: userGenres, address: userAddress } = currentUser;
+  const {
+    firstName,
+    lastName,
+    email,
+    instruments: userInstruments,
+    genres: userGenres,
+    address: userAddress,
+  } = currentUser;
 
-  const [firstNameField, setFirstName] = useState(firstName); 
+  const [firstNameField, setFirstName] = useState(firstName);
   const [lastNameField, setLastName] = useState(lastName);
   const [emailField, setEmail] = useState(email);
 
@@ -23,12 +30,12 @@ function UserUpdateForm() {
       return { streetName: "", city: "", state: "", zip: "" };
     }
     const parts = addressString.split(", ");
-    const stateZip = parts[2]?.split(" "); 
+    const stateZip = parts[2]?.split(" ");
 
     return {
       streetName: parts[0] || "",
       city: parts[1] || "",
-      state: stateZip ? stateZip[0] : "", 
+      state: stateZip ? stateZip[0] : "",
       zip: stateZip ? stateZip[1] : "",
     };
   }
@@ -38,22 +45,67 @@ function UserUpdateForm() {
   const [stateField, setState] = useState(state);
   const [zipField, setZip] = useState(zip);
 
+  const [pianoChecked, setPianoChecked] = useState(
+    userInstruments?.includes("Piano") || false
+  );
+  const [guitarChecked, setGuitarChecked] = useState(
+    userInstruments?.includes("Guitar") || false
+  );
+  const [violinChecked, setViolinChecked] = useState(
+    userInstruments?.includes("Violin") || false
+  );
+  const [trumpetChecked, setTrumpetChecked] = useState(
+    userInstruments?.includes("Trumpet") || false
+  );
+  const [fluteChecked, setFluteChecked] = useState(
+    userInstruments?.includes("Flute") || false
+  );
+  const [drumsChecked, setDrumsChecked] = useState(
+    userInstruments?.includes("Drums") || false
+  );
+  const [saxChecked, setSaxChecked] = useState(
+    userInstruments?.includes("Saxophone") || false
+  );
+  const [clarinetChecked, setClarinetChecked] = useState(
+    userInstruments?.includes("Clarinet") || false
+  );
+  const [banjoChecked, setBanjoChecked] = useState(
+    userInstruments?.includes("Banjo") || false
+  );
+  const [vocalsChecked, setVocalsChecked] = useState(
+    userInstruments?.includes("Vocals") || false
+  );
+  const [selectedGenres, setSelectedGenres] = useState("userGenres || []");
+  const [errors, setErrors] = useState([]);
 
+  const validateInputs = () => {
+    const newErrors = [];
+    if (
+      !firstNameField ||
+      !lastNameField ||
+      !emailField ||
+      !streetNameField ||
+      !cityField ||
+      !stateField ||
+      !zipField ||
+      instruments.length < 1 ||
+      selectedGenres.length < 1
+    ) {
+      newErrors.push("Input fields must be completely filled!");
+    }
 
-  const [pianoChecked, setPianoChecked] = useState(userInstruments?.includes("Piano") || false);
-  const [guitarChecked, setGuitarChecked] = useState(userInstruments?.includes("Guitar") || false);
-  const [violinChecked, setViolinChecked] = useState(userInstruments?.includes("Violin") || false);
-  const [trumpetChecked, setTrumpetChecked] = useState(userInstruments?.includes("Trumpet") || false);
-  const [fluteChecked, setFluteChecked] = useState(userInstruments?.includes("Flute") || false);
-  const [drumsChecked, setDrumsChecked] = useState(userInstruments?.includes("Drums") || false);
-  const [saxChecked, setSaxChecked] = useState(userInstruments?.includes("Saxophone") || false);
-  const [clarinetChecked, setClarinetChecked] = useState(userInstruments?.includes("Clarinet") || false);
-  const [banjoChecked, setBanjoChecked] = useState(userInstruments?.includes("Banjo") || false);
-  const [vocalsChecked, setVocalsChecked] = useState(userInstruments?.includes("Vocals") || false);
-  const [selectedGenres, setSelectedGenres] = useState(userGenres || []);
+    setErrors(newErrors);
 
+    return newErrors.length === 0;
+  };
 
-
+  const displayErrors = () => {
+    if (errors.length > 0) {
+      return errors;
+    } else {
+      return null;
+    }
+  };
 
   const updates = (field) => (e) => {
     switch (field) {
@@ -81,7 +133,6 @@ function UserUpdateForm() {
       default:
     }
   };
-
 
   const handlePianoChange = (e) => {
     setPianoChecked((prev) => !prev);
@@ -123,8 +174,6 @@ function UserUpdateForm() {
     setVocalsChecked((prev) => !prev);
     e.currentTarget.classList.toggle("active");
   };
-
-
   const handleGenreChange = (e) => {
     const { checked, value } = e.target;
     if (checked) {
@@ -133,7 +182,6 @@ function UserUpdateForm() {
       setSelectedGenres(selectedGenres.filter((genre) => genre !== value));
     }
   };
-
 
   const selectedStyle = {
     backgroundColor: "rgb(252,172,232)",
@@ -174,11 +222,12 @@ function UserUpdateForm() {
     if (vocalsChecked) {
       instruments.push("Vocals");
     }
- 
+    if (!validateInputs()) return;
+
     const updatedUser = {
-      firstName: firstNameField, 
-      lastName: lastNameField, 
-      email: emailField, 
+      firstName: firstNameField,
+      lastName: lastNameField,
+      email: emailField,
       instruments,
       genres: selectedGenres,
       address: fullAddress,
@@ -195,6 +244,9 @@ function UserUpdateForm() {
 
   return (
     <div className="update-form-root-container">
+      {displayErrors()?.map((error) => {
+        return <p className="user-errors">{error}</p>;
+      })}
       <div className="update-form-container">
         <h1 className="update-form-header">Tune your profile</h1>
         <form onSubmit={handleUpdate} className="update-form">
