@@ -234,7 +234,7 @@ function UserUpdateForm() {
     };
     dispatch(updateUser(currentUser._id, updatedUser));
     dispatch(getCurrentUser(updatedUser));
-    history.push("/home");
+    history.push(`/users/${currentUser._id}`);
   };
 
   const handleInstrumentClick = (e) => {
@@ -461,7 +461,7 @@ function UserUpdateForm() {
             <button className="update-submit-button" type="submit">
               Save
             </button>
-            <Link to={"/home"}>
+            <Link to={`/users/${currentUser._id}`}>
               <button className="cancel-submit-button">Cancel</button>
             </Link>
           </div>

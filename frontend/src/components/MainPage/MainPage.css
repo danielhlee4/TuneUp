@@ -27,6 +27,19 @@
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
 
+.tutorial-text {
+    text-align: center;
+    padding: 20px;
+    font-size: 62px;
+    color: white;
+    box-sizing: border-box;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    font-weight: 500;
+    font-family: 'Bebas Neue', sans-serif;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+
 .bn5 {
     padding: 0.6em 2em;
     border: none;
