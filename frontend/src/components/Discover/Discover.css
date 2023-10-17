@@ -15,6 +15,7 @@
 .discover-map-container {
     grid-template-columns: 1/2/1/2;
     margin-top: 10.6rem;
+    top: 8%;
     position: sticky;
     height: fit-content;
     margin-left: -4rem;
