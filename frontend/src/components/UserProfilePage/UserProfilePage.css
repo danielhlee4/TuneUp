@@ -166,18 +166,15 @@
     padding-left: 7px;
 }
 
-.edit-button{
-    width: 5rem;
-    margin-left: 30rem;
-}
-
 .user-edit-option{
     display: flex;
     justify-content: end;
     width: auto;
+    margin-right: -10.5vw;
 }
 
 .edit-button{
+    width: 5rem;
     border-radius: 10px;
     border: 1px solid rgba(0, 0, 0, 0.3);
     transition: 0.2s ease-in-out;
