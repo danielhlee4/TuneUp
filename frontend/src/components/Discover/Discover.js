@@ -7,7 +7,7 @@ import { fetchUsers, getUsers} from "../../store/users";
 import MultipleZipcodeMapWrapper from "../Map/MultipleZipcodeMap";
 import SearchBar from "../SearchBar/SearchBar";
 
-function extractStateAndZipcode(address) {
+export function extractStateAndZipcode(address) {
   const parts = address.split(', ');
   if (parts[2]) {
     return parts[2];  // This should be the state and zipcode part e.g. 'NY 10314'
@@ -57,26 +57,28 @@ function Discover() {
 
 
   return (
-    <div className="discover-container">
-      {tuneUps && users ? (
-        <div className="tuneups-container">
-          <SearchBar onSearch={handleTuneUpSearch} />
-          <ul>
-            {displayedTuneUps?.map((tuneUp) => {
-              return (
-                <li key={tuneUp._id}>
-                  <TuneUp tuneUpData={tuneUp} />
-                </li>
-              );
-            })}
-          </ul>
+    <div>
+      <div className="discover-container">
+        {tuneUps && users ? (
+          <div className="tuneups-container">
+            <SearchBar onSearch={handleTuneUpSearch} />
+            <ul>
+              {displayedTuneUps?.map((tuneUp) => {
+                return (
+                  <li key={tuneUp._id} className="list-items">
+                    <TuneUp tuneUpData={tuneUp} />
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        ) : (
+          ""
+        )}
+        <div className="discover-map-container">
+          <MultipleZipcodeMapWrapper key={zipcodesArray.join(',')} zipcodes={zipcodesArray} />
+          {/* <MultipleZipcodeMapWrapper zipcodes={["NY 10012"]} /> */}
         </div>
-      ) : (
-        ""
-      )}
-      <div className="discover-map-container">
-        <MultipleZipcodeMapWrapper key={zipcodesArray.join(',')} zipcodes={zipcodesArray} />
-        {/* <MultipleZipcodeMapWrapper zipcodes={["NY 10012"]} /> */}
       </div>
       <footer>
         <div className="scrolling-text-homepage">

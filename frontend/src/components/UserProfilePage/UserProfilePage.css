@@ -7,8 +7,8 @@
 
 .user-info-container {
     display: grid;
-    grid-template-columns: 30% 70%;
-    grid-gap: 4rem;
+    grid-template-columns: 20% 80%;
+    grid-gap: 2rem;
     text-align: center;
     position: relative;
     background-color: white;
@@ -16,16 +16,18 @@
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
     padding-top: 10px;
     padding-bottom: 10px;
-    margin-top: 7rem;
+    margin-top: 6rem;
     margin-bottom: 5px;
-    width: 50%;
-    margin-left: 25vw;
+    width: 50rem;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .user-pfp-container {
     height: 10rem;
     margin: auto;
     width: fit-content;
+    margin-left: 2rem;
 }
 
 .user-details-container {
@@ -33,7 +35,7 @@
     width: fit-content;
     height: auto;
     margin-right: auto;
-    margin-left: 1rem;
+    margin-left: 2rem;
 }
 
 .user-pfp-img {
@@ -41,6 +43,7 @@
     height: auto;
     border-radius: 80px;
 }
+
 
 .user-first-name-container {
     text-align: left;
@@ -54,6 +57,41 @@
 }
 .user-email {
     font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.user-instruments-container {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.instruments-title {
+    margin-right: 10px;
+    font-size: 20px;
+    white-space: nowrap;
+}
+
+.user-instruments {
+    font-size: 20px;
+}
+
+.user-genres-container {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.genres-title {
+    margin-right: 10px;
+    font-size: 20px;
+    white-space: nowrap;
+}
+
+.user-genres {
+    font-size: 20px;
 }
 
 .user-address-container {
@@ -64,20 +102,20 @@
     font-size: 20px;
 }
 
-.tuneup-hosted-label {
-    position: absolute;
-    font-size: 48px;
-    margin-top: 2rem;
-    margin-left: 15vw;
-    text-shadow: 10px 10px 10px rgb(253, 0, 211);
-    color: white;
-}
-
 .tuneup-joined-label {
     position: absolute;
     font-size: 48px;
     margin-top: 2rem;
-    margin-left: 50.5vw;
+    margin-left: 6vw;
+    text-shadow: 10px 10px 10px rgb(253, 0, 211);
+    color: white;
+}
+
+.tuneup-hosted-label {
+    position: absolute;
+    font-size: 48px;
+    margin-top: 2rem;
+    margin-left: 51vw;
     text-shadow: 10px 10px 10px rgb(253, 0, 211);
     color: white;
 }
@@ -106,9 +144,9 @@
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-    margin-left: 13.5vw;
+    margin-left: 4.5vw;
     margin-top: 6rem;
-    width: 70%;
+    width: 90%;
     height: 30rem;
     padding: 10px;
 }
@@ -116,7 +154,6 @@
 .joined-tuneups-list-container {
     border-right: 1px solid rgba(0, 0, 0, 0.1);
     grid-area: 1/1/1/1;
-    padding-right: 10px;
     overflow-y: auto;
     overflow-x: hidden;
 }
@@ -124,13 +161,14 @@
 .hosted-tuneups-list-container {
     border-left: 1px solid rgba(0, 0, 0, 0.1);
     grid-area: 1/2/1/2;
-    padding-left: 10px;
     overflow-y: auto;
     overflow-x: hidden;
+    padding-left: 7px;
 }
 
 .edit-button{
     width: 5rem;
+    margin-left: 30rem;
 }
 
 .user-edit-option{
@@ -155,5 +193,5 @@
 
 .list-item {
     list-style: none;
-    max-width: 35rem;
+    width: 44vw;
 }

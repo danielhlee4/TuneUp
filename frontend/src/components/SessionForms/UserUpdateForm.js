@@ -11,53 +11,127 @@ function UserUpdateForm() {
   const currentUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   const history = useHistory();
-  const [firstName, setfirstName] = useState(currentUser.firstName);
-  const [lastName, setlastName] = useState(currentUser.lastName);
-  const [email, setEmail] = useState(currentUser.email);
-  const [streetName, setStreetName] = useState("");
-  const [city, setCity] = useState("");
-  const [states, setStates] = useState("");
-  const [zip, setZip] = useState("");
-  const [pianoChecked, setPianoChecked] = useState(false);
-  const [guitarChecked, setGuitarChecked] = useState(false);
-  const [violinChecked, setViolinChecked] = useState(false);
-  const [trumpetChecked, setTrumpetChecked] = useState(false);
-  const [fluteChecked, setFluteChecked] = useState(false);
-  const [drumsChecked, setDrumsChecked] = useState(false);
-  const [saxChecked, setSaxChecked] = useState(false);
-  const [clarinetChecked, setClarinetChecked] = useState(false);
-  const [banjoChecked, setBanjoChecked] = useState(false);
-  const [vocalsChecked, setVocalsChecked] = useState(false);
-  const [genre, setGenre] = useState("Pop");
 
-  const updates = (field) => {
-    let setState;
+  const {
+    firstName,
+    lastName,
+    email,
+    instruments: userInstruments,
+    genres: userGenres,
+    address: userAddress,
+  } = currentUser;
+
+  const [firstNameField, setFirstName] = useState(firstName);
+  const [lastNameField, setLastName] = useState(lastName);
+  const [emailField, setEmail] = useState(email);
+
+  function parseAddress(addressString) {
+    if (!addressString) {
+      return { streetName: "", city: "", state: "", zip: "" };
+    }
+    const parts = addressString.split(", ");
+    const stateZip = parts[2]?.split(" ");
+
+    return {
+      streetName: parts[0] || "",
+      city: parts[1] || "",
+      state: stateZip ? stateZip[0] : "",
+      zip: stateZip ? stateZip[1] : "",
+    };
+  }
+  const { streetName, city, state, zip } = parseAddress(currentUser.address);
+  const [streetNameField, setStreetName] = useState(streetName);
+  const [cityField, setCity] = useState(city);
+  const [stateField, setState] = useState(state);
+  const [zipField, setZip] = useState(zip);
+
+  const [pianoChecked, setPianoChecked] = useState(
+    userInstruments?.includes("Piano") || false
+  );
+  const [guitarChecked, setGuitarChecked] = useState(
+    userInstruments?.includes("Guitar") || false
+  );
+  const [violinChecked, setViolinChecked] = useState(
+    userInstruments?.includes("Violin") || false
+  );
+  const [trumpetChecked, setTrumpetChecked] = useState(
+    userInstruments?.includes("Trumpet") || false
+  );
+  const [fluteChecked, setFluteChecked] = useState(
+    userInstruments?.includes("Flute") || false
+  );
+  const [drumsChecked, setDrumsChecked] = useState(
+    userInstruments?.includes("Drums") || false
+  );
+  const [saxChecked, setSaxChecked] = useState(
+    userInstruments?.includes("Saxophone") || false
+  );
+  const [clarinetChecked, setClarinetChecked] = useState(
+    userInstruments?.includes("Clarinet") || false
+  );
+  const [banjoChecked, setBanjoChecked] = useState(
+    userInstruments?.includes("Banjo") || false
+  );
+  const [vocalsChecked, setVocalsChecked] = useState(
+    userInstruments?.includes("Vocals") || false
+  );
+  const [selectedGenres, setSelectedGenres] = useState("userGenres || []");
+  const [errors, setErrors] = useState([]);
+
+  const validateInputs = () => {
+    const newErrors = [];
+    if (
+      !firstNameField ||
+      !lastNameField ||
+      !emailField ||
+      !streetNameField ||
+      !cityField ||
+      !stateField ||
+      !zipField ||
+      instruments.length < 1 ||
+      selectedGenres.length < 1
+    ) {
+      newErrors.push("Input fields must be completely filled!");
+    }
+
+    setErrors(newErrors);
+
+    return newErrors.length === 0;
+  };
+
+  const displayErrors = () => {
+    if (errors.length > 0) {
+      return errors;
+    } else {
+      return null;
+    }
+  };
+
+  const updates = (field) => (e) => {
     switch (field) {
       case "firstName":
-        setState = setfirstName;
+        setFirstName(e.target.value);
         break;
       case "lastName":
-        setState = setlastName;
+        setLastName(e.target.value);
         break;
       case "email":
-        setState = setEmail;
+        setEmail(e.target.value);
         break;
       case "streetName":
-        setState = setStreetName;
+        setStreetName(e.target.value);
         break;
       case "city":
-        setState = setCity;
+        setCity(e.target.value);
         break;
-      case "states":
-        setState = setStates;
+      case "state":
+        setState(e.target.value);
         break;
-      case "zip":
-        setState = setZip;
+      case "zipCode":
+        setZip(e.target.value);
         break;
       default:
-        setState = () => {};
     }
-    return (e) => setState(e.target.value);
   };
 
   const handlePianoChange = (e) => {
@@ -101,7 +175,12 @@ function UserUpdateForm() {
     e.currentTarget.classList.toggle("active");
   };
   const handleGenreChange = (e) => {
-    setGenre(e.target.value);
+    const { checked, value } = e.target;
+    if (checked) {
+      setSelectedGenres([...selectedGenres, value]);
+    } else {
+      setSelectedGenres(selectedGenres.filter((genre) => genre !== value));
+    }
   };
 
   const selectedStyle = {
@@ -109,11 +188,10 @@ function UserUpdateForm() {
   };
 
   let instruments = [];
-  let address = "";
-  let genreArr = [genre];
   const handleUpdate = async (e) => {
     e.preventDefault();
-    address = `${streetName}, ${city}, ${states} ${zip}`;
+    const fullAddress = `${streetNameField}, ${cityField}, ${stateField} ${zipField}`;
+
     if (pianoChecked) {
       instruments.push("Piano");
     }
@@ -144,17 +222,19 @@ function UserUpdateForm() {
     if (vocalsChecked) {
       instruments.push("Vocals");
     }
+    if (!validateInputs()) return;
+
     const updatedUser = {
-      firstName,
-      lastName,
-      email,
+      firstName: firstNameField,
+      lastName: lastNameField,
+      email: emailField,
       instruments,
-      genres: genreArr,
-      address,
+      genres: selectedGenres,
+      address: fullAddress,
     };
     dispatch(updateUser(currentUser._id, updatedUser));
     dispatch(getCurrentUser(updatedUser));
-    history.push("/home");
+    history.push(`/users/${currentUser._id}`);
   };
 
   const handleInstrumentClick = (e) => {
@@ -164,6 +244,9 @@ function UserUpdateForm() {
 
   return (
     <div className="update-form-root-container">
+      {displayErrors()?.map((error) => {
+        return <p className="user-errors">{error}</p>;
+      })}
       <div className="update-form-container">
         <h1 className="update-form-header">Tune your profile</h1>
         <form onSubmit={handleUpdate} className="update-form">
@@ -176,7 +259,7 @@ function UserUpdateForm() {
                   className="update-first-name-input"
                   type="text"
                   onChange={updates("firstName")}
-                  value={firstName}
+                  value={firstNameField}
                 ></input>
               </div>
               <div className="last-name-container">
@@ -185,7 +268,7 @@ function UserUpdateForm() {
                   className="update-last-name-input"
                   type="text"
                   onChange={updates("lastName")}
-                  value={lastName}
+                  value={lastNameField}
                 ></input>
               </div>
               <div className="email-container">
@@ -194,7 +277,7 @@ function UserUpdateForm() {
                   className="update-email-input"
                   type="text"
                   onChange={updates("email")}
-                  value={email}
+                  value={emailField}
                 ></input>
               </div>
             </div>
@@ -205,7 +288,7 @@ function UserUpdateForm() {
                 <input
                   className="update-address-input"
                   type="text"
-                  value={streetName}
+                  value={streetNameField}
                   onChange={updates("streetName")}
                   placeholder="123 Main St"
                 ></input>
@@ -215,7 +298,7 @@ function UserUpdateForm() {
                 <input
                   className="update-city-input"
                   type="text"
-                  value={city}
+                  value={cityField}
                   onChange={updates("city")}
                   placeholder="New York"
                 ></input>
@@ -225,8 +308,8 @@ function UserUpdateForm() {
                 <input
                   className="update-state-input"
                   type="text"
-                  value={states}
-                  onChange={updates("states")}
+                  value={stateField}
+                  onChange={updates("state")}
                   placeholder="NY"
                 ></input>
               </div>
@@ -235,8 +318,8 @@ function UserUpdateForm() {
                 <input
                   className="update-zip-code-input"
                   type="text"
-                  value={zip}
-                  onChange={updates("zip")}
+                  value={zipField}
+                  onChange={updates("zipCode")}
                   placeholder="10019"
                 ></input>
               </div>
@@ -346,32 +429,39 @@ function UserUpdateForm() {
                 <span id="update-instrument-label">vocals</span>
               </div>
             </div>
-
-            <div className="genre-dropdown-container">
-              <span className="genre-label">Favorite Genre:</span>
-              <select
-                className="genre-dropdown"
-                value={genre}
-                onChange={handleGenreChange}
-              >
-                <option value="Pop">Pop</option>
-                <option value="Rock">Rock</option>
-                <option value="Hip-Hop">Hip-Hop</option>
-                <option value="R&B">R&B</option>
-                <option value="Country">Country</option>
-                <option value="Electronic">Electronic</option>
-                <option value="Jazz">Jazz</option>
-                <option value="Classical">Classical</option>
-                <option value="Reggae">Reggae</option>
-                <option value="Blues">Blues</option>
-              </select>
+            <div className="genre-checkbox-container">
+              <span className="genre-label">Favorite Genres:</span>
+              <div>
+                {[
+                  "Pop",
+                  "Rock",
+                  "Hip-Hop",
+                  "R&B",
+                  "Country",
+                  "Electronic",
+                  "Jazz",
+                  "Classical",
+                  "Reggae",
+                  "Blues",
+                ].map((genre) => (
+                  <div key={genre}>
+                    <input
+                      type="checkbox"
+                      value={genre}
+                      checked={selectedGenres.includes(genre)}
+                      onChange={handleGenreChange}
+                    />
+                    <label>{genre}</label>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
           <div className="update-submit-button-container">
             <button className="update-submit-button" type="submit">
               Save
             </button>
-            <Link to={"/home"}>
+            <Link to={`/users/${currentUser._id}`}>
               <button className="cancel-submit-button">Cancel</button>
             </Link>
           </div>

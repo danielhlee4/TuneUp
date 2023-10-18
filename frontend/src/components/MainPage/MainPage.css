@@ -14,11 +14,6 @@
     padding-top: 20%;
 }
 
-.title {
-    font-size: 2em;
-    margin-bottom: 10px;
-}
-
 .intro-text {
     text-align: center;
     padding: 20px;
@@ -26,6 +21,19 @@
     color: white;
     box-sizing: border-box;
     margin-top: -10rem;
+    margin-bottom: 2rem;
+    font-weight: 500;
+    font-family: 'Bebas Neue', sans-serif;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+.tutorial-text {
+    text-align: center;
+    padding: 20px;
+    font-size: 62px;
+    color: white;
+    box-sizing: border-box;
+    margin-top: 3rem;
     margin-bottom: 2rem;
     font-weight: 500;
     font-family: 'Bebas Neue', sans-serif;

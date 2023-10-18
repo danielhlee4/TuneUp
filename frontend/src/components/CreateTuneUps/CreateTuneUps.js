@@ -39,12 +39,44 @@ function CreateTuneUps() {
   const [vocalsChecked, setVocalsChecked] = useState(false);
   const [banjoChecked, setBanjoChecked] = useState(false);
   const [genre, setGenre] = useState("Pop");
-  const [month, setMonth] = useState(months[new Date().getMonth()]);
+  const [month, setMonth] = useState(new Date().getMonth() + 1);
   const [day, setDay] = useState(new Date().getDate());
   const [year, setYear] = useState(new Date().getFullYear());
   const currentYear = new Date().getFullYear();
-  const monthIndex = months.indexOf(month);
   const history = useHistory();
+  const [errors, setErrors] = useState([]);
+
+  const validateInputs = () => {
+    const newErrors = [];
+    if (
+      !details ||
+      !month ||
+      !day ||
+      !year ||
+      !streetName ||
+      !city ||
+      !state ||
+      !zip ||
+      instruments.length < 1 ||
+      !genre
+    ) {
+      newErrors.push("Input fields must be completely filled!");
+    } else if (new Date(`${year}-${month}-${day}T00:00:00`) - new Date() < 0) {
+      newErrors.push("TuneUp must be set to occur in the future!");
+    }
+
+    setErrors(newErrors);
+
+    return newErrors.length === 0;
+  };
+
+  const displayErrors = () => {
+    if (errors.length > 0) {
+      return errors;
+    } else {
+      return null;
+    }
+  };
 
   const updates = (field) => {
     let setState;
@@ -71,44 +103,44 @@ function CreateTuneUps() {
   };
 
   const handlePianoChange = (e) => {
-    setPianoChecked(prev => !prev);
-    e.currentTarget.classList.toggle('active');
+    setPianoChecked((prev) => !prev);
+    e.currentTarget.classList.toggle("active");
   };
   const handleGuitarChange = (e) => {
-    setGuitarChecked(prev => !prev);
-    e.currentTarget.classList.toggle('active');
+    setGuitarChecked((prev) => !prev);
+    e.currentTarget.classList.toggle("active");
   };
   const handleViolinChange = (e) => {
-    setViolinChecked(prev => !prev);
-    e.currentTarget.classList.toggle('active');
+    setViolinChecked((prev) => !prev);
+    e.currentTarget.classList.toggle("active");
   };
   const handleTrumpetChange = (e) => {
-    setTrumpetChecked(prev => !prev);
-    e.currentTarget.classList.toggle('active');
+    setTrumpetChecked((prev) => !prev);
+    e.currentTarget.classList.toggle("active");
   };
   const handleFluteChange = (e) => {
-    setFluteChecked(prev => !prev);
-    e.currentTarget.classList.toggle('active');
+    setFluteChecked((prev) => !prev);
+    e.currentTarget.classList.toggle("active");
   };
   const handleDrumsChange = (e) => {
-    setDrumsChecked(prev => !prev);
-    e.currentTarget.classList.toggle('active');
+    setDrumsChecked((prev) => !prev);
+    e.currentTarget.classList.toggle("active");
   };
   const handleSaxChange = (e) => {
-    setSaxChecked(prev => !prev);
-    e.currentTarget.classList.toggle('active');
+    setSaxChecked((prev) => !prev);
+    e.currentTarget.classList.toggle("active");
   };
   const handleClarinetChange = (e) => {
-    setClarinetChecked(prev => !prev);
-    e.currentTarget.classList.toggle('active');
+    setClarinetChecked((prev) => !prev);
+    e.currentTarget.classList.toggle("active");
   };
   const handleVocalsChange = (e) => {
-    setVocalsChecked(prev => !prev);
-    e.currentTarget.classList.toggle('active');
+    setVocalsChecked((prev) => !prev);
+    e.currentTarget.classList.toggle("active");
   };
   const handleBanjoChange = (e) => {
-    setBanjoChecked(prev => !prev);
-    e.currentTarget.classList.toggle('active');
+    setBanjoChecked((prev) => !prev);
+    e.currentTarget.classList.toggle("active");
   };
   const handleGenreChange = (e) => {
     setGenre(e.target.value);
@@ -147,7 +179,7 @@ function CreateTuneUps() {
 
   const renderYearOptions = () => {
     const years = [];
-    for (let i = currentYear; i >= currentYear - 100; i--) {
+    for (let i = currentYear; i <= currentYear + 10; i++) {
       years.push(
         <option key={i} value={i}>
           {i}
@@ -192,6 +224,9 @@ function CreateTuneUps() {
     if (banjoChecked) {
       instruments.push("Banjo");
     }
+
+    if (!validateInputs()) return;
+
     const newTuneUp = {
       host: currentUser._id,
       description: details,
@@ -205,11 +240,11 @@ function CreateTuneUps() {
       pendingConnections: [],
     };
     dispatch(createTuneUp(newTuneUp));
-    history.push("/discover")
+    history.push("/discover");
   };
 
   const selectedStyle = {
-    backgroundColor: 'rgb(252,172,232)',
+    backgroundColor: "rgb(252,172,232)",
   };
 
   return (
@@ -230,7 +265,9 @@ function CreateTuneUps() {
             name="month"
             id="Month"
             value={month}
-            onChange={(e) => setMonth(e.target.value)}
+            onChange={(e) => {
+              setMonth(e.target.value);
+            }}
             required
             className="month-select"
           >
@@ -258,9 +295,7 @@ function CreateTuneUps() {
           </select>
         </div>
         <div className="tuneup-address-container">
-          <h3 className="tuneup-address-header">
-            Where?
-          </h3>
+          <h3 className="tuneup-address-header">Where?</h3>
           <div className="tuneup-address-input-container">
             <div className="tuneup-street-container">
               <span className="tuneup-street-name-label">Street name</span>
@@ -305,39 +340,97 @@ function CreateTuneUps() {
           </div>
         </div>
         <div className="tuneup-instruments-container">
-          <h3 className="tuneup-instrument-header">
-            instruments
-          </h3>
+          <h3 className="tuneup-instrument-header">instruments</h3>
           <div className="tuneup-instrument-list-container">
-            <div className="create-tuneup-instrument-box" onClick={handlePianoChange} style={pianoChecked ? selectedStyle : {}}>
-                <span><i className="fa-sharp fa-light fa-piano"></i></span>
+            <div
+              className="create-tuneup-instrument-box"
+              onClick={handlePianoChange}
+              style={pianoChecked ? selectedStyle : {}}
+            >
+              <span>
+                <i className="fa-sharp fa-light fa-piano"></i>
+              </span>
             </div>
-            <div className="create-tuneup-instrument-box" onClick={handleGuitarChange} style={guitarChecked ? selectedStyle : {}}>
-                <span><i className="fa-sharp fa-light fa-guitar-electric"></i></span>
+            <div
+              className="create-tuneup-instrument-box"
+              onClick={handleGuitarChange}
+              style={guitarChecked ? selectedStyle : {}}
+            >
+              <span>
+                <i className="fa-sharp fa-light fa-guitar-electric"></i>
+              </span>
             </div>
-            <div className="create-tuneup-instrument-box" onClick={handleViolinChange} style={violinChecked ? selectedStyle : {}}>
-                <span><i className="fa-sharp fa-light fa-violin"></i></span>
+            <div
+              className="create-tuneup-instrument-box"
+              onClick={handleViolinChange}
+              style={violinChecked ? selectedStyle : {}}
+            >
+              <span>
+                <i className="fa-sharp fa-light fa-violin"></i>
+              </span>
             </div>
-            <div className="create-tuneup-instrument-box" onClick={handleTrumpetChange} style={trumpetChecked ? selectedStyle : {}}>
-                <span><i className="fa-sharp fa-light fa-trumpet"></i></span>
+            <div
+              className="create-tuneup-instrument-box"
+              onClick={handleTrumpetChange}
+              style={trumpetChecked ? selectedStyle : {}}
+            >
+              <span>
+                <i className="fa-sharp fa-light fa-trumpet"></i>
+              </span>
             </div>
-            <div className="create-tuneup-instrument-box" onClick={handleFluteChange} style={fluteChecked ? selectedStyle : {}}>
-                <span><i className="fa-sharp fa-light fa-flute"></i></span>
+            <div
+              className="create-tuneup-instrument-box"
+              onClick={handleFluteChange}
+              style={fluteChecked ? selectedStyle : {}}
+            >
+              <span>
+                <i className="fa-sharp fa-light fa-flute"></i>
+              </span>
             </div>
-            <div className="create-tuneup-instrument-box" onClick={handleDrumsChange} style={drumsChecked ? selectedStyle : {}}>
-                <span><i className="fa-sharp fa-light fa-drum"></i></span>
+            <div
+              className="create-tuneup-instrument-box"
+              onClick={handleDrumsChange}
+              style={drumsChecked ? selectedStyle : {}}
+            >
+              <span>
+                <i className="fa-sharp fa-light fa-drum"></i>
+              </span>
             </div>
-            <div className="create-tuneup-instrument-box" onClick={handleSaxChange} style={saxChecked ? selectedStyle : {}}>
-                <span><i className="fa-sharp fa-light fa-saxophone"></i></span>
+            <div
+              className="create-tuneup-instrument-box"
+              onClick={handleSaxChange}
+              style={saxChecked ? selectedStyle : {}}
+            >
+              <span>
+                <i className="fa-sharp fa-light fa-saxophone"></i>
+              </span>
             </div>
-            <div className="create-tuneup-instrument-box" onClick={handleClarinetChange} style={clarinetChecked ? selectedStyle : {}}>
-                <span><i className="fa-sharp fa-light fa-clarinet"></i></span>
+            <div
+              className="create-tuneup-instrument-box"
+              onClick={handleClarinetChange}
+              style={clarinetChecked ? selectedStyle : {}}
+            >
+              <span>
+                <i className="fa-sharp fa-light fa-clarinet"></i>
+              </span>
             </div>
-            <div className="create-tuneup-instrument-box" onClick={handleBanjoChange} style={banjoChecked ? selectedStyle : {}}>
-                <span><i className="fa-sharp fa-light fa-banjo"></i></span>
+            <div
+              className="create-tuneup-instrument-box"
+              onClick={handleBanjoChange}
+              style={banjoChecked ? selectedStyle : {}}
+            >
+              <span>
+                <i className="fa-sharp fa-light fa-banjo"></i>
+              </span>
             </div>
-            <div className="create-tuneup-instrument-box" onClick={handleVocalsChange} style={vocalsChecked ? selectedStyle : {}}>
-                <span><i className="fa-sharp fa-light fa-microphone-stand"></i></span>
+            <div
+              className="create-tuneup-instrument-box"
+              onClick={handleVocalsChange}
+              style={vocalsChecked ? selectedStyle : {}}
+            >
+              <span>
+                <i className="fa-sharp fa-light fa-microphone-stand"></i>
+              </span>
             </div>
           </div>
           <div className="tuneup-genre-dropdown-container">
@@ -365,6 +458,9 @@ function CreateTuneUps() {
             Create TuneUp!
           </button>
         </div>
+        {displayErrors()?.map((error) => {
+          return <p className="tuneup-errors">{error}</p>;
+        })}
       </form>
       <img className="background-img" src={background}></img>
     </div>

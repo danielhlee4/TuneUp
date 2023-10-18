@@ -42,7 +42,7 @@ function AddressMap({ address }) {
   }, [mapRef, map, address]);
 
   return (
-    <div ref={mapRef} className="map" style={{ width: "400px", height: "400px" }}>
+    <div ref={mapRef} className="map" style={{ width: "220px", height: "100px" }}>
       Map
     </div>
   );

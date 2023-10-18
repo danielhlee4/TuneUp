@@ -197,3 +197,11 @@
 .create-tuneup-instrument-box.active {
     outline: 2px solid rgb(155,244,236);
 }
+
+p.tuneup-errors{
+    font-size: 30px;
+    color: red;
+    position:absolute;
+    bottom: 0;
+    justify-self: center;
+}

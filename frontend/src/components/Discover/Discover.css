@@ -3,17 +3,22 @@
 }
 
 .tuneups-container {
+    grid-area: 1/1/1/1;
     width: 50rem;
     margin-top: 0;
     margin-bottom: 3.25rem;
 }
+.list-items{
+    width: 45vw;
+}
 
 .discover-map-container {
+    grid-template-columns: 1/2/1/2;
     margin-top: 10.6rem;
-    top: 5rem;
+    top: 8%;
     position: sticky;
-    margin-right: 12px;
-    height: 600px;
+    height: fit-content;
+    margin-left: -4rem;
 }
 
 .map {
@@ -22,7 +27,9 @@
 
 .discover-container {
     min-height: 100vh;
-    display: flex;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-gap: 1rem;
     position: relative; /* Adjusted */
     background-image: url('../HomePage/home-page-background.png'); /* Assuming you are using a background image */
     background-size: cover;
