@@ -42,7 +42,7 @@ function ProfileButton({ user }) {
                     <button className="view-profile-button">View Profile</button>
                 </Link>
             </div>
-            <li>
+            <li className="sign-out-button-list">
                 <div className="sign-out-button-container">
                     <button className="sign-out-button" onClick={signout}>Sign Out</button>
                 </div>
