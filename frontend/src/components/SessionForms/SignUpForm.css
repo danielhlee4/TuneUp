@@ -147,7 +147,7 @@
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
-.errors{
+p.password-errors{
     color: red;
 }
 
@@ -155,4 +155,8 @@
     margin-top: 0.5rem;
     font-size: 18px;
     text-align: center;
+}
+
+p.email-errors{
+    color:red;
 }
