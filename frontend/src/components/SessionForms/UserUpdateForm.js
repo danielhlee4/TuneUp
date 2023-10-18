@@ -1,6 +1,6 @@
 import "./UserUpdateForm.css";
 import backgroundimg from "./background.png";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { updateUser } from "../../store/users";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
@@ -75,7 +75,7 @@ function UserUpdateForm() {
   const [vocalsChecked, setVocalsChecked] = useState(
     userInstruments?.includes("Vocals") || false
   );
-  const [selectedGenres, setSelectedGenres] = useState("userGenres || []");
+  const [selectedGenres, setSelectedGenres] = useState(currentUser.genres || []);
   const [errors, setErrors] = useState([]);
 
   const validateInputs = () => {
@@ -182,6 +182,12 @@ function UserUpdateForm() {
       setSelectedGenres(selectedGenres.filter((genre) => genre !== value));
     }
   };
+
+  useEffect(() => {
+    if (currentUser) {
+      setSelectedGenres(currentUser.genres || []);
+    }
+  }, [currentUser]); 
 
   const selectedStyle = {
     backgroundColor: "rgb(252,172,232)",
