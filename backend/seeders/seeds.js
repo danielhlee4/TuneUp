@@ -73,7 +73,7 @@ for (let i = 0; i < NUM_SEED_USERS; i++) {
       address: addresses[i],
       instruments: instruments[i],
       genres: [faker.music.genre(), faker.music.genre()],
-      hostedTuneUps: [genres[Math.floor(Math.random() * (genres.length-1))]]
+      hostedTuneUps: [genres[Math.floor(Math.random() * (genres.length - 1))]],
       joinedTuneUps: [],
     })
   );
@@ -111,9 +111,9 @@ const insertSeeds = async () => {
         status: "true",
         date: faker.date.future(),
         instruments: instruments
-        .slice(Math.floor(Math.random() * (instruments.length - 2)))
-        .splice(0, 4),
-        genre: genres[Math.floor(Math.random() * (genres.length-1))],
+          .slice(Math.floor(Math.random() * (instruments.length - 2)))
+          .splice(0, 4),
+        genre: genres[Math.floor(Math.random() * (genres.length - 1))],
         address: addresses[i + 10],
         connections: [],
         pendingConnections: [],
@@ -137,7 +137,7 @@ const insertSeeds = async () => {
           .slice(Math.floor(Math.random() * (instruments.length - 2)))
           .splice(0, 4),
         date: faker.date.future(),
-        genre: genres[Math.floor(Math.random() * (genres.length-1))],
+        genre: genres[Math.floor(Math.random() * (genres.length - 1))],
         address: addresses[i],
         connections: [user._id, otherAttendeeUser._id],
         pendingConnections: [],
