@@ -36,8 +36,8 @@ export const getTuneUps = (state) => {
 
 export const getTuneUp = (tuneUpId) => {
   return (state) => {
-    if (state.tuneUps[tuneUpId]) {
-      return state.tuneUps[tuneUpId];
+    if (state.tuneups && state.tuneups[tuneUpId]) {
+      return state.tuneups[tuneUpId];
     } else {
       return null;
     }

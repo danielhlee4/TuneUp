@@ -1,8 +1,8 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { fetchUsers } from "../../store/users";
-import { getTuneUps, updateTuneUp } from "../../store/tuneUps";
+import { getTuneUp, getTuneUps, updateTuneUp } from "../../store/tuneUps";
 import { formatDate, formatTime, formatDateTime } from "../../util/dateUtils";
 import { getUsers } from "../../store/users";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
@@ -15,17 +15,18 @@ import UserDistanceToAddress from "../Map/UserDistanceToAddress";
 import { extractStateAndZipcode } from "../Discover/Discover";
 
 const TuneUp = ({ tuneUpData }) => {
-  const tuneUp = tuneUpData;
-  const users = useSelector(getUsers);
-  const tuneUps = useSelector(getTuneUps);
-  const sessionUser = useSelector((state) => state.session.user);
-  const [clicked, setClicked] = useState(false);
-  const [isFromHome, setIsFromHome] = useState(true);
+    const dispatch = useDispatch();
+    const users = useSelector(getUsers);
+    const tuneUps = useSelector(getTuneUps);
+    const sessionUser = useSelector((state) => state.session.user);
+    const tuneUp = useSelector(getTuneUp(tuneUpData._id));
+    const [clicked, setClicked] = useState(false);
+    const [isFromHome, setIsFromHome] = useState(true);
 
   const userIsPartOfTuneUp =
     sessionUser &&
-    (sessionUser.hostedTuneUps?.includes(tuneUp._id) ||
-      sessionUser.joinedTuneUps?.includes(tuneUp._id));
+    (sessionUser.hostedTuneUps?.includes(tuneUp?._id) ||
+      sessionUser.joinedTuneUps?.includes(tuneUp?._id));
 
   const handleAcceptRequest = async (requestingUserId) => {
     const response = await jwtFetch(`/api/tuneups/${tuneUp._id}`, {
@@ -41,7 +42,7 @@ const TuneUp = ({ tuneUpData }) => {
       }),
     });
     const updatedTuneUp = await response.json();
-    updateTuneUp(updatedTuneUp);
+    dispatch(updateTuneUp(updatedTuneUp));
   };
 
   const handleDenyRequest = async (requestingUserId) => {
@@ -54,10 +55,11 @@ const TuneUp = ({ tuneUpData }) => {
         pendingConnections: tuneUp.pendingConnections.filter(
           (id) => id !== requestingUserId
         ),
+        connections: [...tuneUp.connections]
       }),
     });
     const updatedTuneUp = await response.json();
-    updateTuneUp(updatedTuneUp);
+    dispatch(updateTuneUp(updatedTuneUp));
   };
 
   const handleLeaveTuneUp = async () => {
@@ -66,7 +68,7 @@ const TuneUp = ({ tuneUpData }) => {
     });
 
     const updatedTuneUp = await response.json();
-    updateTuneUp(updatedTuneUp);
+    dispatch(updateTuneUp(updatedTuneUp));
   };
 
   const handleRequestToJoin = async () => {
@@ -77,7 +79,7 @@ const TuneUp = ({ tuneUpData }) => {
       },
     });
     const updatedTuneUp = await response.json();
-    updateTuneUp(updatedTuneUp);
+    dispatch(updateTuneUp(updatedTuneUp));
   };
 
   function handleMapClick(event) {
@@ -116,13 +118,13 @@ const TuneUp = ({ tuneUpData }) => {
         <div className="minimized">
           <div className="left-minimized">
             <h1>
-              {users[tuneUp.host]?.firstName}'s {tuneUp?.genre} TuneUp
+              {users[tuneUp?.host]?.firstName}'s {tuneUp?.genre} TuneUp
             </h1>
           </div>
           <div className="right-minimized">
             <div className="right-top">
               <div className="right-top-date">
-                {formatDateTime(tuneUp.date)}
+                {formatDateTime(tuneUp?.date)}
               </div>
               <div className="right-top-location" onClick={(e) => {
                 e.stopPropagation();
@@ -130,22 +132,22 @@ const TuneUp = ({ tuneUpData }) => {
               }}>
                 {isFromHome ? 
                   <div className="tuneUp-distance">
-                    <DistanceCalculator address1={tuneUp.address} address2={sessionUser.address} />
+                    <DistanceCalculator address1={tuneUp?.address} address2={sessionUser.address} />
                     <span className="clickable-text">from home address</span>
                   </div>
                   :
                   <div className="tuneUp-distance">
-                    <UserDistanceToAddress targetAddress={tuneUp.address} />
+                    <UserDistanceToAddress targetAddress={tuneUp?.address} />
                     <span className="clickable-text">from current location</span>
                   </div>
                 }
               </div>
               <div className="right-top-group-size">
-                party size: {tuneUp.connections.length + 1}
+                party size: {tuneUp?.connections.length + 1}
               </div>
             </div>
             <div className="right-bottom">
-              {tuneUp.instruments.map((instrument) => renderInstrumentIcon(instrument))}
+              {tuneUp?.instruments.map((instrument) => renderInstrumentIcon(instrument))}
             </div>
           </div>
         </div>
@@ -153,18 +155,18 @@ const TuneUp = ({ tuneUpData }) => {
       {clicked && (
         <div className="maximized">
           <div className="tuneUp-name">
-            <h1>{users[tuneUp.host]?.firstName}'s TuneUp</h1>
+            <h1>{users[tuneUp?.host]?.firstName}'s TuneUp</h1>
           </div>
           <div className="tuneUp-columns">
             <div className="tuneUp-left-column">
               <div className="tuneUp-details">
-                <div className="tuneUp-date">{formatDateTime(tuneUp.date)}</div>
+                <div className="tuneUp-date">{formatDateTime(tuneUp?.date)}</div>
               </div>
               <div className="tuneUp-connections">
                 <ul>
                   {" "}
                   Musicians attending:
-                  {tuneUp.connections?.map((user) => {
+                  {tuneUp?.connections?.map((user) => {
                     return (
                       <li key={user?._id}>
                         {user?._id ? (
@@ -178,12 +180,12 @@ const TuneUp = ({ tuneUpData }) => {
                 </ul>
               </div>
               <div className="tuneup-instrument-icons">
-                {tuneUp.instruments.map((instrument) => renderInstrumentIcon(instrument))}
+                {tuneUp?.instruments.map((instrument) => renderInstrumentIcon(instrument))}
               </div>
             </div>
 
             <div className="tuneUp-middle-column">
-              <p id="tuneUp-description">{tuneUp.description}</p>
+              <p id="tuneUp-description">{tuneUp?.description}</p>
             </div>
 
             <div className="tuneUp-right-column">
@@ -209,7 +211,7 @@ const TuneUp = ({ tuneUpData }) => {
           </div>
           <div className="tuneUp-footer">
             {!userIsPartOfTuneUp &&
-              !tuneUp.pendingConnections?.includes(sessionUser._id) && (
+              !tuneUp?.pendingConnections?.includes(sessionUser._id) && (
                 <button
                   className="request-join-button"
                   onClick={(e) => {
@@ -220,12 +222,12 @@ const TuneUp = ({ tuneUpData }) => {
                   Request to Join
                 </button>
               )}
-            {tuneUp.pendingConnections?.includes(sessionUser._id) && (
+            {tuneUp?.pendingConnections?.includes(sessionUser._id) && (
               <button className="requested-button" disabled>
                 Requested
               </button>
             )}
-            {sessionUser._id === tuneUp.host &&
+            {sessionUser._id === tuneUp?.host &&
               tuneUp.pendingConnections.map((requestingUserId) => (
                 <div key={requestingUserId}>
                   <span>
