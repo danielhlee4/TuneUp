@@ -67,8 +67,8 @@ function UserProfilePage() {
             </div>
           </div>
         </div>
-        <div className="tuneup-hosted-label">Your Joined TuneUps</div>
-        <div className="tuneup-joined-label">Your Hosted TuneUps</div>
+        <div className="tuneup-joined-label">Your Joined TuneUps</div>
+        <div className="tuneup-hosted-label">Your Hosted TuneUps</div>
         <div className="user-tuneups-container" id="user-tuneups-container">
           <div className="joined-tuneups-list-container">
             <ul className="joined-tuneup-list">
