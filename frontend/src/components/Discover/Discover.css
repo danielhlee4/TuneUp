@@ -38,8 +38,27 @@
     background-attachment: fixed;
 }
 
-
-
 .links-nav{
     z-index: 1;
+}
+
+div.sort {
+    /* border: 1px solid red; */
+    position: absolute;
+    top:115px;
+    left: 50%;
+}
+
+div.sort select {
+    border-radius: 25px;
+    padding: 5px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    border: 1px solid #ccc;
+}
+
+div.sort option{
+    padding: 0px;
+    margin: 0px;
 }

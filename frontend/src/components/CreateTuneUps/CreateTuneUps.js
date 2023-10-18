@@ -61,7 +61,15 @@ function CreateTuneUps() {
       !genre
     ) {
       newErrors.push("Input fields must be completely filled!");
-    } else if (new Date(`${year}-${month}-${day}T00:00:00`) - new Date() < 0) {
+    } else if (
+      new Date(
+        `${year}-${month < 10 ? "0" + month : month}-${
+          day < 10 ? "0" + day : day
+        }T00:00:00`
+      ) -
+        new Date() <
+      0
+    ) {
       newErrors.push("TuneUp must be set to occur in the future!");
     }
 
