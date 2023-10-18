@@ -335,7 +335,7 @@ function UserUpdateForm() {
             <span className="musical-info-header">Instruments</span>
             <div className="instruments-container">
               <div
-                className="instrument-box"
+                className={`instrument-box ${pianoChecked ? "active" : ""}`}
                 onClick={handlePianoChange}
                 style={pianoChecked ? selectedStyle : {}}
               >
@@ -345,7 +345,7 @@ function UserUpdateForm() {
                 <span id="update-instrument-label">piano</span>
               </div>
               <div
-                className="instrument-box"
+                className={`instrument-box ${guitarChecked ? "active" : ""}`}
                 onClick={handleGuitarChange}
                 style={guitarChecked ? selectedStyle : {}}
               >
@@ -355,7 +355,7 @@ function UserUpdateForm() {
                 <span id="update-instrument-label">guitar</span>
               </div>
               <div
-                className="instrument-box"
+                className={`instrument-box ${violinChecked ? "active" : ""}`}
                 onClick={handleViolinChange}
                 style={violinChecked ? selectedStyle : {}}
               >
@@ -365,7 +365,7 @@ function UserUpdateForm() {
                 <span id="update-instrument-label">violin</span>
               </div>
               <div
-                className="instrument-box"
+                className={`instrument-box ${trumpetChecked ? "active" : ""}`}
                 onClick={handleTrumpetChange}
                 style={trumpetChecked ? selectedStyle : {}}
               >
@@ -375,7 +375,7 @@ function UserUpdateForm() {
                 <span id="update-instrument-label">trumpet</span>
               </div>
               <div
-                className="instrument-box"
+                className={`instrument-box ${fluteChecked ? "active" : ""}`}
                 onClick={handleFluteChange}
                 style={fluteChecked ? selectedStyle : {}}
               >
@@ -385,7 +385,7 @@ function UserUpdateForm() {
                 <span id="update-instrument-label">flute</span>
               </div>
               <div
-                className="instrument-box"
+                className={`instrument-box ${drumsChecked ? "active" : ""}`}
                 onClick={handleDrumsChange}
                 style={drumsChecked ? selectedStyle : {}}
               >
@@ -395,7 +395,7 @@ function UserUpdateForm() {
                 <span id="update-instrument-label">drums</span>
               </div>
               <div
-                className="instrument-box"
+                className={`instrument-box ${saxChecked ? "active" : ""}`}
                 onClick={handleSaxChange}
                 style={saxChecked ? selectedStyle : {}}
               >
@@ -405,7 +405,7 @@ function UserUpdateForm() {
                 <span id="update-instrument-label">saxophone</span>
               </div>
               <div
-                className="instrument-box"
+                className={`instrument-box ${clarinetChecked ? "active" : ""}`}
                 onClick={handleClarinetChange}
                 style={clarinetChecked ? selectedStyle : {}}
               >
@@ -415,7 +415,7 @@ function UserUpdateForm() {
                 <span id="update-instrument-label">clarinet</span>
               </div>
               <div
-                className="instrument-box"
+                className={`instrument-box ${banjoChecked ? "active" : ""}`}
                 onClick={handleBanjoChange}
                 style={banjoChecked ? selectedStyle : {}}
               >
@@ -425,7 +425,7 @@ function UserUpdateForm() {
                 <span id="update-instrument-label">banjo</span>
               </div>
               <div
-                className="instrument-box"
+                className={`instrument-box ${vocalsChecked ? "active" : ""}`}
                 onClick={handleVocalsChange}
                 style={vocalsChecked ? selectedStyle : {}}
               >
