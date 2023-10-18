@@ -54,7 +54,7 @@ function ZipcodeMap({ zipcode }) {
   }, [mapRef, map, zipcode]);
 
   return (
-    <div ref={mapRef} className="map" style={{ width: "400px", height: "400px" }}>
+    <div ref={mapRef} className="map" style={{ width: "220px", height: "125px" }}>
       Map
     </div>
   );

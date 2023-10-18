@@ -140,13 +140,14 @@
     padding: 0 10px;
 }
 
-#tuneUp-description,
-#tuneUp-non-member {
+#tuneUp-description {
     font-size: 14px;
     color: #555;
 }
 
-#tuneUp-address {
+#tuneUp-address,
+#tuneUp-non-member {
     margin-top: 5px;
+    font-size: 15px;
     color: #555;
 }

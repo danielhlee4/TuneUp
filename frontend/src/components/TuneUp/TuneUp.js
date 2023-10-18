@@ -10,6 +10,8 @@ import "./TuneUp.css";
 import jwtFetch from "../../store/jwt";
 import DistanceCalculator from "../Map/DistanceCalculator";
 import AddressMapWrapper from "../Map/AddressMap";
+import ZipcodeMapWrapper from "../Map/ZipcodeMap";
+import { extractStateAndZipcode } from "../Discover/Discover";
 
 const TuneUp = ({ tuneUpData }) => {
   const tuneUp = tuneUpData;
@@ -178,7 +180,10 @@ const TuneUp = ({ tuneUpData }) => {
                             <p id="tuneUp-address">{tuneUp.address}</p>
                         </div>
                     ) : (
-                        <p id="tuneUp-non-member">Only members of this tuneup can view its location information</p>
+                        <div className="tuneUp-location">
+                            <ZipcodeMapWrapper zipcode={extractStateAndZipcode(tuneUp.address)} />
+                            <p id="tuneUp-non-member">Exact location available for members of this tuneup</p>
+                        </div>
                     )
                   }
                 </div>
