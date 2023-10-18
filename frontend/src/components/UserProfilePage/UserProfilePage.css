@@ -102,20 +102,20 @@
     font-size: 20px;
 }
 
-.tuneup-hosted-label {
-    position: absolute;
-    font-size: 48px;
-    margin-top: 2rem;
-    margin-left: 15vw;
-    text-shadow: 10px 10px 10px rgb(253, 0, 211);
-    color: white;
-}
-
 .tuneup-joined-label {
     position: absolute;
     font-size: 48px;
     margin-top: 2rem;
-    margin-left: 50.5vw;
+    margin-left: 6vw;
+    text-shadow: 10px 10px 10px rgb(253, 0, 211);
+    color: white;
+}
+
+.tuneup-hosted-label {
+    position: absolute;
+    font-size: 48px;
+    margin-top: 2rem;
+    margin-left: 51vw;
     text-shadow: 10px 10px 10px rgb(253, 0, 211);
     color: white;
 }
@@ -144,9 +144,9 @@
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-    margin-left: 13.5vw;
+    margin-left: 5vw;
     margin-top: 6rem;
-    width: 69%;
+    width: 90%;
     height: 30rem;
     padding: 10px;
 }
@@ -163,6 +163,7 @@
     grid-area: 1/2/1/2;
     overflow-y: auto;
     overflow-x: hidden;
+    padding-left: 7px;
 }
 
 .edit-button{
@@ -192,5 +193,5 @@
 
 .list-item {
     list-style: none;
-    width: 33vw;
+    width: 44vw;
 }
