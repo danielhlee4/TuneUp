@@ -14,7 +14,7 @@ function DistanceCalculator({ address1, address2 }) {
         const miles = data.rows[0].elements[0].distance.text;
         const cleanedMiles = miles.replace(',', '');
         const roundedMiles = Math.round(parseFloat(cleanedMiles) * 10) / 10;
-        setDistance(`${roundedMiles} ${roundedMiles === 1 ? 'mile' : 'miles'}`);
+        setDistance(`${roundedMiles} mi`);
       } else {
         setDistance("Unable to calculate distance.");
       }
@@ -29,7 +29,7 @@ function DistanceCalculator({ address1, address2 }) {
 
   return (
     <div>
-      {distance ? <p>Distance: {distance}</p> : <p>Calculating...</p>}
+      {distance ? <p>{distance}</p> : <p>Calculating...</p>}
     </div>
   );
 }

@@ -37,6 +37,10 @@
     justify-content: space-between;
 }
 
+.right-minimized .right-top-location {
+    white-space: nowrap;
+}
+
 .right-minimized .right-top-date,
 .right-minimized .right-top-location,
 .right-minimized .right-top-group-size {
@@ -57,6 +61,16 @@
 .right-bottom > span {
     font-size: 18px;
     margin-right: 5px;
+}
+
+.clickable-text {
+    margin-left: 3px;
+}
+
+.tuneUp-distance {
+    display: inline-flex;
+    color: #8464ec;
+    cursor: crosshair;
 }
 
 /* Maximized View */

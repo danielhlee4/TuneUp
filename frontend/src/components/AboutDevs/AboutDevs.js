@@ -36,11 +36,7 @@ function AboutDevs() {
                     <div className='dan-divider1'></div>
                     <div className='dan-description-container'>
                         <div className='dan-description'>
-                            Dan led the development of TuneUp by serving as the lead
-                            of the team. His leadership ensured smooth coordination between 
-                            frontend and backend teams. Dan's expertise in creating advanced map components 
-                            using Google Maps API was crucial for facilitating local musical meetups, 
-                            enhancing the user experience, and showcasing the app's unique features.
+                        Dan served as team lead for the development of TuneUp, seamlessly bridging the frontend and backend teams. His implementation of the Google Maps API was essential for the app, emphasizing local musical meetups and elevating the user experience with distinctive features. His vision brought innovation and precision to the platform.
                         </div>
                     </div>
                     <div className='dan-divider2'></div>
@@ -104,7 +100,7 @@ function AboutDevs() {
                     <div className='sean-divider1'></div>
                     <div className='sean-description-container'>
                         <div className='sean-description'>
-                            Sean lead the frontend development of TuneUp as the Lead Frontend 
+                            Sean led the frontend development of TuneUp as the Lead Frontend 
                             Engineer. Sean developed the React frontend, including countless 
                             components, JSX elements, reducers, actions, selectors, and 
                             middlewares. His role ensured seamless communication with the 

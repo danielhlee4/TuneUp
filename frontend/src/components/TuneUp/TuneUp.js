@@ -11,6 +11,7 @@ import jwtFetch from "../../store/jwt";
 import DistanceCalculator from "../Map/DistanceCalculator";
 import AddressMapWrapper from "../Map/AddressMap";
 import ZipcodeMapWrapper from "../Map/ZipcodeMap";
+import UserDistanceToAddress from "../Map/UserDistanceToAddress";
 import { extractStateAndZipcode } from "../Discover/Discover";
 
 const TuneUp = ({ tuneUpData }) => {
@@ -19,6 +20,7 @@ const TuneUp = ({ tuneUpData }) => {
   const tuneUps = useSelector(getTuneUps);
   const sessionUser = useSelector((state) => state.session.user);
   const [clicked, setClicked] = useState(false);
+  const [isFromHome, setIsFromHome] = useState(true);
 
   const userIsPartOfTuneUp =
     sessionUser &&
@@ -118,12 +120,21 @@ const TuneUp = ({ tuneUpData }) => {
               <div className="right-top-date">
                 {formatDateTime(tuneUp.date)}
               </div>
-              <div className="right-top-location">
-                <DistanceCalculator
-                  address1={tuneUp.address}
-                  address2={sessionUser.address}
-                />
-                {/* <DistanceCalculator address1="90 5th Ave, New York, NY" address2="Columbus Cir, New York, NY" /> */}
+              <div className="right-top-location" onClick={(e) => {
+                e.stopPropagation();
+                setIsFromHome(!isFromHome);
+              }}>
+                {isFromHome ? 
+                  <div className="tuneUp-distance">
+                    <DistanceCalculator address1={tuneUp.address} address2={sessionUser.address} />
+                    <span className="clickable-text">from home address</span>
+                  </div>
+                  :
+                  <div className="tuneUp-distance">
+                    <UserDistanceToAddress targetAddress={tuneUp.address} />
+                    <span className="clickable-text">from current location</span>
+                  </div>
+                }
               </div>
               <div className="right-top-group-size">
                 party size: {tuneUp.connections.length + 1}
