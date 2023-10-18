@@ -59,7 +59,7 @@ router.post("/create", ensureAuthenticated, async (req, res, next) => {
 router.patch(
   "/:id",
   ensureAuthenticated,
-  ensureEventHost,
+  // ensureEventHost,
   async (req, res, next) => {
     try {
       const updateData = {

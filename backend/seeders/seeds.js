@@ -32,16 +32,29 @@ const addresses = [
   "4 New York Plaza, New York, NY 10004",
 ];
 
+const genres = [
+  "Pop",
+  "Rock",
+  "Hip-Hop",
+  "R&B",
+  "Country",
+  "Electronic",
+  "Jazz",
+  "Classical",
+  "Reggie",
+  "Blues",
+];
+
 const instruments = [
-  "Drums",
-  "Banjo",
   "Piano",
   "Guitar",
+  "Violin",
   "Trumpet",
   "Flute",
-  "Vocals",
-  "Violin",
+  "Drums",
   "Saxophone",
+  "Banjo",
+  "Vocals",
   "Clarinet",
 ];
 
@@ -59,7 +72,7 @@ for (let i = 0; i < NUM_SEED_USERS; i++) {
       profileImageUrl: DEFAULT_PROFILE_IMAGE_URL,
       address: addresses[i],
       instruments: instruments[i],
-      genres: [faker.music.genre(), faker.music.genre()],
+      genres: [genres[Math.floor(Math.random() * (genres.length - 1))]],
       hostedTuneUps: [],
       joinedTuneUps: [],
     })
@@ -97,7 +110,10 @@ const insertSeeds = async () => {
         description: faker.lorem.paragraph(),
         status: "true",
         date: faker.date.future(),
-        genre: faker.music.genre(),
+        instruments: instruments
+          .slice(Math.floor(Math.random() * (instruments.length - 2)))
+          .splice(0, 4),
+        genre: genres[Math.floor(Math.random() * (genres.length - 1))],
         address: addresses[i + 10],
         connections: [],
         pendingConnections: [],
@@ -118,10 +134,10 @@ const insertSeeds = async () => {
         description: faker.lorem.paragraph(),
         status: "true",
         instruments: instruments
-          .slice(Math.floor(Math.random() * (instruments.length - 1)))
+          .slice(Math.floor(Math.random() * (instruments.length - 2)))
           .splice(0, 4),
         date: faker.date.future(),
-        genre: faker.music.genre(),
+        genre: genres[Math.floor(Math.random() * (genres.length - 1))],
         address: addresses[i],
         connections: [user._id, otherAttendeeUser._id],
         pendingConnections: [],
