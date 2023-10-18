@@ -9,6 +9,10 @@ import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import "./TuneUp.css";
 import jwtFetch from "../../store/jwt";
 import DistanceCalculator from "../Map/DistanceCalculator";
+import AddressMapWrapper from "../Map/AddressMap";
+import ZipcodeMapWrapper from "../Map/ZipcodeMap";
+import UserDistanceToAddress from "../Map/UserDistanceToAddress";
+import { extractStateAndZipcode } from "../Discover/Discover";
 
 const TuneUp = ({ tuneUpData }) => {
   const tuneUp = tuneUpData;
@@ -16,6 +20,7 @@ const TuneUp = ({ tuneUpData }) => {
   const tuneUps = useSelector(getTuneUps);
   const sessionUser = useSelector((state) => state.session.user);
   const [clicked, setClicked] = useState(false);
+  const [isFromHome, setIsFromHome] = useState(true);
 
   const userIsPartOfTuneUp =
     sessionUser &&
@@ -75,6 +80,33 @@ const TuneUp = ({ tuneUpData }) => {
     updateTuneUp(updatedTuneUp);
   };
 
+  function handleMapClick(event) {
+    event.stopPropagation();
+  }
+
+  const renderInstrumentIcon = (instrument) => {
+    const instrumentIconMap = {
+      piano: "fa-piano",
+      guitar: "fa-guitar-electric",
+      violin: "fa-violin",
+      trumpet: "fa-trumpet",
+      flute: "fa-flute",
+      drums: "fa-drum",
+      saxophone: "fa-saxophone",
+      clarinet: "fa-clarinet",
+      banjo: "fa-banjo",
+      vocals: "fa-microphone-stand"
+    };
+
+    const normalizedInstrument = instrument.toLowerCase();
+
+    return tuneUp.instruments.includes(instrument) ? (
+      <span>
+        <i className={`fa-sharp fa-light ${instrumentIconMap[normalizedInstrument]}`}></i>
+      </span>
+    ) : null;
+  };
+
   return (
     <div
       className={`tuneUp-container ${clicked ? "maximized" : "minimized"}`}
@@ -92,18 +124,29 @@ const TuneUp = ({ tuneUpData }) => {
               <div className="right-top-date">
                 {formatDateTime(tuneUp.date)}
               </div>
-              <div className="right-top-location">
-                <DistanceCalculator
-                  address1={tuneUp.address}
-                  address2={sessionUser.address}
-                />
-                {/* <DistanceCalculator address1="90 5th Ave, New York, NY" address2="Columbus Cir, New York, NY" /> */}
+              <div className="right-top-location" onClick={(e) => {
+                e.stopPropagation();
+                setIsFromHome(!isFromHome);
+              }}>
+                {isFromHome ? 
+                  <div className="tuneUp-distance">
+                    <DistanceCalculator address1={tuneUp.address} address2={sessionUser.address} />
+                    <span className="clickable-text">from home address</span>
+                  </div>
+                  :
+                  <div className="tuneUp-distance">
+                    <UserDistanceToAddress targetAddress={tuneUp.address} />
+                    <span className="clickable-text">from current location</span>
+                  </div>
+                }
               </div>
               <div className="right-top-group-size">
                 party size: {tuneUp.connections.length + 1}
               </div>
             </div>
-            <div className="right-bottom">{tuneUp?.genres}</div>
+            <div className="right-bottom">
+              {tuneUp.instruments.map((instrument) => renderInstrumentIcon(instrument))}
+            </div>
           </div>
         </div>
       )}
@@ -112,28 +155,54 @@ const TuneUp = ({ tuneUpData }) => {
           <div className="tuneUp-name">
             <h1>{users[tuneUp.host]?.firstName}'s TuneUp</h1>
           </div>
-          <div className="tuneUp-details">
-            <div className="tuneUp-date">{formatDateTime(tuneUp.date)}</div>
-            <div className="tuneUp-location">
-              {/* add dans distance from component */}
+          <div className="tuneUp-columns">
+            <div className="tuneUp-left-column">
+              <div className="tuneUp-details">
+                <div className="tuneUp-date">{formatDateTime(tuneUp.date)}</div>
+              </div>
+              <div className="tuneUp-connections">
+                <ul>
+                  {" "}
+                  Musicians attending:
+                  {tuneUp.connections?.map((user) => {
+                    return (
+                      <li key={user?._id}>
+                        {user?._id ? (
+                          <Link to={`/users/${user?._id}`}>{user?.firstName}</Link>
+                        ) : (
+                          <Link to={`/users/${user}`}>{users[user].firstName}</Link>
+                        )}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+              <div className="tuneup-instrument-icons">
+                {tuneUp.instruments.map((instrument) => renderInstrumentIcon(instrument))}
+              </div>
             </div>
-          </div>
-          <div className="tuneUp-connections">
-            <ul>
-              {" "}
-              Musicians attending:
-              {tuneUp.connections?.map((user) => {
-                return (
-                  <li key={user?._id}>
-                    {user?._id ? (
-                      <Link to={`/users/${user?._id}`}>{user?.firstName}</Link>
+
+            <div className="tuneUp-middle-column">
+              <p id="tuneUp-description">{tuneUp.description}</p>
+            </div>
+
+            <div className="tuneUp-right-column">
+                <div className="tuneUp-location">
+                  {
+                    (sessionUser._id === tuneUp.host || tuneUp.connections.includes(sessionUser._id)) ? (
+                        <div className="tuneUp-location" onClick={handleMapClick}>
+                            <AddressMapWrapper address={tuneUp.address} />
+                            <p id="tuneUp-address">{tuneUp.address}</p>
+                        </div>
                     ) : (
-                      <Link to={`/users/${user}`}>{users[user].firstName}</Link>
-                    )}
-                  </li>
-                );
-              })}
-            </ul>
+                        <div className="tuneUp-location" onClick={handleMapClick}>
+                            <ZipcodeMapWrapper zipcode={extractStateAndZipcode(tuneUp.address)} />
+                            <p id="tuneUp-non-member">Exact location available for members of this tuneup</p>
+                        </div>
+                    )
+                  }
+                </div>
+            </div>
           </div>
           <div className="tuneUp-footer">
             {!userIsPartOfTuneUp &&

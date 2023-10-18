@@ -37,6 +37,10 @@
     justify-content: space-between;
 }
 
+.right-minimized .right-top-location {
+    white-space: nowrap;
+}
+
 .right-minimized .right-top-date,
 .right-minimized .right-top-location,
 .right-minimized .right-top-group-size {
@@ -52,6 +56,21 @@
 .right-minimized .right-bottom {
     font-size: 16px;
     color: #333;
+}
+
+.right-bottom > span {
+    font-size: 18px;
+    margin-right: 5px;
+}
+
+.clickable-text {
+    margin-left: 3px;
+}
+
+.tuneUp-distance {
+    display: inline-flex;
+    color: #8464ec;
+    cursor: crosshair;
 }
 
 /* Maximized View */
@@ -79,14 +98,16 @@
 }
 
 .maximized .tuneUp-connections li {
-    margin-bottom: 5px;
+    margin: 2px 0px;
     font-size: 16px;
+    padding: 2px 5px;
 }
 
 .maximized .tuneUp-footer {
     font-size: 16px;
     border-top: 1px solid #ccc;
     padding-top: 10px;
+    margin-top: 4px;
     color: #777;
 }
 
@@ -109,4 +130,38 @@
     background-color: white;
     color: black;
     border: 1px solid #4CAF50;
+}
+
+.tuneup-instrument-icons > span {
+    font-size: 18px;
+    margin-right: 5px;
+}
+
+.tuneUp-columns {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+  
+.tuneUp-left-column {
+    flex: 0.8; /* takes up 80% of the space it used to */
+    padding: 0 10px;
+}
+
+.tuneUp-middle-column,
+.tuneUp-right-column {
+    flex: 1.2; /* takes up 110% of the space each used to */
+    padding: 0 10px;
+}
+
+#tuneUp-description {
+    font-size: 14px;
+    color: #555;
+}
+
+#tuneUp-address,
+#tuneUp-non-member {
+    margin-top: 5px;
+    font-size: 15px;
+    color: #555;
 }

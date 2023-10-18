@@ -43,17 +43,3 @@
     right: -20px;
     transform: translateY(-50%);
 }
-
-
-ul {
-    width: 800px;
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
-    padding: 10px;
-}
-
-
-

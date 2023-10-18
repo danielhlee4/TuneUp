@@ -7,7 +7,7 @@ import { fetchUsers, getUsers} from "../../store/users";
 import MultipleZipcodeMapWrapper from "../Map/MultipleZipcodeMap";
 import SearchBar from "../SearchBar/SearchBar";
 
-function extractStateAndZipcode(address) {
+export function extractStateAndZipcode(address) {
   const parts = address.split(', ');
   if (parts[2]) {
     return parts[2];  // This should be the state and zipcode part e.g. 'NY 10314'
@@ -76,8 +76,8 @@ function Discover() {
           ""
         )}
         <div className="discover-map-container">
-          {/* <MultipleZipcodeMapWrapper key={zipcodesArray.join(',')} zipcodes={zipcodesArray} /> */}
-          <MultipleZipcodeMapWrapper zipcodes={["NY 10012"]} />
+          <MultipleZipcodeMapWrapper key={zipcodesArray.join(',')} zipcodes={zipcodesArray} />
+          {/* <MultipleZipcodeMapWrapper zipcodes={["NY 10012"]} /> */}
         </div>
       </div>
       <footer>

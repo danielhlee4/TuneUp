@@ -34,12 +34,12 @@ const addresses = [
 
 const instruments = [
   "Drums",
-  "Trombone",
+  "Banjo",
   "Piano",
   "Guitar",
   "Trumpet",
   "Flute",
-  "Cello",
+  "Vocals",
   "Violin",
   "Saxophone",
   "Clarinet",
