@@ -92,3 +92,7 @@
     cursor: pointer;
 }
 
+.sign-out-button-list {
+    list-style-type: none;
+}
+
