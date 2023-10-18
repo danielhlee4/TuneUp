@@ -1,4 +1,3 @@
-// Import necessary modules and models
 require("dotenv").config();
 const mongoose = require("mongoose");
 const { mongoURI: db } = require("../config/keys.js");
@@ -6,20 +5,20 @@ const User = require("../models/User");
 const TuneUp = require("../models/TuneUp");
 const bcrypt = require("bcryptjs");
 const { faker } = require("@faker-js/faker");
-const DEFAULT_PROFILE_IMAGE_URL = 
+const DEFAULT_PROFILE_IMAGE_URL =
   "https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?w=740&t=st=1696436645~exp=1696437245~hmac=f5eeb83ab6796097ab060cc9d3919660dcf9cea7efea0e2087504a5a007d4cd0";
-  const profileImageUrls = [
-    "https://www.the74million.org/wp-content/uploads/2019/02/Good-News-orchestra.jpg",
-    "https://media.ipassio.com/media/ckeditor_image/2023/06/13/pandit-ravi-shankar-on-facebook_QvNTweO.webp",
-    "https://media.ipassio.com/media/ckeditor_image/2023/06/13/zakir-hussain-on-facebook.webp",
-    "https://media.ipassio.com/media/ckeditor_image/2023/06/13/pandit-bhimsen-joshi-on-facebook.webp",
-    "https://bandzoogle.com/files/3713/bzblog-why-serious-musicians-still-need-to-be-making-albums-main.jpg",
-    "https://i0.wp.com/www.yesmagazine.org/wp-content/uploads/2020/10/black-classical-musicians.jpg?resize=1024%2C614&quality=45&ssl=1",
-    "https://www.kennedy-center.org/globalassets/education/opportunities-for-artists/competitions--commissions/vsa-international-young-soloists/vsa-young-soloists-competition---soloist-piano-169.jpg?format=webp&width=1024&quality=70",
-    "https://drummagazine.com/wp-content/uploads/2021/07/Phil-Collins-2-1.jpg",
-    "https://flypaper.soundfly.com/wp-content/uploads/2016/11/image1-683x1024.jpg",
-    "https://www.oswego.edu/news/sites/www.oswego.edu.news/files/styles/panopoly_image_original/public/chrisspinelli_pocketconcertos.jpg?itok=J4yLWQqd",
-  ];
+const profileImageUrls = [
+  "https://www.the74million.org/wp-content/uploads/2019/02/Good-News-orchestra.jpg",
+  "https://media.ipassio.com/media/ckeditor_image/2023/06/13/pandit-ravi-shankar-on-facebook_QvNTweO.webp",
+  "https://media.ipassio.com/media/ckeditor_image/2023/06/13/zakir-hussain-on-facebook.webp",
+  "https://media.ipassio.com/media/ckeditor_image/2023/06/13/pandit-bhimsen-joshi-on-facebook.webp",
+  "https://bandzoogle.com/files/3713/bzblog-why-serious-musicians-still-need-to-be-making-albums-main.jpg",
+  "https://i0.wp.com/www.yesmagazine.org/wp-content/uploads/2020/10/black-classical-musicians.jpg?resize=1024%2C614&quality=45&ssl=1",
+  "https://www.kennedy-center.org/globalassets/education/opportunities-for-artists/competitions--commissions/vsa-international-young-soloists/vsa-young-soloists-competition---soloist-piano-169.jpg?format=webp&width=1024&quality=70",
+  "https://drummagazine.com/wp-content/uploads/2021/07/Phil-Collins-2-1.jpg",
+  "https://flypaper.soundfly.com/wp-content/uploads/2016/11/image1-683x1024.jpg",
+  "https://www.oswego.edu/news/sites/www.oswego.edu.news/files/styles/panopoly_image_original/public/chrisspinelli_pocketconcertos.jpg?itok=J4yLWQqd",
+];
 const NUM_SEED_USERS = 10;
 const addresses = [
   "2550 Victory Blvd, Staten Island, NY 10314",
@@ -98,7 +97,8 @@ const users = [];
 for (let i = 0; i < NUM_SEED_USERS; i++) {
   const firstName = faker.name.firstName();
   const lastName = faker.name.lastName();
-  const randomImageUrl = profileImageUrls[Math.floor(Math.random() * profileImageUrls.length)];
+  const randomImageUrl =
+    profileImageUrls[Math.floor(Math.random() * profileImageUrls.length)];
   users.push(
     new User({
       firstName: firstName,
@@ -144,7 +144,7 @@ const insertSeeds = async () => {
       // User hosts a TuneUp
       const hostedTuneUp = new TuneUp({
         host: user._id,
-        description: descriptions[i+10],
+        description: descriptions[i + 10],
         status: "true",
         date: faker.date.future(),
         instruments: instruments
@@ -168,7 +168,7 @@ const insertSeeds = async () => {
       const otherAttendeeUser = createdUsers[otherAttendeeIndex];
       const joinedTuneUp = new TuneUp({
         host: otherUser._id,
-        description:descriptions[i],
+        description: descriptions[i],
         status: "true",
         instruments: instruments
           .slice(Math.floor(Math.random() * (instruments.length - 2)))
