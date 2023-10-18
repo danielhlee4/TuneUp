@@ -72,8 +72,8 @@ for (let i = 0; i < NUM_SEED_USERS; i++) {
       profileImageUrl: DEFAULT_PROFILE_IMAGE_URL,
       address: addresses[i],
       instruments: instruments[i],
-      genres: [faker.music.genre(), faker.music.genre()],
-      hostedTuneUps: [genres[Math.floor(Math.random() * (genres.length - 1))]],
+      genres: [genres[Math.floor(Math.random() * (genres.length - 1))]],
+      hostedTuneUps: [],
       joinedTuneUps: [],
     })
   );
