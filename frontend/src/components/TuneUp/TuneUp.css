@@ -162,13 +162,13 @@
 }
   
 .tuneUp-left-column {
-    flex: 0.8; /* takes up 80% of the space it used to */
+    flex: 0.8;
     padding: 0 10px;
 }
 
 .tuneUp-middle-column,
 .tuneUp-right-column {
-    flex: 1.2; /* takes up 110% of the space each used to */
+    flex: 1.2;
     padding: 0 10px;
 }
 
