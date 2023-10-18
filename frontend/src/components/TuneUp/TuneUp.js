@@ -80,6 +80,10 @@ const TuneUp = ({ tuneUpData }) => {
     updateTuneUp(updatedTuneUp);
   };
 
+  function handleMapClick(event) {
+    event.stopPropagation();
+  }
+
   const renderInstrumentIcon = (instrument) => {
     const instrumentIconMap = {
       piano: "fa-piano",
@@ -186,12 +190,12 @@ const TuneUp = ({ tuneUpData }) => {
                 <div className="tuneUp-location">
                   {
                     (sessionUser._id === tuneUp.host || tuneUp.connections.includes(sessionUser._id)) ? (
-                        <div className="tuneUp-location">
+                        <div className="tuneUp-location" onClick={handleMapClick}>
                             <AddressMapWrapper address={tuneUp.address} />
                             <p id="tuneUp-address">{tuneUp.address}</p>
                         </div>
                     ) : (
-                        <div className="tuneUp-location">
+                        <div className="tuneUp-location" onClick={handleMapClick}>
                             <ZipcodeMapWrapper zipcode={extractStateAndZipcode(tuneUp.address)} />
                             <p id="tuneUp-non-member">Exact location available for members of this tuneup</p>
                         </div>
