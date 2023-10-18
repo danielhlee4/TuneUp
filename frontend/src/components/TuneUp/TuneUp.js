@@ -191,17 +191,20 @@ const TuneUp = ({ tuneUpData }) => {
             <div className="tuneUp-right-column">
                 <div className="tuneUp-location">
                   {
-                    (sessionUser._id === tuneUp?.host || tuneUp?.connections.includes(sessionUser._id)) ? (
-                        <div className="tuneUp-location" onClick={handleMapClick}>
-                            <AddressMapWrapper address={tuneUp?.address} />
-                            <p id="tuneUp-address">{tuneUp?.address}</p>
-                        </div>
-                    ) : (
-                        <div className="tuneUp-location" onClick={handleMapClick}>
-                            <ZipcodeMapWrapper zipcode={extractStateAndZipcode(tuneUp?.address)} />
-                            <p id="tuneUp-non-member">Exact location available for members of this tuneup</p>
-                        </div>
-                    )
+                    (sessionUser._id === tuneUp.host || 
+                      tuneUp.connections.includes(sessionUser._id) ||
+                        (Array.isArray(tuneUp.connections) && 
+                          tuneUp.connections.some(connection => connection._id === sessionUser._id))) ? (
+                            <div className="tuneUp-location" onClick={handleMapClick}>
+                                <AddressMapWrapper address={tuneUp.address} />
+                                <p id="tuneUp-address">{tuneUp.address}</p>
+                            </div>
+                          ) : (
+                              <div className="tuneUp-location" onClick={handleMapClick}>
+                                  <ZipcodeMapWrapper zipcode={extractStateAndZipcode(tuneUp.address)} />
+                                  <p id="tuneUp-non-member">Exact location available for members of this tuneup</p>
+                              </div>
+                          )
                   }
                 </div>
             </div>
