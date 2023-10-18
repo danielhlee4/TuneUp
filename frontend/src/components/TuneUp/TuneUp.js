@@ -237,7 +237,7 @@ const TuneUp = ({ tuneUpData }) => {
                 </div>
               ))}
             {sessionUser._id !== tuneUp?.host && userIsPartOfTuneUp && (
-              <button onClick={handleLeaveTuneUp}>Leave TuneUp</button>
+              <button className='leave-tuneup-button' onClick={handleLeaveTuneUp}>Leave TuneUp</button>
             )}
           </div>
         </div>
