@@ -60,11 +60,11 @@ function UserProfilePage() {
             <div className="user-address-container">
               <div className="user-address">{user?.address}</div>
             </div>
-            <div className="user-edit-option">
-              <Link to={"/update"}>
-                <button className="edit-button">Edit</button>
-              </Link>
-            </div>
+          </div>
+          <div className="user-edit-option">
+            <Link to={"/update"}>
+              <button className="edit-button">Edit</button>
+            </Link>
           </div>
         </div>
         <div className="tuneup-joined-label">Your Joined TuneUps</div>
