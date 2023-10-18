@@ -28,7 +28,7 @@ function UserDistanceToAddress({ targetAddress }) {
                         <DistanceCalculator address1={userLocation} address2={targetAddress} />
                     </span>
                 </>
-                : <p>Fetching your location...</p>}
+                : <p>Fetching distance...</p>}
         </div>
 
     );

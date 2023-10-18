@@ -58,6 +58,29 @@ const instruments = [
   "Clarinet",
 ];
 
+const descriptions = [
+  "Strum, smash, or sing; it's time for the ultimate jam session!",
+  "Join the musical melting pot where tunes collide and magic happens!",
+  "Unleash your inner Mozart with fellow virtuosos. Let's make symphony!",
+  "Riffs, beats, and harmonies unite! Be part of the tuneup sensation!",
+  "Where melodies mingle and rhythms romp—your tuneup adventure awaits!",
+  "Get in the groove! It's about the music, camaraderie, and spontaneous harmonies!",
+  "Calling all melody makers for a tuneup filled with zest, zeal, and zing!",
+  "Strings, percussions, and keys galore! Dive into a musical escapade!",
+  "Blend your beats with the best! A tuneup of harmony, hype, and happiness!",
+  "Epic tuneup alert: bring your vibe, share the stage, create the rage!",
+  "Bass, treble, and fantastic tunes! Get ready for a melody bonanza!",
+  "Where tunes thrive and vibes are alive—join the jamboree!",
+  "From soulful strums to dynamic drums, experience the tuneup extravaganza!",
+  "Amp up the amps! It's time for a tuneup that reverberates joy!",
+  "Rendezvous at the tuneup: Where every note counts and every song astounds!",
+  "Harmonize, improvise, and galvanize! The ultimate tuneup is here!",
+  "Rock the block with your stock of shock! Unmissable tuneup time!",
+  "Music fiesta alert! Bring your energy, your instrument, and your spirit!",
+  "It's a riff-off! May the best tunes win in this electrifying gathering!",
+  "Sound the trumpets, bang the drums—it's tuneup time with rhythm and rhymes!",
+];
+
 // Create users
 const users = [];
 for (let i = 0; i < NUM_SEED_USERS; i++) {
@@ -107,7 +130,7 @@ const insertSeeds = async () => {
       // User hosts a TuneUp
       const hostedTuneUp = new TuneUp({
         host: user._id,
-        description: faker.lorem.paragraph(),
+        description: descriptions[i+10],
         status: "true",
         date: faker.date.future(),
         instruments: instruments
@@ -131,7 +154,7 @@ const insertSeeds = async () => {
       const otherAttendeeUser = createdUsers[otherAttendeeIndex];
       const joinedTuneUp = new TuneUp({
         host: otherUser._id,
-        description: faker.lorem.paragraph(),
+        description:descriptions[i],
         status: "true",
         instruments: instruments
           .slice(Math.floor(Math.random() * (instruments.length - 2)))
