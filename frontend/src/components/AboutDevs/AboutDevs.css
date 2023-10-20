@@ -9,6 +9,7 @@
     grid-area: 1/1/1/1;
     height: fit-content;
 }
+
 .about-us{
     height: fit-content;
     width: fit-content;
@@ -21,7 +22,7 @@
     display: grid;
     grid-area: 2/1/2/1;
     grid-template-columns: repeat(5, 1fr);
-    grid-gap: 20px;
+    grid-gap: 5px;
     position: fixed;
     margin-top: 7rem;
     width: 98.7%;
@@ -30,13 +31,16 @@
     padding-left: 10px;
     padding-top: 10px;
     padding-bottom: 30px;
-    overflow-y: hidden;
-    overflow-x: auto;
+    /* overflow-x: scroll; */
 }
 
 /************************ Dan ***************************/
 
-.dan-container {
+.dan-container, 
+.klodian-container, 
+.sean-container, 
+.muddy-container, 
+.dennis-container {
     display: grid;
     grid-template-rows: 20% 10% 4% 1% 59% 1% 5%; 
     border: 1px solid rgba(0, 0, 0, 0.3);
@@ -52,89 +56,161 @@
     align-items: center;
     justify-content: center;
 }
-.dan-headshot-container{
+.dan-headshot-container,
+.klodian-headshot-container,
+.sean-headshot-container,
+.muddy-headshot-container,
+.dennis-headshot-container {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 2rem;
 }
 
-.dan-headshot {
-    width: 8.5rem;
-    height: 8.5rem;
+.dan-headshot,
+.klodian-headshot,
+.sean-headshot,
+.muddy-headshot,
+.dennis-headshot {
+    width: 6.5rem;
+    height: 6.5rem;
     border-radius: 100px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
-.dan-name-container{
+.dan-name-container,
+.klodian-name-container,
+.sean-name-container,
+.muddy-name-container,
+.dennis-name-container {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 3.5rem;
 }
-.dan-name {
-    font-size: 32px;
+.dan-name,
+.klodian-name,
+.sean-name,
+.muddy-name,
+.dennis-name {
+    font-size: 28px;
 }
-.dan-title-container {
+
+.dan-title-container,
+.klodian-title-container,
+.sean-title-container,
+.muddy-title-container,
+.dennis-title-container {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 2rem;
 }
-.dan-title {
+.dan-title,
+.klodian-title,
+.sean-title,
+.muddy-title,
+.dennis-title {
     font-size: 20px;
 }
-.dan-divider1 {
+.dan-divider1,
+.klodian-divider1,
+.sean-divider1,
+.muddy-divider1,
+.dennis-divider1 {
     margin-top: 2rem;
     border-top: 1px solid rgba(0, 0, 0, 0.3);
 }
-.dan-divider2 {
+.dan-divider2,
+.klodian-divider2,
+.sean-divider2,
+.muddy-divider2,
+.dennis-divider2 {
     margin-top: -2rem;
     border-top: 1px solid rgba(0, 0, 0, 0.3);
 }
-.dan-description-container {
+
+.dan-description-container,
+.klodian-description-container,
+.sean-description-container,
+.muddy-description-container,
+.dennis-description-container {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 0rem;
 }
-.dan-description {
+
+.dan-description, 
+.klodian-description,
+.sean-description,
+.muddy-description,
+.dennis-description {
     text-align: center;
-    font-size: 22px;
-    width: 18rem;
+    font-size: 20px;
+    width: 16rem;
     height: fit-content;
 }
-.dan-links-container{
+
+.dan-links-container,
+.klodian-links-container,
+.sean-links-container,
+.muddy-links-container,
+.dennis-links-container {
     display: grid;
     grid-template-columns: 50% 50%;
 }
-.dan-linkedin-container{
+.dan-linkedin-container,
+.klodian-linkedin-container,
+.sean-linkedin-container,
+.muddy-linkedin-container,
+.dennis-linkedin-container {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.dan-linkedin-icon{
+.dan-linkedin-icon,
+.klodian-linkedin-icon,
+.sean-linkedin-icon,
+.muddy-linkedin-icon,
+.dennis-linkedin-icon {
     width: 2.5rem;
     transition: transform 0.2s ease-in-out;
 }
-.dan-linkedin-icon:hover {
-    transform: scale(1.2);
+.dan-linkedin-icon:hover,
+.klodian-linkedin-icon:hover
+.sean-linkedin-icon:hover, 
+.muddy-linkedin-icon:hover, 
+.dennis-linkedin-icon:hover {
+transform: scale(1.2);
 }
-.dan-github-container {
+.dan-github-container,
+.klodian-github-container,
+.sean-github-container,
+.muddy-github-container,
+.dennis-github-container {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.dan-github-icon{
+.dan-github-icon,
+.klodian-github-icon,
+.sean-github-icon,
+.muddy-github-icon,
+.dennis-github-icon {
     width: 2.25rem;
     transition: transform 0.2s ease-in-out;
 }
-.dan-github-icon:hover {
+.dan-github-icon:hover
+.klodian-github-icon:hover
+.sean-github-icon:hover
+.muddy-github-icon:hover
+.dennis-github-icon:hover {
     transform: scale(1.2);
 }
 
 
 /************************ Klodian ***************************/
-
+/* 
 .klodian-container {
     display: grid;
     grid-template-rows: 20% 10% 4% 1% 59% 1% 5%; 
@@ -241,11 +317,11 @@
 }
 .klodian-github-icon:hover {
     transform: scale(1.2);
-}
+} */
 
 /************************ Sean ***************************/
 
-.sean-container {
+/* .sean-container {
     display: grid;
     grid-template-rows: 20% 10% 4% 1% 59% 1% 5%; 
     border: 1px solid rgba(0, 0, 0, 0.3);
@@ -350,10 +426,10 @@
 }
 .sean-github-icon:hover {
     transform: scale(1.2);
-}
+} */
 
 /************************ Muddy ***************************/
-
+/* 
 .muddy-container {
     display: grid;
     grid-template-rows: 20% 10% 4% 1% 59% 1% 5%; 
@@ -459,10 +535,10 @@
 }
 .muddy-github-icon:hover {
     transform: scale(1.2);
-}
+} */
 
 /************************ Dennis ***************************/
-
+/* 
 .dennis-container {
     display: grid;
     grid-template-rows: 20% 10% 4% 1% 59% 1% 5%; 
@@ -571,6 +647,7 @@
     transform: scale(1.2);
 }
 
+*/
 .about-page-background{
     position: fixed;
     z-index: -1;
@@ -580,4 +657,3 @@
     right: 0;
     bottom: 0;
 }
-

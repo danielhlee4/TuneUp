@@ -30,13 +30,14 @@ function UserUpdateForm() {
       return { streetName: "", city: "", state: "", zip: "" };
     }
     const parts = addressString.split(", ");
-    const stateZip = parts[2]?.split(" ");
+    const statePart = parts[2]?.slice(0, parts[2].length - 5);
+    const zipPart = parts[2]?.slice(parts[2].length - 5);
 
     return {
       streetName: parts[0] || "",
       city: parts[1] || "",
-      state: stateZip ? stateZip[0] : "",
-      zip: stateZip ? stateZip[1] : "",
+      state: statePart ? statePart : "",
+      zip: zipPart ? zipPart : "",
     };
   }
   const { streetName, city, state, zip } = parseAddress(currentUser.address);
@@ -75,8 +76,149 @@ function UserUpdateForm() {
   const [vocalsChecked, setVocalsChecked] = useState(
     userInstruments?.includes("Vocals") || false
   );
-  const [selectedGenres, setSelectedGenres] = useState(currentUser.genres || []);
-  const [errors, setErrors] = useState([]);
+  const [selectedGenres, setSelectedGenres] = useState(
+    currentUser.genres || []
+  );
+
+  const [errors, setErrors] = useState({});
+
+  function titleize(str) {
+    return str
+      .split(" ")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+      .join(" ");
+  }
+
+  function isValidEmail(email) {
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    return emailRegex.test(email);
+  }
+
+  function isValidStreetName(street) {
+    const streetRegex = /^[a-zA-Z0-9\s,'-\/#&\(\).]+$/;
+    return streetRegex.test(street);
+  }
+
+  function isValidCity(city) {
+    return typeof city === "string" && city.length > 2;
+  }
+
+  function isValidState(state) {
+    const usStateAbbreviations = [
+      "AL",
+      "AK",
+      "AZ",
+      "AR",
+      "CA",
+      "CO",
+      "CT",
+      "DE",
+      "FL",
+      "GA",
+      "HI",
+      "ID",
+      "IL",
+      "IN",
+      "IA",
+      "KS",
+      "KY",
+      "LA",
+      "ME",
+      "MD",
+      "MA",
+      "MI",
+      "MN",
+      "MS",
+      "MO",
+      "MT",
+      "NE",
+      "NV",
+      "NH",
+      "NJ",
+      "NM",
+      "NY",
+      "NC",
+      "ND",
+      "OH",
+      "OK",
+      "OR",
+      "PA",
+      "RI",
+      "SC",
+      "SD",
+      "TN",
+      "TX",
+      "UT",
+      "VT",
+      "VA",
+      "WA",
+      "WV",
+      "WI",
+      "WY",
+    ];
+    const usStates = [
+      "Alabama",
+      "Alaska",
+      "Arizona",
+      "Arkansas",
+      "California",
+      "Colorado",
+      "Connecticut",
+      "Delaware",
+      "Florida",
+      "Georgia",
+      "Hawaii",
+      "Idaho",
+      "Illinois",
+      "Indiana",
+      "Iowa",
+      "Kansas",
+      "Kentucky",
+      "Louisiana",
+      "Maine",
+      "Maryland",
+      "Massachusetts",
+      "Michigan",
+      "Minnesota",
+      "Mississippi",
+      "Missouri",
+      "Montana",
+      "Nebraska",
+      "Nevada",
+      "New Hampshire",
+      "New Jersey",
+      "New Mexico",
+      "New York",
+      "North Carolina",
+      "North Dakota",
+      "Ohio",
+      "Oklahoma",
+      "Oregon",
+      "Pennsylvania",
+      "Rhode Island",
+      "South Carolina",
+      "South Dakota",
+      "Tennessee",
+      "Texas",
+      "Utah",
+      "Vermont",
+      "Virginia",
+      "Washington",
+      "West Virginia",
+      "Wisconsin",
+      "Wyoming",
+    ];
+
+    return (
+      usStateAbbreviations.includes(state.toUpperCase()) ||
+      usStates.includes(titleize(state))
+    );
+  }
+
+  function isValidZip(zip) {
+    const zipRegex = /^\d{5}$/;
+    return zipRegex.test(zip);
+  }
 
   const validateInputs = () => {
     const newErrors = [];
@@ -91,20 +233,22 @@ function UserUpdateForm() {
       instruments.length < 1 ||
       selectedGenres.length < 1
     ) {
-      newErrors.push("Input fields must be completely filled!");
+      newErrors["empty"] = "Input fields must be completely filled!";
+    } else if (emailField && !isValidEmail(emailField)) {
+      newErrors["email"] = "Please enter a valid email";
+    } else if (streetNameField && !isValidStreetName(streetNameField)) {
+      newErrors["street"] = "Please enter a valid street";
+    } else if (stateField && !isValidState(stateField)) {
+      newErrors["state"] = "Please enter a valid state";
+    } else if (cityField && !isValidCity(cityField)) {
+      newErrors["city"] = "Please enter a valid city";
+    } else if (zipField && !isValidZip(zipField)) {
+      newErrors["zip"] = "Please enter a valid zip";
     }
 
     setErrors(newErrors);
 
-    return newErrors.length === 0;
-  };
-
-  const displayErrors = () => {
-    if (errors.length > 0) {
-      return errors;
-    } else {
-      return null;
-    }
+    return Object.keys(newErrors).length === 0;
   };
 
   const updates = (field) => (e) => {
@@ -187,7 +331,7 @@ function UserUpdateForm() {
     if (currentUser) {
       setSelectedGenres(currentUser.genres || []);
     }
-  }, [currentUser]); 
+  }, [currentUser]);
 
   const selectedStyle = {
     backgroundColor: "rgb(252,172,232)",
@@ -250,9 +394,6 @@ function UserUpdateForm() {
 
   return (
     <div className="update-form-root-container">
-      {displayErrors()?.map((error) => {
-        return <p className="user-errors">{error}</p>;
-      })}
       <div className="update-form-container">
         <h1 className="update-form-header">Tune your profile</h1>
         <form onSubmit={handleUpdate} className="update-form">
@@ -479,6 +620,16 @@ function UserUpdateForm() {
           you.
         </p>
       </div>
+      {errors["empty"] ? <p className="user-errors">{errors["empty"]}</p> : ""}
+      {errors["email"] ? <p className="user-errors">{errors["email"]}</p> : ""}
+      {errors["street"] ? (
+        <p className="user-errors">{errors["street"]}</p>
+      ) : (
+        ""
+      )}
+      {errors["city"] ? <p className="user-errors">{errors["city"]}</p> : ""}
+      {errors["state"] ? <p className="user-errors">{errors["state"]}</p> : ""}
+      {errors["zip"] ? <p className="user-errors">{errors["zip"]}</p> : ""}
     </div>
   );
 }

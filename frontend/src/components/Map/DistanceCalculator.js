@@ -4,7 +4,8 @@ function DistanceCalculator({ address1, address2 }) {
   const [distance, setDistance] = useState(null);
 
   const calculateDistance = async () => {
-    const endpoint = `http://localhost:5001/api/distance/getDistance?address1=${encodeURIComponent(address1)}&address2=${encodeURIComponent(address2)}`;
+    const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5001';
+    const endpoint = `${BACKEND_URL}/api/distance/getDistance?address1=${encodeURIComponent(address1)}&address2=${encodeURIComponent(address2)}`;
 
     try {
       const response = await fetch(endpoint);
