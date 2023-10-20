@@ -11,6 +11,13 @@ import "./HomePage.css"
 
 function HomePage() {
   const currentUser = useSelector((state) => state.session.user);
+  const handleDropdownClick = () => {
+    const scrollY = 740;
+    window.scrollTo({
+      top: scrollY,
+      behavior: 'smooth'
+    });
+  };
 
   return (
     <div className="main-container">
@@ -26,7 +33,7 @@ function HomePage() {
         <div className="slogan">Discover the Rhythm of Friendship</div>
         <div className="slogan">Less Lonely, More Melody!</div>
       </div>
-      <div className="tutorial-dropdown-container">
+      <div className="tutorial-dropdown-container" onClick={handleDropdownClick}>
           <img className="drop-down-arrow-png1" src={dropArrowIcon}></img>
           <p className="learn-more">Learn more</p>
         <img className="drop-down-arrow-png2" src={dropArrowIcon}></img>
