@@ -72,8 +72,8 @@ function Discover() {
             <option value="currentLocation">
               distance (from current location)
             </option> */}
-            <option value="dateNewOld">date (newest to oldest)</option>
-            <option value="dateOldNew">date (oldest to newest)</option>
+            <option value="dateNewOld">date (ascending)</option>
+            <option value="dateOldNew">date (descending)</option>
           </select>
         </div>
         {tuneUps && users ? (

@@ -43,3 +43,8 @@
     right: -20px;
     transform: translateY(-50%);
 }
+
+.error-message {
+    margin-top: 20px;
+    font-size: 20px;
+}
