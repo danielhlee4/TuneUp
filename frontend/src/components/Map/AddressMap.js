@@ -7,7 +7,7 @@ function AddressMap({ address }) {
 
   const geocodeAddress = (address) => {
     const geocoder = new window.google.maps.Geocoder();
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       geocoder.geocode({ address }, (results, status) => {
         if (status === 'OK') {
           resolve({
@@ -15,7 +15,8 @@ function AddressMap({ address }) {
             lng: results[0].geometry.location.lng(),
           });
         } else {
-          reject(new Error('Failed to geocode address'));
+          console.error('Failed to geocode address', address);
+          resolve(null);
         }
       });
     });
@@ -24,6 +25,12 @@ function AddressMap({ address }) {
   useEffect(() => {
     if (address && !map) {
       geocodeAddress(address).then(coords => {
+        let shouldAddMarker = true;
+        if (!coords) {
+          console.error('Address could not be geocoded:', address);
+          coords = { lat: 40.7549, lng: -73.9840 };
+          shouldAddMarker = false;
+        }
         const createdMap = new window.google.maps.Map(mapRef.current, {
           center: coords,
           zoom: 13,
@@ -31,10 +38,12 @@ function AddressMap({ address }) {
         });
 
         // Create a marker at the geocoded address
-        new window.google.maps.Marker({
-          map: createdMap,
-          position: coords,
-        });
+        if (shouldAddMarker) {
+          new window.google.maps.Marker({
+            map: createdMap,
+            position: coords,
+          });
+        }
 
         setMap(createdMap);
       });

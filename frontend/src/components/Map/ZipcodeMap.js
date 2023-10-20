@@ -7,7 +7,7 @@ function ZipcodeMap({ zipcode }) {
 
   const geocodeZipcode = (zipcode) => {
     const geocoder = new window.google.maps.Geocoder();
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       geocoder.geocode({ address: zipcode }, (results, status) => {
         if (status === 'OK') {
           resolve({
@@ -15,7 +15,8 @@ function ZipcodeMap({ zipcode }) {
             lng: results[0].geometry.location.lng(),
           });
         } else {
-          reject(new Error('Failed to geocode zipcode'));
+          console.error('Failed to geocode zipcode');
+          resolve(null);
         }
       });
     });
@@ -24,6 +25,10 @@ function ZipcodeMap({ zipcode }) {
   useEffect(() => {
     if (zipcode && !map) {
       geocodeZipcode(zipcode).then(coords => {
+        if (!coords) {
+          coords = { lat: 40.7549, lng: -73.9840 }; 
+        }
+
         const createdMap = new window.google.maps.Map(mapRef.current, {
           center: coords,
           zoom: 13,
