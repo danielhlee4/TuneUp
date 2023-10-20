@@ -46,8 +46,141 @@ function CreateTuneUps() {
   const history = useHistory();
   const [errors, setErrors] = useState([]);
 
+  function titleize(str) {
+    return str
+      .split(" ")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+      .join(" ");
+  }
+
+  function isValidAddress(address) {
+    const addressRegex = /^[a-zA-Z0-9\s,'-\/#&\(\).]+$/;
+    return addressRegex.test(address);
+  }
+
+  function isValidCity(city) {
+    return typeof city === "string" && city.length >= 2;
+  }
+
+  function isValidState(state) {
+    const usStateAbbreviations = [
+      "AL",
+      "AK",
+      "AZ",
+      "AR",
+      "CA",
+      "CO",
+      "CT",
+      "DE",
+      "FL",
+      "GA",
+      "HI",
+      "ID",
+      "IL",
+      "IN",
+      "IA",
+      "KS",
+      "KY",
+      "LA",
+      "ME",
+      "MD",
+      "MA",
+      "MI",
+      "MN",
+      "MS",
+      "MO",
+      "MT",
+      "NE",
+      "NV",
+      "NH",
+      "NJ",
+      "NM",
+      "NY",
+      "NC",
+      "ND",
+      "OH",
+      "OK",
+      "OR",
+      "PA",
+      "RI",
+      "SC",
+      "SD",
+      "TN",
+      "TX",
+      "UT",
+      "VT",
+      "VA",
+      "WA",
+      "WV",
+      "WI",
+      "WY",
+    ];
+    const usStates = [
+      "Alabama",
+      "Alaska",
+      "Arizona",
+      "Arkansas",
+      "California",
+      "Colorado",
+      "Connecticut",
+      "Delaware",
+      "Florida",
+      "Georgia",
+      "Hawaii",
+      "Idaho",
+      "Illinois",
+      "Indiana",
+      "Iowa",
+      "Kansas",
+      "Kentucky",
+      "Louisiana",
+      "Maine",
+      "Maryland",
+      "Massachusetts",
+      "Michigan",
+      "Minnesota",
+      "Mississippi",
+      "Missouri",
+      "Montana",
+      "Nebraska",
+      "Nevada",
+      "New Hampshire",
+      "New Jersey",
+      "New Mexico",
+      "New York",
+      "North Carolina",
+      "North Dakota",
+      "Ohio",
+      "Oklahoma",
+      "Oregon",
+      "Pennsylvania",
+      "Rhode Island",
+      "South Carolina",
+      "South Dakota",
+      "Tennessee",
+      "Texas",
+      "Utah",
+      "Vermont",
+      "Virginia",
+      "Washington",
+      "West Virginia",
+      "Wisconsin",
+      "Wyoming",
+    ];
+
+    return (
+      usStateAbbreviations.includes(state.toUpperCase()) ||
+      usStates.includes(titleize(state))
+    );
+  }
+
+  function isValidZip(zip) {
+    const zipRegex = /^\d{5}$/;
+    return zipRegex.test(zip);
+  }
+
   const validateInputs = () => {
-    const newErrors = [];
+    const newErrors = {};
     if (
       !details ||
       !month ||
@@ -70,20 +203,20 @@ function CreateTuneUps() {
         new Date() <
       0
     ) {
-      newErrors.push("TuneUp must be set to occur in the future!");
+      newErrors["date"] = "TuneUp cannot be set to occur in the past";
+    } else if (!isValidAddress(address)) {
+      newErrors["address"] = "Please enter a valid address";
+    } else if (!isValidState(state)) {
+      newErrors["state"] = "Please enter a valid state";
+    } else if (!isValidCity(city)) {
+      newErrors["city"] = "Please enter a valid city";
+    } else if (!isValidZip(zip)) {
+      newErrors["zip"] = "Please enter a valid zip";
     }
 
     setErrors(newErrors);
 
-    return newErrors.length === 0;
-  };
-
-  const displayErrors = () => {
-    if (errors.length > 0) {
-      return errors;
-    } else {
-      return null;
-    }
+    return Object.keys(newErrors).length === 0;
   };
 
   const updates = (field) => {
@@ -107,7 +240,7 @@ function CreateTuneUps() {
       default:
         setState = () => {};
     }
-    return (e) => setState(e.target.value);
+    return (e) => setState(e.target.value.trim());
   };
 
   const handlePianoChange = (e) => {
@@ -466,9 +599,12 @@ function CreateTuneUps() {
             Create TuneUp!
           </button>
         </div>
-        {displayErrors()?.map((error) => {
-          return <p className="tuneup-errors">{error}</p>;
-        })}
+
+        {errors["date"] ? (
+          <p className="tuneup-errors">{errors["Date"]}</p>
+        ) : (
+          ""
+        )}
       </form>
       <img className="background-img" src={background}></img>
     </div>
