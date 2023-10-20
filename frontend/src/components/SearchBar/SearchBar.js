@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { search, clearSearchResults } from "../../store/search";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./SearchBar.css"
 
 
 export default function SearchBar({onSearch}) {
   const [query, setQuery] = useState("");
   const dispatch = useDispatch();
+
+  const searchErrors = useSelector((state) => state.search.errors);
 
   const handleSearch = (event) => {
     event.preventDefault();
@@ -44,6 +46,9 @@ export default function SearchBar({onSearch}) {
           <i className="fa-solid fa-magnifying-glass"></i>
         </button>
       </div>
+      {searchErrors && ( 
+        <div className="error-message">{searchErrors}</div>
+      )}
     </div>
   );
 }
