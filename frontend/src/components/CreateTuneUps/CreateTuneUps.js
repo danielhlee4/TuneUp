@@ -335,7 +335,6 @@ function CreateTuneUps() {
   let instruments = [];
   let address = "";
   const handleSubmit = async (e) => {
-    console.log("clicked");
     // debugger;
     e.preventDefault();
     address = `${streetName}, ${city}, ${state} ${zip}`;
