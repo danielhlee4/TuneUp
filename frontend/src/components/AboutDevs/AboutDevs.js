@@ -10,11 +10,11 @@ import githubIcon from './githubIcon.png'
 import { useEffect } from 'react'
 
 function AboutDevs() {
-    useEffect(() => {
-        const container = document.querySelector('.about-dev-page-grid-container');
-        const scrollCenter = (container.scrollWidth - container.clientWidth) / 2;
-        container.scrollLeft = scrollCenter;
-    }, []);
+    // useEffect(() => {
+    //     const container = document.querySelector('.about-dev-page-grid-container');
+    //     const scrollCenter = (container.scrollWidth - container.clientWidth) / 2;
+    //     container.scrollLeft = scrollCenter;
+    // }, []);
 
     return (
         <div className='about-dev-page-container'>
