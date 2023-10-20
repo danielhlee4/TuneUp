@@ -1,5 +1,11 @@
 
 .main-container {
+    display: flex;
+        flex-direction: column;
+        /* Stack the children vertically */
+        align-items: center;
+        /* Center children horizontally */
+        text-align: center;
     text-align: center;
     padding-top: 20%;
 }
@@ -109,7 +115,6 @@ footer {
     align-items: center;
     width: 20rem;
     margin-top: 23.6rem;
-    margin-left: 38vw;
     cursor: pointer;
 }
 .drop-down-arrow-png1 {
@@ -130,7 +135,7 @@ footer {
 
 .demo-gif-container-1 {
     height: 30rem;
-    margin-top: 2rem;
+    margin-top: 9vh;
     display: grid;
     grid-template-columns: 60% 40%;
 }
