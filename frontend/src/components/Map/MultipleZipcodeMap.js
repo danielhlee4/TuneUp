@@ -7,7 +7,7 @@ function MultipleZipcodeMap({ zipcodes }) {
   
     const geocodeZipcode = (zipcode) => {
       const geocoder = new window.google.maps.Geocoder();
-      return new Promise((resolve, reject) => {
+      return new Promise((resolve) => {
         geocoder.geocode({ address: zipcode }, (results, status) => {
           if (status === 'OK') {
             resolve({
@@ -15,7 +15,8 @@ function MultipleZipcodeMap({ zipcodes }) {
               lng: results[0].geometry.location.lng(),
             });
           } else {
-            reject(new Error('Failed to geocode zipcode'));
+            console.error(`Failed to geocode ${zipcode}`);
+            resolve(null);
           }
         });
       });
@@ -27,9 +28,22 @@ function MultipleZipcodeMap({ zipcodes }) {
         const promises = zipcodes.map(geocodeZipcode);
         
         Promise.all(promises).then(coordinatesArray => {
+          const validCoordinates = coordinatesArray.filter(coord => coord !== null);
+      
+          if (validCoordinates.length === 0) {
+            console.error("All addresses failed to geocode.");
+            // Set a default view for Midtown Manhattan
+            const defaultCoords = { lat: 40.7549, lng: -73.9840 };
+            const createdMap = new window.google.maps.Map(mapRef.current);
+            createdMap.setCenter(defaultCoords);
+            createdMap.setZoom(10);
+            setMap(createdMap);
+            return;
+          }
+
           const createdMap = new window.google.maps.Map(mapRef.current);
   
-          coordinatesArray.forEach(coords => {
+          validCoordinates.forEach(coords => {
             bounds.extend(coords);
   
             new window.google.maps.Circle({
