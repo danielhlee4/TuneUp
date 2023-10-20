@@ -27,7 +27,9 @@ function HomePage() {
         <div className="slogan">Less Lonely, More Melody!</div>
       </div>
       <div className="tutorial-dropdown-container">
-          <img src={dropArrowIcon}></img>
+          <img className="drop-down-arrow-png1" src={dropArrowIcon}></img>
+          <p className="learn-more">Learn more</p>
+        <img className="drop-down-arrow-png2" src={dropArrowIcon}></img>
       </div>
       <div className="user-profile-demo">
         
