@@ -12,7 +12,7 @@ import "./HomePage.css"
 function HomePage() {
   const currentUser = useSelector((state) => state.session.user);
   const handleDropdownClick = () => {
-    const scrollY = 740;
+    const scrollY = 700;
     window.scrollTo({
       top: scrollY,
       behavior: 'smooth'
