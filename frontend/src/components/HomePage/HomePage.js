@@ -35,7 +35,7 @@ function HomePage() {
       </div>
       <div className="tutorial-dropdown-container" onClick={handleDropdownClick}>
           <img className="drop-down-arrow-png1" src={dropArrowIcon}></img>
-          <p className="learn-more">Learn more</p>
+          <p className="learn-more">click here to Learn more</p>
         <img className="drop-down-arrow-png2" src={dropArrowIcon}></img>
       </div>
       <div className="user-profile-demo">
