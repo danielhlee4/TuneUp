@@ -92,7 +92,7 @@ function SignupForm() {
       </h2>
       <form className="sign-up-form" onSubmit={handleSubmit}>
         <div className="errors">{errors?.firstName}</div>
-        <span className="firstname-label">Firstname</span>
+        <span className="firstname-label">First name</span>
         <input
           className="firstname-input"
           type="text"
@@ -101,7 +101,7 @@ function SignupForm() {
         />
         <div className="errors">{errors?.lastName}</div>
 
-        <span className="lastname-label">Lastname</span>
+        <span className="lastname-label">Last name</span>
         <input
           className="lastname-input"
           type="text"
@@ -109,9 +109,6 @@ function SignupForm() {
           onChange={update("lastName")}
         />
         <div className="errors">{errors?.email}</div>
-        {displayErrors()?.map((error) => {
-          return <p className="email-errors">{error}</p>;
-        })}
         <span className="email-label">Email</span>
         <input
           className="email-input"
@@ -119,7 +116,9 @@ function SignupForm() {
           value={email}
           onChange={update("email")}
         />
-
+        {displayErrors()?.map((error) => {
+          return <p className="email-errors">{error}</p>;
+        })}
         <div className="errors">{errors?.password}</div>
 
         <span className="password-label">Password</span>
