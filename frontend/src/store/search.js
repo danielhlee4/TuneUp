@@ -26,16 +26,20 @@ export const clearSearchErrors = () => ({
 });
 
 
-
 export const search = (criteria) => async (dispatch) => {
   const queryString = new URLSearchParams(criteria).toString();
   try {
     const response = await jwtFetch(`/api/search?${queryString}`);
     const data = await response.json();
-    if (data.error) {
-      dispatch(receiveSearchErrors(data.error));
+
+    if (!response.ok) {
+      throw new Error("Failed to fetch");
+    }
+
+    if (data.length === 0) {
+      dispatch(receiveSearchErrors(`Sorry, no results found for "${criteria.q}". But don't worry, there are plenty of other exciting tuneups to explore below!`));
     } else {
-      dispatch(receiveSearchResults(data)); 
+      dispatch(receiveSearchResults(data));
     }
   } catch (error) {
     dispatch(receiveSearchErrors("Failed to fetch search results."));
