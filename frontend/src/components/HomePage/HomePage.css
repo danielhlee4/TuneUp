@@ -113,7 +113,7 @@ footer {
     display: grid;
     grid-template-columns: 20% 60% 20%;
     align-items: center;
-    width: 20rem;
+    width: 25rem;
     margin-top: 18.5rem;
     cursor: pointer;
 }
@@ -124,6 +124,7 @@ footer {
 .learn-more{
     font-size: 28px;
     justify-self: center;
+    margin-left: -1vw;
     grid-area: 1/2/1/2;
 }
 .drop-down-arrow-png2 {
