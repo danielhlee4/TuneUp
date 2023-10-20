@@ -44,7 +44,7 @@ function CreateTuneUps() {
   const [year, setYear] = useState(new Date().getFullYear());
   const currentYear = new Date().getFullYear();
   const history = useHistory();
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState({});
 
   function titleize(str) {
     return str
@@ -53,9 +53,9 @@ function CreateTuneUps() {
       .join(" ");
   }
 
-  function isValidAddress(address) {
-    const addressRegex = /^[a-zA-Z0-9\s,'-\/#&\(\).]+$/;
-    return addressRegex.test(address);
+  function isValidStreetName(street) {
+    const streetRegex = /^[a-zA-Z0-9\s,'-\/#&\(\).]+$/;
+    return streetRegex.test(street);
   }
 
   function isValidCity(city) {
@@ -180,6 +180,8 @@ function CreateTuneUps() {
   }
 
   const validateInputs = () => {
+    // debugger;
+
     const newErrors = {};
     if (
       !details ||
@@ -193,7 +195,7 @@ function CreateTuneUps() {
       instruments.length < 1 ||
       !genre
     ) {
-      newErrors.push("Input fields must be completely filled!");
+      newErrors["empty"] = "Input fields must be completely filled!";
     } else if (
       new Date(
         `${year}-${month < 10 ? "0" + month : month}-${
@@ -203,19 +205,19 @@ function CreateTuneUps() {
         new Date() <
       0
     ) {
-      newErrors["date"] = "TuneUp cannot be set to occur in the past";
-    } else if (!isValidAddress(address)) {
-      newErrors["address"] = "Please enter a valid address";
-    } else if (!isValidState(state)) {
+      newErrors["date"] = "TuneUp must be scheduled to occur at a future date";
+    } else if (streetName && !isValidStreetName(streetName)) {
+      newErrors["street"] = "Please enter a valid street";
+    } else if (state && !isValidState(state)) {
       newErrors["state"] = "Please enter a valid state";
-    } else if (!isValidCity(city)) {
+    } else if (city && !isValidCity(city)) {
       newErrors["city"] = "Please enter a valid city";
-    } else if (!isValidZip(zip)) {
+    } else if (zip && !isValidZip(zip)) {
       newErrors["zip"] = "Please enter a valid zip";
     }
-
+    // debugger;
     setErrors(newErrors);
-
+    // debugger;
     return Object.keys(newErrors).length === 0;
   };
 
@@ -333,6 +335,8 @@ function CreateTuneUps() {
   let instruments = [];
   let address = "";
   const handleSubmit = async (e) => {
+    console.log("clicked");
+    // debugger;
     e.preventDefault();
     address = `${streetName}, ${city}, ${state} ${zip}`;
     if (pianoChecked) {
@@ -365,7 +369,7 @@ function CreateTuneUps() {
     if (banjoChecked) {
       instruments.push("Banjo");
     }
-
+    // debugger;
     if (!validateInputs()) return;
 
     const newTuneUp = {
@@ -599,14 +603,26 @@ function CreateTuneUps() {
             Create TuneUp!
           </button>
         </div>
-
-        {errors["date"] ? (
-          <p className="tuneup-errors">{errors["Date"]}</p>
-        ) : (
-          ""
-        )}
       </form>
       <img className="background-img" src={background}></img>
+      {errors["empty"] ? (
+        <p className="tuneup-errors">{errors["empty"]}</p>
+      ) : (
+        ""
+      )}
+      {errors["date"] ? <p className="tuneup-errors">{errors["date"]}</p> : ""}
+      {errors["street"] ? (
+        <p className="tuneup-errors">{errors["street"]}</p>
+      ) : (
+        ""
+      )}
+      {errors["city"] ? <p className="tuneup-errors">{errors["city"]}</p> : ""}
+      {errors["state"] ? (
+        <p className="tuneup-errors">{errors["state"]}</p>
+      ) : (
+        ""
+      )}
+      {errors["zip"] ? <p className="tuneup-errors">{errors["zip"]}</p> : ""}
     </div>
   );
 }
