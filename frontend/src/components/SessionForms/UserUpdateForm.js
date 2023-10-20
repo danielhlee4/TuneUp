@@ -30,13 +30,14 @@ function UserUpdateForm() {
       return { streetName: "", city: "", state: "", zip: "" };
     }
     const parts = addressString.split(", ");
-    const stateZip = parts[2]?.split(" ");
+    const statePart = parts[2]?.slice(0, parts[2].length - 5);
+    const zipPart = parts[2]?.slice(parts[2].length - 5);
 
     return {
       streetName: parts[0] || "",
       city: parts[1] || "",
-      state: stateZip ? stateZip[0] : "",
-      zip: stateZip ? stateZip[1] : "",
+      state: statePart ? statePart : "",
+      zip: zipPart ? zipPart : "",
     };
   }
   const { streetName, city, state, zip } = parseAddress(currentUser.address);
