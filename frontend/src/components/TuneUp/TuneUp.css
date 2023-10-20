@@ -133,6 +133,21 @@
     border: 1px solid #4CAF50;
 }
 
+.requested-button:disabled {
+    border: none;
+    background-color: #c0c0c0;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: not-allowed;
+    border-radius: 8px;
+}
+
 .leave-tuneup-button {
     background-color: #af4c4c;
     /* Green */
