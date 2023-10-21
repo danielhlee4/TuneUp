@@ -120,9 +120,6 @@ function UserProfilePage() {
                 <h3 className="genres-title">Favorite Genres:</h3>
                 <div className="user-genres">{user?.genres?.join(", ")}</div>
               </div>
-              <div className="user-address-container">
-                <div className="user-address">{user?.address}</div>
-              </div>
             </div>
           </div>
         </div>
