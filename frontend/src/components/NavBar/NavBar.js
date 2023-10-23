@@ -48,10 +48,10 @@ function NavBar() {
                         <img className='tuneup-logo2' src={tuneuplogo}></img>
                     </Link>
                     <div className='nav-bar-buttons-container'>
-                        <div className='nav-signup-button-container'>
+                        <div className='nav-signup-button-container' onClick={() => {history.push("/signup")}}>
                             <Link className='nav-signup-button' to={'/signup'}>Signup</Link>
                         </div>
-                        <div className='nav-login-button-container'>
+                        <div className='nav-login-button-container' onClick={() => { history.push("/login") }}>
                             <Link className='nav-login-button' to={'/login'}>Login</Link>
                         </div>
                         <div className='about-dev-button-container2'>
