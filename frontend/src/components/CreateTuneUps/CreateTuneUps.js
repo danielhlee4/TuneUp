@@ -242,7 +242,7 @@ function CreateTuneUps() {
       default:
         setState = () => {};
     }
-    return (e) => setState(e.target.value.trim());
+    return (e) => setState(e.target.value);
   };
 
   const handlePianoChange = (e) => {
