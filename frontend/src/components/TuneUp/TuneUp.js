@@ -26,7 +26,7 @@ const TuneUp = ({ tuneUpData }) => {
   const userIsPartOfTuneUp =
     sessionUser &&
     (sessionUser.hostedTuneUps?.includes(tuneUp?._id) ||
-      sessionUser.joinedTuneUps?.includes(tuneUp?._id));
+      sessionUser.joinedTuneUps?.includes(tuneUp?._id) || tuneUp.host === sessionUser._id);
 
   const handleAcceptRequest = async (requestingUserId) => {
     const response = await jwtFetch(`/api/tuneups/${tuneUp._id}`, {
