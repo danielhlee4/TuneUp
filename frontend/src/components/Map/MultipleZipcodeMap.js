@@ -1,8 +1,23 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { Wrapper } from "@googlemaps/react-wrapper";
+import { MarkerClusterer } from '@googlemaps/markerclusterer';
 import { getUsers } from '../../store/users';
 import { getTuneUp } from '../../store/tuneUps';
+import m1 from './icons/m1.png';
+import m2 from './icons/m2.png';
+import m3 from './icons/m3.png';
+import m4 from './icons/m4.png';
+import m5 from './icons/m5.png';
+import transparentIcon from './icons/transparent.png';
+
+const clusterStyles = [
+  { url: m1, height: 40, width: 40, textColor: '#FFF' },
+  { url: m2, height: 50, width: 50, textColor: '#FFF' },
+  { url: m3, height: 60, width: 60, textColor: '#FFF' },
+  { url: m4, height: 70, width: 70, textColor: '#FFF' },
+  { url: m5, height: 80, width: 80, textColor: '#FFF' },
+];
 
 function MultipleZipcodeMap({ zipcodes }) {
     const [map, setMap] = useState(null);
@@ -27,6 +42,16 @@ function MultipleZipcodeMap({ zipcodes }) {
         });
       });
     }
+
+    const obfuscateCoordinates = (lat, lng) => {
+      const maxJitter = 0.0015; 
+      const randomJitter = () => Math.random() * maxJitter - maxJitter / 2;
+      
+      return {
+        lat: lat + randomJitter(),
+        lng: lng + randomJitter()
+      };
+    };
 
     useEffect(() => {
       let fetchedTuneUps = {};
@@ -79,7 +104,6 @@ function MultipleZipcodeMap({ zipcodes }) {
             const tuneUpId = Object.keys(zipcodes)[index];
             const currentTuneUp = tuneUps[tuneUpId];
             const hostUser = users[currentTuneUp?.host];
-            console.log("tuneUpId", tuneUpId, "currentTuneUp", currentTuneUp, "hostUser", hostUser);
             const tooltipContent = `${hostUser?.firstName}'s ${currentTuneUp?.genre} TuneUp`;
   
             circle.addListener('mouseover', () => {
@@ -93,6 +117,22 @@ function MultipleZipcodeMap({ zipcodes }) {
             });
           });
 
+          // Create invisible markers for clustering
+          const invisibleMarkers = validCoordinates.map(coords => {
+            const obfuscatedCoords = obfuscateCoordinates(coords.lat, coords.lng);
+            return new window.google.maps.Marker({
+              position: obfuscatedCoords,
+              icon: transparentIcon,
+              clickable: false,
+              map: createdMap
+            });
+          });
+
+          const clusterer = new MarkerClusterer({
+            markers: invisibleMarkers,
+            map: createdMap,
+            styles: clusterStyles
+          });
   
           // Check if there's only one zipcode
           if (zipcodes.length === 1) {
