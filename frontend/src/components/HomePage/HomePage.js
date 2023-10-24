@@ -85,7 +85,7 @@ function HomePage() {
             </div>
             <p className="search-tutorial-description">
               <br />
-              By click the search bar at the top of the tuneup list to search for specific 
+              Click the search bar at the top of the tuneup list to search for specific 
               <br/>
               tuneups by their genre or instruments!
             </p>
