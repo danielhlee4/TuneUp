@@ -384,7 +384,7 @@ function UserUpdateForm() {
     };
     dispatch(updateUser(currentUser._id, updatedUser));
     dispatch(getCurrentUser(updatedUser));
-    history.push(`/users/${currentUser._id}`);
+    history.push(`/home`);
   };
 
   const handleInstrumentClick = (e) => {
