@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import './NavBar.css';
-import { logout } from '../../store/session';
 import tuneuplogo from '../../components/NavBar/tuneuplogo.png'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import ProfileButton from '../ProfileDropDown/ProfileDropDown';
@@ -9,13 +8,8 @@ import ProfileButton from '../ProfileDropDown/ProfileDropDown';
 function NavBar() {
     const loggedIn = useSelector(state => !!state.session.user);
     const sessionUser = useSelector(state => state.session.user)
-    const dispatch = useDispatch();
     const history = useHistory();
 
-    const logoutUser = e => {
-        e.preventDefault();
-        dispatch(logout());
-    }
 
     const getLinks = () => {
         if (loggedIn) {
@@ -48,10 +42,10 @@ function NavBar() {
                         <img className='tuneup-logo2' src={tuneuplogo}></img>
                     </Link>
                     <div className='nav-bar-buttons-container'>
-                        <div className='nav-signup-button-container'>
+                        <div className='nav-signup-button-container' onClick={() => {history.push("/signup")}}>
                             <Link className='nav-signup-button' to={'/signup'}>Signup</Link>
                         </div>
-                        <div className='nav-login-button-container'>
+                        <div className='nav-login-button-container' onClick={() => { history.push("/login") }}>
                             <Link className='nav-login-button' to={'/login'}>Login</Link>
                         </div>
                         <div className='about-dev-button-container2'>

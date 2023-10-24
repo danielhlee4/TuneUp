@@ -13,11 +13,16 @@
     width: 7rem;
     margin-left: 47vw;
     margin-top: 0rem;
+    transition: transform 0.2s ease-in-out;
 }
 .tuneup-logo2 {
     position: fixed;
     width: 7rem;
     margin-left: 47vw;
+    transition: transform 0.2s ease-in-out;
+}
+.tuneup-logo1:hover,.tuneup-logo2:hover {
+    transform: scale(1.1);
 }
 
 .nav-login-button-container {
