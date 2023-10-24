@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import './NavBar.css';
-import { logout } from '../../store/session';
 import tuneuplogo from '../../components/NavBar/tuneuplogo.png'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import ProfileButton from '../ProfileDropDown/ProfileDropDown';
@@ -9,13 +8,8 @@ import ProfileButton from '../ProfileDropDown/ProfileDropDown';
 function NavBar() {
     const loggedIn = useSelector(state => !!state.session.user);
     const sessionUser = useSelector(state => state.session.user)
-    const dispatch = useDispatch();
     const history = useHistory();
 
-    const logoutUser = e => {
-        e.preventDefault();
-        dispatch(logout());
-    }
 
     const getLinks = () => {
         if (loggedIn) {
