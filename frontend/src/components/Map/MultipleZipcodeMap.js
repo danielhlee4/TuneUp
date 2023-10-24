@@ -1,10 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useSelector } from 'react-redux';
 import { Wrapper } from "@googlemaps/react-wrapper";
+import { getUsers } from '../../store/users';
+import { getTuneUp } from '../../store/tuneUps';
 
 function MultipleZipcodeMap({ zipcodes }) {
     const [map, setMap] = useState(null);
     const mapRef = useRef(null);
-  
+    const users = useSelector(getUsers);
+    const storeState = useSelector(state => state);
+    const [tuneUps, setTuneUps] = useState({});
+
     const geocodeZipcode = (zipcode) => {
       const geocoder = new window.google.maps.Geocoder();
       return new Promise((resolve) => {
@@ -21,11 +27,23 @@ function MultipleZipcodeMap({ zipcodes }) {
         });
       });
     }
-  
+
     useEffect(() => {
-      if (zipcodes && zipcodes.length && !map) {
+      let fetchedTuneUps = {};
+      for (let tuneUpId of Object.keys(zipcodes)) {
+        const currentTuneUp = getTuneUp(tuneUpId)(storeState);
+        if (currentTuneUp) {
+          fetchedTuneUps[tuneUpId] = currentTuneUp;
+        }
+      }
+      setTuneUps(fetchedTuneUps);
+    }, [zipcodes, storeState]);
+    
+    useEffect(() => {
+      const zipArray = Object.values(zipcodes);
+      if (zipArray && zipArray.length && !map) {
         const bounds = new window.google.maps.LatLngBounds();
-        const promises = zipcodes.map(geocodeZipcode);
+        const promises = zipArray.map(geocodeZipcode);
         
         Promise.all(promises).then(coordinatesArray => {
           const validCoordinates = coordinatesArray.filter(coord => coord !== null);
@@ -42,11 +60,12 @@ function MultipleZipcodeMap({ zipcodes }) {
           }
 
           const createdMap = new window.google.maps.Map(mapRef.current);
+          const infoWindow = new window.google.maps.InfoWindow();
   
-          validCoordinates.forEach(coords => {
+          validCoordinates.forEach((coords, index) => {
             bounds.extend(coords);
   
-            new window.google.maps.Circle({
+            const circle = new window.google.maps.Circle({
               strokeColor: '#FF0000',
               strokeOpacity: 0.8,
               strokeWeight: 2,
@@ -56,7 +75,24 @@ function MultipleZipcodeMap({ zipcodes }) {
               center: coords,
               radius: 800 // meters
             });
+
+            const tuneUpId = Object.keys(zipcodes)[index];
+            const currentTuneUp = tuneUps[tuneUpId];
+            const hostUser = users[currentTuneUp?.host];
+            console.log("tuneUpId", tuneUpId, "currentTuneUp", currentTuneUp, "hostUser", hostUser);
+            const tooltipContent = `${hostUser?.firstName}'s ${currentTuneUp?.genre} TuneUp`;
+  
+            circle.addListener('mouseover', () => {
+              infoWindow.setContent(tooltipContent);
+              infoWindow.setPosition(coords);
+              infoWindow.open(createdMap);
+            });
+  
+            circle.addListener('mouseout', () => {
+              infoWindow.close();
+            });
           });
+
   
           // Check if there's only one zipcode
           if (zipcodes.length === 1) {
@@ -69,7 +105,7 @@ function MultipleZipcodeMap({ zipcodes }) {
           setMap(createdMap);
         });
       }
-    }, [mapRef, map, zipcodes]);
+    }, [mapRef, map, zipcodes, users, tuneUps]);
   
     return (
       <div ref={mapRef} className="map" style={{ width: "52vw", height: "36vw" }}>
