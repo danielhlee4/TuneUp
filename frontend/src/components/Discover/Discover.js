@@ -56,10 +56,14 @@ function Discover() {
   }, [dispatch]);
 
   const displayedTuneUps = filteredTuneUps.length ? filteredTuneUps : tuneUps;
-  const zipcodesArray = useMemo(() => {
-    return displayedTuneUps
-      .map((tuneUp) => extractStateAndZipcode(tuneUp.address))
-      .filter(Boolean);
+  const zipcodesObject = useMemo(() => {
+    return displayedTuneUps.reduce((acc, tuneUp) => {
+      const zipcode = extractStateAndZipcode(tuneUp.address);
+      if (zipcode) {
+          acc[tuneUp._id] = zipcode;
+      }
+      return acc;
+    }, {});
   }, [displayedTuneUps]);
 
   return (
@@ -101,11 +105,7 @@ function Discover() {
           ""
         )}
         <div className="discover-map-container">
-          <MultipleZipcodeMapWrapper
-            key={zipcodesArray.join(",")}
-            zipcodes={zipcodesArray}
-          />
-          {/* <MultipleZipcodeMapWrapper zipcodes={["NY 10012"]} /> */}
+          <MultipleZipcodeMapWrapper zipcodes={zipcodesObject} />
         </div>
       </div>
       <footer>
