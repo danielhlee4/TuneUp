@@ -30,7 +30,7 @@ function UserUpdateForm() {
       return { streetName: "", city: "", state: "", zip: "" };
     }
     const parts = addressString.split(", ");
-    const statePart = parts[2]?.slice(0, parts[2].length - 5);
+    const statePart = parts[2]?.slice(0, parts[2].length - 6);
     const zipPart = parts[2]?.slice(parts[2].length - 5);
 
     return {
