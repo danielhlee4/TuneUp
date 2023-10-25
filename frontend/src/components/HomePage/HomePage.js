@@ -12,7 +12,7 @@ import "./HomePage.css"
 function HomePage() {
   const currentUser = useSelector((state) => state.session.user);
   const handleDropdownClick = () => {
-    const scrollY = window.innerHeight - 64;
+    const scrollY = window.innerHeight-64;
     window.scrollTo({
       top: scrollY,
       behavior: 'smooth'
@@ -38,7 +38,8 @@ function HomePage() {
           <p className="learn-more">click here to Learn more</p>
         <img className="drop-down-arrow-png2" src={dropArrowIcon}></img>
       </div>
-      <div className="user-profile-demo">
+      
+      <div className="tutorial-container">
         
         <div className="demo-gif-container-1">
           <img className="user-profile-demo-gif" src={userProfileDemo}></img>
@@ -91,7 +92,7 @@ function HomePage() {
               by their genre or instruments!
             </p>
           </div>
-        </div>
+      </div>
 
       </div>
       <footer>
