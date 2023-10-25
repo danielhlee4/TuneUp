@@ -79,7 +79,6 @@ function MultipleZipcodeMap({ zipcodes }) {
             const tuneUpId = Object.keys(zipcodes)[index];
             const currentTuneUp = tuneUps[tuneUpId];
             const hostUser = users[currentTuneUp?.host];
-            console.log("tuneUpId", tuneUpId, "currentTuneUp", currentTuneUp, "hostUser", hostUser);
             const tooltipContent = `${hostUser?.firstName}'s ${currentTuneUp?.genre} TuneUp`;
   
             circle.addListener('mouseover', () => {
