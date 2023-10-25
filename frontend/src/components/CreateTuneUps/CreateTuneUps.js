@@ -683,7 +683,7 @@ function CreateTuneUps() {
       <h2 className="tuneup-create-header">Tune your jam</h2>
       <form className="tuneup-create-form" onSubmit={handleSubmit}>
         <div className="tuneup-details-container">
-          <h3 className="details-header">Tells us more about your TuneUp!</h3>
+          <h3 className="details-header1">Tells us more about your TuneUp!</h3>
           <textarea
             className="details-input"
             onChange={updates("details")}
@@ -691,7 +691,7 @@ function CreateTuneUps() {
           ></textarea>
         </div>
         <div className="date-dropdowns">
-          <h3 className="details-header">When?</h3>
+          <h3 className="date-header">When?</h3>
           <select
             name="month"
             id="Month"
