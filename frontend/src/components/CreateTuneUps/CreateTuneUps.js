@@ -884,6 +884,26 @@ function CreateTuneUps() {
             </select>
           </div>
         </div>
+        <div className="tuneup-error-container">
+          {errors["empty"] ? (
+            <p className="tuneup-errors">{errors["empty"]}</p>
+          ) : (
+            ""
+          )}
+          {errors["date"] ? <p className="tuneup-errors">{errors["date"]}</p> : ""}
+          {errors["street"] ? (
+            <p className="tuneup-errors">{errors["street"]}</p>
+          ) : (
+            ""
+          )}
+          {errors["city"] ? <p className="tuneup-errors">{errors["city"]}</p> : ""}
+          {errors["state"] ? (
+            <p className="tuneup-errors">{errors["state"]}</p>
+          ) : (
+            ""
+          )}
+          {errors["zip"] ? <p className="tuneup-errors">{errors["zip"]}</p> : ""}
+        </div>
         <div className="create-tuneup-button-container">
           <button className="create-tuneup-button" type="submit">
             Create TuneUp!
@@ -891,24 +911,6 @@ function CreateTuneUps() {
         </div>
       </form>
       <img className="background-img" src={background}></img>
-      {errors["empty"] ? (
-        <p className="tuneup-errors">{errors["empty"]}</p>
-      ) : (
-        ""
-      )}
-      {errors["date"] ? <p className="tuneup-errors">{errors["date"]}</p> : ""}
-      {errors["street"] ? (
-        <p className="tuneup-errors">{errors["street"]}</p>
-      ) : (
-        ""
-      )}
-      {errors["city"] ? <p className="tuneup-errors">{errors["city"]}</p> : ""}
-      {errors["state"] ? (
-        <p className="tuneup-errors">{errors["state"]}</p>
-      ) : (
-        ""
-      )}
-      {errors["zip"] ? <p className="tuneup-errors">{errors["zip"]}</p> : ""}
     </div>
   );
 }
