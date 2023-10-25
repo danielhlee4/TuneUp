@@ -10,14 +10,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 4rem;
+    margin-top: 6rem;
     height: 56.2rem;
 }
 
 .tuneup-create-form {
     display: grid;
-    grid-template-rows: 25% 25% 25% 25%;
-    grid-gap: 20px;
+    grid-template-rows: 20% 20% 20% 20% 10% 10%;
+    grid-gap: 1.5rem;
     width: 60rem;
     height: 40rem;
     padding: 20px;
@@ -25,12 +25,12 @@
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-    
+    margin-top: -5rem;
 }
 
 .tuneup-create-header{
     position: absolute;
-    margin-top: -48rem;
+    margin-top: -53.5rem;
     font-size: 64px;
 }
 
@@ -69,7 +69,7 @@
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-    margin-top: .5rem;
+    margin-top: 1.15rem;
 }
 .month-select{
     height: 2rem;
@@ -91,8 +91,8 @@
     display: flex;
     padding: 10px;
     grid-area: 3/1/3/1;
-    margin-top: -5.5rem;
-    height: 9rem;
+    margin-top: -4rem;
+    height: 7rem;
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
@@ -104,7 +104,7 @@
     position: absolute;
     display: flex;
     width: 45rem;
-    margin-top: 4rem;
+    margin-top: 3rem;
     font-size: 24px;
 }
 
@@ -112,7 +112,7 @@
     display: flex;
     padding: 10px;
     grid-area: 4/1/4/1;
-    margin-top: -5rem;
+    margin-top: -4.8rem;
     height: 8rem;
     background-color: white;
     border-radius: 10px;
@@ -133,8 +133,9 @@
 }
 
 .create-tuneup-button-container {
-    margin-top: -6.3rem;
     height: fit-content;
+    margin-top: -6rem;
+    grid-area: 6/1/6/1;
 }
 
 .create-tuneup-button{
@@ -201,7 +202,11 @@
 p.tuneup-errors{
     font-size: 30px;
     color: red;
-    position:absolute;
-    bottom: 0;
-    justify-self: center;
+}
+
+.tuneup-error-container{
+    height: fit-content;
+    width: 67.5vw;
+    margin-top: -4rem;
+    grid-area: 5/1/5/1;
 }
