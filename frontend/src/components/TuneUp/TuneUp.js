@@ -13,7 +13,7 @@ import AddressMapWrapper from "../Map/AddressMap";
 import ZipcodeMapWrapper from "../Map/ZipcodeMap";
 import UserDistanceToAddress from "../Map/UserDistanceToAddress";
 import { extractStateAndZipcode } from "../Discover/Discover";
-import InstrumentIcon from "../Util/InstrumentIcon";
+import InstrumentIcon from "../../util/InstrumentIcon";
 
 const TuneUp = ({ tuneUpData }) => {
     const dispatch = useDispatch();

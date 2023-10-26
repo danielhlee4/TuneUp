@@ -4,7 +4,8 @@ import { useSelector } from 'react-redux';
 import { Wrapper } from "@googlemaps/react-wrapper";
 import { getUsers } from '../../store/users';
 import { getTuneUp } from '../../store/tuneUps';
-import InstrumentIcon from '../Util/InstrumentIcon';
+import InstrumentIcon from '../../util/InstrumentIcon';
+import { formatDateTime } from '../../util/dateUtils';
 
 function MultipleZipcodeMap({ zipcodes }) {
     const [map, setMap] = useState(null);
@@ -84,7 +85,7 @@ function MultipleZipcodeMap({ zipcodes }) {
             const generateTooltipContent = (currentTuneUp, hostUser) => {
               const baseText = `${hostUser?.firstName}'s ${currentTuneUp?.genre} TuneUp`;
               const instrumentIcons = (currentTuneUp?.instruments || []).map(instrument => ReactDOMServer.renderToString(<InstrumentIcon instrument={instrument} tuneUp={currentTuneUp} />)).join(' ');
-              return `${baseText} <br/> ${instrumentIcons}`;
+              return `${baseText} <br/> ${formatDateTime(currentTuneUp?.date)} <br/> ${instrumentIcons}`;
             };
   
             circle.addListener('mouseover', () => {
