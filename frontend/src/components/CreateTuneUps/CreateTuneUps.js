@@ -750,13 +750,15 @@ function CreateTuneUps() {
             </div>
             <div className="tuneup-state-container">
               <span className="tuneup-state-label">State</span>
-              <input
-                className="tuneup-state-input"
-                type="text"
+              <select 
+                className="tuneup-state-input" 
                 value={state}
                 onChange={updates("states")}
-                placeholder="NY"
-              ></input>
+              >
+                <option value="" disabled selected>Select State</option>
+                <option value="NY">NY</option>
+                <option value="NJ">NJ</option>
+              </select>
             </div>
             <div className="tuneup-zip-code-container">
               <span className="tuneup-zip-code-label">Zip code</span>
