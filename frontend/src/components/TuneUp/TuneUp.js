@@ -13,6 +13,7 @@ import AddressMapWrapper from "../Map/AddressMap";
 import ZipcodeMapWrapper from "../Map/ZipcodeMap";
 import UserDistanceToAddress from "../Map/UserDistanceToAddress";
 import { extractStateAndZipcode } from "../Discover/Discover";
+import InstrumentIcon from "../Util/InstrumentIcon";
 
 const TuneUp = ({ tuneUpData }) => {
     const dispatch = useDispatch();
@@ -86,29 +87,6 @@ const TuneUp = ({ tuneUpData }) => {
     event.stopPropagation();
   }
 
-  const renderInstrumentIcon = (instrument) => {
-    const instrumentIconMap = {
-      piano: "fa-piano",
-      guitar: "fa-guitar-electric",
-      violin: "fa-violin",
-      trumpet: "fa-trumpet",
-      flute: "fa-flute",
-      drums: "fa-drum",
-      saxophone: "fa-saxophone",
-      clarinet: "fa-clarinet",
-      banjo: "fa-banjo",
-      vocals: "fa-microphone-stand"
-    };
-
-    const normalizedInstrument = instrument.toLowerCase();
-
-    return tuneUp.instruments.includes(instrument) ? (
-      <span>
-        <i className={`fa-sharp fa-light ${instrumentIconMap[normalizedInstrument]}`}></i>
-      </span>
-    ) : null;
-  };
-
   return (
     <div
       className={`tuneUp-container ${clicked ? "maximized" : "minimized"}`}
@@ -147,7 +125,9 @@ const TuneUp = ({ tuneUpData }) => {
               </div>
             </div>
             <div className="right-bottom">
-              {tuneUp?.instruments.map((instrument) => renderInstrumentIcon(instrument))}
+              {tuneUp?.instruments.map((instrument) => 
+                <InstrumentIcon instrument={instrument} tuneUp={tuneUp} />
+              )}
             </div>
           </div>
         </div>
@@ -180,7 +160,9 @@ const TuneUp = ({ tuneUpData }) => {
                 </ul>
               </div>
               <div className="tuneup-instrument-icons">
-                {tuneUp?.instruments.map((instrument) => renderInstrumentIcon(instrument))}
+                {tuneUp?.instruments.map((instrument) => 
+                  <InstrumentIcon instrument={instrument} tuneUp={tuneUp} />
+                )}
               </div>
             </div>
 
