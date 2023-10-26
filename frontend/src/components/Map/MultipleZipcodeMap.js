@@ -1,8 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
+import ReactDOMServer from 'react-dom/server';
 import { useSelector } from 'react-redux';
 import { Wrapper } from "@googlemaps/react-wrapper";
 import { getUsers } from '../../store/users';
 import { getTuneUp } from '../../store/tuneUps';
+import InstrumentIcon from '../../util/InstrumentIcon';
+import { formatDateTime } from '../../util/dateUtils';
 
 function MultipleZipcodeMap({ zipcodes }) {
     const [map, setMap] = useState(null);
@@ -79,10 +82,14 @@ function MultipleZipcodeMap({ zipcodes }) {
             const tuneUpId = Object.keys(zipcodes)[index];
             const currentTuneUp = tuneUps[tuneUpId];
             const hostUser = users[currentTuneUp?.host];
-            const tooltipContent = `${hostUser?.firstName}'s ${currentTuneUp?.genre} TuneUp`;
+            const generateTooltipContent = (currentTuneUp, hostUser) => {
+              const baseText = `${hostUser?.firstName}'s ${currentTuneUp?.genre} TuneUp`;
+              const instrumentIcons = (currentTuneUp?.instruments || []).map(instrument => ReactDOMServer.renderToString(<InstrumentIcon instrument={instrument} tuneUp={currentTuneUp} />)).join(' ');
+              return `${baseText} <br/> ${formatDateTime(currentTuneUp?.date)} <br/> ${instrumentIcons}`;
+            };
   
             circle.addListener('mouseover', () => {
-              infoWindow.setContent(tooltipContent);
+              infoWindow.setContent(generateTooltipContent(currentTuneUp, hostUser));
               infoWindow.setPosition(coords);
               infoWindow.open(createdMap);
             });

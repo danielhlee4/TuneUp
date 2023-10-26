@@ -215,3 +215,7 @@ p.tuneup-errors{
     margin-top: -1.5rem;
     grid-area: 5/1/5/1;
 }
+
+.tuneup-state-input{
+    padding: 2px 0px;
+}
