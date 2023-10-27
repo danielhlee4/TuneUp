@@ -8,6 +8,7 @@ import InstrumentIcon from '../../util/InstrumentIcon';
 import { formatDateTime } from '../../util/dateUtils';
 
 function MultipleZipcodeMap({ zipcodes }) {
+    console.log(zipcodes)
     const [map, setMap] = useState(null);
     const mapRef = useRef(null);
     const users = useSelector(getUsers);
@@ -30,6 +31,10 @@ function MultipleZipcodeMap({ zipcodes }) {
         });
       });
     }
+
+    useEffect(() => {
+      setMap(null);
+    }, [zipcodes]);
 
     useEffect(() => {
       let fetchedTuneUps = {};
