@@ -372,6 +372,8 @@ function UserUpdateForm() {
     if (vocalsChecked) {
       instruments.push("Vocals");
     }
+    window.scrollTo(0,0);
+
     if (!validateInputs()) return;
 
     const updatedUser = {
