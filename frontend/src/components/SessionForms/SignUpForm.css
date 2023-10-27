@@ -149,6 +149,7 @@
 
 p.password-errors{
     color: red;
+    margin-top: 10px;
 }
 
 .already-on-tuneup {
@@ -159,4 +160,6 @@ p.password-errors{
 
 p.email-errors{
     color:red;
+    margin-top: 10px;
 }
+
