@@ -149,7 +149,8 @@
     margin-left: 4.5vw;
     margin-top: 6rem;
     width: 89%;
-    height: fit-content;
+    min-height: fit-content;
+    max-height: 30rem;
     padding: 10px;
 }
 
