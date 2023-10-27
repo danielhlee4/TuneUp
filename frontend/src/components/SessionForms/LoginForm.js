@@ -20,16 +20,27 @@ function LoginForm() {
         return e => setState(e.currentTarget.value);
     }
 
+
     const handleSubmit = async (e) => {
-        e.preventDefault();
-        await dispatch(login({ email, password }))
-        history.push('/home')
-    }
+      e.preventDefault();
+      const responseErrors = await dispatch(login({ email, password }));
+      if (!responseErrors) {
+        history.push("/home");
+      }
+    };
+
 
     const handleDemoLogin = async () => {
       await dispatch(login({ email: demoEmail, password: demoPassword }));
       history.push('/home');
     }
+
+    useEffect(() => {
+      return () => {
+        dispatch(clearSessionErrors());
+      };
+    }, [dispatch]); 
+
 
     return (
       <div className="login-page">
