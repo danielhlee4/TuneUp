@@ -1,14 +1,5 @@
 
-.links-auth {
-    position: fixed;
-    height: 4rem;
-    width: 100vw;
-    background-color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
-    top: 0;
-}
-
-.links-nav {
+.links-auth, .links-nav {
     position: fixed;
     display: flex;
     justify-content: space-between;
@@ -19,6 +10,7 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
     top: 0;
 }
+
 .left-nav {
     display: flex;
     align-items: center;
@@ -37,10 +29,16 @@
     width: 7rem;
     transition: transform 0.2s ease-in-out;
 }
+.tuneup-logo-2-container {
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    position: absolute;
+    margin-left: 47%;
+}
 .tuneup-logo2 {
-    position: fixed;
     width: 7rem;
-    margin-left: 47vw;
     transition: transform 0.2s ease-in-out;
 }
 .tuneup-logo1:hover,.tuneup-logo2:hover {
@@ -48,10 +46,10 @@
 }
 
 .nav-login-button-container {
-    position: fixed;
     border-radius: 10px;
     padding-top: 8px;
     padding-bottom: 5px;
+    margin-left: 5%;
     width: 8rem;
     height: 2rem;
     text-align: center;
@@ -74,7 +72,6 @@
 }
 
 .nav-signup-button-container {
-    position: fixed;
     right: 2%;
     border-radius: 10px;
     width: 8rem;
@@ -98,15 +95,6 @@
     color: black;
     font-size: 26px;
     font-family: 'Bebas Neue', sans-serif;
-}
-
-.nav-bar-buttons-container {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    width: fit-content;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    margin-left: 10px;
 }
 
 .signout-button-container {
@@ -189,7 +177,8 @@
     cursor: pointer;
 }
 
-.right-nav-button-container{
+.right-nav-button-container, 
+.right-nav-button-container2{
     width: 18rem;
     height: fit-content;
     display: flex;
@@ -227,9 +216,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    position: absolute;
-    margin-left: 0rem;
-    margin-top: -0.5rem;
+    margin-left: -1.5%;
     width: 13rem;
     height: 4rem;
 }

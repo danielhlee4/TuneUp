@@ -42,23 +42,24 @@ function NavBar() {
         } else {
             return (
                 <div className="links-auth">
-                    <Link to={'/'}>
-                        <img className='tuneup-logo2' src={tuneuplogo}></img>
-                    </Link>
-                    <div className='nav-bar-buttons-container'>
-                        <div className='nav-signup-button-container' onClick={() => {history.push("/signup")}}>
-                            <Link className='nav-signup-button' to={'/signup'}>Signup</Link>
-                        </div>
-                        <div className='nav-login-button-container' onClick={() => { history.push("/login") }}>
-                            <Link className='nav-login-button' to={'/login'}>Login</Link>
-                        </div>
                         <div className='about-dev-button-container2'>
                             <Link to={'/about'}>
                                 <button className='about-dev-button2'>About Devs</button>
                             </Link>
                         </div>
-                    </div>
+                        <Link to={'/'} className='tuneup-logo-2-container'>
+                            <img className='tuneup-logo2' src={tuneuplogo} />
+                        </Link>
+                        <div className='right-nav-button-container2'>
+                            <div className='nav-signup-button-container' onClick={() => { history.push("/signup") }}>
+                                <Link className='nav-signup-button' to={'/signup'}>Signup</Link>
+                            </div>
+                            <div className='nav-login-button-container' onClick={() => { history.push("/login") }}>
+                                <Link className='nav-login-button' to={'/login'}>Login</Link>
+                            </div>
+                        </div>
                 </div>
+
             );
         }
     }
