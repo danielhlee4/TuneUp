@@ -46,7 +46,7 @@
 div.search-components {
     display: flex;
     flex-flow: row nowrap;
-    width: 55rem;
+    width: 100%;
     justify-content: space-around;
 }
 

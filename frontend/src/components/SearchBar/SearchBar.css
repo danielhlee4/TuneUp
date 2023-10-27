@@ -5,15 +5,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    /* margin-left: 20px; */
     overflow: hidden;
-    width: 30vw;
-    /* border: 1px solid red; */
+    width: 75%;
 }
 
 
 #search-input {
-    width: 500px;
+    width: 100%;
     padding: 10px 15px;
     border-radius: 25px;
     border: 1px solid #ccc;
@@ -29,7 +27,7 @@
 
 .search-container {
     position: relative;
-    width: 600px;
+    width: 90%;
 }
 
 
@@ -50,5 +48,4 @@
     margin-top: 10px;
     font-size: 20px;
     text-align: left;
-    text-wrap: pretty;
 }
