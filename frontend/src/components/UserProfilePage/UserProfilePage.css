@@ -148,8 +148,8 @@
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
     margin-left: 4.5vw;
     margin-top: 6rem;
-    width: 90%;
-    height: 30rem;
+    width: 89%;
+    height: fit-content;
     padding: 10px;
 }
 
@@ -159,6 +159,10 @@
     overflow-y: auto;
     overflow-x: hidden;
 }
+.no-joined-tuneup-text {
+    font-size: 36px;
+    text-align: center;
+}
 
 .hosted-tuneups-list-container {
     border-left: 1px solid rgba(0, 0, 0, 0.1);
@@ -166,6 +170,10 @@
     overflow-y: auto;
     overflow-x: hidden;
     padding-left: 7px;
+}
+.no-hosted-tuneup-text {
+    font-size: 36px;
+    text-align: center;
 }
 
 .user-edit-option{
