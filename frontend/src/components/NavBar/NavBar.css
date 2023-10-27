@@ -1,5 +1,5 @@
 
-.links-auth, .links-nav{
+.links-auth {
     position: fixed;
     height: 4rem;
     width: 100vw;
@@ -8,11 +8,33 @@
     top: 0;
 }
 
-.tuneup-logo1 {
+.links-nav {
     position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 4rem;
+    width: 100vw;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    top: 0;
+}
+.left-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+}
+.tuneup-logo-1-container {
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    position: absolute;
+    margin-left: 47%;
+}
+.tuneup-logo1 {
     width: 7rem;
-    margin-left: 47vw;
-    margin-top: 0rem;
     transition: transform 0.2s ease-in-out;
 }
 .tuneup-logo2 {
@@ -27,7 +49,6 @@
 
 .nav-login-button-container {
     position: fixed;
-    right: 11rem;
     border-radius: 10px;
     padding-top: 8px;
     padding-bottom: 5px;
@@ -139,11 +160,9 @@
 
 .nav-user-name {
     font-size: 26px;
-    margin-top: 1rem;
+    margin-left: 3rem;
     height: fit-content;
     width: fit-content;
-    margin-left: 100px;
-
 }
 
 .create-button{
@@ -151,6 +170,7 @@
     align-items: center;
     justify-content: center;
     border-radius: 10px;
+    margin-left: 20px;
     width: 3rem;
     height: 3rem;
     padding-top: 5px;
@@ -170,22 +190,16 @@
 }
 
 .right-nav-button-container{
-    display: grid;
-    grid-template-columns: 80% 20%;
     width: 18rem;
     height: fit-content;
-    margin-left: 65vw;
-    margin-top: -2.5rem;
-
+    display: flex;
+    align-items: center;
 }
 
 .about-dev-button-container1{
     display: flex;
     align-items: center;
     justify-content: center;
-    position: absolute;
-    margin-left: 20rem;
-    margin-top: -3rem;
     width: 13rem;
     height: 4rem;
 }

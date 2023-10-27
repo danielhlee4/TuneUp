@@ -15,16 +15,20 @@ function NavBar() {
         if (loggedIn) {
             return (
                 <div className="links-nav">
-                    <Link to={'/home'}>
+                    <div className='left-nav'>
+                        <div className='welcome-container'>
+                            <div className="nav-user-name">Welcome, {sessionUser.firstName}</div>
+                            <ProfileButton className='profilebutton' />
+                        </div>
+                        <div className='about-dev-button-container1'>
+                            <Link to={'/about'}>
+                                <button className='about-dev-button1'>About Devs</button>
+                            </Link>
+                        </div>
+                    </div>
+                    <Link to={'/home'} className='tuneup-logo-1-container'>
                         <img className='tuneup-logo1' src={tuneuplogo}></img>
                     </Link>
-                        <div className="nav-user-name">Welcome, {sessionUser.firstName}</div>
-                    <ProfileButton/>
-                    <div className='about-dev-button-container1'>
-                        <Link to={'/about'}>
-                            <button className='about-dev-button1'>About Devs</button>
-                        </Link>
-                    </div>
                     <div className='right-nav-button-container'>
                         <Link to={'/discover'}>
                             <button className='discover-button'>Looking for TuneUps?</button>
