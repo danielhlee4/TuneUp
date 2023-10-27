@@ -60,7 +60,7 @@ function Discover() {
     return displayedTuneUps.reduce((acc, tuneUp) => {
       const zipcode = extractStateAndZipcode(tuneUp.address);
       if (zipcode) {
-          acc[tuneUp._id] = zipcode;
+        acc[tuneUp._id] = zipcode;
       }
       return acc;
     }, {});
@@ -69,20 +69,18 @@ function Discover() {
   return (
     <div>
       <div className="discover-container">
-        <div className="sort" onChange={(e) => setSortBy(e.target.value)}>
-          <select>
-            <option value="default">------- sort by -------</option>
-            {/* <option value="home">distance (from home)</option>
-            <option value="currentLocation">
-              distance (from current location)
-            </option> */}
-            <option value="dateNewOld">date (ascending)</option>
-            <option value="dateOldNew">date (descending)</option>
-          </select>
-        </div>
         {tuneUps && users ? (
           <div className="tuneups-container">
-            <SearchBar onSearch={handleTuneUpSearch} />
+            <div className="search-components">
+              <SearchBar onSearch={handleTuneUpSearch} />
+              <div className="sort" onChange={(e) => setSortBy(e.target.value)}>
+                <select>
+                  <option value="default">------- sort by -------</option>
+                  <option value="dateNewOld">date (ascending)</option>
+                  <option value="dateOldNew">date (descending)</option>
+                </select>
+              </div>
+            </div>
             <ul>
               {displayedTuneUps
                 ?.sort((a, b) => {

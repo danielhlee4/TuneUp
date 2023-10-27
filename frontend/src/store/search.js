@@ -1,11 +1,9 @@
 import jwtFetch from "./jwt";
 
-
 const RECEIVE_SEARCH_RESULTS = "search/RECEIVE_SEARCH_RESULTS";
 const CLEAR_SEARCH_RESULTS = "search/CLEAR_SEARCH_RESULTS";
 const RECEIVE_SEARCH_ERRORS = "search/RECEIVE_SEARCH_ERRORS";
 const CLEAR_SEARCH_ERRORS = "search/CLEAR_SEARCH_ERRORS";
-
 
 export const receiveSearchResults = (results) => ({
   type: RECEIVE_SEARCH_RESULTS,
@@ -25,7 +23,6 @@ export const clearSearchErrors = () => ({
   type: CLEAR_SEARCH_ERRORS,
 });
 
-
 export const search = (criteria) => async (dispatch) => {
   const queryString = new URLSearchParams(criteria).toString();
   try {
@@ -37,7 +34,12 @@ export const search = (criteria) => async (dispatch) => {
     }
 
     if (data.length === 0) {
-      dispatch(receiveSearchErrors(`Sorry, no results found for "${criteria.q}". But don't worry, there are plenty of other exciting tuneups to explore below!`));
+      dispatch(
+        receiveSearchErrors(
+          `Sorry, no results found for "${criteria.q}".
+          `
+        )
+      );
     } else {
       dispatch(receiveSearchResults(data));
     }
@@ -46,8 +48,6 @@ export const search = (criteria) => async (dispatch) => {
     console.error("Failed to fetch search results:", error);
   }
 };
-
-
 
 const initialSearchState = {
   results: [],
@@ -75,8 +75,3 @@ const searchReducer = (state = initialSearchState, action) => {
 };
 
 export default searchReducer;
-
-
-
-
-

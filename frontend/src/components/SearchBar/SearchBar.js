@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { search, clearSearchResults } from "../../store/search";
 import { useDispatch, useSelector } from "react-redux";
-import "./SearchBar.css"
+import "./SearchBar.css";
 
-
-export default function SearchBar({onSearch}) {
+export default function SearchBar({ onSearch }) {
   const [query, setQuery] = useState("");
   const dispatch = useDispatch();
+  const [results, setResults] = useState("");
 
   const searchErrors = useSelector((state) => state.search.errors);
 
@@ -14,12 +14,13 @@ export default function SearchBar({onSearch}) {
     event.preventDefault();
     if (query.trim() !== "") {
       dispatch(clearSearchResults());
-      dispatch(search({ q: query }))
+      setResults(dispatch(search({ q: query })));
     }
     onSearch(query);
   };
 
   const handleInputChange = (e) => {
+    setResults("");
     const query = e.target.value;
     setQuery(query);
   };
@@ -46,8 +47,15 @@ export default function SearchBar({onSearch}) {
           <i className="fa-solid fa-magnifying-glass"></i>
         </button>
       </div>
-      {searchErrors && ( 
-        <div className="error-message">{searchErrors}</div>
+      {searchErrors && <div className="error-message">{searchErrors}</div>}
+      {searchErrors && (
+        <div className="error-message">
+          But don't worry, there are plenty of other exciting tuneups to explore
+          below!
+        </div>
+      )}
+      {query && !searchErrors && results && (
+        <div className="error-message">See below results for "{query}"!</div>
       )}
     </div>
   );
