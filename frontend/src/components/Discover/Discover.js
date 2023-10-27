@@ -9,8 +9,8 @@ import SearchBar from "../SearchBar/SearchBar";
 
 export function extractStateAndZipcode(address) {
   const parts = address.split(", ");
-  if (parts[2]) {
-    return parts[2]; // This should be the state and zipcode part e.g. 'NY 10314'
+  if (parts.length > 0) {
+    return parts[parts.length - 1]; // This should be the state and zipcode part e.g. 'NY 10314'
   }
   return null;
 }
