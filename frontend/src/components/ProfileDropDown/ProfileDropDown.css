@@ -1,9 +1,9 @@
 .profile-button-container{
-    position: fixed;
     width: fit-content;
     height: fit-content;
-    margin-left: 3.5rem;
-    margin-top: -1.9rem;
+    position: absolute;
+    margin-top: -2rem;
+    margin-left: 0.5rem;
 }
 
 .profilebutton{
@@ -35,7 +35,7 @@
     position: absolute;
     height: fit-content;
     width: 10.6rem;
-    margin-left: 3.5rem;
+    margin-top: 1rem;
     background-color: white;
     border-radius: 10px;
     border: 1px solid rgba(0, 0, 0, 0.3);

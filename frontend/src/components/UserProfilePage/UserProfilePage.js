@@ -73,17 +73,24 @@ function UserProfilePage() {
         <div className="tuneup-hosted-label">Your Hosted TuneUps</div>
         <div className="user-tuneups-container" id="user-tuneups-container">
           <div className="joined-tuneups-list-container">
-            <ul className="joined-tuneup-list">
-              {joinedTuneup.map((tuneup) => {
-                return (
-                  <li key={tuneup._id} className="list-item">
-                    <TuneUp tuneUpData={tuneup} />
-                  </li>
-                );
-              })}
-            </ul>
+            {joinedTuneup.length === 0 ? (
+              <p className="no-joined-tuneup-text">No joined tuneups yet  😔</p>
+            ) : (
+              <ul className="joined-tuneup-list">
+                {joinedTuneup.map((tuneup) => {
+                  return (
+                    <li key={tuneup._id} className="list-item">
+                      <TuneUp tuneUpData={tuneup} />
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
           </div>
           <div className="hosted-tuneups-list-container">
+            {hostedTuneup.length === 0 ? (
+              <p className="no-hosted-tuneup-text">No hosted tuneups yet  😔</p>
+            ) : (
             <ul className="hosted-tuneup-list">
               {hostedTuneup.map((tuneup) => {
                 return (
@@ -93,6 +100,7 @@ function UserProfilePage() {
                 );
               })}
             </ul>
+            )}
           </div>
         </div>
         <img className="user-profile-page-background" src={backgroundimg}></img>

@@ -175,8 +175,294 @@ function CreateTuneUps() {
   }
 
   function isValidZip(zip) {
-    const zipRegex = /^\d{5}$/;
-    return zipRegex.test(zip);
+    // const zipRegex = /^\d{5}$/;
+    // return zipRegex.test(zip);
+    const nycZipCodes = [
+      "07002",
+      "07003",
+      "07008",
+      "07010",
+      "07014",
+      "07017",
+      "07018",
+      "07020",
+      "07022",
+      "07024",
+      "07026",
+      "07028",
+      "07029",
+      "07030",
+      "07031",
+      "07032",
+      "07036",
+      "07047",
+      "07050",
+      "07055",
+      "07057",
+      "07070",
+      "07071",
+      "07072",
+      "07073",
+      "07074",
+      "07075",
+      "07086",
+      "07087",
+      "07093",
+      "07094",
+      "07102",
+      "07103",
+      "07104",
+      "07105",
+      "07106",
+      "07107",
+      "07108",
+      "07109",
+      "07110",
+      "07111",
+      "07112",
+      "07114",
+      "07201",
+      "07202",
+      "07205",
+      "07206",
+      "07208",
+      "07302",
+      "07304",
+      "07305",
+      "07306",
+      "07307",
+      "07310",
+      "07311",
+      "07601",
+      "07603",
+      "07604",
+      "07605",
+      "07606",
+      "07608",
+      "07631",
+      "07632",
+      "07643",
+      "07644",
+      "07650",
+      "07657",
+      "07660",
+      "07666",
+      "10001",
+      "10002",
+      "10003",
+      "10004",
+      "10005",
+      "10006",
+      "10007",
+      "10009",
+      "10010",
+      "10011",
+      "10012",
+      "10013",
+      "10014",
+      "10016",
+      "10017",
+      "10018",
+      "10019",
+      "10020",
+      "10021",
+      "10022",
+      "10023",
+      "10024",
+      "10025",
+      "10026",
+      "10027",
+      "10028",
+      "10029",
+      "10030",
+      "10031",
+      "10032",
+      "10033",
+      "10034",
+      "10035",
+      "10036",
+      "10037",
+      "10038",
+      "10039",
+      "10040",
+      "10044",
+      "10065",
+      "10069",
+      "10075",
+      "10103",
+      "10110",
+      "10111",
+      "10112",
+      "10115",
+      "10119",
+      "10128",
+      "10152",
+      "10153",
+      "10154",
+      "10162",
+      "10165",
+      "10167",
+      "10168",
+      "10169",
+      "10170",
+      "10171",
+      "10172",
+      "10173",
+      "10174",
+      "10177",
+      "10199",
+      "10278",
+      "10279",
+      "10280",
+      "10282",
+      "10301",
+      "10302",
+      "10303",
+      "10304",
+      "10305",
+      "10306",
+      "10308",
+      "10310",
+      "10311",
+      "10312",
+      "10314",
+      "10451",
+      "10452",
+      "10453",
+      "10454",
+      "10455",
+      "10456",
+      "10457",
+      "10458",
+      "10459",
+      "10460",
+      "10461",
+      "10462",
+      "10463",
+      "10465",
+      "10467",
+      "10468",
+      "10469",
+      "10472",
+      "10473",
+      "10474",
+      "11001",
+      "11003",
+      "11004",
+      "11005",
+      "11020",
+      "11021",
+      "11023",
+      "11096",
+      "11101",
+      "11102",
+      "11103",
+      "11104",
+      "11105",
+      "11106",
+      "11109",
+      "11201",
+      "11203",
+      "11204",
+      "11205",
+      "11206",
+      "11207",
+      "11208",
+      "11209",
+      "11210",
+      "11211",
+      "11212",
+      "11213",
+      "11214",
+      "11215",
+      "11216",
+      "11217",
+      "11218",
+      "11219",
+      "11220",
+      "11221",
+      "11222",
+      "11223",
+      "11224",
+      "11225",
+      "11226",
+      "11228",
+      "11229",
+      "11230",
+      "11231",
+      "11232",
+      "11233",
+      "11234",
+      "11235",
+      "11236",
+      "11237",
+      "11238",
+      "11239",
+      "11354",
+      "11355",
+      "11356",
+      "11357",
+      "11358",
+      "11359",
+      "11360",
+      "11361",
+      "11362",
+      "11363",
+      "11364",
+      "11365",
+      "11366",
+      "11367",
+      "11368",
+      "11369",
+      "11370",
+      "11371",
+      "11372",
+      "11373",
+      "11374",
+      "11375",
+      "11377",
+      "11378",
+      "11379",
+      "11385",
+      "11411",
+      "11412",
+      "11413",
+      "11414",
+      "11415",
+      "11416",
+      "11417",
+      "11418",
+      "11419",
+      "11420",
+      "11421",
+      "11422",
+      "11423",
+      "11424",
+      "11425",
+      "11426",
+      "11427",
+      "11428",
+      "11429",
+      "11430",
+      "11432",
+      "11433",
+      "11434",
+      "11435",
+      "11436",
+      "11451",
+      "11509",
+      "11516",
+      "11559",
+      "11580",
+      "11581",
+      "11598",
+      "11691",
+      "11692",
+      "11693",
+      "11694",
+      "11697",
+    ];
+    return nycZipCodes.includes(zip);
   }
 
   const validateInputs = () => {
@@ -213,7 +499,8 @@ function CreateTuneUps() {
     } else if (city && !isValidCity(city)) {
       newErrors["city"] = "Please enter a valid city";
     } else if (zip && !isValidZip(zip)) {
-      newErrors["zip"] = "Please enter a valid zip";
+      newErrors["zip"] =
+        "Please enter a zip code within 15 miles of new york city";
     }
     // debugger;
     setErrors(newErrors);
@@ -396,7 +683,7 @@ function CreateTuneUps() {
       <h2 className="tuneup-create-header">Tune your jam</h2>
       <form className="tuneup-create-form" onSubmit={handleSubmit}>
         <div className="tuneup-details-container">
-          <h3 className="details-header">Tells us more about your TuneUp!</h3>
+          <h3 className="details-header1">Tells us more about your TuneUp!</h3>
           <textarea
             className="details-input"
             onChange={updates("details")}
@@ -404,7 +691,7 @@ function CreateTuneUps() {
           ></textarea>
         </div>
         <div className="date-dropdowns">
-          <h3 className="details-header">When?</h3>
+          <h3 className="date-header">When?</h3>
           <select
             name="month"
             id="Month"
@@ -463,13 +750,15 @@ function CreateTuneUps() {
             </div>
             <div className="tuneup-state-container">
               <span className="tuneup-state-label">State</span>
-              <input
-                className="tuneup-state-input"
-                type="text"
+              <select 
+                className="tuneup-state-input" 
                 value={state}
                 onChange={updates("states")}
-                placeholder="NY"
-              ></input>
+              >
+                <option value="" disabled selected>Select State</option>
+                <option value="NY">NY</option>
+                <option value="NJ">NJ</option>
+              </select>
             </div>
             <div className="tuneup-zip-code-container">
               <span className="tuneup-zip-code-label">Zip code</span>
@@ -597,6 +886,26 @@ function CreateTuneUps() {
             </select>
           </div>
         </div>
+        <div className="tuneup-error-container">
+          {errors["empty"] ? (
+            <p className="tuneup-errors">{errors["empty"]}</p>
+          ) : (
+            ""
+          )}
+          {errors["date"] ? <p className="tuneup-errors">{errors["date"]}</p> : ""}
+          {errors["street"] ? (
+            <p className="tuneup-errors">{errors["street"]}</p>
+          ) : (
+            ""
+          )}
+          {errors["city"] ? <p className="tuneup-errors">{errors["city"]}</p> : ""}
+          {errors["state"] ? (
+            <p className="tuneup-errors">{errors["state"]}</p>
+          ) : (
+            ""
+          )}
+          {errors["zip"] ? <p className="tuneup-errors">{errors["zip"]}</p> : ""}
+        </div>
         <div className="create-tuneup-button-container">
           <button className="create-tuneup-button" type="submit">
             Create TuneUp!
@@ -604,24 +913,6 @@ function CreateTuneUps() {
         </div>
       </form>
       <img className="background-img" src={background}></img>
-      {errors["empty"] ? (
-        <p className="tuneup-errors">{errors["empty"]}</p>
-      ) : (
-        ""
-      )}
-      {errors["date"] ? <p className="tuneup-errors">{errors["date"]}</p> : ""}
-      {errors["street"] ? (
-        <p className="tuneup-errors">{errors["street"]}</p>
-      ) : (
-        ""
-      )}
-      {errors["city"] ? <p className="tuneup-errors">{errors["city"]}</p> : ""}
-      {errors["state"] ? (
-        <p className="tuneup-errors">{errors["state"]}</p>
-      ) : (
-        ""
-      )}
-      {errors["zip"] ? <p className="tuneup-errors">{errors["zip"]}</p> : ""}
     </div>
   );
 }

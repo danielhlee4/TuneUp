@@ -188,7 +188,12 @@
 }
 
 #tuneUp-description {
+    width: 15vw;
+    height: 10rem;
+    overflow-y: auto;
+    overflow-wrap: break-word;
     font-size: 14px;
+    word-wrap: break-word;
     color: #555;
 }
 
