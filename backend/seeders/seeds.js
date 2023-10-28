@@ -28,7 +28,7 @@ const addresses = [
   "101 Johnson St, Brooklyn, NY 11201",
   "203 W 115th St, New York, NY 10026",
   "504 Main St, New York, NY 10044",
-  "128 Pierrepont Street Brooklyn, NY 11201",
+  "128 Pierrepont Street, Brooklyn, NY 11201",
   "222 Jersey City Blvd, Jersey City, NJ 07305",
   "8 Thomas S. Boyland St, Brooklyn, NY 11233",
   "2270 Clove Rd, Staten Island, NY 10305",

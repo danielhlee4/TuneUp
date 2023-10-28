@@ -8,6 +8,7 @@ import backgroundimg from "../../components/SessionForms/background.png";
 import "./UserProfilePage.css";
 import TuneUp from "../TuneUp/TuneUp";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { setUpdateAfterSignup } from "../../store/session";
 
 function UserProfilePage() {
   const currentUser = useSelector((state) => state.session.user);
@@ -30,6 +31,10 @@ function UserProfilePage() {
     dispatch(fetchUsers());
     dispatch(fetchUser(id));
   }, [dispatch, id]);
+
+  const handleEditClick = () => {
+    dispatch(setUpdateAfterSignup(false));
+  }
 
   const isCurrentUser = currentUser?._id === user?._id; ////
 
@@ -65,7 +70,7 @@ function UserProfilePage() {
           </div>
           <div className="user-edit-option">
             <Link to={"/update"}>
-              <button className="edit-button">Edit</button>
+              <button className="edit-button" onClick={handleEditClick}>Edit</button>
             </Link>
           </div>
         </div>
