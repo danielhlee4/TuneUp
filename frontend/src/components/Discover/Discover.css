@@ -47,7 +47,8 @@ div.search-components {
     display: flex;
     flex-flow: row nowrap;
     width: 100%;
-    justify-content: space-around;
+    justify-content: flex-start;
+    padding-left: 15px;
 }
 
 div.sort {
