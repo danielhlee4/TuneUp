@@ -5,6 +5,7 @@ const RECEIVE_CURRENT_USER = "session/RECEIVE_CURRENT_USER";
 const RECEIVE_SESSION_ERRORS = "session/RECEIVE_SESSION_ERRORS";
 const CLEAR_SESSION_ERRORS = "session/CLEAR_SESSION_ERRORS";
 export const RECEIVE_USER_LOGOUT = "session/RECEIVE_USER_LOGOUT";
+const SET_UPDATE_AFTER_SIGNUP = "session/SET_UPDATE_AFTER_SIGNUP";
 
 // Dispatch receiveCurrentUser when a user logs in.
 export const receiveCurrentUser = (currentUser) => ({
@@ -26,6 +27,11 @@ const logoutUser = () => ({
 // Dispatch clearSessionErrors to clear any session errors.
 export const clearSessionErrors = () => ({
   type: CLEAR_SESSION_ERRORS,
+});
+
+export const setUpdateAfterSignup = (value) => ({
+  type: SET_UPDATE_AFTER_SIGNUP,
+  value,
 });
 
 
@@ -64,12 +70,15 @@ export const logout = () => (dispatch) => {
 
 const initialState = {
   user: undefined,
+  isUpdateAfterSignup: false,
 };
 
 const sessionReducer = (state = initialState, action) => {
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
       return { user: action.currentUser };
+    case SET_UPDATE_AFTER_SIGNUP:
+      return { ...state, isUpdateAfterSignup: action.value };
     case RECEIVE_USER_LOGOUT:
       return initialState;
     default:

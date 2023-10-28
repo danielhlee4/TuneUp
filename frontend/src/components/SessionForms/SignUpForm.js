@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "./SignUpForm.css";
-import { signup, clearSessionErrors } from "../../store/session";
+import { signup, clearSessionErrors, setUpdateAfterSignup } from "../../store/session";
 import background from "./background.png";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
@@ -82,6 +82,9 @@ function SignupForm() {
     if (!validateInputs()) return;
 
     await dispatch(signup(user));
+
+    dispatch(setUpdateAfterSignup(true));
+    
     history.push("/update");
   };
 

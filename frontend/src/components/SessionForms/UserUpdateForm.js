@@ -6,6 +6,7 @@ import { updateUser } from "../../store/users";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { getCurrentUser } from "../../store/session";
+import { setUpdateAfterSignup } from "../../store/session";
 
 function UserUpdateForm() {
   const currentUser = useSelector((state) => state.session.user);
@@ -390,9 +391,12 @@ function UserUpdateForm() {
   };
 
   const handleInstrumentClick = (e) => {
-    // Toggle the 'active' class
     e.currentTarget.classList.toggle("active");
   };
+
+  const handleFormSubmit = () => {
+    dispatch(setUpdateAfterSignup(false));
+  }
 
   return (
     <div className="update-form-root-container">
@@ -607,7 +611,7 @@ function UserUpdateForm() {
             </div>
           </div>
           <div className="update-submit-button-container">
-            <button className="update-submit-button" type="submit">
+            <button className="update-submit-button" type="submit" onClick={handleFormSubmit}>
               Save
             </button>
             <Link to={`/users/${currentUser._id}`}>
