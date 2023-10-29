@@ -25,7 +25,7 @@ const addresses = [
   "35-32 21st St, Long Island City, NY 11106",
   "25 Waverly Pl, New York, NY 10003",
   "133 Macdougal St, New York, NY 10012",
-  "101 Johnson St, Brooklyn, NY 11201",
+  "10 Columbus Cir, New York, NY 10019",
   "203 W 115th St, New York, NY 10026",
   "504 Main St, New York, NY 10044",
   "128 Pierrepont Street, Brooklyn, NY 11201",
