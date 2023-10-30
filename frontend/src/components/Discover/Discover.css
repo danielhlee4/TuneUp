@@ -16,7 +16,9 @@
     grid-template-columns: 1/2/1/2;
     margin-top: 10.6rem;
     top: 8%;
-    position: sticky;
+    position: fixed;
+    right: 1%;
+    top:auto;
     height: fit-content;
     margin-left: -4rem;
 }
