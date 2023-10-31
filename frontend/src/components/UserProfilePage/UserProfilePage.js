@@ -20,9 +20,9 @@ function UserProfilePage() {
   let hostedTuneup = [];
 
   userTuneups.map((tuneup) => {
-    if (user._id === tuneup.host) {
+    if (user?._id === tuneup.host) {
       hostedTuneup.push(tuneup);
-    } else if (tuneup.connections?.includes(user._id)) {
+    } else if (tuneup.connections?.includes(user?._id)) {
       joinedTuneup.push(tuneup);
     }
   });
