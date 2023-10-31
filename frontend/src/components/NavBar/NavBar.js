@@ -12,39 +12,13 @@ function NavBar() {
     const history = useHistory();
 
     const getLinks = () => {
-        if (loggedIn && !isUpdateAfterSignup) {
+        if (loggedIn) {
             return (
                 <div className="links-nav">
                     <div className='left-nav'>
                         <div className='welcome-container'>
                             <div className="nav-user-name">Welcome, {sessionUser.firstName}</div>
                             <ProfileButton className='profilebutton' />
-                        </div>
-                        <div className='about-dev-button-container1'>
-                            <Link to={'/about'}>
-                                <button className='about-dev-button1'>About Devs</button>
-                            </Link>
-                        </div>
-                    </div>
-                    <Link to={'/home'} className='tuneup-logo-1-container'>
-                        <img className='tuneup-logo1' src={tuneuplogo}></img>
-                    </Link>
-                    <div className='right-nav-button-container'>
-                        <Link to={'/discover'}>
-                            <button className='discover-button'>Looking for TuneUps?</button>
-                        </Link>
-                        <Link to={'/create'}>
-                            <button className='create-button'>+</button>
-                        </Link>
-                    </div>
-                </div>
-            );
-        } else if (loggedIn && isUpdateAfterSignup) {
-            return (
-                <div className="links-nav">
-                    <div className='left-nav'>
-                        <div className='welcome-container'>
-                            <div className="nav-user-name">Welcome, {sessionUser.firstName}</div>
                         </div>
                         <div className='about-dev-button-container1'>
                             <Link to={'/about'}>
@@ -88,6 +62,7 @@ function NavBar() {
             );
         }
     }
+    
     
     return (
         <>
